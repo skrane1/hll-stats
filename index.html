@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HLL Live Stats</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">HLL</div><div><b>LIVE STATS</b><small>Community Leaderboard</small></div></div>
+    <nav>
+      <button class="nav active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav" data-page="leaderboard">🏆 <span>Leaderboard</span></button>
+      <button class="nav" data-page="players">👤 <span>Spieler</span></button>
+      <button class="nav" data-page="categories">◈ <span>Kategorien</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <span class="status-dot"></span><span id="status">Verbunden</span>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">HELL LET LOOSE</p>
+        <h1 id="page-title">Dashboard</h1>
+      </div>
+      <div class="header-actions">
+        <span id="last-update">—</span>
+        <button id="refresh" class="refresh">↻ Aktualisieren</button>
+      </div>
+    </header>
+
+    <section id="dashboard" class="page active"></section>
+    <section id="leaderboard" class="page"></section>
+    <section id="players" class="page"></section>
+    <section id="categories" class="page"></section>
+  </main>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
