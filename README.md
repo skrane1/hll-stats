@@ -1,12 +1,11 @@
 # HLL Stats – GitHub Pages
 
-Read-only website for HLL statistics.
+Read-only HLL statistics website for GitHub Pages.
 
-## Upload
-Upload all files in this folder to the root of your GitHub repository.
-Then open **Settings → Pages → Deploy from a branch → main → / (root)**.
+Files required in the repository root:
+- index.html
+- style.css
+- app.js
+- stats.json
 
-## stats.json
-The website reads `stats.json` from the same repository. The file must contain the current HLL bot statistics.
-
-The website itself has no write functionality.
+The site reads `stats.json` only and does not modify statistics.

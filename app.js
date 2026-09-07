@@ -1,4 +1,4 @@
-let state={stats:{},categories:{
+const CATEGORIES={
   "commander-counter":"COMMANDER CREMATOR - Kommandantenabschüsse",
   "you-shall-not-pass":"YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
   "meele-mage":"MEELE-MAGE - Nahkampftötungen",
@@ -9,7 +9,8 @@ let state={stats:{},categories:{
   "Oppenheimer":"OPPENHEIMER - Sprengstofftötungen",
   "thanatos":"THANATOS - Infanterieabschüsse",
   "WO OP?":"WO OP? - Zerstörte Außenposten"
-}};
+};
+let state={stats:{},categories:CATEGORIES};
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
@@ -23,16 +24,16 @@ function initials(n){return String(n||"?").trim().split(/\s+/).map(x=>x[0]).slic
 
 async function load(){
   try{
-    const r=await fetch("./stats.json",{cache:"no-store"});
+    const r=await fetch("./stats.json?ts="+Date.now(),{cache:"no-store"});
     if(!r.ok) throw new Error("stats.json konnte nicht geladen werden.");
-    const stats=await r.json();
-    state.stats=stats;
+    state.stats=await r.json();
+    state.categories=CATEGORIES;
     $("#status").textContent="Verbunden";
     $("#last-update").textContent="Stand "+new Date().toLocaleTimeString("de-DE");
     renderAll();
   }catch(e){
     $("#status").textContent="Fehler";
-    $("#dashboard").innerHTML=`<div class="empty">⚠️ ${esc(e.message)}<br><br>Prüfe den Pfad zu <b>stats.json</b> in server.js.</div>`;
+    $("#dashboard").innerHTML=`<div class="empty">⚠️ ${esc(e.message)}<br><br>Prüfe, ob <b>stats.json</b> im gleichen Ordner wie die Website liegt.</div>`;
   }
 }
 
