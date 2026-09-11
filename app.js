@@ -280,13 +280,30 @@ function showPlayer(id) {
   $("#player-back").addEventListener("click", renderPlayers);
 }
 
+const RAW_BASE = "https://raw.githubusercontent.com/skrane1/hll-stats/main/";
+
+async function fetchJsonWithFallback(file, fallback = null) {
+  const local = `./${file}?t=${Date.now()}`;
+  try {
+    const r = await fetch(local, { cache: "no-store" });
+    if (r.ok) return await r.json();
+  } catch (_) {}
+
+  try {
+    const r = await fetch(`${RAW_BASE}${file}?t=${Date.now()}`, { cache: "no-store" });
+    if (r.ok) return await r.json();
+  } catch (_) {}
+
+  return fallback;
+}
+
 async function loadData() {
   try {
     const [s,h,ho,c] = await Promise.all([
-      fetch(`./stats.json?t=${Date.now()}`).then(r=>r.ok?r.json():{}),
-      fetch(`./history.json?t=${Date.now()}`).then(r=>r.ok?r.json():{}).catch(()=>({})),
-      fetch(`./hall-of-mages.json?t=${Date.now()}`).then(r=>r.ok?r.json():[]).catch(()=>[]),
-      fetch(`./challenges.json?t=${Date.now()}`).then(r=>r.ok?r.json():[]).catch(()=>[])
+      fetchJsonWithFallback("stats.json", {}),
+      fetchJsonWithFallback("history.json", {}),
+      fetchJsonWithFallback("hall-of-mages.json", []),
+      fetchJsonWithFallback("challenges.json", [])
     ]);
     stats=s||{}; history=h||{}; hall=Array.isArray(ho)?ho:[]; challenges=Array.isArray(c)?c:[];
     $("#status").textContent="Verbunden";
