@@ -97,16 +97,113 @@ function renderCategories() {
 
 function renderPlayers() {
   const el = $("#players");
-  const ps = playersArray();
-  if (!ps.length) { el.innerHTML = `<div class="empty">Noch keine Spieler vorhanden.</div>`; return; }
-  el.innerHTML = `<div class="player-grid">${ps.map(p=>`<article class="section player-detail">
-    <div class="player-head"><div class="avatar">${esc((p.username||"?").slice(0,1).toUpperCase())}</div><div><div class="player-name">${esc(p.username)}</div><div class="muted">${esc(p.id)}</div></div></div>
-    <div class="player-total">${CATEGORY_META.reduce((s,[k])=>s+valueFor(p,k),0)} <small>Gesamtwerte</small></div>
-    ${CATEGORY_META.map(([k,name,desc])=>{
-      const h = Array.isArray(history[k]) ? history[k].filter(x => String(x.playerId||x.id||"")===String(p.id) || x.username===p.username) : [];
-      return `<div class="player-cat"><div><b>${esc(name)}</b><span>${esc(desc)}</span></div><strong>${esc(valueFor(p,k))}</strong><div class="mini-history">${h.slice(-5).reverse().map(x=>`<span>${dateLabel(x.date)} · ${esc(x.value)}</span>`).join("") || `<span class="muted">Keine Historie</span>`}</div></div>`;
-    }).join("")}
-  </article>`).join("")}</div>`;
+  const ps = playersArray().sort((a,b) => {
+    const an = String(a.username || "").toLocaleLowerCase("de-DE");
+    const bn = String(b.username || "").toLocaleLowerCase("de-DE");
+    return an.localeCompare(bn, "de-DE");
+  });
+
+  if (!ps.length) {
+    el.innerHTML = `<div class="empty">Noch keine Spieler vorhanden.</div>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <div class="section">
+      <div class="section-head player-search-head">
+        <div>
+          <h2>Spieler suchen</h2>
+          <div class="muted">Suche nach Name oder Teilen des Namens.</div>
+        </div>
+        <input id="player-search" class="search" type="search" autocomplete="off" placeholder="Spieler suchen …" aria-label="Spieler suchen">
+      </div>
+      <div id="player-search-results"></div>
+    </div>`;
+
+  const input = $("#player-search");
+  const results = $("#player-search-results");
+
+  const draw = () => {
+    const q = input.value.trim().toLocaleLowerCase("de-DE");
+
+    if (!q) {
+      results.innerHTML = `
+        <div class="empty">
+          <div class="empty-icon">⌕</div>
+          <h2>Spieler suchen</h2>
+          <p>Gib einen Spielernamen ein, um die Spielerseite zu öffnen.</p>
+        </div>`;
+      return;
+    }
+
+    const matches = ps.filter(p =>
+      String(p.username || "").toLocaleLowerCase("de-DE").includes(q)
+    );
+
+    if (!matches.length) {
+      results.innerHTML = `<div class="empty">Kein Spieler gefunden.</div>`;
+      return;
+    }
+
+    results.innerHTML = `<div class="player-grid" style="padding:20px">${
+      matches.map(p => `
+        <article class="section player-card" data-player-id="${esc(p.id)}">
+          <div class="player-head">
+            <div class="avatar">${esc((p.username || "?").slice(0,1).toUpperCase())}</div>
+            <div>
+              <div class="player-name">${esc(p.username)}</div>
+              <div class="muted">Gesamt ${CATEGORY_META.reduce((sum,[k]) => sum + valueFor(p,k), 0).toLocaleString("de-DE")}</div>
+            </div>
+          </div>
+          <div class="player-total">${CATEGORY_META.reduce((sum,[k]) => sum + valueFor(p,k), 0).toLocaleString("de-DE")} <small>Werte gesamt</small></div>
+        </article>`).join("")
+    }</div>`;
+
+    results.querySelectorAll("[data-player-id]").forEach(card => {
+      card.addEventListener("click", () => showPlayer(card.dataset.playerId));
+    });
+  };
+
+  input.addEventListener("input", draw);
+  draw();
+}
+
+function showPlayer(id) {
+  const player = stats[id];
+  if (!player) return;
+
+  const username = player.username || id;
+  const historyByCategory = key => Array.isArray(history[key])
+    ? history[key].filter(x => String(x.playerId || x.id || "") === String(id) || x.username === username)
+    : [];
+
+  $("#players").innerHTML = `
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <h2>${esc(username)}</h2>
+          <div class="muted">Spielerprofil</div>
+        </div>
+        <button class="refresh" id="player-back">← Zurück zur Suche</button>
+      </div>
+      <table>
+        <thead><tr><th>Kategorie</th><th>Aktueller Wert</th><th>Rang</th><th>Historie</th></tr></thead>
+        <tbody>
+          ${CATEGORY_META.map(([key,name,desc]) => {
+            const rank = sortedPlayers(key).findIndex(x => x.id === id) + 1;
+            const entries = historyByCategory(key).slice(-5).reverse();
+            return `<tr>
+              <td><b>${esc(name)}</b><div class="muted">${esc(desc)}</div></td>
+              <td class="value">${valueFor(player,key).toLocaleString("de-DE")}</td>
+              <td>${rank ? `#${rank}` : "—"}</td>
+              <td>${entries.length ? entries.map(x => `<div>${dateLabel(x.date)} · <b>${esc(x.value)}</b></div>`).join("") : `<span class="muted">Keine Historie</span>`}</td>
+            </tr>`;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>`;
+
+  $("#player-back").addEventListener("click", renderPlayers);
 }
 
 async function loadData() {
