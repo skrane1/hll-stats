@@ -26,7 +26,27 @@ function valueFor(player, key) {
   return Number(player?.[key] || 0);
 }
 function playersArray() {
-  return Object.entries(stats).map(([id,p]) => ({id, ...p, username:p.username || id}));
+  const players = new Map();
+
+  for (const [id, p] of Object.entries(stats)) {
+    players.set(String(id), { id: String(id), ...p, username: p.username || id });
+  }
+
+  // Also include players that only exist in the append-only history.
+  for (const entries of Object.values(history)) {
+    if (!Array.isArray(entries)) continue;
+    for (const h of entries) {
+      const id = String(h.playerId || h.id || h.username || "");
+      if (!id) continue;
+      const existing = players.get(id) || { id, username: h.username || h.player || id };
+      if (!existing.username || existing.username === id) {
+        existing.username = h.username || h.player || id;
+      }
+      players.set(id, existing);
+    }
+  }
+
+  return Array.from(players.values());
 }
 function sortedPlayers(key) {
   return playersArray().sort((a,b) => valueFor(b,key)-valueFor(a,key));
@@ -73,22 +93,76 @@ function renderHall() {
   }</div>`;
 }
 
+function historyPlayers(key) {
+  const hist = Array.isArray(history[key]) ? history[key] : [];
+  const best = new Map();
+
+  for (const h of hist) {
+    const id = String(h.playerId || h.id || h.username || "");
+    if (!id) continue;
+    const value = Number(h.value || 0);
+    const current = best.get(id);
+    if (!current || value > current.value) {
+      best.set(id, {
+        id,
+        username: h.username || h.player || id,
+        [key]: value
+      });
+    }
+  }
+
+  return Array.from(best.values());
+}
+
+function allTimePlayers(key) {
+  const merged = new Map();
+
+  // Current stats remain the primary source for currently active players.
+  for (const p of playersArray()) {
+    merged.set(String(p.id), {
+      ...p,
+      [key]: valueFor(p, key)
+    });
+  }
+
+  // History is append-only, so it also contains players whose current stats
+  // have already been reset. Their highest recorded value is their All-Time Best.
+  for (const p of historyPlayers(key)) {
+    const existing = merged.get(String(p.id));
+    if (!existing || valueFor(p, key) > valueFor(existing, key)) {
+      merged.set(String(p.id), {
+        ...(existing || {}),
+        ...p,
+        [key]: valueFor(p, key)
+      });
+    }
+  }
+
+  return Array.from(merged.values())
+    .filter(p => valueFor(p, key) > 0 || (Array.isArray(history[key]) && history[key].some(h => String(h.playerId || h.id || h.username || "") === String(p.id))))
+    .sort((a,b) => valueFor(b,key) - valueFor(a,key));
+}
+
 function renderCategories() {
   const el = $("#categories");
   el.innerHTML = `<div class="category-grid">${
     CATEGORY_META.map(([key,name,desc])=>{
-      const rows = sortedPlayers(key);
-      const top = rows[0];
+      const currentRows = sortedPlayers(key);
       const hist = Array.isArray(history[key]) ? history[key] : [];
+      const allTimeRows = allTimePlayers(key);
+      const currentTop = currentRows[0];
+      const historyTop = historyPlayers(key).sort((a,b) => valueFor(b,key)-valueFor(a,key))[0];
+      const top = currentTop || historyTop;
+      const topIsHistoryFallback = !currentTop && !!historyTop;
       return `<article class="section category-detail">
         <div class="category-image"><img src="./images/${encodeURIComponent(key+'.jpg')}" alt="" onerror="this.style.display='none'"></div>
         <div class="category-content">
           <span class="eyebrow">${esc(name)}</span><h2>${esc(desc)}</h2>
-          <div class="record-row"><div><span class="muted">AKTUELLER BESTWERT</span><strong>${top ? esc(valueFor(top,key)) : "—"}</strong><small>${top ? esc(top.username) : "Noch keine Daten"}</small></div>
+          <div class="record-row"><div><span class="muted">${topIsHistoryFallback ? "LETZTER BEKANNTER BESTWERT" : "AKTUELLER BESTWERT"}</span><strong>${top ? esc(valueFor(top,key)) : "—"}</strong><small>${top ? esc(top.username) : "Noch keine Daten"}</small></div>
           <div><span class="muted">HISTORIE</span><strong>${hist.length}</strong><small>Einträge</small></div></div>
           <h3>All-Time Best Of</h3>
-          ${rows.length ? `<table><thead><tr><th>#</th><th>Spieler</th><th>Wert</th></tr></thead><tbody>${rows.slice(0,10).map((p,n)=>`<tr><td class="rank ${n<3?'top':''}">${n+1}</td><td>${esc(p.username)}</td><td class="value">${esc(valueFor(p,key))}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">Noch keine Werte.</div>`}
-          <div class="history-list">${hist.slice(-8).reverse().map(h=>`<div class="history-item"><span>${dateLabel(h.date)}</span><b>${esc(h.username || h.player || "")}</b><strong>${esc(h.value)}</strong></div>`).join("") || `<span class="muted">Historie wird nach Anbindung der Bot-Historie angezeigt.</span>`}</div>
+          ${allTimeRows.length ? `<table><thead><tr><th>#</th><th>Spieler</th><th>Wert</th></tr></thead><tbody>${allTimeRows.slice(0,10).map((p,n)=>`<tr><td class="rank ${n<3?'top':''}">${n+1}</td><td>${esc(p.username)}</td><td class="value">${esc(valueFor(p,key))}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">Noch keine Werte.</div>`}
+          <div class="history-list">${hist.slice(-8).reverse().map(h=>`<div class="history-item"><span>${dateLabel(h.date)}</span><b>${esc(h.username || h.player || "")}</b><strong>${esc(h.value)}</strong></div>`).join("") || `<span class="muted">Noch keine Historieneinträge.</span>`}</div>
         </div>
       </article>`;
     }).join("")
@@ -169,7 +243,7 @@ function renderPlayers() {
 }
 
 function showPlayer(id) {
-  const player = stats[id];
+  const player = playersArray().find(p => String(p.id) === String(id));
   if (!player) return;
 
   const username = player.username || id;
