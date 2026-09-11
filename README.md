@@ -1,12 +1,11 @@
-# HLL Stats – GitHub Pages v2
+# HLL Stats – GitHub Pages
 
-Read-only HLL statistics website.
+Read-only HLL statistics website for GitHub Pages.
 
-## Daten
-- `stats.json` – aktueller Stand
-- `history.json` – Historie je Kategorie
-- `hall-of-mages.json` – gekürte Mythos
-- `challenges.json` – laufende Challenges
-- `images/` – Bilder für die Kategorien
+Files required in the repository root:
+- index.html
+- style.css
+- app.js
+- stats.json
 
-Die Zusatzdateien sind optional; bis der Bot sie liefert, zeigt die Website entsprechende leere Zustände.
+The site reads `stats.json` only and does not modify statistics.

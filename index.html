@@ -11,19 +11,21 @@
   <aside class="sidebar">
     <div class="brand"><div class="brand-mark">HLL</div><div><b>LIVE STATS</b><small>Community Leaderboard</small></div></div>
     <nav>
-      <button class="nav active" data-page="challenges">⚔ <span>Challenges</span></button>
-      <button class="nav" data-page="hall">🧙 <span>Hall of Mages</span></button>
-      <button class="nav" data-page="categories">◈ <span>Kategorien</span></button>
+      <button class="nav active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav" data-page="leaderboard">🏆 <span>Leaderboard</span></button>
       <button class="nav" data-page="players">👤 <span>Spieler</span></button>
+      <button class="nav" data-page="categories">◈ <span>Kategorien</span></button>
     </nav>
-    <div class="sidebar-bottom"><span class="status-dot"></span><span id="status">Verbunden</span></div>
+    <div class="sidebar-bottom">
+      <span class="status-dot"></span><span id="status">Verbunden</span>
+    </div>
   </aside>
 
   <main>
     <header>
       <div>
         <p class="eyebrow">HELL LET LOOSE</p>
-        <h1 id="page-title">Laufende Challenges</h1>
+        <h1 id="page-title">Dashboard</h1>
       </div>
       <div class="header-actions">
         <span id="last-update">—</span>
@@ -31,10 +33,10 @@
       </div>
     </header>
 
-    <section id="challenges" class="page active"></section>
-    <section id="hall" class="page"></section>
-    <section id="categories" class="page"></section>
+    <section id="dashboard" class="page active"></section>
+    <section id="leaderboard" class="page"></section>
     <section id="players" class="page"></section>
+    <section id="categories" class="page"></section>
   </main>
 </div>
 <script src="./app.js"></script>
