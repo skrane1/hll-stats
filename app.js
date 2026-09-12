@@ -11,6 +11,19 @@ const CATEGORY_META = [
   ["WO OP?","WO OP?","Zerstörte Außenposten"]
 ];
 
+const HALL_IMAGES = {
+  "commander-counter": "hall-commander-counter.png",
+  "you-shall-not-pass": "hall-you-shall-not-pass.png",
+  "meele-mage": "hall-meele-mage.png",
+  "garry-grounder": "hall-garry-grounder.png",
+  "alchemist": "hall-alchemist.png",
+  "kettenblitz": "hall-kettenblitz.png",
+  "sniperwizard": "hall-sniperwizard.png",
+  "Oppenheimer": "hall-Oppenheimer.png",
+  "thanatos": "hall-thanatos.png",
+  "WO OP?": "hall-wo-op.png"
+};
+
 let stats = {};
 let history = {};
 let hall = [];
@@ -85,7 +98,13 @@ function renderHall() {
   }
   el.innerHTML = `<div class="mage-grid">${
     hall.map(m=>`<article class="mage-card section">
-      <div class="mage-image"><img src="./images/${encodeURIComponent(m.image || meta(m.category)[0]+'.png')}" alt="" onerror="this.style.display='none'"></div>
+     <div class="mage-image">
+  <img
+    src="./images/${encodeURIComponent(m.image || HALL_IMAGES[m.category] || '')}"
+    alt=""
+    onerror="this.style.display='none'"
+  >
+</div>
       <div class="mage-body"><span class="eyebrow">${esc(meta(m.category)[1])}</span><h2>${esc(m.username)}</h2>
       <p>${esc(meta(m.category)[2])}</p><div class="mage-value">${esc(m.value)} <small>Bestwert</small></div>
       <div class="muted">Gekürt: ${dateLabel(m.date)}</div></div>
@@ -155,7 +174,13 @@ function renderCategories() {
       const top = currentTop || historyTop;
       const topIsHistoryFallback = !currentTop && !!historyTop;
       return `<article class="section category-detail">
-        <div class="category-image"><img src="./images/${encodeURIComponent(key+'.png')}" alt="" onerror="this.style.display='none'"></div>
+        <div class="category-image">
+  <img
+    src="./images/${encodeURIComponent(CATEGORY_IMAGES[key] || '')}"
+    alt=""
+    onerror="this.style.display='none'"
+  >
+</div>
         <div class="category-content">
           <span class="eyebrow">${esc(name)}</span><h2>${esc(desc)}</h2>
           <div class="record-row"><div><span class="muted">${topIsHistoryFallback ? "LETZTER BEKANNTER BESTWERT" : "AKTUELLER BESTWERT"}</span><strong>${top ? esc(valueFor(top,key)) : "—"}</strong><small>${top ? esc(top.username) : "Noch keine Daten"}</small></div>
