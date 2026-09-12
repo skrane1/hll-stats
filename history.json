@@ -41,6 +41,13 @@
       "username": "GWSM | Offi",
       "value": 0,
       "source": "setstat"
+    },
+    {
+      "date": "2026-09-12T12:24:29.766Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 8,
+      "source": "ocr"
     }
   ],
   "kettenblitz": [
