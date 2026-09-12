@@ -42,5 +42,14 @@
       "value": 0,
       "source": "setstat"
     }
+  ],
+  "kettenblitz": [
+    {
+      "date": "2026-09-12T00:05:23.755Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 68,
+      "source": "ocr"
+    }
   ]
 }
