@@ -11,6 +11,19 @@ const CATEGORY_META = [
   ["WO OP?","WO OP?","Zerstörte Außenposten"]
 ];
 
+const CATEGORY_IMAGES = {
+  "commander-counter": "commander-counter.png",
+  "you-shall-not-pass": "you-shall-not-pass.png",
+  "meele-mage": "meele-mage.png",
+  "garry-grounder": "garry-grounder.png",
+  "alchemist": "alchemist.png",
+  "kettenblitz": "kettenblitz.png",
+  "sniperwizard": "sniperwizard.png",
+  "Oppenheimer": "Oppenheimer.png",
+  "thanatos": "thanatos.png",
+  "WO OP?": "wo-op.png"
+};
+
 const HALL_IMAGES = {
   "commander-counter": "hall-commander-counter.png",
   "you-shall-not-pass": "hall-you-shall-not-pass.png",
