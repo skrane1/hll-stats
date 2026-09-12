@@ -85,7 +85,7 @@ function renderHall() {
   }
   el.innerHTML = `<div class="mage-grid">${
     hall.map(m=>`<article class="mage-card section">
-      <div class="mage-image"><img src="./images/${encodeURIComponent(m.image || meta(m.category)[0]+'.jpg')}" alt="" onerror="this.style.display='none'"></div>
+      <div class="mage-image"><img src="./images/${encodeURIComponent(m.image || meta(m.category)[0]+'.png')}" alt="" onerror="this.style.display='none'"></div>
       <div class="mage-body"><span class="eyebrow">${esc(meta(m.category)[1])}</span><h2>${esc(m.username)}</h2>
       <p>${esc(meta(m.category)[2])}</p><div class="mage-value">${esc(m.value)} <small>Bestwert</small></div>
       <div class="muted">Gekürt: ${dateLabel(m.date)}</div></div>
@@ -155,7 +155,7 @@ function renderCategories() {
       const top = currentTop || historyTop;
       const topIsHistoryFallback = !currentTop && !!historyTop;
       return `<article class="section category-detail">
-        <div class="category-image"><img src="./images/${encodeURIComponent(key+'.jpg')}" alt="" onerror="this.style.display='none'"></div>
+        <div class="category-image"><img src="./images/${encodeURIComponent(key+'.png')}" alt="" onerror="this.style.display='none'"></div>
         <div class="category-content">
           <span class="eyebrow">${esc(name)}</span><h2>${esc(desc)}</h2>
           <div class="record-row"><div><span class="muted">${topIsHistoryFallback ? "LETZTER BEKANNTER BESTWERT" : "AKTUELLER BESTWERT"}</span><strong>${top ? esc(valueFor(top,key)) : "—"}</strong><small>${top ? esc(top.username) : "Noch keine Daten"}</small></div>
