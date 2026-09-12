@@ -55,6 +55,20 @@
       "username": "GWSM | LEER",
       "value": 90,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-12T12:24:48.073Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 92,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-12T18:19:26.961Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 100,
+      "source": "ocr"
     }
   ],
   "kettenblitz": [
