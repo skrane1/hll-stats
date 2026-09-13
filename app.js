@@ -177,30 +177,78 @@ function allTimePlayers(key) {
 
 function renderCategories() {
   const el = $("#categories");
+
   el.innerHTML = `<div class="category-grid">${
-    CATEGORY_META.map(([key,name,desc])=>{
+    CATEGORY_META.map(([key, name, desc]) => {
       const currentRows = sortedPlayers(key);
-      const hist = Array.isArray(history[key]) ? history[key] : [];
       const allTimeRows = allTimePlayers(key);
+
       const currentTop = currentRows[0];
-      const historyTop = historyPlayers(key).sort((a,b) => valueFor(b,key)-valueFor(a,key))[0];
+      const historyTop = historyPlayers(key)
+        .sort((a, b) => valueFor(b, key) - valueFor(a, key))[0];
+
       const top = currentTop || historyTop;
       const topIsHistoryFallback = !currentTop && !!historyTop;
+
       return `<article class="section category-detail">
         <div class="category-image">
-  <img
-    src="./images/${encodeURIComponent(CATEGORY_IMAGES[key] || '')}"
-    alt=""
-    onerror="this.style.display='none'"
-  >
-</div>
+          <img
+            src="./images/${encodeURIComponent(CATEGORY_IMAGES[key] || '')}"
+            alt=""
+            onerror="this.style.display='none'"
+          >
+        </div>
+
         <div class="category-content">
-          <span class="eyebrow">${esc(name)}</span><h2>${esc(desc)}</h2>
-          <div class="record-row"><div><span class="muted">${topIsHistoryFallback ? "LETZTER BEKANNTER BESTWERT" : "AKTUELLER BESTWERT"}</span><strong>${top ? esc(valueFor(top,key)) : "—"}</strong><small>${top ? esc(top.username) : "Noch keine Daten"}</small></div>
-          <div><span class="muted">HISTORIE</span><strong>${hist.length}</strong><small>Einträge</small></div></div>
+          <span class="eyebrow">${esc(name)}</span>
+
+          <h2>${esc(desc)}</h2>
+
+          <div class="record-row">
+            <div>
+              <span class="muted">
+                ${topIsHistoryFallback ? "LETZTER BEKANNTER BESTWERT" : "AKTUELLER BESTWERT"}
+              </span>
+
+              <strong>
+                ${top ? esc(valueFor(top, key)) : "—"}
+              </strong>
+
+              <small>
+                ${top ? esc(top.username) : "Noch keine Daten"}
+              </small>
+            </div>
+          </div>
+
           <h3>All-Time Best Of</h3>
-          ${allTimeRows.length ? `<table><thead><tr><th>#</th><th>Spieler</th><th>Wert</th></tr></thead><tbody>${allTimeRows.slice(0,10).map((p,n)=>`<tr><td class="rank ${n<3?'top':''}">${n+1}</td><td>${esc(p.username)}</td><td class="value">${esc(valueFor(p,key))}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">Noch keine Werte.</div>`}
-          <div class="history-list">${hist.slice(-8).reverse().map(h=>`<div class="history-item"><span>${dateLabel(h.date)}</span><b>${esc(h.username || h.player || "")}</b><strong>${esc(h.value)}</strong></div>`).join("") || `<span class="muted">Noch keine Historieneinträge.</span>`}</div>
+
+          ${
+            allTimeRows.length
+              ? `<table>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>SPIELER</th>
+                      <th>WERT</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    ${allTimeRows
+                      .slice(0, 10)
+                      .map(
+                        (p, n) =>
+                          `<tr>
+                            <td class="rank ${n < 3 ? "top" : ""}">${n + 1}</td>
+                            <td>${esc(p.username)}</td>
+                            <td class="value">${esc(valueFor(p, key))}</td>
+                          </tr>`
+                      )
+                      .join("")}
+                  </tbody>
+                </table>`
+              : `<div class="empty">Noch keine Werte.</div>`
+          }
         </div>
       </article>`;
     }).join("")
