@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "id": "1546207849326321806",
+    "name": "GOLD",
+    "description": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
+    "category": "you-shall-not-pass",
+    "categoryLabel": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
+    "leaderboard": [
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 100
+      },
+      {
+        "playerId": "1027959050761162863",
+        "username": "GWSN | Drexusnite",
+        "value": 35
+      },
+      {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
+        "value": 8
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 4
+      },
+      {
+        "playerId": "386241651753877505",
+        "username": "GWSM | Ziegel.",
+        "value": 3
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 0
+      },
+      {
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 0
+      },
+      {
+        "playerId": "260097039654846464",
+        "username": "GWSM | Grim",
+        "value": 0
+      },
+      {
+        "playerId": "157888469522186240",
+        "username": "GWSM | Knoblauch / Holger",
+        "value": 0
+      },
+      {
+        "playerId": "1070974910308028507",
+        "username": "GWSM | ViPeR_Niklas / Tiger",
+        "value": 0
+      }
+    ],
+    "createdAt": "2026-09-06T17:17:58.432Z"
+  },
+  {
+    "id": "1546207795345367122",
+    "name": "GOLD",
+    "description": "KETTENBLITZ - Tötungen aus Fahrzeug",
+    "category": "kettenblitz",
+    "categoryLabel": "KETTENBLITZ - Tötungen aus Fahrzeug",
+    "leaderboard": [
+      {
+        "playerId": "1027959050761162863",
+        "username": "GWSN | Drexusnite",
+        "value": 68
+      },
+      {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
+        "value": 50
+      },
+      {
+        "playerId": "386241651753877505",
+        "username": "GWSM | Ziegel.",
+        "value": 0
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 0
+      },
+      {
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 0
+      },
+      {
+        "playerId": "260097039654846464",
+        "username": "GWSM | Grim",
+        "value": 0
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 0
+      },
+      {
+        "playerId": "157888469522186240",
+        "username": "GWSM | Knoblauch / Holger",
+        "value": 0
+      },
+      {
+        "playerId": "1070974910308028507",
+        "username": "GWSM | ViPeR_Niklas / Tiger",
+        "value": 0
+      }
+    ],
+    "createdAt": "2026-09-06T17:17:45.562Z"
+  }
+]
