@@ -149,5 +149,21 @@
       "value": 50,
       "source": "ocr"
     }
+  ],
+  "WO OP?": [
+    {
+      "date": "2026-09-14T13:09:23.066Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-14T13:09:24.253Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 1,
+      "source": "ocr"
+    }
   ]
 }
