@@ -77,6 +77,11 @@
     "categoryLabel": "WO OP? - Zerstörte Außenposten",
     "leaderboard": [
       {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 6
+      },
+      {
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
         "value": 6
@@ -129,11 +134,6 @@
       {
         "playerId": "649311308080087051",
         "username": "GWSM | TomatoJoe",
-        "value": 0
-      },
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
         "value": 0
       }
     ],
