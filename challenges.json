@@ -1,40 +1,15 @@
 [
   {
-    "id": "1546207849326321806",
-    "name": "GOLD",
-    "description": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
-    "category": "you-shall-not-pass",
-    "categoryLabel": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
+    "id": "1549015569624334467",
+    "name": "LEER",
+    "description": "THANATOS - Infanterieabschüsse",
+    "category": "thanatos",
+    "categoryLabel": "THANATOS - Infanterieabschüsse",
     "leaderboard": [
-      {
-        "playerId": "715968363351769208",
-        "username": "GWSM | LEER",
-        "value": 126
-      },
-      {
-        "playerId": "1027959050761162863",
-        "username": "GWSN | Drexusnite",
-        "value": 43
-      },
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 15
-      },
-      {
-        "playerId": "649311308080087051",
-        "username": "GWSM | TomatoJoe",
-        "value": 8
-      },
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 4
-      },
       {
         "playerId": "386241651753877505",
         "username": "GWSM | Ziegel.",
-        "value": 3
+        "value": 0
       },
       {
         "playerId": "487369746040356873",
@@ -52,34 +27,59 @@
         "value": 0
       },
       {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 0
+      },
+      {
         "playerId": "157888469522186240",
         "username": "GWSM | Knoblauch / Holger",
+        "value": 0
+      },
+      {
+        "playerId": "1027959050761162863",
+        "username": "GWSN | Drexusnite",
         "value": 0
       },
       {
         "playerId": "1070974910308028507",
         "username": "GWSM | ViPeR_Niklas / Tiger",
         "value": 0
+      },
+      {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
+        "value": 0
+      },
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 0
       }
     ],
-    "createdAt": "2026-09-06T17:17:58.432Z"
+    "createdAt": "2026-09-14T11:14:51.116Z"
   },
   {
-    "id": "1546207795345367122",
-    "name": "GOLD",
-    "description": "KETTENBLITZ - Tötungen aus Fahrzeug",
-    "category": "kettenblitz",
-    "categoryLabel": "KETTENBLITZ - Tötungen aus Fahrzeug",
+    "id": "1549015633268576307",
+    "name": "LEER",
+    "description": "WO OP? - Zerstörte Außenposten",
+    "category": "WO OP?",
+    "categoryLabel": "WO OP? - Zerstörte Außenposten",
     "leaderboard": [
       {
         "playerId": "1027959050761162863",
         "username": "GWSN | Drexusnite",
-        "value": 68
+        "value": 2
       },
       {
-        "playerId": "649311308080087051",
-        "username": "GWSM | TomatoJoe",
-        "value": 50
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 1
       },
       {
         "playerId": "386241651753877505",
@@ -102,11 +102,6 @@
         "value": 0
       },
       {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 0
-      },
-      {
         "playerId": "715968363351769208",
         "username": "GWSM | LEER",
         "value": 0
@@ -122,11 +117,16 @@
         "value": 0
       },
       {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
+        "value": 0
+      },
+      {
         "playerId": "504270081946157057",
         "username": "GWSM | skrane1",
         "value": 0
       }
     ],
-    "createdAt": "2026-09-06T17:17:45.562Z"
+    "createdAt": "2026-09-14T11:15:06.290Z"
   }
 ]
