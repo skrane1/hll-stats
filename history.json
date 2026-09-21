@@ -405,5 +405,14 @@
       "value": 53,
       "source": "ocr"
     }
+  ],
+  "commander-counter": [
+    {
+      "date": "2026-09-21T13:13:29.179Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 1,
+      "source": "ocr"
+    }
   ]
 }
