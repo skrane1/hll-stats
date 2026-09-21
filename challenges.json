@@ -1,30 +1,15 @@
 [
   {
-    "id": "1549015569624334467",
-    "name": "LEER",
-    "description": "THANATOS - Infanterieabschüsse",
-    "category": "thanatos",
-    "categoryLabel": "THANATOS - Infanterieabschüsse",
+    "id": "1551343108569047070",
+    "name": "BONO",
+    "description": "COMMANDER CREMATOR - Kommandantenabschüsse",
+    "category": "commander-counter",
+    "categoryLabel": "COMMANDER CREMATOR - Kommandantenabschüsse",
     "leaderboard": [
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 88
-      },
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 84
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 74
-      },
       {
         "playerId": "1027959050761162863",
         "username": "GWSN | Drexusnite",
-        "value": 53
+        "value": 1
       },
       {
         "playerId": "386241651753877505",
@@ -47,8 +32,18 @@
         "value": 0
       },
       {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      },
+      {
         "playerId": "715968363351769208",
         "username": "GWSM | LEER",
+        "value": 0
+      },
+      {
+        "playerId": "157888469522186240",
+        "username": "GWSM | Knoblauch / Holger",
         "value": 0
       },
       {
@@ -65,52 +60,22 @@
         "playerId": "504270081946157057",
         "username": "GWSM | skrane1",
         "value": 0
+      },
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 0
       }
     ],
-    "createdAt": "2026-09-14T11:14:51.116Z"
+    "createdAt": "2026-09-20T21:23:39.644Z"
   },
   {
-    "id": "1549015633268576307",
-    "name": "LEER",
-    "description": "WO OP? - Zerstörte Außenposten",
-    "category": "WO OP?",
-    "categoryLabel": "WO OP? - Zerstörte Außenposten",
+    "id": "1551343063379484782",
+    "name": "BONO",
+    "description": "MEELE-MAGE - Nahkampftötungen",
+    "category": "meele-mage",
+    "categoryLabel": "MEELE-MAGE - Nahkampftötungen",
     "leaderboard": [
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 32
-      },
-      {
-        "playerId": "1027959050761162863",
-        "username": "GWSN | Drexusnite",
-        "value": 18
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 6
-      },
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 6
-      },
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 6
-      },
-      {
-        "playerId": "715968363351769208",
-        "username": "GWSM | LEER",
-        "value": 5
-      },
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 5
-      },
       {
         "playerId": "386241651753877505",
         "username": "GWSM | Ziegel.",
@@ -122,8 +87,33 @@
         "value": 0
       },
       {
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 0
+      },
+      {
         "playerId": "260097039654846464",
         "username": "GWSM | Grim",
+        "value": 0
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 0
+      },
+      {
+        "playerId": "157888469522186240",
+        "username": "GWSM | Knoblauch / Holger",
+        "value": 0
+      },
+      {
+        "playerId": "1027959050761162863",
+        "username": "GWSN | Drexusnite",
         "value": 0
       },
       {
@@ -135,8 +125,18 @@
         "playerId": "649311308080087051",
         "username": "GWSM | TomatoJoe",
         "value": 0
+      },
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 0
+      },
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 0
       }
     ],
-    "createdAt": "2026-09-14T11:15:06.290Z"
+    "createdAt": "2026-09-20T21:23:28.870Z"
   }
 ]
