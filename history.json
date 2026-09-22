@@ -420,6 +420,13 @@
       "username": "GWSM | Knoblauch / Holger",
       "value": 1,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-22T17:29:04.659Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "meele-mage": [
@@ -449,6 +456,13 @@
       "playerId": "1235652648305299536",
       "username": "GWSM | Mark",
       "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-22T22:30:12.451Z",
+      "playerId": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "value": 5,
       "source": "ocr"
     }
   ]
