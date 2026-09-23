@@ -455,6 +455,20 @@
       "username": "GWSM | Mark",
       "value": 6,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-23T22:55:22.161Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-23T22:55:25.053Z",
+      "playerId": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "value": 4,
+      "source": "ocr"
     }
   ],
   "meele-mage": [
