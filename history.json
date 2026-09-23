@@ -448,6 +448,13 @@
       "username": "GWSM | Mark",
       "value": 5,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-23T21:19:07.453Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 6,
+      "source": "ocr"
     }
   ],
   "meele-mage": [
@@ -491,6 +498,13 @@
       "playerId": "1235652648305299536",
       "username": "GWSM | Mark",
       "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-23T21:19:09.277Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 3,
       "source": "ocr"
     }
   ]
