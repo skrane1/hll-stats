@@ -464,6 +464,13 @@
       "username": "GWSM | Knoblauch / Holger",
       "value": 5,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-23T17:22:08.481Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 2,
+      "source": "ocr"
     }
   ]
 }
