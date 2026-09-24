@@ -511,6 +511,13 @@
       "username": "GWSN | Drexusnite",
       "value": 4,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-24T14:29:18.058Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 14,
+      "source": "ocr"
     }
   ],
   "meele-mage": [
@@ -568,6 +575,13 @@
       "playerId": "1235652648305299536",
       "username": "GWSM | Mark",
       "value": 4,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-24T14:29:18.751Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 6,
       "source": "ocr"
     }
   ]
