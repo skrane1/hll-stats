@@ -681,6 +681,20 @@
       "username": "GWSM | Mark",
       "value": 12,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-25T19:11:35.875Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-25T20:28:17.159Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 13,
+      "source": "ocr"
     }
   ]
 }
