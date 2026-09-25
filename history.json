@@ -667,6 +667,13 @@
       "username": "GWSM | Mark",
       "value": 11,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-25T19:10:12.357Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 12,
+      "source": "ocr"
     }
   ]
 }
