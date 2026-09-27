@@ -787,5 +787,14 @@
       "value": 21,
       "source": "ocr"
     }
+  ],
+  "garry-grounder": [
+    {
+      "date": "2026-09-27T20:40:44.257Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 1,
+      "source": "ocr"
+    }
   ]
 }
