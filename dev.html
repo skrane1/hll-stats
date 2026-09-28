@@ -64,7 +64,7 @@
         <input id="player-discord" class="search" type="text" placeholder="Discord ID (optional)">
         <button id="player-save" class="refresh">＋ Spieler hinzufügen</button>
       </div>
-      <div class="muted admin-note">SteamID64, EpicID und Discord-ID dienen zur eindeutigen Zuordnung externer Daten. Die eigentliche Speicherung der Spielerverwaltung benötigt weiterhin das angeschlossene Backend; die öffentliche Stats-Synchronisierung läuft unabhängig davon über GitHub Actions.</div>
+      <div class="muted admin-note">SteamID64, EpicID und Discord-ID werden direkt im Repository gespeichert. Für die direkte Repository-Speicherung kann im Feld oben ein GitHub Fine-grained Token mit <b>Contents: Read and write</b> für dieses Repository verwendet werden. Der Token bleibt nur in der aktuellen Browser-Sitzung.</div>
       <div id="managed-players"></div>
     </section>
 
