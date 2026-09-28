@@ -11,22 +11,22 @@
       "matches": 1
     },
     "hll-ratings": {
-      "status": "Fehler: HTTP 403",
+      "status": "Noch keine Daten",
       "updatedAt": null,
       "matches": 0
     },
     "hllrecords": {
-      "status": "API-Key erforderlich",
+      "status": "Noch keine Daten",
       "updatedAt": null,
       "matches": 0
     },
     "crcon": {
-      "status": "Nicht konfiguriert",
+      "status": "Öffentlicher Serverzugang erforderlich",
       "updatedAt": null,
       "matches": 0
     },
     "frostbite": {
-      "status": "Nicht konfiguriert",
+      "status": "Noch keine Daten",
       "updatedAt": null,
       "matches": 0
     }
@@ -34,6 +34,11 @@
   "matches": 0,
   "duplicates": 0,
   "logs": [
+    {
+      "time": "2026-09-28T14:50:09.135Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 1 externe Spielerabfragen erfolgreich."
+    },
     {
       "time": "2026-09-28T14:41:32.585Z",
       "level": "info",
