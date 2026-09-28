@@ -91,6 +91,14 @@ const loosePercentAfterLabel = (text, label) => {
 
 const fetchHllRatings = async steamId => {
   const text = await fetchText("https://hellor.pro/player/" + steamId);
+
+  // GitHub Actions currently receives Cloudflare's challenge page instead
+  // of the actual player profile. Never store that response as a valid
+  // ratings snapshot.
+  if (/Just a moment\.\.\.|challenge|CAPTCHA|requires CAPTCHA|Warning: This page maybe requiring CAPTCHA/i.test(text)) {
+    throw new Error("Zugriffsschutz");
+  }
+
   if (/Player Not Found|Unable to load player data/i.test(text)) {
     throw new Error("Spieler nicht gefunden");
   }
