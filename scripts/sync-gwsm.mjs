@@ -152,8 +152,10 @@ const refreshExternal = async (player, previousExternal) => {
       external[key] = await loader(steamId);
       success++;
     } catch (error) {
+      // Do not keep an old successful snapshot marked as current after a
+      // failed refresh. Keep the error for diagnostics, but remove the
+      // fetchedAt marker so the Dev dashboard cannot report stale data as ok.
       external[key] = {
-        ...(external[key] || {}),
         provider: key,
         error: error instanceof Error ? error.message : String(error),
         failedAt: now
