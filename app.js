@@ -346,91 +346,122 @@ function renderDetailedUnified(u) {
   const trends = s.trends || {};
   const matchRows = Array.isArray(u.matches) ? u.matches : [];
 
+  // HLLStats.dev is a data source, not a separate player-profile section.
+  // Put its values into the existing logical tabs so the profile stays compact.
+  const hv = (key, fallback = null) => hll[key] !== undefined && hll[key] !== null ? hll[key] : fallback;
+  const hllFactions = Object.entries(hll.factions || {});
+  const hllRoles = Object.entries(hll.roles || {});
+  const hllMaps = Object.entries(hll.maps || {});
+  const hllModes = Object.entries(hll.gameModes || {});
+  const hllBuilt = Object.entries(hll.built || {});
+
   const overview = renderStatSection('ÜBERSICHT', [
     ['Kills',s.kills],['Deaths',s.deaths],['K/D',s.kd],['KPM',s.kpm],['DPM',s.dpm],['Score/Min',s.scorePerMin],
-    ['Wins',s.wins],['Losses',s.losses],['Winrate',s.winrate,'%'],['Matches',s.matches],['Spielzeit',s.playtimeHours,' h'],
-    ['Teamkills',s.teamKills],['Längste Killstreak',s.longestKillstreak],['Headshots',s.headshots],['Vehicle zerstört',s.vehicleDestroyed],['Tanks zerstört',s.tanksDestroyed],['Jeeps zerstört',s.jeepsDestroyed]
+    ['Wins',s.wins ?? hv('Wins')],['Losses',s.losses ?? hv('Estimated Loss')],['Winrate',s.winrate,'%'],
+    ['Matches',s.matches ?? hv('Estimated Total Games')],['Spielzeit',s.playtimeHours,' h'],
+    ['Teamkills',s.teamKills],['Längste Killstreak',s.longestKillstreak],
+    ['Headshots',s.headshots ?? hv('Headshots')],['Vehicle zerstört',s.vehicleDestroyed ?? hv('Vehicle Destroyed')],
+    ['Tanks zerstört',s.tanksDestroyed ?? hv('Tanks Destroyed')],['Jeeps zerstört',s.jeepsDestroyed ?? hv('Jeeps Destroyed')],
+    ['Career XP',hv('Career XP')],['Commander',hv('Commander')],['Officer',hv('Officer')],
+    ['Tank Commander',hv('Tank Commander')],['Spotter',hv('Spotter')],
+    ['Estimated W/L Ratio',hv('Estimated WL Ratio')]
   ]);
-  const combatHtml = renderStatSection('COMBAT', [
-    ['Kills',combat.kills ?? s.kills],['Deaths',combat.deaths ?? s.deaths],['K/D',combat.kd ?? s.kd],['KPM',combat.kpm ?? s.kpm],['DPM',combat.dpm ?? s.dpm],
-    ['Headshots',combat.headshots ?? s.headshots],['Artillerie',combat.artillery],['Knife',combat.knife],['Spade',combat.spade],['Flamethrower',combat.flamethrower],
-    ['Half-track MG',combat.halftrackMg],['Jeep Impact',combat.jeepImpact],['Vehicle zerstört',combat.vehicleDestroyed ?? s.vehicleDestroyed],['Tanks zerstört',combat.tanksDestroyed ?? s.tanksDestroyed],['Jeeps zerstört',combat.jeepsDestroyed ?? s.jeepsDestroyed],['Teamkills',combat.teamKills ?? s.teamKills]
-  ]);
-  const supportHtml = renderStatSection('SUPPORT & BUILD', [
-    ['Supplies gedroppt',support.suppliesDropped],['Supplies verwendet',support.suppliesUsed],['Truck Drops',support.truckDrops],['Ammo gedroppt',support.ammoDropped],['Jeep Drops',support.jeepDrops],
-    ['Belgian Gates',support.belgianGates],['Barbed Wire',support.barbedWire],['Barricades',support.barricades],['Bunkers',support.bunkers],['Repair Stations',support.repairStations],
-    ['Fuel Nodes',support.fuelNodes],['Manpower Nodes',support.manpowerNodes],['Munitions Nodes',support.munitionsNodes],['Flare Gun Scans',support.flareGunScans],['Half-track Spawns',support.halftrackSpawns],['Molotovs',support.molotovs],['Captured Sectors',support.capturedSectors ?? s.capturedSectors]
-  ]);
-  const hllHtml = renderStatSection('HLLSTATS.DEV · CAREER STATS', [
-    ['Estimated Games', hll['Estimated Total Games']],
-    ['Wins', hll['Wins']],
-    ['Losses', hll['Estimated Loss']],
-    ['W/L Ratio', hll['Estimated WL Ratio']],
-    ['Kills', hll['Kills']],
-    ['Vehicle zerstört', hll['Vehicle Destroyed']],
-    ['Tanks zerstört', hll['Tanks Destroyed']],
-    ['Jeeps zerstört', hll['Jeeps Destroyed']],
-    ['Headshots', hll['Headshots']],
-    ['Artillerie', hll['Artillery']],
-    ['Knife', hll['Knife']],
-    ['Spade', hll['Spade']],
-    ['Half-track MG', hll['Half-track MG']],
-    ['Flamethrower', hll['Flamethrower']],
-    ['Molotovs', hll['Molotovs Thrown']],
-    ['Sektoren erobert', hll['Captured Sectors']]
-  ]);
-
-  const hllstatsHtml = [
-    renderStatSection('HLLSTATS.DEV · OVERALL', [
-      ['Estimated Total Games', hll['Estimated Total Games']],['Wins', hll.Wins],['Estimated Loss', hll['Estimated Loss']],
-      ['Estimated W/L Ratio', hll['Estimated WL Ratio']],['Maps Played', hll['Amount Of Maps Played']]
-    ]),
-    renderStatSection('KILLS & COMBAT', [
-      ['Kills', hll.Kills],['Vehicle zerstört',hll['Vehicle Destroyed']],['Tanks zerstört',hll['Tanks Destroyed']],
-      ['Jeeps zerstört',hll['Jeeps Destroyed']],['Headshots',hll.Headshots],['Artillerie',hll.Artillery],
-      ['Knife',hll.Knife],['Spade',hll.Spade],['Half-track MG',hll['Half-track MG']],['Flamethrower',hll.Flamethrower],['Jeep Impact',hll['Jeep Impact']]
-    ]),
-    renderStatSection('CAREER', [
-      ['Career XP',hll['Career XP']],['Commander',hll.Commander],['Officer',hll.Officer],
-      ['Tank Commander',hll['Tank Commander']],['Spotter',hll.Spotter]
-    ]),    renderStatSection('FAKTIONEN', Object.entries(hll.factions || {})),
-    renderStatSection('ROLLEN', Object.entries(hll.roles || {})),
-    renderStatSection('GAME MODES', Object.entries(hll.gameModes || {})),
-    renderStatSection('BUILT', Object.entries(hll.built || {})),
-    renderStatSection('COMMENDS', [['Received',hll.commends?.received],['Given',hll.commends?.given]]),
-    renderStatSection('SUPPLIES', [['Total Dropped',hll.supplies?.totalDropped],['Total Used',hll.supplies?.totalUsed],['Truck Drops',hll.supplies?.truckDrops]]),
-    renderStatSection('AMMO', [['Total Dropped',hll.ammo?.totalDropped],['Jeep Drops',hll['Jeep Drops']]]),
-    renderStatSection('OTHER', [['Flare Gun Scans',hll['Flare Gun Scans']],['Half-track Spawns',hll['Half-track Spawns']],['Molotovs Thrown',hll['Molotovs Thrown']],['Captured Sectors',hll['Captured Sectors']]]),
-    `<div class="stats-panel"><div class="subsection-title">MAPS</div><div class="role-grid">${Object.entries(hll.maps || {}).map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${fmtStat(value)}</span></div>`).join('')}</div></div>`
-  ].join('');
+  const factionOverview = hllFactions.length
+    ? renderStatSection('HLLSTATS.DEV · FAKTIONEN', hllFactions)
+    : '';
   const ratingHtml = renderStatSection('RATINGS & PERFORMANCE', [
-    ['Overall Rating',ratings.overall],['Team Rating',ratings.team],['Impact Rating',ratings.impact],['Comp Rating',ratings.comp],['Combat / min',ratings.combatPerMin],['Offense / min',ratings.offensePerMin],['Defense / min',ratings.defensePerMin],['Support / min',ratings.supportPerMin],['Score / min',s.scorePerMin]
+    ['Overall Rating',ratings.overall],['Team Rating',ratings.team],['Impact Rating',ratings.impact],
+    ['Comp Rating',ratings.comp],['Combat / min',ratings.combatPerMin],['Offense / min',ratings.offensePerMin],
+    ['Defense / min',ratings.defensePerMin],['Support / min',ratings.supportPerMin],['Score / min',s.scorePerMin]
   ]);
   const recentHtml = renderStatSection('RECENT PERFORMANCE', [
-    ['Recent K/D',recent.kd],['Recent KPM',recent.kpm],['Recent Winrate',recent.winrate,'%'],['Recent Combat',recent.combatPerMin],['Recent Offense',recent.offensePerMin],['Recent Defense',recent.defensePerMin],['Recent Support',recent.supportPerMin],['Games im Trend',recent.games]
+    ['Recent K/D',recent.kd],['Recent KPM',recent.kpm],['Recent Winrate',recent.winrate,'%'],
+    ['Recent Combat',recent.combatPerMin],['Recent Offense',recent.offensePerMin],
+    ['Recent Defense',recent.defensePerMin],['Recent Support',recent.supportPerMin],['Games im Trend',recent.games]
   ]);
-  const factionRows = Object.entries(factions).filter(([,v]) => v !== null && v !== undefined).map(([k,v]) => [k,v]);
-  const factionHtml = renderStatSection('FAKTIONEN', factionRows);
-  const roleRows = Object.entries(roles).filter(([,v]) => v && typeof v === 'object').map(([name,v]) => [name, `${v.playtimeHours ?? 0} h · ${v.kills ?? 0} K · ${v.deaths ?? 0} D${v.kd != null ? ` · ${Number(v.kd).toFixed(2)} K/D` : ''}`]);
-  const roleHtml = roleRows.length ? `<div class="stats-panel"><div class="subsection-title">ROLLEN</div><div class="role-grid">${roleRows.map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${esc(value)}</span></div>`).join('')}</div></div>` : '';
-  const mapRows = Object.entries(maps).filter(([,v]) => v && typeof v === 'object').map(([name,v]) => [name, `${v.matches ?? 0} Games · ${v.wins ?? 0} W · ${v.losses ?? 0} L${v.kd != null ? ` · ${Number(v.kd).toFixed(2)} K/D` : ''}${v.winrate != null ? ` · ${Number(v.winrate).toFixed(1)}%` : ''}`]);
-  const mapHtml = mapRows.length ? `<div class="stats-panel"><div class="subsection-title">MAPS</div><div class="role-grid">${mapRows.map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${esc(value)}</span></div>`).join('')}</div></div>` : '';
+
+  const combatRows = [
+    ['Kills',combat.kills ?? s.kills ?? hv('Kills')],['Deaths',combat.deaths ?? s.deaths],
+    ['K/D',combat.kd ?? s.kd],['KPM',combat.kpm ?? s.kpm],['DPM',combat.dpm ?? s.dpm],
+    ['Headshots',combat.headshots ?? s.headshots ?? hv('Headshots')],
+    ['Artillerie',combat.artillery ?? hv('Artillery')],['Knife',combat.knife ?? hv('Knife')],
+    ['Spade',combat.spade ?? hv('Spade')],['Flamethrower',combat.flamethrower ?? hv('Flamethrower')],
+    ['Half-track MG',combat.halftrackMg ?? hv('Half-track MG')],
+    ['Jeep Impact',combat.jeepImpact ?? hv('Jeep Impact')],
+    ['Vehicle zerstört',combat.vehicleDestroyed ?? s.vehicleDestroyed ?? hv('Vehicle Destroyed')],
+    ['Tanks zerstört',combat.tanksDestroyed ?? s.tanksDestroyed ?? hv('Tanks Destroyed')],
+    ['Jeeps zerstört',combat.jeepsDestroyed ?? s.jeepsDestroyed ?? hv('Jeeps Destroyed')],
+    ['Teamkills',combat.teamKills ?? s.teamKills],
+    ['Estimated Games',hv('Estimated Total Games')],['Wins',hv('Wins')],['Losses',hv('Estimated Loss')],
+    ['W/L Ratio',hv('Estimated WL Ratio')]
+  ];
+  const combatHtml = renderStatSection('COMBAT', combatRows);
+
+  const supportRows = [
+    ['Supplies gedroppt',support.suppliesDropped ?? hll.supplies?.totalDropped],
+    ['Supplies verwendet',support.suppliesUsed ?? hll.supplies?.totalUsed],
+    ['Truck Drops',support.truckDrops ?? hll.supplies?.truckDrops],
+    ['Ammo gedroppt',support.ammoDropped ?? hll.ammo?.totalDropped],
+    ['Jeep Drops',support.jeepDrops ?? hv('Jeep Drops')],
+    ['Belgian Gates',support.belgianGates ?? hll.built?.['Belgian Gate']],
+    ['Barbed Wire',support.barbedWire ?? hll.built?.['Barbed Wire']],
+    ['Barricades',support.barricades ?? hll.built?.Barricades],
+    ['Bunkers',support.bunkers ?? hll.built?.Bunkers],
+    ['Repair Stations',support.repairStations ?? hll.built?.['Repair Stations']],
+    ['Fuel Nodes',support.fuelNodes ?? hll.built?.['Fuel Nodes']],
+    ['Manpower Nodes',support.manpowerNodes ?? hll.built?.['Manpower Nodes']],
+    ['Munitions Nodes',support.munitionsNodes ?? hll.built?.['Munitions Nodes']],
+    ['Flare Gun Scans',support.flareGunScans ?? hv('Flare Gun Scans')],
+    ['Half-track Spawns',support.halftrackSpawns ?? hv('Half-track Spawns')],
+    ['Molotovs',support.molotovs ?? hv('Molotovs Thrown')],
+    ['Captured Sectors',support.capturedSectors ?? s.capturedSectors ?? hv('Captured Sectors')],
+    ['Commends erhalten',hll.commends?.received ?? hv('Received')],
+    ['Commends gegeben',hll.commends?.given ?? hv('Given')]
+  ];
+  const supportHtml = renderStatSection('SUPPORT & BUILD', supportRows);
+
+  const roleRows = Object.entries(roles).filter(([,v]) => v && typeof v === 'object')
+    .map(([name,v]) => [name, `${v.playtimeHours ?? 0} h · ${v.kills ?? 0} K · ${v.deaths ?? 0} D${v.kd != null ? ` · ${Number(v.kd).toFixed(2)} K/D` : ''}`]);
+  const hllRoleHtml = hllRoles.length
+    ? renderStatSection('HLLSTATS.DEV · ROLLEN', hllRoles)
+    : '';
+  const roleHtml = (roleRows.length ? `<div class="stats-panel"><div class="subsection-title">ROLLEN</div><div class="role-grid">${roleRows.map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${esc(value)}</span></div>`).join('')}</div></div>` : '') + hllRoleHtml;
+
+  const mapRows = Object.entries(maps).filter(([,v]) => v && typeof v === 'object')
+    .map(([name,v]) => [name, `${v.matches ?? 0} Games · ${v.wins ?? 0} W · ${v.losses ?? 0} L${v.kd != null ? ` · ${Number(v.kd).toFixed(2)} K/D` : ''}${v.winrate != null ? ` · ${Number(v.winrate).toFixed(1)}%` : ''}`]);
+  const mapHtml = (mapRows.length
+    ? `<div class="stats-panel"><div class="subsection-title">MAPS</div><div class="role-grid">${mapRows.map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${esc(value)}</span></div>`).join('')}</div></div>`
+    : '') +
+    (hllMaps.length
+      ? `<div class="stats-panel"><div class="subsection-title">HLLSTATS.DEV · MAPS GESPIELT</div><div class="role-grid">${hllMaps.map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${fmtStat(value)} Games</span></div>`).join('')}</div></div>`
+      : '');
+
+  const modeHtml = hllModes.length ? renderStatSection('HLLSTATS.DEV · GAME MODES', hllModes) : '';
+  const builtExtra = hllBuilt.length ? renderStatSection('HLLSTATS.DEV · BUILT', hllBuilt) : '';
+
   const trendRows = Object.entries(trends).filter(([,v]) => v !== null && v !== undefined).map(([k,v]) => [k,v]);
   const trendHtml = renderStatSection('TRENDS / HISTORY', trendRows);
-  const matchHtml = matchRows.length ? `<div class="stats-panel"><div class="subsection-title">MATCH HISTORY</div><div class="match-table-wrap"><table><thead><tr><th>DATUM</th><th>MAP</th><th>SERVER</th><th>MODUS</th><th>RESULTAT</th><th>K/D</th><th>KPM</th><th>SCORE</th></tr></thead><tbody>${matchRows.slice(0,50).map(m=>`<tr><td>${dateLabel(m.startAt || m.startedAt)}</td><td>${esc(m.map || '—')}</td><td>${esc(m.server || '—')}</td><td>${esc(m.mode || m.gamemode || '—')}</td><td>${esc(m.result || m.resultat || '—')}</td><td>${fmtStat(m.kd)}</td><td>${fmtStat(m.kpm)}</td><td>${fmtStat(m.score)}</td></tr>`).join('')}</tbody></table></div></div>` : '';
+  const matchHtml = matchRows.length
+    ? `<div class="stats-panel"><div class="subsection-title">MATCH HISTORY</div><div class="match-table-wrap"><table><thead><tr><th>DATUM</th><th>MAP</th><th>SERVER</th><th>MODUS</th><th>RESULTAT</th><th>K/D</th><th>KPM</th><th>SCORE</th></tr></thead><tbody>${matchRows.slice(0,50).map(m=>`<tr><td>${dateLabel(m.startAt || m.startedAt)}</td><td>${esc(m.map || '—')}</td><td>${esc(m.server || '—')}</td><td>${esc(m.mode || m.gamemode || '—')}</td><td>${esc(m.result || m.resultat || '—')}</td><td>${fmtStat(m.kd)}</td><td>${fmtStat(m.kpm)}</td><td>${fmtStat(m.score)}</td></tr>`).join('')}</tbody></table></div></div>`
+    : '';
 
   return `<div class="detail-tabs" data-detail-tabs>
-    <div class="detail-tab-buttons"><button class="detail-tab active" data-tab="overview">Übersicht</button><button class="detail-tab" data-tab="hllstats">HLLStats.dev</button><button class="detail-tab" data-tab="combat">Combat</button><button class="detail-tab" data-tab="support">Support</button><button class="detail-tab" data-tab="roles">Rollen</button><button class="detail-tab" data-tab="maps">Maps</button><button class="detail-tab" data-tab="history">History</button></div>
-    <div class="detail-tab-content active" data-content="overview">${overview}${ratingHtml}${recentHtml}</div>
-    <div class="detail-tab-content" data-content="hllstats">${hllstatsHtml}</div>
+    <div class="detail-tab-buttons">
+      <button class="detail-tab active" data-tab="overview">Übersicht</button>
+      <button class="detail-tab" data-tab="combat">Combat</button>
+      <button class="detail-tab" data-tab="support">Support</button>
+      <button class="detail-tab" data-tab="roles">Rollen</button>
+      <button class="detail-tab" data-tab="maps">Maps</button>
+      <button class="detail-tab" data-tab="history">History</button>
+    </div>
+    <div class="detail-tab-content active" data-content="overview">${overview}${factionOverview}${ratingHtml}${recentHtml}</div>
     <div class="detail-tab-content" data-content="combat">${combatHtml}</div>
-    <div class="detail-tab-content" data-content="support">${supportHtml}</div>
+    <div class="detail-tab-content" data-content="support">${supportHtml}${builtExtra}</div>
     <div class="detail-tab-content" data-content="roles">${roleHtml || '<div class="empty">Noch keine Rollendaten synchronisiert.</div>'}</div>
     <div class="detail-tab-content" data-content="maps">${mapHtml || '<div class="empty">Noch keine Mapdaten synchronisiert.</div>'}</div>
-    <div class="detail-tab-content" data-content="history">${trendHtml}${matchHtml || '<div class="empty">Noch keine Match-Historie synchronisiert.</div>'}</div>
+    <div class="detail-tab-content" data-content="history">${modeHtml}${trendHtml}${matchHtml || '<div class="empty">Noch keine Match-Historie synchronisiert.</div>'}</div>
   </div>`;
 }
-
 function renderPlayers() {
   const el = $("#players");
   const ps = playersArray().sort((a,b) => {
