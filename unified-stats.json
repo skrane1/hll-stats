@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T14:54:45.810Z",
+  "updatedAt": "2026-09-28T17:10:44.683Z",
   "players": {
     "386241651753877505": {
       "id": "386241651753877505",
@@ -145,7 +145,7 @@
       "epicId": "",
       "discordId": "715968363351769208",
       "stats": {
-        "garry-grounder": 6,
+        "garry-grounder": 9,
         "sniperwizard": 287,
         "you-shall-not-pass": 126,
         "WO OP?": 5,
@@ -164,7 +164,7 @@
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:51:38.210Z"
+      "updatedAt": "2026-09-28T17:10:44.683Z"
     },
     "157888469522186240": {
       "id": "157888469522186240",
@@ -210,8 +210,8 @@
         "thanatos": 53,
         "commander-counter": 11,
         "meele-mage": 1,
-        "garry-grounder": 3,
-        "alchemist": 2,
+        "garry-grounder": 6,
+        "alchemist": 11,
         "ratings": {
           "overall": null,
           "team": null,
@@ -227,7 +227,7 @@
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:51:38.210Z"
+      "updatedAt": "2026-09-28T17:10:44.683Z"
     },
     "1070974910308028507": {
       "id": "1070974910308028507",
@@ -294,10 +294,10 @@
         "kd": 0.88,
         "kpm": 0.3,
         "dpm": 0.35,
-        "wins": 1160,
+        "wins": 621,
         "matches": 1487,
         "playtimeHours": 798,
-        "winrate": 78,
+        "winrate": 41.77,
         "teamKills": 531,
         "ratings": {
           "overall": null,
@@ -306,7 +306,7 @@
           "comp": null
         },
         "sources": {
-          "hll-ratings": true,
+          "hll-ratings": false,
           "hllrecords": true,
           "frostbite": false,
           "hllstats.dev": false
@@ -315,50 +315,39 @@
       "external": {
         "hll-ratings": {
           "provider": "hll-ratings",
-          "url": "https://hellor.pro/player/76561199100319875",
-          "fetchedAt": "2026-09-28T14:54:45.810Z",
-          "overall": null,
-          "team": null,
-          "impact": null,
-          "comp": null,
-          "winRate": null,
-          "kdr": null,
-          "kpm": null,
-          "scorePerMin": null,
-          "playtime": null,
-          "kills": null,
-          "deaths": null
+          "error": "Zugriffsschutz",
+          "failedAt": "2026-09-28T17:10:44.683Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
-          "error": "Steam-Profil nicht öffentlich oder noch nicht von HLLStats.dev erfasst",
-          "failedAt": "2026-09-28T14:54:45.810Z"
+          "error": "Steam-Profil nicht öffentlich",
+          "failedAt": "2026-09-28T17:10:44.683Z"
         },
-        "_lastRefresh": "2026-09-28T14:54:45.810Z",
+        "_lastRefresh": "2026-09-28T17:10:44.683Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
-          "fetchedAt": "2026-09-28T14:54:45.810Z",
+          "fetchedAt": "2026-09-28T17:10:44.683Z",
           "totalMatches": 1487,
-          "playedMatches": null,
-          "winRate": 78,
+          "playedMatches": 955,
+          "winRate": 41.77,
           "kills": 13260,
           "deaths": 15124,
           "kdr": 0.88,
           "kpm": 0.3,
           "dpm": 0.35,
           "teamKills": 531,
-          "level": null,
+          "level": 1487,
           "hours": 798
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-09-28T14:54:45.810Z"
+          "failedAt": "2026-09-28T17:10:44.683Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-09-28T14:54:45.810Z"
+      "updatedAt": "2026-09-28T17:10:44.683Z"
     },
     "1235652648305299536": {
       "id": "1235652648305299536",
