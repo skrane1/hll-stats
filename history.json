@@ -795,6 +795,13 @@
       "username": "GWSN | Drexusnite",
       "value": 1,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-28T10:35:03.077Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 2,
+      "source": "ocr"
     }
   ]
 }
