@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<div id="dev-lock" class="dev-lock">
+<div id="dev-lock" class="dev-lock" style="display:grid !important;">
   <div class="dev-lock-card">
     <div class="brand-mark">HLL</div>
     <p class="eyebrow">GWSM DEVELOPMENT</p>
@@ -21,7 +21,7 @@
     <a href="./index.html" class="muted">← Zur öffentlichen Seite</a>
   </div>
 </div>
-<div class="shell" id="dev-shell" style="display:none">
+<div class="shell" id="dev-shell" style="display:none !important;">
   <aside class="sidebar">
     <div class="brand"><div class="brand-mark">HLL</div><div><b>GWSM DEV</b><small>Stats Control Center</small></div></div>
     <nav>
@@ -117,8 +117,8 @@
   form.addEventListener("submit", event => {
     event.preventDefault();
     if (input.value === PASSWORD) {
-      lock.hidden = true;
-      shell.hidden = false;
+      lock.style.setProperty("display", "none", "important");
+      shell.style.setProperty("display", "flex", "important");
       input.value = "";
       error.textContent = "";
     } else {
@@ -128,6 +128,6 @@
   });
 })();
 </script>
-<script src="./dev.js?v=9"></script>
+<script src="./dev.js?v=10"></script>
 </body>
 </html>
