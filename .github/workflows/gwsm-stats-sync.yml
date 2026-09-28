@@ -8,7 +8,6 @@ on:
   push:
     paths:
       - "stats.json"
-      - "players.json"
       - "scripts/sync-gwsm.mjs"
       - ".github/workflows/gwsm-stats-sync.yml"
 
