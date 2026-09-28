@@ -31,11 +31,21 @@ const htmlToText = html => decodeHtml(
     .replace(/<[^>]+>/g, " ")
 ).replace(/\s+/g, " ").trim();
 
-const numberAfterLabel = (text, label) => {
+const numberAfterLabel = (text, label, occurrence = 0) => {
+  const exact = new RegExp("(^|\\n)\\s*" + escapeRegex(label) + "\\s*(?:\\n|$)\\s*([0-9][0-9,]*(?:\\.[0-9]+)?)", "gi");
+  let m;
+  let index = 0;
+  while ((m = exact.exec(String(text || "")))) {
+    if (index++ === occurrence) {
+      const n = Number(m[2].replace(/,/g, ""));
+      return Number.isFinite(n) ? n : null;
+    }
+  }
+
   const re = new RegExp("\\b" + escapeRegex(label) + "\\b\\s*[:\\-]?\\s*([0-9][0-9,]*(?:\\.[0-9]+)?)", "i");
-  const m = text.match(re);
-  if (!m) return null;
-  const n = Number(m[1].replace(/,/g, ""));
+  const fallback = text.match(re);
+  if (!fallback) return null;
+  const n = Number(fallback[1].replace(/,/g, ""));
   return Number.isFinite(n) ? n : null;
 };
 
@@ -279,14 +289,22 @@ const fetchHllStatsDev = async steamId => {
 
   const labels = [
     "Kills", "Vehicle Destroyed", "Tanks Destroyed", "Jeeps Destroyed",
+    "German", "USA", "Russia", "Estimated British",
     "Headshots", "Artillery", "Knife", "Spade", "Half-track MG",
+    "Flamethrower", "Jeep Impact",
     "Career XP", "Commander", "Officer", "Tank Commander", "Spotter",
     "Rifleman", "Assault", "Autorifleman", "Medic", "Support",
     "Machine Gunner", "Anti Tank", "Engineer", "Sniper", "Crewman",
     "Estimated Total Games", "Wins", "Estimated Loss", "Estimated WL Ratio",
-    "Estimated W/L Ratio",
-    "Amount Of Maps Played", "Total Dropped", "Total Used", "Truck Drops",
-    "Ammo", "Jeep Drops", "Flare Gun Scans", "Molotovs Thrown", "Captured Sectors"
+    "Estimated W/L Ratio", "Amount Of Maps Played",
+    "SMDM", "Foy", "Hurtgen", "SME", "Utah", "Omaha", "PHL", "Hill 400",
+    "Carentan", "Kursk", "Stalingrad", "Remagen", "Kharkov", "Driel",
+    "El Alamein", "Night Maps", "Warfare", "Offensive",
+    "Belgian Gate", "Barbed Wire", "Barricades", "Bunkers", "Repair Stations",
+    "Fuel Nodes", "Manpower Nodes", "Munitions Nodes",
+    "Received", "Given", "Total Dropped", "Total Used", "Truck Drops",
+    "Jeep Drops", "Flare Gun Scans", "Half-track Spawns", "Molotovs Thrown",
+    "Captured Sectors"
   ];
 
   const values = {};
@@ -339,11 +357,55 @@ const fetchHllStatsDev = async steamId => {
     throw new Error("Keine erfassten HLLStats.dev-Spielerdaten");
   }
 
+  const maps = Object.fromEntries([
+    "SMDM","Foy","Hurtgen","SME","Utah","Omaha","PHL","Hill 400",
+    "Carentan","Kursk","Stalingrad","Remagen","Kharkov","Driel","El Alamein","Night Maps"
+  ].map(key => [key, values[key] ?? 0]));
+
+  const factions = Object.fromEntries(
+    ["German","USA","Russia","Estimated British"].map(key => [key, values[key] ?? 0])
+  );
+
+  const roles = Object.fromEntries(
+    ["Rifleman","Assault","Autorifleman","Medic","Support","Machine Gunner","Anti Tank","Engineer","Sniper","Crewman"]
+      .map(key => [key, values[key] ?? 0])
+  );
+
+  const gameModes = Object.fromEntries(
+    ["Warfare","Offensive"].map(key => [key, values[key] ?? 0])
+  );
+
+  const built = Object.fromEntries(
+    ["Belgian Gate","Barbed Wire","Barricades","Bunkers","Repair Stations","Fuel Nodes","Manpower Nodes","Munitions Nodes"]
+      .map(key => [key, values[key] ?? 0])
+  );
+
+  const hllstats = {
+    ...values,
+    maps,
+    factions,
+    roles,
+    gameModes,
+    built,
+    commends: {
+      received: values.Received ?? 0,
+      given: values.Given ?? 0
+    },
+    supplies: {
+      totalDropped: numberAfterLabel(text, "Total Dropped", 0) ?? 0,
+      totalUsed: numberAfterLabel(text, "Total Used", 0) ?? 0,
+      truckDrops: values["Truck Drops"] ?? 0
+    },
+    ammo: {
+      totalDropped: numberAfterLabel(text, "Total Dropped", 1) ?? 0
+    }
+  };
+
   return {
     provider: "hllstats.dev",
     url: "https://www.hllstats.dev/?steam64id=" + steamId,
     fetchedAt: now,
-    stats: values
+    stats: hllstats
   };
 };
 
