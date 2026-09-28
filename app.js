@@ -43,6 +43,12 @@ let hall = [];
 let challenges = [];
 let unified = { updatedAt: null, players: {} };
 
+// View state must survive background data refreshes.
+let activePage = "challenges";
+let selectedPlayerId = null;
+let playerSearchQuery = "";
+let activeDetailTab = "overview";
+
 const $ = s => document.querySelector(s);
 const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -463,6 +469,7 @@ function renderDetailedUnified(u) {
   </div>`;
 }
 function renderPlayers() {
+  selectedPlayerId = null;
   const el = $("#players");
   const ps = playersArray().sort((a,b) => {
     const an = String(a.username || "").toLocaleLowerCase("de-DE");
@@ -489,8 +496,10 @@ function renderPlayers() {
 
   const input = $("#player-search");
   const results = $("#player-search-results");
+  input.value = playerSearchQuery;
 
   const draw = () => {
+    playerSearchQuery = input.value;
     const q = input.value.trim().toLocaleLowerCase("de-DE");
 
     if (!q) {
@@ -535,9 +544,11 @@ function renderPlayers() {
   draw();
 }
 
-function showPlayer(id) {
+function showPlayer(id, options = {}) {
   const player = playersArray().find(p => String(p.id) === String(id));
   if (!player) return;
+
+  selectedPlayerId = String(id);
 
   const username = player.username || id;
   const historyByCategory = key => Array.isArray(history[key])
@@ -545,14 +556,23 @@ function showPlayer(id) {
     : [];
 
   const unifiedPlayer = unifiedFor(id);
+  const preservedTab = options.preserveTab ? activeDetailTab : "overview";
+
   $("#players").innerHTML = `
-    <div class="section">
-      <div class="section-head">
-        <div>
-          <h2>${esc(username)}</h2>
-          <div class="muted">Spielerprofil</div>
+    <div class="section player-profile">
+      <div class="player-profile-head">
+        <div class="player-profile-identity">
+          <div class="profile-avatar">${esc((username || "?").slice(0,1).toUpperCase())}</div>
+          <div>
+            <span class="eyebrow">GWSM // FIELD RECORD</span>
+            <h2>${esc(username)}</h2>
+            <div class="profile-meta"><span>PLAYER PROFILE</span><span class="profile-separator">/</span><span>LIVE DATA LINK</span></div>
+          </div>
         </div>
-        <button class="refresh" id="player-back">← Zurück zur Suche</button>
+        <div class="player-profile-actions">
+          <div class="profile-signal"><span class="status-dot"></span>CONNECTED</div>
+          <button class="refresh" id="player-back">← ZURÜCK ZUR SUCHE</button>
+        </div>
       </div>
       ${renderUnifiedSummary(unifiedPlayer)}
       ${renderDetailedUnified(unifiedPlayer)}
@@ -573,14 +593,35 @@ function showPlayer(id) {
       </table>
     </div>`;
 
-  $("#player-back").addEventListener("click", renderPlayers);
-  document.querySelectorAll('[data-detail-tabs] .detail-tab').forEach(btn => btn.addEventListener('click', () => {
+  $("#player-back").addEventListener("click", () => {
+    selectedPlayerId = null;
+    playerSearchQuery = "";
+    activeDetailTab = "overview";
+    renderPlayers();
+  });
+
+  const tabs = document.querySelectorAll('[data-detail-tabs] .detail-tab');
+  const contents = document.querySelectorAll('[data-detail-tabs] .detail-tab-content');
+  tabs.forEach(btn => btn.addEventListener('click', () => {
     const root = btn.closest('[data-detail-tabs]');
+    activeDetailTab = btn.dataset.tab;
     root.querySelectorAll('.detail-tab').forEach(x => x.classList.remove('active'));
     root.querySelectorAll('.detail-tab-content').forEach(x => x.classList.remove('active'));
     btn.classList.add('active');
     root.querySelector(`[data-content="${btn.dataset.tab}"]`)?.classList.add('active');
   }));
+
+  // A refresh can rebuild the profile without changing the user's open tab.
+  if (preservedTab !== "overview") {
+    const tab = Array.from(tabs).find(x => x.dataset.tab === preservedTab);
+    const content = rootContent => document.querySelector(`[data-detail-tabs] [data-content="${rootContent}"]`);
+    if (tab && content(preservedTab)) {
+      tabs.forEach(x => x.classList.remove("active"));
+      contents.forEach(x => x.classList.remove("active"));
+      tab.classList.add("active");
+      content(preservedTab).classList.add("active");
+    }
+  }
 }
 
 const RAW_BASE = "https://raw.githubusercontent.com/skrane1/hll-stats/main/";
@@ -601,7 +642,7 @@ async function fetchJsonWithFallback(file, fallback = null) {
   return fallback;
 }
 
-async function loadData() {
+async function loadData(options = {}) {
   try {
     const [s,h,ho,c,u] = await Promise.all([
       fetchJsonWithFallback("stats.json", {}),
@@ -610,24 +651,72 @@ async function loadData() {
       fetchJsonWithFallback("challenges.json", []),
       fetchJsonWithFallback("unified-stats.json", {updatedAt:null,players:{}})
     ]);
-    stats=s||{}; history=h||{}; hall=Array.isArray(ho)?ho:[]; challenges=Array.isArray(c)?c:[]; unified=u&&typeof u==="object"?u:{updatedAt:null,players:{}};
+
+    stats=s||{};
+    history=h||{};
+    hall=Array.isArray(ho)?ho:[];
+    challenges=Array.isArray(c)?c:[];
+    unified=u&&typeof u==="object"?u:{updatedAt:null,players:{}};
+
     $("#status").textContent="Verbunden";
     $("#last-update").textContent=new Date().toLocaleTimeString("de-DE");
-    renderAll();
+
+    // Never replace the player profile DOM during background polling.
+    // This was the cause of users being thrown back to the search screen.
+    renderAll({ preservePlayer: true, manual: !!options.manual });
   } catch(e) {
     $("#status").textContent="Fehler";
-    console.error(e);
+    console.error("GWSM data refresh failed:", e);
   }
 }
-function renderAll(){ renderChallenges(); renderHall(); renderCategories(); renderPlayers(); }
 
-const titles = {challenges:"Laufende Challenges",hall:"Hall of Mages",categories:"Kategorien",players:"Spieler"};
+function renderAll(options = {}) {
+  renderChallenges();
+  renderHall();
+  renderCategories();
+
+  if (activePage !== "players") {
+    renderPlayers();
+    return;
+  }
+
+  if (selectedPlayerId) {
+    if (options.manual) {
+      showPlayer(selectedPlayerId, { preserveTab: true });
+    }
+    // Automatic polling updates the data in memory but deliberately leaves
+    // the current profile untouched, so no navigation/tab/search state is lost.
+    return;
+  }
+
+  renderPlayers();
+}
+
+const titles = {
+  challenges:"Laufende Challenges",
+  hall:"Hall of Mages",
+  categories:"Kategorien",
+  players:"Spieler"
+};
+
 document.querySelectorAll(".nav").forEach(btn=>btn.addEventListener("click",()=>{
   document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
   document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-  btn.classList.add("active"); const page=btn.dataset.page;
-  $("#"+page).classList.add("active"); $("#page-title").textContent=titles[page];
+
+  btn.classList.add("active");
+  activePage = btn.dataset.page;
+  selectedPlayerId = null;
+  activeDetailTab = "overview";
+
+  const page = activePage;
+  $("#"+page).classList.add("active");
+  $("#page-title").textContent=titles[page];
+
+  if (page === "players") {
+    renderPlayers();
+  }
 }));
-$("#refresh").addEventListener("click",loadData);
-loadData();
-setInterval(loadData,30000);
+
+$("#refresh").addEventListener("click", () => loadData({ manual: true }));
+loadData({ manual: true });
+setInterval(() => loadData(), 30000);
