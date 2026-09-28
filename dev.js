@@ -64,7 +64,7 @@ function renderPlayers() {
     const coverage = p.coverage || "—";
     return `<tr>
       <td><b>${esc(p.username || p.id)}</b></td>
-      <td class="muted">${esc(p.steamId || p.id)}</td>
+      <td><input class="inline-steam" data-player-id="${esc(p.discordId || p.id)}" value="${esc(p.steamId || "")}" placeholder="SteamID64" inputmode="numeric"></td>
       <td>${Number(s.kills || 0).toLocaleString("de-DE")}</td>
       <td>${Number(s.deaths || 0).toLocaleString("de-DE")}</td>
       <td class="value">${Number(s.kd || 0).toFixed(2)}</td>
@@ -75,6 +75,21 @@ function renderPlayers() {
   }).join("")}</tbody></table>`;
 
   document.querySelectorAll(".mini-sync").forEach(btn => btn.addEventListener("click", () => syncPlayer(btn.dataset.id)));
+  document.querySelectorAll(".inline-steam").forEach(input => input.addEventListener("change", async () => {
+    const id = input.dataset.playerId;
+    const steamId = input.value.trim();
+    try {
+      await apiJson(`${API_BASE}/api/admin/players/${encodeURIComponent(id)}`, {
+        method: "PUT",
+        body: JSON.stringify({ steamId })
+      });
+      setStatus("SteamID gespeichert");
+      await load();
+      await loadManagedPlayers();
+    } catch (e) {
+      setStatus(`SteamID konnte nicht gespeichert werden: ${e.message}`, false);
+    }
+  }));
 }
 
 function renderLogs() {
@@ -95,6 +110,15 @@ async function load() {
   renderSources(); renderPlayers(); renderLogs();
 }
 
+function ensureApi() {
+  if (!API_BASE) {
+    setStatus("Backend-URL fehlt", false);
+    alert("Das Dev-Backend ist noch nicht verbunden. In config.js muss GWSM_STATS_API auf die laufende Backend-URL zeigen.");
+    return false;
+  }
+  return true;
+}
+
 function authHeaders(extra = {}) {
   ADMIN_KEY = $("#admin-key")?.value || ADMIN_KEY;
   if (ADMIN_KEY) sessionStorage.setItem("gwsm_admin_key", ADMIN_KEY);
@@ -109,7 +133,7 @@ async function apiJson(url, options = {}) {
 }
 
 async function loadManagedPlayers() {
-  if (!API_BASE) return;
+  if (!ensureApi()) return;
   try {
     const data = await apiJson(`${API_BASE}/api/admin/players`);
     const players = Object.entries(data.players || {}).map(([id,p]) => ({ id, ...p }));
@@ -127,7 +151,7 @@ async function loadManagedPlayers() {
 function clearPlayerForm() { ["player-username","player-steam","player-epic","player-discord"].forEach(id => $("#"+id).value = ""); $("#player-save").dataset.editId = ""; $("#player-save").textContent = "＋ Spieler hinzufügen"; }
 
 async function saveManagedPlayer() {
-  if (!API_BASE) return setStatus("Backend noch nicht konfiguriert", false);
+  if (!ensureApi()) return;
   const payload = { username: $("#player-username").value.trim(), steamId: $("#player-steam").value.trim(), epicId: $("#player-epic").value.trim(), discordId: $("#player-discord").value.trim() };
   if (!payload.username) return setStatus("Spielername erforderlich", false);
   try {
@@ -175,6 +199,8 @@ function syncPlayer(identifier) { return trigger(PLAYER_SYNC_ENDPOINT, identifie
 
 $("#sync-all").addEventListener("click", () => trigger(SYNC_ENDPOINT, { reason: "manual-dev" }));
 $("#player-save").addEventListener("click", saveManagedPlayer);
+$("#player-steam").addEventListener("keydown", e => { if (e.key === "Enter") saveManagedPlayer(); });
+$("#player-username").addEventListener("keydown", e => { if (e.key === "Enter") saveManagedPlayer(); });
 $("#admin-key").value = ADMIN_KEY;
 $("#sync-selected").addEventListener("click", () => {
   const first = Object.entries(unified.players || {})[0]?.[1];
