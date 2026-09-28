@@ -5,7 +5,7 @@
  * server-side. Configure the backend endpoint below when the worker/API is
  * deployed. The UI intentionally never receives API keys or provider secrets.
  */
-const API_BASE = window.GWSM_STATS_API || (location.hostname.endsWith(".vercel.app") ? "" : "");
+const API_BASE = window.GWSM_STATS_API || "";
 let ADMIN_KEY = sessionStorage.getItem("gwsm_admin_key") || "";
 const SYNC_ENDPOINT = `${API_BASE}/api/admin/stats/sync`;
 const PLAYER_SYNC_ENDPOINT = `${API_BASE}/api/admin/stats/sync/player`;
@@ -132,7 +132,14 @@ async function apiJson(url, options = {}) {
 }
 
 async function loadManagedPlayers() {
-  if (!ensureApi()) return;
+  if (!API_BASE) {
+    const local = JSON.parse(localStorage.getItem("gwsm_managed_players") || "{}");
+    const base = Object.keys(local).length ? local : (await getJson("players.json", {players:{}})).players || {};
+    $("#managed-players").innerHTML = Object.entries(base).map(([id,p]) => `<div class="admin-player-row"><div><b>${esc(p.username || id)}</b><div class="muted">Steam: ${esc(p.steamId || "—")} · Epic: ${esc(p.epicId || "—")} · Discord: ${esc(p.discordId || "—")}</div></div><div class="admin-row-actions"><button class="refresh mini-edit" data-id="${esc(id)}">Bearbeiten</button><button class="danger mini-delete" data-id="${esc(id)}">Entfernen</button></div></div>`).join("") || `<div class="empty">Noch keine Spieler verwaltet.</div>`;
+    document.querySelectorAll(".mini-edit").forEach(b => b.addEventListener("click", () => editManagedPlayer(b.dataset.id, Object.entries(base).map(([id,p])=>({id,...p})) )));
+    document.querySelectorAll(".mini-delete").forEach(b => b.addEventListener("click", () => deleteManagedPlayer(b.dataset.id)));
+    return;
+  }
   try {
     const data = await apiJson(`${API_BASE}/api/admin/players`);
     const players = Object.entries(data.players || {}).map(([id,p]) => ({ id, ...p }));
@@ -147,10 +154,17 @@ async function loadManagedPlayers() {
   } catch (e) { $("#managed-players").innerHTML = `<div class="source-error">${esc(e.message)}</div>`; }
 }
 
-function clearPlayerForm() { ["player-username","player-steam","player-epic","player-discord"].forEach(id => $("#"+id).value = ""); $("#player-save").dataset.editId = ""; $("#player-save").textContent = "＋ Spieler hinzufügen"; }
+function payloadId(discord, steam, epic) { return discord || steam || epic || `local-${Date.now()}`; }\n\nfunction clearPlayerForm() { ["player-username","player-steam","player-epic","player-discord"].forEach(id => $("#"+id).value = ""); $("#player-save").dataset.editId = ""; $("#player-save").textContent = "＋ Spieler hinzufügen"; }
 
 async function saveManagedPlayer() {
-  if (!ensureApi()) return;
+  if (!API_BASE) {
+    const store = JSON.parse(localStorage.getItem("gwsm_managed_players") || "{}");
+    const editId = $("#player-save").dataset.editId;
+    const id = editId || payloadId($("#player-discord").value.trim(), $("#player-steam").value.trim(), $("#player-epic").value.trim());
+    const p = { id, username: $("#player-username").value.trim(), steamId: $("#player-steam").value.trim(), epicId: $("#player-epic").value.trim(), discordId: $("#player-discord").value.trim(), aliases: [], createdAt: store[id]?.createdAt || new Date().toISOString(), updatedAt: new Date().toISOString() };
+    if (!p.username) return setStatus("Spielername erforderlich", false);
+    store[id] = p; localStorage.setItem("gwsm_managed_players", JSON.stringify(store)); clearPlayerForm(); await loadManagedPlayers(); setStatus("Spieler lokal gespeichert"); return;
+  }
   const payload = { username: $("#player-username").value.trim(), steamId: $("#player-steam").value.trim(), epicId: $("#player-epic").value.trim(), discordId: $("#player-discord").value.trim() };
   if (!payload.username) return setStatus("Spielername erforderlich", false);
   try {
@@ -169,8 +183,7 @@ function editManagedPlayer(id, players) {
   $("#player-save").dataset.editId = id; $("#player-save").textContent = "Speichern"; window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-async function deleteManagedPlayer(id) {
-  if (!confirm("Diesen GWSM-Spieler wirklich entfernen?")) return;
+async function deleteManagedPlayer(id) {\n  if (!API_BASE) { const store=JSON.parse(localStorage.getItem("gwsm_managed_players") || "{}"); delete store[id]; localStorage.setItem("gwsm_managed_players", JSON.stringify(store)); await loadManagedPlayers(); setStatus("Spieler lokal entfernt"); return; }\n  if (!confirm("Diesen GWSM-Spieler wirklich entfernen?")) return;
   try { await apiJson(`${API_BASE}/api/admin/players/${encodeURIComponent(id)}`, { method: "DELETE" }); await loadManagedPlayers(); await load(); setStatus("Spieler entfernt"); } catch (e) { setStatus(`Entfernen fehlgeschlagen: ${e.message}`, false); }
 }
 
