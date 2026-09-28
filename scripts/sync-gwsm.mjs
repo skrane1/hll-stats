@@ -615,8 +615,8 @@ for (const [discordId, raw] of Object.entries(stats)) {
 const nextPlayers = {};
 const externalResults = [];
 
-for (const [discordId, raw] of Object.entries(stats)) {
-  const managed = registry.players[discordId] || {};
+for (const [discordId, managed] of Object.entries(registry.players || {})) {
+  const raw = stats[discordId] || {};
   const values = {};
 
   for (const [key, value] of Object.entries(raw || {})) {
