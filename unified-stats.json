@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T17:22:05.688Z",
+  "updatedAt": "2026-09-28T17:26:59.061Z",
   "players": {
     "386241651753877505": {
       "id": "386241651753877505",
@@ -294,10 +294,11 @@
         "kd": 0.88,
         "kpm": 0.3,
         "dpm": 0.35,
-        "wins": 621,
-        "matches": 1487,
+        "wins": 609,
+        "losses": 380,
+        "matches": 989,
         "playtimeHours": 798,
-        "winrate": 41.77,
+        "winrate": 61.57735085945399,
         "teamKills": 531,
         "headshots": 0,
         "vehicleDestroyed": 0,
@@ -315,11 +316,15 @@
           "Vehicle Destroyed": 0,
           "Tanks Destroyed": 0,
           "Jeeps Destroyed": 0,
+          "German": 0,
+          "USA": 0,
+          "Russia": 0,
           "Headshots": 0,
           "Artillery": 0,
           "Knife": 0,
           "Spade": 0,
           "Half-track MG": 0,
+          "Flamethrower": 0,
           "Career XP": 1,
           "Commander": 1,
           "Officer": 1,
@@ -339,12 +344,102 @@
           "Wins": 609,
           "Estimated Loss": 380,
           "Estimated WL Ratio": 1.603,
+          "SMDM": 169,
+          "Foy": 57,
+          "Hurtgen": 33,
+          "SME": 167,
+          "Utah": 85,
+          "Omaha": 93,
+          "PHL": 10,
+          "Hill 400": 29,
+          "Carentan": 173,
+          "Kursk": 27,
+          "Stalingrad": 33,
+          "Remagen": 28,
+          "Kharkov": 38,
+          "Driel": 26,
+          "El Alamein": 21,
+          "Night Maps": 120,
+          "Warfare": 573,
+          "Offensive": 36,
+          "Belgian Gate": 0,
+          "Barbed Wire": 0,
+          "Barricades": 0,
+          "Bunkers": 0,
+          "Repair Stations": 0,
+          "Fuel Nodes": 0,
+          "Manpower Nodes": 0,
+          "Munitions Nodes": 0,
+          "Received": 0,
+          "Given": 0,
           "Total Dropped": 0,
           "Total Used": 0,
           "Truck Drops": 0,
           "Jeep Drops": 0,
           "Molotovs Thrown": 0,
-          "Captured Sectors": 0
+          "Captured Sectors": 0,
+          "maps": {
+            "SMDM": 169,
+            "Foy": 57,
+            "Hurtgen": 33,
+            "SME": 167,
+            "Utah": 85,
+            "Omaha": 93,
+            "PHL": 10,
+            "Hill 400": 29,
+            "Carentan": 173,
+            "Kursk": 27,
+            "Stalingrad": 33,
+            "Remagen": 28,
+            "Kharkov": 38,
+            "Driel": 26,
+            "El Alamein": 21,
+            "Night Maps": 120
+          },
+          "factions": {
+            "German": 0,
+            "USA": 0,
+            "Russia": 0,
+            "Estimated British": 0
+          },
+          "roles": {
+            "Rifleman": 1,
+            "Assault": 1,
+            "Autorifleman": 1,
+            "Medic": 1,
+            "Support": 1,
+            "Machine Gunner": 1,
+            "Anti Tank": 1,
+            "Engineer": 1,
+            "Sniper": 1,
+            "Crewman": 1
+          },
+          "gameModes": {
+            "Warfare": 573,
+            "Offensive": 36
+          },
+          "built": {
+            "Belgian Gate": 0,
+            "Barbed Wire": 0,
+            "Barricades": 0,
+            "Bunkers": 0,
+            "Repair Stations": 0,
+            "Fuel Nodes": 0,
+            "Manpower Nodes": 0,
+            "Munitions Nodes": 0
+          },
+          "commends": {
+            "received": 0,
+            "given": 0
+          },
+          "supplies": {
+            "totalDropped": 0,
+            "totalUsed": 0,
+            "truckDrops": 0
+          },
+          "ammo": {
+            "totalDropped": 0
+          }
         },
         "sources": {
           "hll-ratings": false,
@@ -362,17 +457,21 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199100319875",
-          "fetchedAt": "2026-09-28T17:22:05.688Z",
+          "fetchedAt": "2026-09-28T17:26:59.061Z",
           "stats": {
             "Kills": 0,
             "Vehicle Destroyed": 0,
             "Tanks Destroyed": 0,
             "Jeeps Destroyed": 0,
+            "German": 0,
+            "USA": 0,
+            "Russia": 0,
             "Headshots": 0,
             "Artillery": 0,
             "Knife": 0,
             "Spade": 0,
             "Half-track MG": 0,
+            "Flamethrower": 0,
             "Career XP": 1,
             "Commander": 1,
             "Officer": 1,
@@ -392,15 +491,105 @@
             "Wins": 609,
             "Estimated Loss": 380,
             "Estimated WL Ratio": 1.603,
+            "SMDM": 169,
+            "Foy": 57,
+            "Hurtgen": 33,
+            "SME": 167,
+            "Utah": 85,
+            "Omaha": 93,
+            "PHL": 10,
+            "Hill 400": 29,
+            "Carentan": 173,
+            "Kursk": 27,
+            "Stalingrad": 33,
+            "Remagen": 28,
+            "Kharkov": 38,
+            "Driel": 26,
+            "El Alamein": 21,
+            "Night Maps": 120,
+            "Warfare": 573,
+            "Offensive": 36,
+            "Belgian Gate": 0,
+            "Barbed Wire": 0,
+            "Barricades": 0,
+            "Bunkers": 0,
+            "Repair Stations": 0,
+            "Fuel Nodes": 0,
+            "Manpower Nodes": 0,
+            "Munitions Nodes": 0,
+            "Received": 0,
+            "Given": 0,
             "Total Dropped": 0,
             "Total Used": 0,
             "Truck Drops": 0,
             "Jeep Drops": 0,
             "Molotovs Thrown": 0,
-            "Captured Sectors": 0
+            "Captured Sectors": 0,
+            "maps": {
+              "SMDM": 169,
+              "Foy": 57,
+              "Hurtgen": 33,
+              "SME": 167,
+              "Utah": 85,
+              "Omaha": 93,
+              "PHL": 10,
+              "Hill 400": 29,
+              "Carentan": 173,
+              "Kursk": 27,
+              "Stalingrad": 33,
+              "Remagen": 28,
+              "Kharkov": 38,
+              "Driel": 26,
+              "El Alamein": 21,
+              "Night Maps": 120
+            },
+            "factions": {
+              "German": 0,
+              "USA": 0,
+              "Russia": 0,
+              "Estimated British": 0
+            },
+            "roles": {
+              "Rifleman": 1,
+              "Assault": 1,
+              "Autorifleman": 1,
+              "Medic": 1,
+              "Support": 1,
+              "Machine Gunner": 1,
+              "Anti Tank": 1,
+              "Engineer": 1,
+              "Sniper": 1,
+              "Crewman": 1
+            },
+            "gameModes": {
+              "Warfare": 573,
+              "Offensive": 36
+            },
+            "built": {
+              "Belgian Gate": 0,
+              "Barbed Wire": 0,
+              "Barricades": 0,
+              "Bunkers": 0,
+              "Repair Stations": 0,
+              "Fuel Nodes": 0,
+              "Manpower Nodes": 0,
+              "Munitions Nodes": 0
+            },
+            "commends": {
+              "received": 0,
+              "given": 0
+            },
+            "supplies": {
+              "totalDropped": 0,
+              "totalUsed": 0,
+              "truckDrops": 0
+            },
+            "ammo": {
+              "totalDropped": 0
+            }
           }
         },
-        "_lastRefresh": "2026-09-28T17:22:05.688Z",
+        "_lastRefresh": "2026-09-28T17:26:59.061Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
@@ -420,11 +609,11 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-09-28T17:22:05.688Z"
+          "failedAt": "2026-09-28T17:26:59.061Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-09-28T17:22:05.688Z"
+      "updatedAt": "2026-09-28T17:26:59.061Z"
     },
     "1235652648305299536": {
       "id": "1235652648305299536",
