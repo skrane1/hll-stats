@@ -133,9 +133,9 @@ const fetchHllStatsDev = async steamId => {
   if (/Steam profile must be set to public/i.test(text)) {
     throw new Error("Steam-Profil nicht öffentlich");
   }
-  if (/SteamID64\s*\*?\s+Enter your steamID64/i.test(text)) {
-    throw new Error("Spieler noch nicht bei HLLStats.dev erfasst");
-  }
+  // The input placeholder is present in the HTML even when a real SteamID
+  // has been submitted, so it cannot be used to decide whether a player
+  // exists. We determine that from the actual tracked values below.
 
   const labels = [
     "Kills", "Vehicle Destroyed", "Tanks Destroyed", "Jeeps Destroyed",
@@ -144,6 +144,7 @@ const fetchHllStatsDev = async steamId => {
     "Rifleman", "Assault", "Autorifleman", "Medic", "Support",
     "Machine Gunner", "Anti Tank", "Engineer", "Sniper", "Crewman",
     "Estimated Total Games", "Wins", "Estimated Loss", "Estimated WL Ratio",
+    "Estimated W/L Ratio",
     "Amount Of Maps Played", "Total Dropped", "Total Used", "Truck Drops",
     "Ammo", "Jeep Drops", "Flare Gun Scans", "Molotovs Thrown", "Captured Sectors"
   ];
@@ -154,8 +155,13 @@ const fetchHllStatsDev = async steamId => {
     if (value !== null) values[label] = value;
   }
 
-  // A real profile must contain at least one tracked career value above the
-  // placeholder values used by the public page.
+  // HLLStats.dev renders the same HTML form for every request, including the
+  // "Enter your steamID64" placeholder. The only reliable distinction is
+  // whether actual tracked values are non-zero.
+  if (values["Estimated W/L Ratio"] !== undefined && values["Estimated WL Ratio"] === undefined) {
+    values["Estimated WL Ratio"] = values["Estimated W/L Ratio"];
+  }
+
   const tracked = [
     "Kills", "Vehicle Destroyed", "Tanks Destroyed", "Jeeps Destroyed",
     "Headshots", "Career XP", "Estimated Total Games", "Wins",
