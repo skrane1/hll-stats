@@ -448,22 +448,24 @@ const externalSources = {
     matches: hllStatsSource.matches
   },
   "hll-ratings": {
-    status: ratingsSource.matches ? "ok" : (steamPlayers.length ? "Noch keine Daten" : "SteamID erforderlich"),
+    status: ratingsSource.matches && Object.values(unified.players || {}).some(p =>
+      Number.isFinite(p?.external?.["hll-ratings"]?.overall)
+    ) ? "ok" : "Zugriffsschutz",
     updatedAt: ratingsSource.updatedAt,
     matches: ratingsSource.matches
   },
   "hllrecords": {
-    status: recordsSource.matches ? "ok" : (steamPlayers.length ? "Noch keine Daten" : "SteamID erforderlich"),
+    status: recordsSource.matches ? "ok" : (steamPlayers.length ? "Wird gesucht" : "SteamID erforderlich"),
     updatedAt: recordsSource.updatedAt,
     matches: recordsSource.matches
   },
   "crcon": {
-    status: recordsSource.matches ? "indirekt über HLL Records" : "Öffentlicher Serverzugang erforderlich",
+    status: recordsSource.matches ? "indirekt über HLL Records" : "Über HLL Records verfügbar",
     updatedAt: recordsSource.updatedAt,
     matches: recordsSource.matches
   },
   "frostbite": {
-    status: frostbiteSource.matches ? "ok" : (steamPlayers.length ? "Noch keine Daten" : "SteamID erforderlich"),
+    status: frostbiteSource.matches ? "ok" : "Spieler noch nicht erfasst",
     updatedAt: frostbiteSource.updatedAt,
     matches: frostbiteSource.matches
   }
