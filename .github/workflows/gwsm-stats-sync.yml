@@ -48,4 +48,4 @@ jobs:
             git push
           fi
 
-# HLLStats DOM parser refresh
+# HLLStats DOM parser refresh v2
