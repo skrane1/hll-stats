@@ -344,6 +344,7 @@ function renderDetailedUnified(u) {
   const hll = s.hllstats || {};
   const recent = s.recent || {};
   const trends = s.trends || {};
+  const hll = s.hllstats || {};
   const matchRows = Array.isArray(u.matches) ? u.matches : [];
 
   const overview = renderStatSection('ÜBERSICHT', [
@@ -380,6 +381,26 @@ function renderDetailedUnified(u) {
     ['Sektoren erobert', hll['Captured Sectors']]
   ]);
 
+  const hllstatsHtml = [
+    renderStatSection('HLLSTATS.DEV · OVERALL', [
+      ['Estimated Total Games', hll['Estimated Total Games']],['Wins', hll.Wins],['Estimated Loss', hll['Estimated Loss']],
+      ['Estimated W/L Ratio', hll['Estimated WL Ratio']],['Maps Played', hll['Amount Of Maps Played']]
+    ]),
+    renderStatSection('KILLS & COMBAT', [
+      ['Kills', hll.Kills],['Vehicle zerstört',hll['Vehicle Destroyed']],['Tanks zerstört',hll['Tanks Destroyed']],
+      ['Jeeps zerstört',hll['Jeeps Destroyed']],['Headshots',hll.Headshots],['Artillerie',hll.Artillery],
+      ['Knife',hll.Knife],['Spade',hll.Spade],['Half-track MG',hll['Half-track MG']],['Flamethrower',hll.Flamethrower],['Jeep Impact',hll['Jeep Impact']]
+    ]),
+    renderStatSection('FAKTIONEN', Object.entries(hll.factions || {})),
+    renderStatSection('ROLLEN', Object.entries(hll.roles || {})),
+    renderStatSection('GAME MODES', Object.entries(hll.gameModes || {})),
+    renderStatSection('BUILT', Object.entries(hll.built || {})),
+    renderStatSection('COMMENDS', [['Received',hll.commends?.received],['Given',hll.commends?.given]]),
+    renderStatSection('SUPPLIES', [['Total Dropped',hll.supplies?.totalDropped],['Total Used',hll.supplies?.totalUsed],['Truck Drops',hll.supplies?.truckDrops]]),
+    renderStatSection('AMMO', [['Total Dropped',hll.ammo?.totalDropped],['Jeep Drops',hll['Jeep Drops']]]),
+    renderStatSection('OTHER', [['Flare Gun Scans',hll['Flare Gun Scans']],['Half-track Spawns',hll['Half-track Spawns']],['Molotovs Thrown',hll['Molotovs Thrown']],['Captured Sectors',hll['Captured Sectors']]]),
+    `<div class="stats-panel"><div class="subsection-title">MAPS</div><div class="role-grid">${Object.entries(hll.maps || {}).map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${fmtStat(value)}</span></div>`).join('')}</div></div>`
+  ].join('');
   const ratingHtml = renderStatSection('RATINGS & PERFORMANCE', [
     ['Overall Rating',ratings.overall],['Team Rating',ratings.team],['Impact Rating',ratings.impact],['Comp Rating',ratings.comp],['Combat / min',ratings.combatPerMin],['Offense / min',ratings.offensePerMin],['Defense / min',ratings.defensePerMin],['Support / min',ratings.supportPerMin],['Score / min',s.scorePerMin]
   ]);
@@ -397,8 +418,9 @@ function renderDetailedUnified(u) {
   const matchHtml = matchRows.length ? `<div class="stats-panel"><div class="subsection-title">MATCH HISTORY</div><div class="match-table-wrap"><table><thead><tr><th>DATUM</th><th>MAP</th><th>SERVER</th><th>MODUS</th><th>RESULTAT</th><th>K/D</th><th>KPM</th><th>SCORE</th></tr></thead><tbody>${matchRows.slice(0,50).map(m=>`<tr><td>${dateLabel(m.startAt || m.startedAt)}</td><td>${esc(m.map || '—')}</td><td>${esc(m.server || '—')}</td><td>${esc(m.mode || m.gamemode || '—')}</td><td>${esc(m.result || m.resultat || '—')}</td><td>${fmtStat(m.kd)}</td><td>${fmtStat(m.kpm)}</td><td>${fmtStat(m.score)}</td></tr>`).join('')}</tbody></table></div></div>` : '';
 
   return `<div class="detail-tabs" data-detail-tabs>
-    <div class="detail-tab-buttons"><button class="detail-tab active" data-tab="overview">Übersicht</button><button class="detail-tab" data-tab="combat">Combat</button><button class="detail-tab" data-tab="support">Support</button><button class="detail-tab" data-tab="roles">Rollen</button><button class="detail-tab" data-tab="maps">Maps</button><button class="detail-tab" data-tab="history">History</button></div>
-    <div class="detail-tab-content active" data-content="overview">${overview}${hllHtml}${ratingHtml}${recentHtml}${factionHtml}</div>
+    <div class="detail-tab-buttons"><button class="detail-tab active" data-tab="overview">Übersicht</button><button class="detail-tab" data-tab="hllstats">HLLStats.dev</button><button class="detail-tab" data-tab="combat">Combat</button><button class="detail-tab" data-tab="support">Support</button><button class="detail-tab" data-tab="roles">Rollen</button><button class="detail-tab" data-tab="maps">Maps</button><button class="detail-tab" data-tab="history">History</button></div>
+    <div class="detail-tab-content active" data-content="overview">${overview}${ratingHtml}${recentHtml}</div>
+    <div class="detail-tab-content" data-content="hllstats">${hllstatsHtml}</div>
     <div class="detail-tab-content" data-content="combat">${combatHtml}</div>
     <div class="detail-tab-content" data-content="support">${supportHtml}</div>
     <div class="detail-tab-content" data-content="roles">${roleHtml || '<div class="empty">Noch keine Rollendaten synchronisiert.</div>'}</div>
