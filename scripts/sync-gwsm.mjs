@@ -89,7 +89,7 @@ const loosePercentAfterLabel = (text, label) => {
   return Number.isFinite(n) ? n : null;
 };
 
-const fetchBrowserText = async url => {
+const fetchBrowserText = async (url, steamId) => {
   const { spawn } = await import("node:child_process");
 
   const candidates = [
@@ -315,7 +315,7 @@ const fetchHllStatsDev = async steamId => {
   // Steam lookup can complete exactly like it does in a normal browser.
   if (!hasRealData) {
     try {
-      const renderedText = await fetchBrowserText(url);
+      const renderedText = await fetchBrowserText(url, steamId);
       const renderedValues = {};
       for (const label of labels) {
         const value = numberAfterLabel(renderedText, label);
