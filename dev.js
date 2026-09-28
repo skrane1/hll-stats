@@ -18,10 +18,22 @@ const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
 const dateLabel = value => value ? new Date(value).toLocaleString("de-DE") : "—";
 
 async function getJson(file, fallback) {
+  // GitHub Pages can keep JSON files cached independently of the HTML.
+  // Read the repository source first so the Dev dashboard always sees the
+  // same sync-meta/unified data that the GitHub Action just committed.
+  try {
+    const response = await fetch(
+      `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${file}?t=${Date.now()}`,
+      { cache: "no-store" }
+    );
+    if (response.ok) return await response.json();
+  } catch (_) {}
+
   try {
     const response = await fetch(`./${file}?t=${Date.now()}`, { cache: "no-store" });
     if (response.ok) return await response.json();
   } catch (_) {}
+
   return fallback;
 }
 
@@ -166,7 +178,7 @@ function renderSources() {
         key === "hllrecords" ? "API erforderlich" :
         "SteamID erforderlich";
     }
-    const stateClass = status === "ok" ? "ok" : "pending";
+    const stateClass = status === "ok" ? "ok" : (status.startsWith("Fehler") || status.includes("403") ? "error" : "pending");
 
     return `<div class="source-card">
       <div class="source-title">
