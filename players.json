@@ -1,4 +1,125 @@
 {
   "version": 1,
-  "players": {}
+  "players": {
+    "386241651753877505": {
+      "id": "386241651753877505",
+      "username": "GWSM | Ziegel.",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "386241651753877505",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "487369746040356873": {
+      "id": "487369746040356873",
+      "username": "GWSM | Offi",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "487369746040356873",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "638727568681336852": {
+      "id": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "638727568681336852",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "260097039654846464": {
+      "id": "260097039654846464",
+      "username": "GWSM | Grim",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "260097039654846464",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "731267516881567745": {
+      "id": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "731267516881567745",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "715968363351769208": {
+      "id": "715968363351769208",
+      "username": "GWSM | LEER",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "715968363351769208",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "157888469522186240": {
+      "id": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "157888469522186240",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "1027959050761162863": {
+      "id": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "1027959050761162863",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "1070974910308028507": {
+      "id": "1070974910308028507",
+      "username": "GWSM | ViPeR_Niklas / Tiger",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "1070974910308028507",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "649311308080087051": {
+      "id": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "649311308080087051",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "504270081946157057": {
+      "id": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "504270081946157057",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    },
+    "1235652648305299536": {
+      "id": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "1235652648305299536",
+      "aliases": [],
+      "createdAt": "2026-09-28T13:50:38.104Z",
+      "updatedAt": "2026-09-28T13:50:38.104Z"
+    }
+  }
 }
