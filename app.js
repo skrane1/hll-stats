@@ -13,18 +13,33 @@ const CATEGORY_META = [
 
 
 
-const HLL_CATEGORY_ART = {
-  "commander-counter": "commander.svg",
-  "you-shall-not-pass": "vehicle.svg",
-  "meele-mage": "melee.svg",
-  "garry-grounder": "garry.svg",
-  "alchemist": "nodes.svg",
-  "kettenblitz": "tank.svg",
-  "sniperwizard": "sniper.svg",
-  "Oppenheimer": "explosive.svg",
-  "thanatos": "infantry.svg",
-  "WO OP?": "op.svg"
+const HALL_IMAGES = {
+  "commander-counter": "hall-commander-counter.png",
+  "you-shall-not-pass": "hall-you-shall-not-pass.png",
+  "meele-mage": "hall-meele-mage.png",
+  "garry-grounder": "hall-garry-grounder.png",
+  "alchemist": "hall-alchemist.png",
+  "kettenblitz": "hall-kettenblitz.png",
+  "sniperwizard": "hall-sniperwizard.png",
+  "Oppenheimer": "hall-Oppenheimer.png",
+  "thanatos": "hall-thanatos.png",
+  "WO OP?": "hall-wo-op.png"
 };
+
+const CATEGORY_IMAGES = {
+  "commander-counter": "commander-counter.png",
+  "you-shall-not-pass": "you-shall-not-pass.png",
+  "meele-mage": "meele-mage.png",
+  "garry-grounder": "garry-grounder.png",
+  "alchemist": "alchemist.png",
+  "kettenblitz": "kettenblitz.png",
+  "sniperwizard": "sniperwizard.png",
+  "Oppenheimer": "Oppenheimer.png",
+  "thanatos": "thanatos.png",
+  "WO OP?": "wo-op.png"
+};
+
+
 
 let stats = {};
 let history = {};
@@ -109,7 +124,7 @@ function renderHall() {
     hall.map(m=>`<article class="mage-card section">
      <div class="mage-image">
   <img
-    src="./images/ui/categories/${encodeURIComponent(HLL_CATEGORY_ART[m.category] || 'infantry.svg')}"
+    src="./images/${encodeURIComponent(m.image || HALL_IMAGES[m.category] || '')}"
     alt=""
     onerror="this.style.display='none'"
   >
@@ -189,7 +204,7 @@ function renderCategories() {
       return `<article class="section category-detail">
         <div class="category-image">
           <img
-            src="./images/ui/categories/${encodeURIComponent(HLL_CATEGORY_ART[key] || 'infantry.svg')}"
+            src="./images/${encodeURIComponent(CATEGORY_IMAGES[key] || '')}"
             alt=""
             onerror="this.style.display='none'"
           >
