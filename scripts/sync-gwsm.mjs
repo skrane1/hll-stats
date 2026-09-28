@@ -73,19 +73,36 @@ const fetchText = async url => {
   return htmlToText(await proxyResponse.text());
 };
 
+const looseNumberAfterLabel = (text, label) => {
+  const re = new RegExp(escapeRegex(label) + "[\\s\\S]{0,80}?([0-9][0-9,]*(?:\\.[0-9]+)?)", "i");
+  const m = text.match(re);
+  if (!m) return null;
+  const n = Number(m[1].replace(/,/g, ""));
+  return Number.isFinite(n) ? n : null;
+};
+
+const loosePercentAfterLabel = (text, label) => {
+  const re = new RegExp(escapeRegex(label) + "[\\s\\S]{0,80}?([0-9]+(?:\\.[0-9]+)?)\\s*%", "i");
+  const m = text.match(re);
+  if (!m) return null;
+  const n = Number(m[1]);
+  return Number.isFinite(n) ? n : null;
+};
+
 const fetchHllRatings = async steamId => {
   const text = await fetchText("https://hellor.pro/player/" + steamId);
   if (/Player Not Found|Unable to load player data/i.test(text)) {
     throw new Error("Spieler nicht gefunden");
   }
 
-  const overall = numberAfterLabel(text, "Overall");
-  const team = numberAfterLabel(text, "Team");
-  const impact = numberAfterLabel(text, "Impact");
-  const winRate = percentAfterLabel(text, "Win Rate");
-  const kdr = numberAfterLabel(text, "K/D");
-  const kpm = numberAfterLabel(text, "Kills/Min");
-  const scorePerMin = numberAfterLabel(text, "Score/Min");
+  const overall = looseNumberAfterLabel(text, "Overall");
+  const team = looseNumberAfterLabel(text, "Team");
+  const impact = looseNumberAfterLabel(text, "Impact");
+  const winRate = loosePercentAfterLabel(text, "Win Rate");
+  const kdr = looseNumberAfterLabel(text, "K/D");
+  const kpm = looseNumberAfterLabel(text, "Kills/Min");
+  const scorePerMin = looseNumberAfterLabel(text, "Score/Min");
+  const comp = looseNumberAfterLabel(text, "Comp Rating");
   const playtime = text.match(/Playtime\s+([0-9]+h(?:\s+[0-9]+m)?)/i)?.[1] || null;
   const kdTotals = text.match(/K\/D\s+[0-9.]+\s+([0-9,]+)\s*K\s*[·|]\s*([0-9,]+)\s*D/i);
 
@@ -93,7 +110,7 @@ const fetchHllRatings = async steamId => {
     provider: "hll-ratings",
     url: "https://hellor.pro/player/" + steamId,
     fetchedAt: now,
-    overall, team, impact, winRate, kdr, kpm, scorePerMin, playtime,
+    overall, team, impact, comp, winRate, kdr, kpm, scorePerMin, playtime,
     kills: kdTotals ? Number(kdTotals[1].replace(/,/g, "")) : null,
     deaths: kdTotals ? Number(kdTotals[2].replace(/,/g, "")) : null
   };
@@ -288,6 +305,52 @@ for (const [discordId, raw] of Object.entries(stats)) {
   const previous = unified.players?.[id] || {};
   const externalResult = await refreshExternal(managed, previous.external || {});
   externalResults.push({ player: managed, ...externalResult });
+
+  const ext = externalResult.external || {};
+  const ratings = ext["hll-ratings"]?.fetchedAt ? ext["hll-ratings"] : null;
+  const records = ext.hllrecords?.fetchedAt ? ext.hllrecords : null;
+  const frostbite = ext.frostbite?.fetchedAt ? ext.frostbite : null;
+  const hllStats = ext["hllstats.dev"]?.fetchedAt ? ext["hllstats.dev"] : null;
+
+  // Generic stats are merged without overwriting the existing Discord
+  // challenge values. Public sources fill the missing global HLL metrics.
+  const generic = {
+    kills: ratings?.kills ?? records?.kills ?? frostbite?.kills ?? hllStats?.stats?.Kills,
+    deaths: ratings?.deaths ?? records?.deaths ?? frostbite?.deaths,
+    kd: ratings?.kdr ?? records?.kdr ?? frostbite?.kdr,
+    kpm: ratings?.kpm ?? records?.kpm,
+    dpm: records?.dpm,
+    scorePerMin: ratings?.scorePerMin,
+    wins: records?.winRate != null && records?.totalMatches != null
+      ? Math.round(records.totalMatches * records.winRate / 100)
+      : null,
+    matches: records?.totalMatches ?? frostbite?.matches ?? hllStats?.stats?.["Estimated Total Games"],
+    playtimeHours: records?.hours ?? frostbite?.hours,
+    winrate: ratings?.winRate ?? records?.winRate ?? frostbite?.winRate,
+    teamKills: records?.teamKills ?? frostbite?.teamkills,
+    headshots: hllStats?.stats?.Headshots,
+    vehicleDestroyed: hllStats?.stats?.["Vehicle Destroyed"],
+    tanksDestroyed: hllStats?.stats?.["Tanks Destroyed"],
+    jeepsDestroyed: hllStats?.stats?.["Jeeps Destroyed"],
+    capturedSectors: hllStats?.stats?.["Captured Sectors"],
+    longestKillstreak: null,
+    ratings: {
+      overall: ratings?.overall ?? null,
+      team: ratings?.team ?? null,
+      impact: ratings?.impact ?? null,
+      comp: ratings?.comp ?? null
+    },
+    sources: {
+      "hll-ratings": Boolean(ratings),
+      hllrecords: Boolean(records),
+      frostbite: Boolean(frostbite),
+      "hllstats.dev": Boolean(hllStats)
+    }
+  };
+
+  for (const [key, value] of Object.entries(generic)) {
+    if (value !== null && value !== undefined) values[key] = value;
+  }
 
   nextPlayers[id] = {
     id,
