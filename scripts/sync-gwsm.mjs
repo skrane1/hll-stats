@@ -89,6 +89,111 @@ const loosePercentAfterLabel = (text, label) => {
   return Number.isFinite(n) ? n : null;
 };
 
+const fetchBrowserText = async url => {
+  const { spawn } = await import("node:child_process");
+
+  const candidates = [
+    process.env.CHROMEDRIVER || "chromedriver",
+    "/usr/bin/chromedriver",
+    "/usr/local/bin/chromedriver"
+  ];
+
+  let driver = null;
+  for (const executable of candidates) {
+    try {
+      driver = spawn(executable, ["--port=9515"], {
+        stdio: ["ignore", "pipe", "pipe"]
+      });
+      await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => resolve(), 5000);
+        driver.once("error", error => {
+          clearTimeout(timer);
+          reject(error);
+        });
+        driver.once("spawn", () => {
+          clearTimeout(timer);
+          resolve();
+        });
+      });
+      if (driver.exitCode === null) break;
+      driver = null;
+    } catch {
+      driver = null;
+    }
+  }
+
+  if (!driver) throw new Error("Kein ChromeDriver verfügbar");
+
+  const request = async (path, options = {}) => {
+    const response = await fetch("http://127.0.0.1:9515" + path, {
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...(options.headers || {})
+      }
+    });
+    const body = await response.text();
+    if (!response.ok) throw new Error("ChromeDriver HTTP " + response.status + ": " + body.slice(0, 300));
+    const json = JSON.parse(body);
+    if (json.value?.error) {
+      throw new Error("ChromeDriver " + json.value.error + ": " + (json.value.message || ""));
+    }
+    return json.value;
+  };
+
+  let sessionId = null;
+  try {
+    const session = await request("/session", {
+      method: "POST",
+      body: JSON.stringify({
+        capabilities: {
+          alwaysMatch: {
+            browserName: "chrome",
+            "goog:chromeOptions": {
+              args: [
+                "--headless=new",
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-gpu",
+                "--window-size=1440,2000"
+              ]
+            }
+          }
+        }
+      })
+    });
+
+    sessionId = session.sessionId;
+    await request("/session/" + sessionId + "/url", {
+      method: "POST",
+      body: JSON.stringify({ url })
+    });
+
+    // HLLStats.dev fills the career values in the browser. Give the page
+    // enough time to finish its Steam lookup before reading the DOM.
+    await new Promise(resolve => setTimeout(resolve, 2500));
+
+    const text = await request("/session/" + sessionId + "/execute/sync", {
+      method: "POST",
+      body: JSON.stringify({
+        script: "return document.body ? document.body.innerText : '';",
+        args: []
+      })
+    });
+
+    return String(text || "");
+  } finally {
+    if (sessionId) {
+      try {
+        await request("/session/" + sessionId, { method: "DELETE" });
+      } catch {}
+    }
+    try {
+      driver.kill("SIGTERM");
+    } catch {}
+  }
+};
+
 const fetchHllRatings = async steamId => {
   const text = await fetchText("https://hellor.pro/player/" + steamId);
 
@@ -125,7 +230,8 @@ const fetchHllRatings = async steamId => {
 };
 
 const fetchHllStatsDev = async steamId => {
-  const text = await fetchText("https://www.hllstats.dev/?steam64id=" + steamId);
+  const url = "https://www.hllstats.dev/?steam64id=" + steamId;
+  let text = await fetchText(url);
 
   // HLLStats.dev renders the empty/default form with the same "Totals"
   // section as a real profile. Do not mistake that placeholder page for
@@ -164,10 +270,37 @@ const fetchHllStatsDev = async steamId => {
 
   const tracked = [
     "Kills", "Vehicle Destroyed", "Tanks Destroyed", "Jeeps Destroyed",
-    "Headshots", "Career XP", "Estimated Total Games", "Wins",
-    "Amount Of Maps Played", "Captured Sectors"
+    "Headshots", "Artillery", "Knife", "Spade", "Half-track MG",
+    "Flamethrower", "Jeep Impact", "Estimated Total Games", "Wins",
+    "Estimated Loss", "Amount Of Maps Played", "Total Dropped", "Total Used",
+    "Truck Drops", "Jeep Drops", "Molotovs Thrown", "Captured Sectors"
   ];
-  const hasRealData = tracked.some(label => Number(values[label]) > 0);
+  let hasRealData = tracked.some(label => Number(values[label]) > 0);
+
+  // The server-rendered HTML is only the empty template. If no real values
+  // are present, use the Chrome/ChromeDriver-rendered page so its client-side
+  // Steam lookup can complete exactly like it does in a normal browser.
+  if (!hasRealData) {
+    try {
+      const renderedText = await fetchBrowserText(url);
+      const renderedValues = {};
+      for (const label of labels) {
+        const value = numberAfterLabel(renderedText, label);
+        if (value !== null) renderedValues[label] = value;
+      }
+      if (renderedValues["Estimated W/L Ratio"] !== undefined && renderedValues["Estimated WL Ratio"] === undefined) {
+        renderedValues["Estimated WL Ratio"] = renderedValues["Estimated W/L Ratio"];
+      }
+      text = renderedText;
+      for (const [label, value] of Object.entries(renderedValues)) {
+        values[label] = value;
+      }
+      hasRealData = tracked.some(label => Number(values[label]) > 0);
+    } catch (error) {
+      throw new Error("HLLStats.dev Browser-Abfrage fehlgeschlagen: " + (error instanceof Error ? error.message : String(error)));
+    }
+  }
+
   if (!hasRealData) {
     throw new Error("Keine erfassten HLLStats.dev-Spielerdaten");
   }
