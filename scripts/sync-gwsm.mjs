@@ -192,7 +192,7 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
 
     await new Promise(resolve => setTimeout(resolve, 5000));
 
-    const extracted = await request("/session/" + sessionId + "/execute/sync", {
+    const extracted = await request("/session/" + sessionId + "/execute/async", {
       method: "POST",
       body: JSON.stringify({
         script: `
@@ -252,7 +252,7 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
             snapshots.push(capture());
           }
 
-          return snapshots;
+          arguments[arguments.length - 1](snapshots);
         `,
         args: [${JSON.stringify(labels)}]
       })
