@@ -1,11 +1,8 @@
 import fs from "node:fs/promises";
 
 const readJson = async (path, fallback) => {
-  try {
-    return JSON.parse(await fs.readFile(path, "utf8"));
-  } catch {
-    return fallback;
-  }
+  try { return JSON.parse(await fs.readFile(path, "utf8")); }
+  catch { return fallback; }
 };
 
 const now = new Date().toISOString();
@@ -14,17 +11,145 @@ const registry = await readJson("players.json", { version: 1, players: {} });
 const unified = await readJson("unified-stats.json", { updatedAt: null, players: {} });
 const meta = await readJson("sync-meta.json", { sources: {}, matches: 0, duplicates: 0, logs: [] });
 
+const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+const steamIdValid = value => /^7656119\d{10}$/.test(String(value || "").trim());
+const escapeRegex = value => String(value).replace(/[.*+?^$()|[\]\\]/g, "\\$&");
+
+const decodeHtml = value => String(value || "")
+  .replace(/&nbsp;/gi, " ")
+  .replace(/&amp;/gi, "&")
+  .replace(/&quot;/gi, '"')
+  .replace(/&#39;/gi, "'")
+  .replace(/&lt;/gi, "<")
+  .replace(/&gt;/gi, ">");
+
+const htmlToText = html => decodeHtml(
+  String(html || "")
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+).replace(/\s+/g, " ").trim();
+
+const numberAfterLabel = (text, label) => {
+  const re = new RegExp("\\b" + escapeRegex(label) + "\\b\\s*[:\\-]?\\s*([0-9][0-9,]*(?:\\.[0-9]+)?)", "i");
+  const m = text.match(re);
+  if (!m) return null;
+  const n = Number(m[1].replace(/,/g, ""));
+  return Number.isFinite(n) ? n : null;
+};
+
+const percentAfterLabel = (text, label) => {
+  const re = new RegExp("\\b" + escapeRegex(label) + "\\b\\s*[:\\-]?\\s*([0-9]+(?:\\.[0-9]+)?)\\s*%", "i");
+  const m = text.match(re);
+  if (!m) return null;
+  const n = Number(m[1]);
+  return Number.isFinite(n) ? n : null;
+};
+
+const fetchText = async url => {
+  const response = await fetch(url, {
+    headers: { "User-Agent": "GWSM-HLL-Stats/1.0 (+https://skrane1.github.io/)" },
+    redirect: "follow"
+  });
+  if (!response.ok) throw new Error("HTTP " + response.status);
+  return htmlToText(await response.text());
+};
+
+const fetchHllRatings = async steamId => {
+  const text = await fetchText("https://hellor.pro/player/" + steamId);
+  if (/Player Not Found|Unable to load player data/i.test(text)) {
+    throw new Error("Spieler nicht gefunden");
+  }
+
+  const overall = numberAfterLabel(text, "Overall");
+  const team = numberAfterLabel(text, "Team");
+  const impact = numberAfterLabel(text, "Impact");
+  const winRate = percentAfterLabel(text, "Win Rate");
+  const kdr = numberAfterLabel(text, "K/D");
+  const kpm = numberAfterLabel(text, "Kills/Min");
+  const scorePerMin = numberAfterLabel(text, "Score/Min");
+  const playtime = text.match(/Playtime\s+([0-9]+h(?:\s+[0-9]+m)?)/i)?.[1] || null;
+  const kdTotals = text.match(/K\/D\s+[0-9.]+\s+([0-9,]+)\s*K\s*[·|]\s*([0-9,]+)\s*D/i);
+
+  return {
+    provider: "hll-ratings",
+    url: "https://hellor.pro/player/" + steamId,
+    fetchedAt: now,
+    overall, team, impact, winRate, kdr, kpm, scorePerMin, playtime,
+    kills: kdTotals ? Number(kdTotals[1].replace(/,/g, "")) : null,
+    deaths: kdTotals ? Number(kdTotals[2].replace(/,/g, "")) : null
+  };
+};
+
+const fetchHllStatsDev = async steamId => {
+  const text = await fetchText("https://www.hllstats.dev/?steam64id=" + steamId);
+  if (/SteamID64|Enter your steamID64/i.test(text) && !/Totals/i.test(text)) {
+    throw new Error("Keine öffentlichen HLLStats.dev-Daten");
+  }
+
+  const labels = [
+    "Kills", "Vehicle Destroyed", "Tanks Destroyed", "Jeeps Destroyed",
+    "Headshots", "Artillery", "Knife", "Spade", "Half-track MG",
+    "Career XP", "Commander", "Officer", "Tank Commander", "Spotter",
+    "Rifleman", "Assault", "Autorifleman", "Medic", "Support",
+    "Machine Gunner", "Anti Tank", "Engineer", "Sniper", "Crewman",
+    "Estimated Total Games", "Wins", "Estimated Loss", "Estimated WL Ratio",
+    "Amount Of Maps Played", "Total Dropped", "Total Used", "Truck Drops",
+    "Ammo", "Jeep Drops", "Flare Gun Scans", "Molotovs Thrown", "Captured Sectors"
+  ];
+
+  const values = {};
+  for (const label of labels) {
+    const value = numberAfterLabel(text, label);
+    if (value !== null) values[label] = value;
+  }
+
+  return {
+    provider: "hllstats.dev",
+    url: "https://www.hllstats.dev/?steam64id=" + steamId,
+    fetchedAt: now,
+    stats: values
+  };
+};
+
+const refreshExternal = async (player, previousExternal) => {
+  const steamId = String(player.steamId || "").trim();
+  if (!steamIdValid(steamId)) return { external: previousExternal || {}, ok: false, skipped: true };
+
+  const previousRefresh = previousExternal?._lastRefresh;
+  const refreshAge = previousRefresh ? Date.now() - new Date(previousRefresh).getTime() : Infinity;
+  if (refreshAge < 30 * 60 * 1000) {
+    return { external: previousExternal, ok: true, skipped: true, success: 0 };
+  }
+
+  const external = { ...(previousExternal || {}) };
+  let success = 0;
+
+  for (const [key, loader] of [
+    ["hll-ratings", fetchHllRatings],
+    ["hllstats.dev", fetchHllStatsDev]
+  ]) {
+    try {
+      external[key] = await loader(steamId);
+      success++;
+    } catch (error) {
+      external[key] = {
+        ...(external[key] || {}),
+        provider: key,
+        error: error instanceof Error ? error.message : String(error),
+        failedAt: now
+      };
+    }
+  }
+
+  external._lastRefresh = now;
+  return { external, ok: success > 0, skipped: false, success };
+};
+
 registry.version = 1;
 registry.players ||= {};
 
-const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-const steamIdValid = value => /^7656119\d{10}$/.test(String(value || "").trim());
-
-/*
- * 1. Merge Discord stats into the central player registry.
- * Existing SteamID/EpicID/aliases are preserved.
- * Timestamps only change when a player's actual registry data changed.
- */
+/* Merge Discord stats into the central registry. */
 for (const [discordId, raw] of Object.entries(stats)) {
   const existing = registry.players[discordId] || {};
   const next = {
@@ -43,22 +168,15 @@ for (const [discordId, raw] of Object.entries(stats)) {
   const comparableNext = { ...next };
   delete comparableNext.updatedAt;
 
-  if (!sameJson(comparableExisting, comparableNext)) {
-    next.updatedAt = now;
-  } else if (existing.updatedAt) {
-    next.updatedAt = existing.updatedAt;
-  }
+  if (!sameJson(comparableExisting, comparableNext)) next.updatedAt = now;
+  else if (existing.updatedAt) next.updatedAt = existing.updatedAt;
 
   registry.players[discordId] = next;
 }
 
-/*
- * 2. Build the unified player dataset.
- * The Discord dataset remains the authoritative source for the GWSM
- * challenge categories. External career/rating data is added only when
- * a valid SteamID64 exists.
- */
+/* Build unified stats and refresh public Steam sources. */
 const nextPlayers = {};
+const externalResults = [];
 
 for (const [discordId, raw] of Object.entries(stats)) {
   const managed = registry.players[discordId] || {};
@@ -66,13 +184,13 @@ for (const [discordId, raw] of Object.entries(stats)) {
 
   for (const [key, value] of Object.entries(raw || {})) {
     if (["username", "discordId", "steamId", "epicId"].includes(key)) continue;
-    if (typeof value === "number" && Number.isFinite(value)) {
-      values[key] = value;
-    }
+    if (typeof value === "number" && Number.isFinite(value)) values[key] = value;
   }
 
   const id = managed.steamId || managed.epicId || discordId;
   const previous = unified.players?.[id] || {};
+  const externalResult = await refreshExternal(managed, previous.external || {});
+  externalResults.push({ player: managed, ...externalResult });
 
   nextPlayers[id] = {
     id,
@@ -81,8 +199,12 @@ for (const [discordId, raw] of Object.entries(stats)) {
     epicId: managed.epicId || "",
     discordId,
     stats: values,
-    external: previous.external || {},
-    coverage: managed.steamId || managed.epicId ? "Discord + externe ID" : "Discord",
+    external: externalResult.external,
+    coverage: managed.steamId
+      ? "Discord + Steam + externe Stats"
+      : managed.epicId
+        ? "Discord + EpicID"
+        : "Discord",
     updatedAt: previous.updatedAt || now
   };
 
@@ -91,60 +213,56 @@ for (const [discordId, raw] of Object.entries(stats)) {
   const newComparable = { ...nextPlayers[id] };
   delete newComparable.updatedAt;
 
-  if (!sameJson(oldComparable, newComparable)) {
-    nextPlayers[id].updatedAt = now;
-  }
+  if (!sameJson(oldComparable, newComparable)) nextPlayers[id].updatedAt = now;
 }
 
-const oldPlayers = unified.players || {};
-const playersChanged = !sameJson(
-  Object.fromEntries(Object.entries(oldPlayers).map(([id, p]) => [id, { ...p, updatedAt: undefined }])),
-  Object.fromEntries(Object.entries(nextPlayers).map(([id, p]) => [id, { ...p, updatedAt: undefined }]))
+const oldComparablePlayers = Object.fromEntries(
+  Object.entries(unified.players || {}).map(([id, p]) => {
+    const copy = { ...p };
+    delete copy.updatedAt;
+    return [id, copy];
+  })
 );
+const newComparablePlayers = Object.fromEntries(
+  Object.entries(nextPlayers).map(([id, p]) => {
+    const copy = { ...p };
+    delete copy.updatedAt;
+    return [id, copy];
+  })
+);
+const playersChanged = !sameJson(oldComparablePlayers, newComparablePlayers);
 
-if (playersChanged || !unified.updatedAt) {
-  unified.updatedAt = now;
-}
+if (playersChanged || !unified.updatedAt) unified.updatedAt = now;
 unified.players = nextPlayers;
 
-/*
- * 3. Provider readiness.
- * These public providers can only be queried reliably once a SteamID64
- * has been assigned to the GWSM player. CRCON/Frostbite need a server
- * endpoint and credentials and therefore remain explicitly disconnected.
- */
+/* Source status for the Dev dashboard. */
 const steamPlayers = Object.values(registry.players).filter(p => steamIdValid(p.steamId));
+const successfulRatings = externalResults.filter(x => x.external?.["hll-ratings"]?.fetchedAt).length;
+const successfulHllStats = externalResults.filter(x => x.external?.["hllstats.dev"]?.fetchedAt).length;
+const previousMetaSources = meta.sources || {};
+const currentDiscordMatches = Object.keys(stats).length;
+const source = (key, fallback) => previousMetaSources[key] || fallback;
 
 const externalSources = {
   "hllstats.dev": {
-    status: steamPlayers.length ? "bereit" : "SteamID erforderlich",
-    updatedAt: steamPlayers.length ? now : null,
-    matches: 0
+    status: steamPlayers.length ? (successfulHllStats ? "ok" : "Fehler / nicht erreichbar") : "SteamID erforderlich",
+    updatedAt: source("hllstats.dev", {}).updatedAt || (successfulHllStats ? now : null),
+    matches: successfulHllStats
   },
   "hll-ratings": {
-    status: steamPlayers.length ? "bereit" : "SteamID erforderlich",
-    updatedAt: steamPlayers.length ? now : null,
-    matches: 0
+    status: steamPlayers.length ? (successfulRatings ? "ok" : "Fehler / nicht erreichbar") : "SteamID erforderlich",
+    updatedAt: source("hll-ratings", {}).updatedAt || (successfulRatings ? now : null),
+    matches: successfulRatings
   },
   "hllrecords": {
-    status: steamPlayers.length ? "bereit" : "SteamID erforderlich",
-    updatedAt: steamPlayers.length ? now : null,
-    matches: 0
+    status: steamPlayers.length ? "SteamID vorhanden – Quelle separat" : "SteamID erforderlich",
+    updatedAt: source("hllrecords", {}).updatedAt || null,
+    matches: Number(source("hllrecords", {}).matches || 0)
   },
-  "crcon": {
-    status: "Nicht verbunden",
-    updatedAt: null,
-    matches: 0
-  },
-  "frostbite": {
-    status: "Nicht verbunden",
-    updatedAt: null,
-    matches: 0
-  }
+  "crcon": { status: "Nicht verbunden", updatedAt: null, matches: 0 },
+  "frostbite": { status: "Nicht verbunden", updatedAt: null, matches: 0 }
 };
 
-const previousMetaSources = meta.sources || {};
-const currentDiscordMatches = Object.keys(stats).length;
 const previousDiscord = previousMetaSources.discord || {};
 const discordChanged =
   previousDiscord.status !== "ok" ||
@@ -156,25 +274,11 @@ const stableSources = {
     status: "ok",
     updatedAt: discordChanged ? now : (previousDiscord.updatedAt || now),
     matches: currentDiscordMatches
-  }
+  },
+  ...externalSources
 };
 
-for (const [key, source] of Object.entries(externalSources)) {
-  const previous = previousMetaSources[key] || {};
-  const changed =
-    previous.status !== source.status ||
-    Number(previous.matches || 0) !== Number(source.matches || 0);
-
-  stableSources[key] = {
-    ...source,
-    updatedAt: changed ? now : (previous.updatedAt || source.updatedAt || null)
-  };
-}
-
-const sourcesChanged = !sameJson(
-  previousMetaSources,
-  stableSources
-);
+const sourcesChanged = !sameJson(previousMetaSources, stableSources);
 
 const nextMeta = {
   ...meta,
@@ -187,20 +291,25 @@ if (playersChanged || sourcesChanged || !Array.isArray(meta.logs) || meta.logs.l
   const runLog = {
     time: now,
     level: "info",
-    message: `Automatischer GWSM-Sync: ${Object.keys(nextPlayers).length} Spieler, ${steamPlayers.length} mit SteamID64.`
+    message:
+      "Automatischer GWSM-Sync: " +
+      Object.keys(nextPlayers).length +
+      " Spieler, " +
+      steamPlayers.length +
+      " mit SteamID64, " +
+      (successfulRatings + successfulHllStats) +
+      " externe Spielerabfragen erfolgreich."
   };
   nextMeta.logs = [runLog, ...(Array.isArray(meta.logs) ? meta.logs : [])].slice(0, 50);
 }
 
-/*
- * The sync state is written on every run. The workflow only commits when
- * one of the files actually changes, so a healthy 5-minute schedule does
- * not create endless Git history entries when no data changed.
- */
 await fs.writeFile("players.json", JSON.stringify(registry, null, 2) + "\n");
 await fs.writeFile("unified-stats.json", JSON.stringify(unified, null, 2) + "\n");
 await fs.writeFile("sync-meta.json", JSON.stringify(nextMeta, null, 2) + "\n");
 
 console.log(
-  `Synced ${Object.keys(nextPlayers).length} players; ${steamPlayers.length} have a valid SteamID64.`
+  "Synced " + Object.keys(nextPlayers).length +
+  " players; " + steamPlayers.length +
+  " Steam players; " + successfulRatings +
+  " HLL Ratings; " + successfulHllStats + " HLLStats.dev."
 );
