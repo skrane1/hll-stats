@@ -6,6 +6,7 @@ const readJson = async (path, fallback) => {
 };
 
 const now = new Date().toISOString();
+// Unified schema includes source-specific HLLStats.dev career data.
 const stats = await readJson("stats.json", {});
 const registry = await readJson("players.json", { version: 1, players: {} });
 const unified = await readJson("unified-stats.json", { updatedAt: null, players: {} });
