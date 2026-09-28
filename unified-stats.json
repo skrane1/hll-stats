@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T13:50:38.104Z",
+  "updatedAt": "2026-09-28T14:19:25.966Z",
   "players": {
     "386241651753877505": {
       "id": "386241651753877505",
@@ -11,8 +11,9 @@
         "garry-grounder": 22,
         "you-shall-not-pass": 3
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "487369746040356873": {
       "id": "487369746040356873",
@@ -24,8 +25,9 @@
         "garry-grounder": 10,
         "you-shall-not-pass": 0
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "638727568681336852": {
       "id": "638727568681336852",
@@ -34,14 +36,15 @@
       "epicId": "",
       "discordId": "638727568681336852",
       "stats": {
-        "alchemist": 16,
+        "alchemist": 19,
         "WO OP?": 6,
         "meele-mage": 1,
         "commander-counter": 2,
-        "garry-grounder": 4
+        "garry-grounder": 6
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "260097039654846464": {
       "id": "260097039654846464",
@@ -52,8 +55,9 @@
       "stats": {
         "garry-grounder": 4
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "731267516881567745": {
       "id": "731267516881567745",
@@ -70,8 +74,9 @@
         "WO OP?": 6,
         "thanatos": 88
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "715968363351769208": {
       "id": "715968363351769208",
@@ -85,8 +90,9 @@
         "you-shall-not-pass": 126,
         "WO OP?": 5
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "157888469522186240": {
       "id": "157888469522186240",
@@ -101,8 +107,9 @@
         "meele-mage": 15,
         "commander-counter": 5
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "1027959050761162863": {
       "id": "1027959050761162863",
@@ -119,10 +126,12 @@
         "thanatos": 53,
         "commander-counter": 11,
         "meele-mage": 1,
-        "garry-grounder": 1
+        "garry-grounder": 3,
+        "alchemist": 2
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "1070974910308028507": {
       "id": "1070974910308028507",
@@ -133,8 +142,9 @@
       "stats": {
         "sniperwizard": 298
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "649311308080087051": {
       "id": "649311308080087051",
@@ -146,8 +156,9 @@
         "kettenblitz": 50,
         "you-shall-not-pass": 8
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "504270081946157057": {
       "id": "504270081946157057",
@@ -159,8 +170,9 @@
         "you-shall-not-pass": 15,
         "WO OP?": 6
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     },
     "1235652648305299536": {
       "id": "1235652648305299536",
@@ -174,8 +186,9 @@
         "meele-mage": 21,
         "commander-counter": 22
       },
+      "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T13:50:38.104Z"
+      "updatedAt": "2026-09-28T14:19:25.966Z"
     }
   }
 }
