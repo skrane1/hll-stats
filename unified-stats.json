@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T14:50:29.570Z",
+  "updatedAt": "2026-09-28T14:51:38.210Z",
   "players": {
     "386241651753877505": {
       "id": "386241651753877505",
@@ -9,11 +9,23 @@
       "discordId": "386241651753877505",
       "stats": {
         "garry-grounder": 22,
-        "you-shall-not-pass": 3
+        "you-shall-not-pass": 3,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "487369746040356873": {
       "id": "487369746040356873",
@@ -23,11 +35,23 @@
       "discordId": "487369746040356873",
       "stats": {
         "garry-grounder": 10,
-        "you-shall-not-pass": 0
+        "you-shall-not-pass": 0,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "638727568681336852": {
       "id": "638727568681336852",
@@ -40,11 +64,23 @@
         "WO OP?": 6,
         "meele-mage": 1,
         "commander-counter": 2,
-        "garry-grounder": 6
+        "garry-grounder": 6,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "260097039654846464": {
       "id": "260097039654846464",
@@ -53,11 +89,23 @@
       "epicId": "",
       "discordId": "260097039654846464",
       "stats": {
-        "garry-grounder": 4
+        "garry-grounder": 4,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "731267516881567745": {
       "id": "731267516881567745",
@@ -72,11 +120,23 @@
         "sniperwizard": 435,
         "you-shall-not-pass": 4,
         "WO OP?": 6,
-        "thanatos": 88
+        "thanatos": 88,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "715968363351769208": {
       "id": "715968363351769208",
@@ -88,11 +148,23 @@
         "garry-grounder": 6,
         "sniperwizard": 287,
         "you-shall-not-pass": 126,
-        "WO OP?": 5
+        "WO OP?": 5,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "157888469522186240": {
       "id": "157888469522186240",
@@ -105,11 +177,23 @@
         "WO OP?": 5,
         "thanatos": 84,
         "meele-mage": 15,
-        "commander-counter": 5
+        "commander-counter": 5,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "1027959050761162863": {
       "id": "1027959050761162863",
@@ -127,11 +211,23 @@
         "commander-counter": 11,
         "meele-mage": 1,
         "garry-grounder": 3,
-        "alchemist": 2
+        "alchemist": 2,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "1070974910308028507": {
       "id": "1070974910308028507",
@@ -140,11 +236,23 @@
       "epicId": "",
       "discordId": "1070974910308028507",
       "stats": {
-        "sniperwizard": 298
+        "sniperwizard": 298,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "649311308080087051": {
       "id": "649311308080087051",
@@ -154,11 +262,23 @@
       "discordId": "649311308080087051",
       "stats": {
         "kettenblitz": 50,
-        "you-shall-not-pass": 8
+        "you-shall-not-pass": 8,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "76561199100319875": {
       "id": "76561199100319875",
@@ -168,16 +288,33 @@
       "discordId": "504270081946157057",
       "stats": {
         "you-shall-not-pass": 15,
-        "WO OP?": 6
+        "WO OP?": 6,
+        "deaths": 15124,
+        "kd": 0.88,
+        "dpm": 0.35,
+        "teamKills": 531,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": true,
+          "hllrecords": true,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561199100319875",
-          "fetchedAt": "2026-09-28T14:50:29.570Z",
+          "fetchedAt": "2026-09-28T14:51:38.210Z",
           "overall": null,
           "team": null,
           "impact": null,
+          "comp": null,
           "winRate": null,
           "kdr": null,
           "kpm": null,
@@ -189,13 +326,13 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Steam-Profil nicht öffentlich oder noch nicht von HLLStats.dev erfasst",
-          "failedAt": "2026-09-28T14:50:29.570Z"
+          "failedAt": "2026-09-28T14:51:38.210Z"
         },
-        "_lastRefresh": "2026-09-28T14:50:29.570Z",
+        "_lastRefresh": "2026-09-28T14:51:38.210Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
-          "fetchedAt": "2026-09-28T14:50:29.570Z",
+          "fetchedAt": "2026-09-28T14:51:38.210Z",
           "totalMatches": null,
           "playedMatches": null,
           "winRate": null,
@@ -211,11 +348,11 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-09-28T14:50:29.570Z"
+          "failedAt": "2026-09-28T14:51:38.210Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-09-28T14:50:29.570Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     },
     "1235652648305299536": {
       "id": "1235652648305299536",
@@ -227,11 +364,23 @@
         "thanatos": 74,
         "WO OP?": 32,
         "meele-mage": 21,
-        "commander-counter": 22
+        "commander-counter": 22,
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "updatedAt": "2026-09-28T14:51:38.210Z"
     }
   }
 }
