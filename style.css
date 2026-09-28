@@ -476,3 +476,314 @@ table tr:first-child td{
   .career-xp{border-right:0;border-bottom:1px solid #292f2c}
   .faction-strip{grid-template-columns:repeat(2,1fr);height:auto}
 }
+
+
+/* REFERENCE MATCH // CINEMATIC HLL PLAYER DASHBOARD */
+.player-profile{
+  background:#090d0d;
+  border-color:#343a35;
+}
+.player-profile-hero{
+  min-height:190px;
+  background:
+    linear-gradient(90deg,rgba(5,8,8,.97) 0%,rgba(7,10,10,.86) 28%,rgba(7,10,10,.48) 70%,rgba(7,10,10,.78) 100%),
+    linear-gradient(180deg,transparent 35%,rgba(5,7,7,.9)),
+    url("./images/commander-counter.png") center/cover;
+  border-bottom:1px solid #383e39;
+  padding:28px 28px 25px;
+}
+.player-profile-hero:after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:0;height:58px;
+  background:linear-gradient(transparent,rgba(5,7,7,.95));
+  pointer-events:none;
+}
+.player-profile-hero .player-profile-identity,
+.player-profile-hero .player-profile-actions{z-index:2}
+.player-profile-hero h2{
+  font-size:34px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  text-shadow:2px 3px 0 rgba(0,0,0,.55);
+}
+.player-profile-hero .profile-meta{color:#a39d8d}
+.player-profile-hero .profile-avatar{
+  width:74px;height:74px;
+  border:2px solid rgba(201,154,72,.58);
+  background:rgba(9,12,11,.78);
+  box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 4px rgba(201,154,72,.07);
+}
+.profile-data{
+  padding:0 20px 20px;
+  background:linear-gradient(180deg,#0b0f0f,#080b0b);
+}
+.profile-section-label{
+  margin:24px 0 11px;
+  color:#ddd2b8;
+}
+.profile-section-label span{
+  background:#171a17;
+}
+.profile-section-label i{
+  background:linear-gradient(90deg,#353a36,transparent);
+}
+.profile-section-label small{color:#68716b}
+
+/* Five large screenshot-style metric cards */
+.profile-hero-stats{
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+}
+.hero-stat{
+  min-height:126px;
+  border-radius:3px;
+  border-color:#414640;
+  background-position:center;
+  background-size:cover;
+  box-shadow:inset 0 0 55px rgba(0,0,0,.45),0 10px 25px rgba(0,0,0,.22);
+}
+.hero-stat:nth-child(1){
+  background-image:linear-gradient(90deg,rgba(9,12,11,.88),rgba(9,12,11,.52)),url("./images/commander-counter.png");
+}
+.hero-stat:nth-child(2){
+  background-image:linear-gradient(90deg,rgba(12,20,13,.9),rgba(12,20,13,.48)),url("./images/you-shall-not-pass.png");
+}
+.hero-stat:nth-child(3){
+  background-image:linear-gradient(90deg,rgba(28,12,11,.9),rgba(28,12,11,.48)),url("./images/meele-mage.png");
+}
+.hero-stat:nth-child(4){
+  background-image:linear-gradient(90deg,rgba(30,24,10,.9),rgba(30,24,10,.48)),url("./images/garry-grounder.png");
+}
+.hero-stat:nth-child(5){
+  background-image:linear-gradient(90deg,rgba(10,18,23,.9),rgba(10,18,23,.48)),url("./images/alchemist.png");
+}
+.hero-stat:before{
+  height:100%;width:3px;bottom:0;top:auto;left:0;
+  background:#9a9586;
+}
+.hero-stat.green:before{background:#78966a}
+.hero-stat.red:before{background:#a26960}
+.hero-stat.gold:before{background:#d0a04d}
+.hero-stat.blue:before{background:#708ca0}
+.hero-stat-top{
+  position:relative;z-index:2;
+  text-shadow:0 1px 4px #000;
+}
+.hero-stat-top>span{font-size:23px;color:#ddd5c4}
+.hero-stat-top small{
+  color:#c6c0b2;
+  font-size:8px;
+  letter-spacing:1.3px;
+}
+.hero-stat strong{
+  position:relative;z-index:2;
+  font-size:37px;
+  text-shadow:2px 2px 0 rgba(0,0,0,.7);
+}
+
+/* Career and factions directly mirror the reference two-column blocks */
+.profile-overview-grid{
+  grid-template-columns:1.12fr .88fr;
+  gap:12px;
+}
+.profile-module{
+  border-radius:3px;
+  min-height:250px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.25);
+}
+.career-module{
+  background:
+    linear-gradient(90deg,rgba(10,13,12,.95),rgba(10,13,12,.68)),
+    url("./images/sniperwizard.png") center/cover;
+}
+.faction-module{
+  background:
+    linear-gradient(145deg,rgba(16,19,18,.96),rgba(9,12,12,.96));
+}
+.module-head{
+  height:48px;
+  padding:0 20px;
+}
+.module-head span{font-size:17px;letter-spacing:1px;color:#eee8da}
+.module-head small{font-size:7px}
+.career-main{min-height:200px}
+.career-xp{
+  padding:26px 22px;
+  background:linear-gradient(90deg,rgba(12,15,14,.35),transparent);
+}
+.career-xp span{font-size:9px;letter-spacing:1.5px;color:#c3b693}
+.career-xp strong{font-size:42px}
+.career-xp i{font-size:30px}
+.career-roles{
+  margin:20px 18px;
+  padding:0;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(4,7,7,.58);
+}
+.career-roles>div{
+  padding:13px 15px;
+}
+.career-roles span{font-size:8px;color:#aaa79b}
+.career-roles b{font-size:18px}
+.faction-strip{
+  height:200px;
+  padding:18px 20px 20px;
+  gap:9px;
+}
+.faction{
+  min-height:160px;
+  justify-content:flex-end;
+  padding:13px;
+  border-radius:3px;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.72)),
+    radial-gradient(circle at 50% 35%,rgba(255,255,255,.11),transparent 50%),
+    #252a27;
+}
+.faction span{font-size:9px;color:#e3ded1}
+.faction b{font-size:20px;color:#f1eadc}
+
+/* The screenshot uses a secondary left navigation beside the content */
+.player-dashboard{
+  display:grid;
+  grid-template-columns:178px minmax(0,1fr);
+  gap:0;
+  margin-top:12px;
+  border:1px solid #303632;
+  background:#0a0e0e;
+  min-height:520px;
+}
+.player-nav{
+  background:linear-gradient(180deg,#101413,#090c0c);
+  border-right:1px solid #303632;
+  padding:18px 10px;
+}
+.player-nav-title{
+  color:#4d5550;
+  font-size:7px;
+  letter-spacing:2px;
+  padding:0 10px 13px;
+  border-bottom:1px solid #242a27;
+  margin-bottom:8px;
+}
+.player-nav .detail-tab{
+  width:100%;
+  height:52px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid transparent;
+  background:transparent;
+  color:#727a75;
+  padding:0 10px;
+  border-radius:2px;
+  text-align:left;
+  position:relative;
+}
+.player-nav .detail-tab i{
+  width:21px;
+  font-style:normal;
+  font-size:17px;
+  color:#737a75;
+}
+.player-nav .detail-tab span{
+  font-size:9px;
+  letter-spacing:1px;
+  font-weight:800;
+}
+.player-nav .detail-tab small{
+  margin-left:auto;
+  color:#414944;
+  font-size:7px;
+}
+.player-nav .detail-tab:hover{
+  background:#171c1b;
+  color:#cfc8b8;
+}
+.player-nav .detail-tab.active{
+  background:linear-gradient(90deg,rgba(201,154,72,.18),rgba(201,154,72,.02));
+  color:#ead9af;
+  border-color:rgba(201,154,72,.22);
+  box-shadow:inset 3px 0 #c99a48;
+}
+.player-nav .detail-tab.active i{color:#d4aa5d}
+.player-dashboard-content{
+  min-width:0;
+  background:linear-gradient(180deg,#0c1010,#090c0c);
+}
+.player-dashboard-content .detail-tab-content{
+  display:none;
+  padding:0 0 10px;
+}
+.player-dashboard-content .detail-tab-content.active{display:block}
+.player-dashboard-content .stats-panel{
+  margin:12px 16px;
+  border-color:#303632;
+  background:linear-gradient(145deg,#141918,#0c1010);
+}
+.player-dashboard-content .subsection-title{
+  font-size:9px;
+  margin-bottom:14px;
+  color:#d0b273;
+}
+
+/* Overview detail blocks sit like dashboard modules */
+.player-dashboard-content .detail-stat{
+  min-height:78px;
+  background:linear-gradient(145deg,#171c1b,#0d1111);
+}
+.player-dashboard-content .detail-stat strong{font-size:22px}
+.player-dashboard-content .role-card{
+  min-height:78px;
+  background:linear-gradient(145deg,#171c1b,#0d1111);
+}
+.player-dashboard-content .match-table-wrap{background:#0c1010}
+.player-dashboard-content .match-table-wrap table th{
+  background:#111615;
+}
+.performance-module{
+  margin-top:12px;
+  border-radius:3px;
+}
+.performance-grid{
+  grid-template-columns:repeat(8,1fr);
+  background:#0d1110;
+}
+.performance-grid>div{
+  min-height:75px;
+}
+
+/* Recent performance gets the wide activity-panel feel */
+.profile-data>.stats-panel{
+  border-radius:3px;
+}
+.profile-data>.stats-panel:last-child{
+  background:
+    linear-gradient(90deg,rgba(17,21,20,.96),rgba(10,13,13,.96)),
+    repeating-linear-gradient(90deg,transparent 0,transparent 45px,rgba(255,255,255,.025) 46px);
+}
+
+@media(max-width:1150px){
+  .profile-hero-stats{grid-template-columns:repeat(3,1fr)}
+  .profile-overview-grid{grid-template-columns:1fr}
+  .performance-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:850px){
+  .player-dashboard{grid-template-columns:1fr}
+  .player-nav{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:4px;
+    border-right:0;
+    border-bottom:1px solid #303632;
+  }
+  .player-nav-title{grid-column:1/-1}
+  .player-nav .detail-tab{height:44px}
+}
+@media(max-width:600px){
+  .profile-hero-stats{grid-template-columns:repeat(2,1fr)}
+  .performance-grid{grid-template-columns:repeat(2,1fr)}
+  .faction-strip{grid-template-columns:repeat(2,1fr);height:auto}
+  .faction{min-height:120px}
+}
