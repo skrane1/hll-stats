@@ -5,7 +5,16 @@ const readJson = async (path, fallback) => {
   catch { return fallback; }
 };
 
-const now = new Date().toISOString();
+const now = new Date().toISOString();\n\nconst extractStats = raw => {
+  const source = raw && typeof raw === "object" ? raw : {};
+  const values = {};
+  for (const [key, value] of Object.entries(source)) {
+    if (key === "username" || key === "discordId" || key === "steamId" || key === "epicId") continue;
+    if (typeof value === "number" && Number.isFinite(value)) values[key] = value;
+  }
+  return values;
+};
+
 const stats = await readJson("stats.json", {});
 const registry = await readJson("players.json", { version: 1, players: {} });
 const unified = await readJson("unified-stats.json", { updatedAt: null, players: {} });
