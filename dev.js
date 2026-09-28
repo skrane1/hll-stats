@@ -473,7 +473,7 @@ $("#player-username")?.addEventListener("keydown", event => {
 });
 $("#dev-search")?.addEventListener("input", renderPlayers);
 
-$("#admin-key").value = ADMIN_KEY;
+if ($("#admin-key")) $("#admin-key").value = GITHUB_TOKEN || ADMIN_KEY;
 if ($("#admin-key")) {
   $("#admin-key").placeholder = "Admin-Key / GitHub-Token";
   $("#admin-key").addEventListener("change", async () => {
