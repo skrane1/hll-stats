@@ -6,9 +6,9 @@
       "matches": 12
     },
     "hllstats.dev": {
-      "status": "Steam-Profil nicht öffentlich",
-      "updatedAt": null,
-      "matches": 0
+      "status": "ok",
+      "updatedAt": "2026-09-28T17:15:28.871Z",
+      "matches": 1
     },
     "hll-ratings": {
       "status": "Zugriffsschutz",
@@ -34,6 +34,11 @@
   "matches": 0,
   "duplicates": 0,
   "logs": [
+    {
+      "time": "2026-09-28T17:15:28.871Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 1 externe Spielerabfragen erfolgreich."
+    },
     {
       "time": "2026-09-28T17:15:08.047Z",
       "level": "info",
