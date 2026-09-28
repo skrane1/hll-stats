@@ -312,23 +312,73 @@ function renderMetricCards(stats, keys) {
   ).join('');
 }
 function renderUnifiedSummary(u) {
-  if (!u) return `<div class="empty compact-empty">Noch keine externen HLL-Stats synchronisiert.</div>`;
+  if (!u) return `<div class="empty compact-empty"><div class="empty-icon">◈</div><h2>NO FIELD DATA</h2><p>Noch keine externen HLL-Stats synchronisiert.</p></div>`;
+
   const s = u.stats || {};
   const ratings = s.ratings || {};
-  const items = [
-    {key:'kills',label:'KILLS'}, {key:'deaths',label:'DEATHS'}, {key:'kd',label:'K/D'},
-    {key:'winrate',label:'WINRATE',suffix:'%'}, {key:'matches',label:'MATCHES'}, {key:'playtimeHours',label:'PLAYTIME',suffix:' h'},
-    {key:'kpm',label:'KPM'}, {key:'scorePerMin',label:'SCORE/MIN'}, {key:'headshots',label:'HEADSHOTS'},
-    {key:'teamKills',label:'TEAMKILLS'}, {key:'longestKillstreak',label:'KILLSTREAK'}, {key:'capturedSectors',label:'SEKTOREN'}
+  const hll = s.hllstats || {};
+  const overallGames = s.matches ?? hll['Estimated Total Games'];
+  const wins = s.wins ?? hll.Wins;
+  const losses = s.losses ?? hll['Estimated Loss'];
+  const ratio = hll['Estimated WL Ratio'] ?? (wins != null && losses != null && losses ? Number(wins / losses).toFixed(2) : null);
+  const winrate = s.winrate ?? (wins != null && overallGames ? Number(wins / overallGames * 100) : null);
+
+  const heroStats = [
+    {label:'GESPIELTE GAMES',value:overallGames,icon:'◫'},
+    {label:'SIEGE',value:wins,icon:'★',tone:'green'},
+    {label:'NIEDERLAGEN',value:losses,icon:'✚',tone:'red'},
+    {label:'SIEGQUOTE',value:winrate != null ? Number(winrate).toLocaleString('de-DE',{maximumFractionDigits:1})+'%' : null,icon:'◔',tone:'gold'},
+    {label:'W/L RATIO',value:ratio,icon:'◈',tone:'blue'}
   ];
+
   const ratingItems = [
     {key:'overall',label:'OVERALL'}, {key:'team',label:'TEAM'}, {key:'impact',label:'IMPACT'}, {key:'comp',label:'COMP'}
   ];
-  return `<div class="unified-box">
-    <div class="unified-title"><div><span class="eyebrow">UNIFIED HLL STATS</span><h3>Externe Gesamtstatistik</h3></div><span class="unified-updated">${u.updatedAt ? `Update ${dateLabel(u.updatedAt)}` : '—'}</span></div>
-    <div class="unified-grid">${renderMetricCards(s, items)}</div>
-    ${Object.values(ratings).some(v => v != null) ? `<div class="subsection-title">HLL RATINGS</div><div class="unified-grid">${renderMetricCards(ratings, ratingItems)}</div>` : ''}
-    <div class="unified-foot">${u.coverage ? `Abdeckung: ${esc(u.coverage)}` : 'Die Statistik wird aus den verfügbaren HLL-Datenquellen zusammengeführt.'}</div>
+
+  return `<div class="profile-data">
+
+    <div class="profile-section-label"><span>01</span> CAREER OVERVIEW <i></i><small>${u.updatedAt ? `DATA LINK · ${dateLabel(u.updatedAt)}` : 'DATA LINK · WAITING'}</small></div>
+
+    <div class="profile-hero-stats">
+      ${heroStats.map(x => `<div class="hero-stat ${x.tone || ''}">
+        <div class="hero-stat-top"><span>${x.icon}</span><small>${esc(x.label)}</small></div>
+        <strong>${x.value == null ? '—' : fmtStat(x.value)}</strong>
+      </div>`).join('')}
+    </div>
+
+    <div class="profile-overview-grid">
+      <div class="profile-module career-module">
+        <div class="module-head"><span>CAREER</span><small>HLLSTATS.DEV</small></div>
+        <div class="career-main">
+          <div class="career-xp"><span>CAREER XP</span><strong>${fmtStat(hll['Career XP'])}</strong><i>✦</i></div>
+          <div class="career-roles">
+            ${[['Commander','Commander'],['Officer','Officer'],['Tank Commander','Tank Commander'],['Spotter','Spotter']].map(([label,key]) =>
+              `<div><span>${esc(label)}</span><b>${fmtStat(hll[key])}</b></div>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-module faction-module">
+        <div class="module-head"><span>FACTIONS</span><small>ESTIMATED</small></div>
+        <div class="faction-strip">
+          ${Object.entries(hll.factions || {}).map(([name,value],i) =>
+            `<div class="faction faction-${i % 4}"><span>${esc(name)}</span><b>${fmtStat(value)}</b></div>`).join('') || '<div class="module-empty">NO FACTION DATA</div>'}
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-module performance-module">
+      <div class="module-head"><span>PERFORMANCE // RATINGS</span><small>UNIFIED DATA</small></div>
+      <div class="performance-grid">
+        ${ratingItems.map(x => `<div><span>${esc(x.label)}</span><b>${fmtStat(ratings[x.key])}</b></div>`).join('')}
+        <div><span>K/D</span><b>${fmtStat(s.kd)}</b></div>
+        <div><span>KPM</span><b>${fmtStat(s.kpm)}</b></div>
+        <div><span>SCORE / MIN</span><b>${fmtStat(s.scorePerMin)}</b></div>
+        <div><span>PLAYTIME</span><b>${fmtStat(s.playtimeHours,' h')}</b></div>
+      </div>
+    </div>
+
+    <div class="profile-section-label"><span>02</span> FIELD STATISTICS <i></i><small>COMBAT · SUPPORT · ROLES · MAPS</small></div>
   </div>`;
 }
 
@@ -560,18 +610,19 @@ function showPlayer(id, options = {}) {
 
   $("#players").innerHTML = `
     <div class="section player-profile">
-      <div class="player-profile-head">
+      <div class="player-profile-hero">
+        <div class="profile-hero-bg"></div>
         <div class="player-profile-identity">
           <div class="profile-avatar">${esc((username || "?").slice(0,1).toUpperCase())}</div>
           <div>
-            <span class="eyebrow">GWSM // FIELD RECORD</span>
+            <span class="eyebrow">GWSM // PERSONNEL RECORD</span>
             <h2>${esc(username)}</h2>
-            <div class="profile-meta"><span>PLAYER PROFILE</span><span class="profile-separator">/</span><span>LIVE DATA LINK</span></div>
+            <div class="profile-meta"><span>HELL LET LOOSE</span><span class="profile-separator">/</span><span>FIELD STATISTICS</span><span class="profile-separator">/</span><span>LIVE RECORD</span></div>
           </div>
         </div>
         <div class="player-profile-actions">
-          <div class="profile-signal"><span class="status-dot"></span>CONNECTED</div>
-          <button class="refresh" id="player-back">← ZURÜCK ZUR SUCHE</button>
+          <div class="profile-signal"><span class="status-dot"></span> DATA LINK ACTIVE</div>
+          <button class="refresh" id="player-back">← ZURÜCK</button>
         </div>
       </div>
       ${renderUnifiedSummary(unifiedPlayer)}
