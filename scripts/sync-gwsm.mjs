@@ -291,18 +291,22 @@ const externalSources = {
   },
   "hll-ratings": {
     status: steamPlayers.length
-      ? (storedRatings.length ? "ok" : "Fehler / nicht erreichbar")
+      ? (storedRatings.length
+        ? "ok"
+        : (source("hll-ratings", {}).error
+          ? "Fehler: " + source("hll-ratings", {}).error
+          : "Nicht verfügbar"))
       : "SteamID erforderlich",
     updatedAt: latestFetchedAt(storedRatings) || source("hll-ratings", {}).updatedAt || null,
     matches: storedRatings.length
   },
   "hllrecords": {
-    status: steamPlayers.length ? "Nicht verbunden" : "SteamID erforderlich",
+    status: steamPlayers.length ? "API-Key erforderlich" : "SteamID erforderlich",
     updatedAt: source("hllrecords", {}).updatedAt || null,
     matches: Number(source("hllrecords", {}).matches || 0)
   },
-  "crcon": { status: "Nicht verbunden", updatedAt: null, matches: 0 },
-  "frostbite": { status: "Nicht verbunden", updatedAt: null, matches: 0 }
+  "crcon": { status: "Nicht konfiguriert", updatedAt: null, matches: 0 },
+  "frostbite": { status: "Nicht konfiguriert", updatedAt: null, matches: 0 }
 };
 
 const previousDiscord = previousMetaSources.discord || {};
