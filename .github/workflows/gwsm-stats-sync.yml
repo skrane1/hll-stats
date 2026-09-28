@@ -2,11 +2,22 @@ name: GWSM HLL Stats Sync
 
 on:
   schedule:
-    - cron: "17 * * * *"
+    # GitHub Actions supports scheduled runs as often as every 5 minutes.
+    - cron: "*/5 * * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - "stats.json"
+      - "players.json"
+      - "scripts/sync-gwsm.mjs"
+      - ".github/workflows/gwsm-stats-sync.yml"
 
 permissions:
   contents: write
+
+concurrency:
+  group: gwsm-stats-sync
+  cancel-in-progress: false
 
 jobs:
   sync:
@@ -14,10 +25,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Sync GWSM stats
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/sync-gwsm.mjs
 
       - name: Commit updated stats
