@@ -144,28 +144,53 @@ const externalSources = {
 };
 
 const previousMetaSources = meta.sources || {};
+const currentDiscordMatches = Object.keys(stats).length;
+const previousDiscord = previousMetaSources.discord || {};
+const discordChanged =
+  previousDiscord.status !== "ok" ||
+  Number(previousDiscord.matches || 0) !== currentDiscordMatches;
+
+const stableSources = {
+  ...previousMetaSources,
+  discord: {
+    status: "ok",
+    updatedAt: discordChanged ? now : (previousDiscord.updatedAt || now),
+    matches: currentDiscordMatches
+  }
+};
+
+for (const [key, source] of Object.entries(externalSources)) {
+  const previous = previousMetaSources[key] || {};
+  const changed =
+    previous.status !== source.status ||
+    Number(previous.matches || 0) !== Number(source.matches || 0);
+
+  stableSources[key] = {
+    ...source,
+    updatedAt: changed ? now : (previous.updatedAt || source.updatedAt || null)
+  };
+}
+
+const sourcesChanged = !sameJson(
+  previousMetaSources,
+  stableSources
+);
+
 const nextMeta = {
   ...meta,
-  sources: {
-    ...previousMetaSources,
-    discord: {
-      status: "ok",
-      updatedAt: now,
-      matches: Object.keys(stats).length
-    },
-    ...externalSources
-  },
+  sources: stableSources,
   matches: Number(meta.matches || 0),
   duplicates: Number(meta.duplicates || 0)
 };
 
-const runLog = {
-  time: now,
-  level: "info",
-  message: `Automatischer GWSM-Sync: ${Object.keys(nextPlayers).length} Spieler, ${steamPlayers.length} mit SteamID64.`
-};
-
-nextMeta.logs = [runLog, ...(Array.isArray(meta.logs) ? meta.logs : [])].slice(0, 50);
+if (playersChanged || sourcesChanged || !Array.isArray(meta.logs) || meta.logs.length === 0) {
+  const runLog = {
+    time: now,
+    level: "info",
+    message: `Automatischer GWSM-Sync: ${Object.keys(nextPlayers).length} Spieler, ${steamPlayers.length} mit SteamID64.`
+  };
+  nextMeta.logs = [runLog, ...(Array.isArray(meta.logs) ? meta.logs : [])].slice(0, 50);
+}
 
 /*
  * The sync state is written on every run. The workflow only commits when
