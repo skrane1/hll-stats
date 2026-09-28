@@ -551,6 +551,7 @@ for (const [discordId, raw] of Object.entries(stats)) {
       impact: ratings?.impact ?? null,
       comp: ratings?.comp ?? null
     },
+    hllstats: hllStats?.stats ?? null,
     sources: {
       "hll-ratings": Boolean(ratings),
       hllrecords: Boolean(records),
