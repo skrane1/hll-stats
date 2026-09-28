@@ -394,14 +394,14 @@ function renderDetailedUnified(u) {
       ['Career XP',hll['Career XP']],['Commander',hll.Commander],['Officer',hll.Officer],
       ['Tank Commander',hll['Tank Commander']],['Spotter',hll.Spotter]
     ]),    renderStatSection('FAKTIONEN', Object.entries(hll.factions || {})),
-    renderStatSection('ROLLEN', Object.entries(hll.roles || {}), '', true),
-    renderStatSection('GAME MODES', Object.entries(hll.gameModes || {}), '', true),
-    renderStatSection('BUILT', Object.entries(hll.built || {}), '', true),
+    renderStatSection('ROLLEN', Object.entries(hll.roles || {})),
+    renderStatSection('GAME MODES', Object.entries(hll.gameModes || {})),
+    renderStatSection('BUILT', Object.entries(hll.built || {})),
     renderStatSection('COMMENDS', [['Received',hll.commends?.received],['Given',hll.commends?.given]]),
     renderStatSection('SUPPLIES', [['Total Dropped',hll.supplies?.totalDropped],['Total Used',hll.supplies?.totalUsed],['Truck Drops',hll.supplies?.truckDrops]]),
     renderStatSection('AMMO', [['Total Dropped',hll.ammo?.totalDropped],['Jeep Drops',hll['Jeep Drops']]]),
     renderStatSection('OTHER', [['Flare Gun Scans',hll['Flare Gun Scans']],['Half-track Spawns',hll['Half-track Spawns']],['Molotovs Thrown',hll['Molotovs Thrown']],['Captured Sectors',hll['Captured Sectors']]]),
-    `<div class="stats-panel"><div class="subsection-title">MAPS</div><div class="role-grid">${Object.entries(hll.maps || {}).filter(([,value])=>Number(value)!==0).map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${fmtStat(value)}</span></div>`).join('')}</div></div>`
+    `<div class="stats-panel"><div class="subsection-title">MAPS</div><div class="role-grid">${Object.entries(hll.maps || {}).map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${fmtStat(value)}</span></div>`).join('')}</div></div>`
   ].join('');
   const ratingHtml = renderStatSection('RATINGS & PERFORMANCE', [
     ['Overall Rating',ratings.overall],['Team Rating',ratings.team],['Impact Rating',ratings.impact],['Comp Rating',ratings.comp],['Combat / min',ratings.combatPerMin],['Offense / min',ratings.offensePerMin],['Defense / min',ratings.defensePerMin],['Support / min',ratings.supportPerMin],['Score / min',s.scorePerMin]
