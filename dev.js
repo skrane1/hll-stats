@@ -79,10 +79,12 @@ function renderPlayers() {
     const id = input.dataset.playerId;
     const steamId = input.value.trim();
     try {
-      await apiJson(`${API_BASE}/api/admin/players/${encodeURIComponent(id)}`, {
-        method: "PUT",
-        body: JSON.stringify({ steamId })
-      });
+      if (!API_BASE) {
+        const store = JSON.parse(localStorage.getItem("gwsm_managed_players") || "{}");
+        if (store[id]) { store[id].steamId = steamId; store[id].updatedAt = new Date().toISOString(); localStorage.setItem("gwsm_managed_players", JSON.stringify(store)); }
+      } else {
+        await apiJson(`${API_BASE}/api/admin/players/${encodeURIComponent(id)}`, { method: "PUT", body: JSON.stringify({ steamId }) });
+      }
       setStatus("SteamID gespeichert");
       await load();
       await loadManagedPlayers();
@@ -189,7 +191,9 @@ async function deleteManagedPlayer(id) {\n  if (!API_BASE) { const store=JSON.pa
 
 async function trigger(url, body = {}) {
   if (!API_BASE) {
-    setStatus("Backend nicht verbunden", false);
+    setStatus("Lokaler Modus – Daten werden im Browser gespeichert");
+    await load();
+    await loadManagedPlayers();
     return;
   }
   try {
