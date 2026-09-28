@@ -6,7 +6,7 @@
       "matches": 12
     },
     "hllstats.dev": {
-      "status": "Keine erfassten HLLStats.dev-Spielerdaten",
+      "status": "HLLStats.dev Browser-Abfrage fehlgeschlagen: steamId is not defined",
       "updatedAt": null,
       "matches": 0
     },
@@ -34,6 +34,11 @@
   "matches": 0,
   "duplicates": 0,
   "logs": [
+    {
+      "time": "2026-09-28T17:19:36.854Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 0 externe Spielerabfragen erfolgreich."
+    },
     {
       "time": "2026-09-28T17:18:10.332Z",
       "level": "info",
