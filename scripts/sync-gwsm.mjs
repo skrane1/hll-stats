@@ -209,7 +209,9 @@ const refreshExternal = async (player, previousExternal) => {
 
   const previousRefresh = previousExternal?._lastRefresh;
   const refreshAge = previousRefresh ? Date.now() - new Date(previousRefresh).getTime() : Infinity;
-  if (refreshAge < 30 * 60 * 1000) {
+  const requiredSources = ["hll-ratings", "hllstats.dev", "hllrecords", "frostbite"];
+  const missingSource = requiredSources.some(key => !previousExternal?.[key]?.fetchedAt);
+  if (refreshAge < 30 * 60 * 1000 && !missingSource) {
     return { external: previousExternal, ok: true, skipped: true, success: 0 };
   }
 
