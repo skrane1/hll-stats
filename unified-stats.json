@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T14:19:25.966Z",
+  "updatedAt": "2026-09-28T14:41:32.585Z",
   "players": {
     "386241651753877505": {
       "id": "386241651753877505",
@@ -160,19 +160,67 @@
       "coverage": "Discord",
       "updatedAt": "2026-09-28T14:19:25.966Z"
     },
-    "504270081946157057": {
-      "id": "504270081946157057",
+    "76561199100319875": {
+      "id": "76561199100319875",
       "username": "GWSM | skrane1",
-      "steamId": "",
+      "steamId": "76561199100319875",
       "epicId": "",
       "discordId": "504270081946157057",
       "stats": {
         "you-shall-not-pass": 15,
         "WO OP?": 6
       },
-      "external": {},
-      "coverage": "Discord",
-      "updatedAt": "2026-09-28T14:19:25.966Z"
+      "external": {
+        "hll-ratings": {
+          "provider": "hll-ratings",
+          "error": "HTTP 403",
+          "failedAt": "2026-09-28T14:41:32.585Z"
+        },
+        "hllstats.dev": {
+          "provider": "hllstats.dev",
+          "url": "https://www.hllstats.dev/?steam64id=76561199100319875",
+          "fetchedAt": "2026-09-28T14:41:32.585Z",
+          "stats": {
+            "Kills": 0,
+            "Vehicle Destroyed": 0,
+            "Tanks Destroyed": 0,
+            "Jeeps Destroyed": 0,
+            "Headshots": 0,
+            "Artillery": 0,
+            "Knife": 0,
+            "Spade": 0,
+            "Half-track MG": 0,
+            "Career XP": 1,
+            "Commander": 1,
+            "Officer": 1,
+            "Tank Commander": 1,
+            "Spotter": 1,
+            "Rifleman": 1,
+            "Assault": 1,
+            "Autorifleman": 1,
+            "Medic": 1,
+            "Support": 1,
+            "Machine Gunner": 1,
+            "Anti Tank": 1,
+            "Engineer": 1,
+            "Sniper": 1,
+            "Crewman": 1,
+            "Estimated Total Games": 0,
+            "Wins": 0,
+            "Estimated Loss": 0,
+            "Estimated WL Ratio": 0,
+            "Total Dropped": 0,
+            "Total Used": 0,
+            "Truck Drops": 0,
+            "Jeep Drops": 0,
+            "Molotovs Thrown": 0,
+            "Captured Sectors": 0
+          }
+        },
+        "_lastRefresh": "2026-09-28T14:41:32.585Z"
+      },
+      "coverage": "Discord + Steam + externe Stats",
+      "updatedAt": "2026-09-28T14:41:32.585Z"
     },
     "1235652648305299536": {
       "id": "1235652648305299536",

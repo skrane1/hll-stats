@@ -6,17 +6,17 @@
       "matches": 12
     },
     "hllstats.dev": {
-      "status": "SteamID erforderlich",
-      "updatedAt": null,
-      "matches": 0
+      "status": "ok",
+      "updatedAt": "2026-09-28T14:41:32.585Z",
+      "matches": 1
     },
     "hll-ratings": {
-      "status": "SteamID erforderlich",
+      "status": "Fehler / nicht erreichbar",
       "updatedAt": null,
       "matches": 0
     },
     "hllrecords": {
-      "status": "SteamID erforderlich",
+      "status": "Nicht verbunden",
       "updatedAt": null,
       "matches": 0
     },
@@ -34,6 +34,11 @@
   "matches": 0,
   "duplicates": 0,
   "logs": [
+    {
+      "time": "2026-09-28T14:41:32.585Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 1 externe Spielerabfragen erfolgreich."
+    },
     {
       "time": "2026-09-28T14:19:25.966Z",
       "level": "info",
