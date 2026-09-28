@@ -830,6 +830,20 @@
       "username": "GWSN | Drexusnite",
       "value": 4,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-28T15:31:35.470Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 7,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-28T15:31:36.060Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 9,
+      "source": "ocr"
     }
   ],
   "alchemist": [
