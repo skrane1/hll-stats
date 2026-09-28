@@ -91,6 +91,7 @@ const loosePercentAfterLabel = (text, label) => {
 
 const fetchHllRatings = async steamId => {
   const text = await fetchText("https://hellor.pro/player/" + steamId);
+  console.log("HELLOR DEBUG", text.length, text.slice(0, 1200));
   if (/Player Not Found|Unable to load player data/i.test(text)) {
     throw new Error("Spieler nicht gefunden");
   }
@@ -169,6 +170,7 @@ const fetchHllStatsDev = async steamId => {
 const fetchHllRecords = async steamId => {
   const url = "https://hllrecords.com/profiles/" + steamId;
   const text = await fetchText(url);
+  console.log("HLLRECORDS DEBUG", text.length, text.slice(0, 1200));
   if (/player not found|profile not found|page not found/i.test(text)) throw new Error("Spieler nicht in HLL Records gefunden");
 
   const totalMatches = text.match(/Total on servers\s+([0-9]+)\+?\s+matches/i)?.[1];
