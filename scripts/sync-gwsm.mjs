@@ -243,19 +243,39 @@ const previousMetaSources = meta.sources || {};
 const currentDiscordMatches = Object.keys(stats).length;
 const source = (key, fallback) => previousMetaSources[key] || fallback;
 
+const storedRatings = Object.values(unified.players || {}).filter(
+  player => player?.external?.["hll-ratings"]?.fetchedAt
+);
+const storedHllStats = Object.values(unified.players || {}).filter(
+  player => player?.external?.["hllstats.dev"]?.fetchedAt
+);
+
+const latestFetchedAt = list => {
+  const times = list
+    .map(player => player?.external?.["hll-ratings"]?.fetchedAt || player?.external?.["hllstats.dev"]?.fetchedAt)
+    .filter(Boolean)
+    .map(value => new Date(value).getTime())
+    .filter(Number.isFinite);
+  return times.length ? new Date(Math.max(...times)).toISOString() : null;
+};
+
 const externalSources = {
   "hllstats.dev": {
-    status: steamPlayers.length ? (successfulHllStats ? "ok" : "Fehler / nicht erreichbar") : "SteamID erforderlich",
-    updatedAt: source("hllstats.dev", {}).updatedAt || (successfulHllStats ? now : null),
-    matches: successfulHllStats
+    status: steamPlayers.length
+      ? (storedHllStats.length ? "ok" : "Fehler / nicht erreichbar")
+      : "SteamID erforderlich",
+    updatedAt: latestFetchedAt(storedHllStats) || source("hllstats.dev", {}).updatedAt || null,
+    matches: storedHllStats.length
   },
   "hll-ratings": {
-    status: steamPlayers.length ? (successfulRatings ? "ok" : "Fehler / nicht erreichbar") : "SteamID erforderlich",
-    updatedAt: source("hll-ratings", {}).updatedAt || (successfulRatings ? now : null),
-    matches: successfulRatings
+    status: steamPlayers.length
+      ? (storedRatings.length ? "ok" : "Fehler / nicht erreichbar")
+      : "SteamID erforderlich",
+    updatedAt: latestFetchedAt(storedRatings) || source("hll-ratings", {}).updatedAt || null,
+    matches: storedRatings.length
   },
   "hllrecords": {
-    status: steamPlayers.length ? "Noch nicht angebunden" : "SteamID erforderlich",
+    status: steamPlayers.length ? "Nicht verbunden" : "SteamID erforderlich",
     updatedAt: source("hllrecords", {}).updatedAt || null,
     matches: Number(source("hllrecords", {}).matches || 0)
   },
