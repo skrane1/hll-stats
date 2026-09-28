@@ -6,9 +6,9 @@
       "matches": 12
     },
     "hllstats.dev": {
-      "status": "ok",
-      "updatedAt": "2026-09-28T17:15:28.871Z",
-      "matches": 1
+      "status": "HLLStats.dev Browser-Abfrage fehlgeschlagen: fetch failed",
+      "updatedAt": null,
+      "matches": 0
     },
     "hll-ratings": {
       "status": "Zugriffsschutz",
@@ -34,6 +34,11 @@
   "matches": 0,
   "duplicates": 0,
   "logs": [
+    {
+      "time": "2026-09-28T17:16:44.092Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 0 externe Spielerabfragen erfolgreich."
+    },
     {
       "time": "2026-09-28T17:15:28.871Z",
       "level": "info",
