@@ -115,8 +115,8 @@ async function loadManagedPlayers() {
     const players = Object.entries(data.players || {}).map(([id,p]) => ({ id, ...p }));
     $("#managed-players").innerHTML = players.length ? `<div class="admin-player-list">${players.map(p => `
       <div class="admin-player-row">
-        <div><b>${esc(p.username || p.id)}</b><div class="muted">Steam: ${esc(p.steamId || "—")} · Epic: ${esc(p.epicId || "—")}</div></div>
-        <div class="admin-row-actions"><button class="refresh mini-sync-managed" data-steam="${esc(p.steamId || '')}" data-epic="${esc(p.epicId || '')}">↻ Sync</button><button class="refresh mini-edit" data-id="${esc(p.id)}">Bearbeiten</button><button class="danger mini-delete" data-id="${esc(p.id)}">Entfernen</button></div>
+        <div><b>${esc(p.username || p.id)}</b><div class="muted">Steam: ${esc(p.steamId || "—")} · Epic: ${esc(p.epicId || "—")} · Discord: ${esc(p.discordId || "—")} · Interne ID: ${esc(p.id)}</div></div>
+        <div class="admin-row-actions">${(p.steamId || p.epicId) ? `<button class="refresh mini-sync-managed" data-steam="${esc(p.steamId || '')}" data-epic="${esc(p.epicId || '')}">↻ Sync</button>` : `<span class="muted">keine externe ID</span>`}<button class="refresh mini-edit" data-id="${esc(p.id)}">Bearbeiten</button><button class="danger mini-delete" data-id="${esc(p.id)}">Entfernen</button></div>
       </div>`).join("")}</div>` : `<div class="empty">Noch keine Spieler verwaltet.</div>`;
     document.querySelectorAll(".mini-edit").forEach(b => b.addEventListener("click", () => editManagedPlayer(b.dataset.id, players)));
     document.querySelectorAll(".mini-delete").forEach(b => b.addEventListener("click", () => deleteManagedPlayer(b.dataset.id)));
@@ -129,7 +129,7 @@ function clearPlayerForm() { ["player-username","player-steam","player-epic","pl
 async function saveManagedPlayer() {
   if (!API_BASE) return setStatus("Backend noch nicht konfiguriert", false);
   const payload = { username: $("#player-username").value.trim(), steamId: $("#player-steam").value.trim(), epicId: $("#player-epic").value.trim(), discordId: $("#player-discord").value.trim() };
-  if (!payload.username || (!payload.steamId && !payload.epicId)) return setStatus("Name und SteamID64 oder EpicID erforderlich", false);
+  if (!payload.username) return setStatus("Spielername erforderlich", false);
   try {
     const editId = $("#player-save").dataset.editId;
     await apiJson(`${API_BASE}/api/admin/players${editId ? "/" + encodeURIComponent(editId) : ""}`, { method: editId ? "PUT" : "POST", body: JSON.stringify(payload) });
