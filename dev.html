@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GWSM Dev – HLL Stats</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">HLL</div><div><b>GWSM DEV</b><small>Stats Control Center</small></div></div>
+    <nav>
+      <a class="nav active" href="./dev.html">⚙ <span>Stats Sync</span></a>
+      <a class="nav" href="./index.html">↗ <span>Öffentliche Seite</span></a>
+    </nav>
+    <div class="sidebar-bottom"><span class="status-dot"></span><span id="dev-status">Bereit</span></div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">GWSM DEVELOPMENT</p>
+        <h1>HLL Stats Control Center</h1>
+      </div>
+      <div class="header-actions">
+        <span id="dev-clock">—</span>
+        <button id="sync-all" class="refresh sync-button">↻ Jetzt aktualisieren</button>
+      </div>
+    </header>
+
+    <section class="dev-grid">
+      <article class="card dev-status-card">
+        <div class="label">Letzter erfolgreicher Sync</div>
+        <div class="num" id="last-sync">—</div>
+        <div class="sub" id="sync-state">Noch kein Sync durchgeführt</div>
+      </article>
+      <article class="card">
+        <div class="label">Spieler</div>
+        <div class="num" id="player-count">0</div>
+        <div class="sub">Unified Stats</div>
+      </article>
+      <article class="card">
+        <div class="label">Matches</div>
+        <div class="num" id="match-count">0</div>
+        <div class="sub">dedupliziert</div>
+      </article>
+      <article class="card">
+        <div class="label">Duplikate</div>
+        <div class="num" id="duplicate-count">0</div>
+        <div class="sub">zusammengeführt</div>
+      </article>
+    </section>
+
+    <section class="section dev-panel">
+      <div class="section-head">
+        <div><h2>Datenquellen</h2><div class="muted">Status des letzten Synchronisationslaufs</div></div>
+        <button id="sync-selected" class="refresh">Spieler synchronisieren</button>
+      </div>
+      <div id="sources" class="source-grid"></div>
+    </section>
+
+    <section class="section dev-panel">
+      <div class="section-head">
+        <div><h2>Spieler</h2><div class="muted">Quelle, Abdeckung und Unified-Werte</div></div>
+        <input id="dev-search" class="search" type="search" placeholder="Spieler suchen …" autocomplete="off">
+      </div>
+      <div id="dev-players"></div>
+    </section>
+
+    <section class="section dev-panel">
+      <div class="section-head"><div><h2>Sync-Protokoll</h2><div class="muted">Letzte Läufe und Fehler</div></div></div>
+      <div id="sync-log" class="log-list"><div class="empty">Noch keine Sync-Informationen.</div></div>
+    </section>
+  </main>
+</div>
+<script src="./dev.js?v=1"></script>
+</body>
+</html>

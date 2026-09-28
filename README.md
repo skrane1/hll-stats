@@ -1,12 +1,25 @@
-# HLL Stats – GitHub Pages v2
+# GWSM HLL Stats
 
-Read-only HLL statistics website.
+GitHub-Pages frontend for the GWSM HLL statistics website.
 
-## Daten
-- `stats.json` – aktueller Stand
-- `history.json` – Historie je Kategorie
-- `hall-of-mages.json` – gekürte Mythos
-- `challenges.json` – laufende Challenges
-- `images/` – Bilder für die Kategorien
+## Dateien
+- `index.html` – öffentliche Website
+- `app.js` / `style.css` – Frontend
+- `stats.json` – aktuelle GWSM-Challengewerte
+- `history.json` – Challenge-Historie
+- `unified-stats.json` – vom späteren Stats-Backend erzeugte Unified-HLL-Stats
+- `dev.html` / `dev.js` – geschütztes Dev-Dashboard-Frontend
+- `sync-meta.json` – Sync-/Quellen-Metadaten des Backends
 
-Die Zusatzdateien sind optional; bis der Bot sie liefert, zeigt die Website entsprechende leere Zustände.
+## Unified HLL Stats
+Die öffentliche Seite zeigt Unified-Stats nur aus `unified-stats.json`. Externe HLL-Quellen werden **nicht direkt aus dem Browser** abgefragt.
+
+Das Backend soll alle 60 Minuten synchronisieren, Matches deduplizieren und danach `unified-stats.json` sowie `sync-meta.json` aktualisieren.
+
+## Manueller Sync
+Das Dev-Dashboard besitzt einen manuellen Sync-Button. Vor dem produktiven Einsatz muss `GWSM_STATS_API` auf die URL des Backend-Services zeigen. Das Backend sollte mindestens bereitstellen:
+
+- `POST /api/admin/stats/sync` – alle GWSM-Spieler synchronisieren
+- `POST /api/admin/stats/sync/player` – einen Spieler synchronisieren (`{ "steamId": "..." }`)
+
+Die Dev-Seite darf niemals API-Keys der Datenquellen an den Browser ausliefern.

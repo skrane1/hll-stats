@@ -41,6 +41,7 @@ let stats = {};
 let history = {};
 let hall = [];
 let challenges = [];
+let unified = { updatedAt: null, players: {} };
 
 const $ = s => document.querySelector(s);
 const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -255,6 +256,24 @@ function renderCategories() {
   }</div>`;
 }
 
+function unifiedFor(id) {
+  return unified.players?.[String(id)] || null;
+}
+
+function renderUnifiedSummary(u) {
+  if (!u) return `<div class="empty compact-empty">Noch keine externen HLL-Stats synchronisiert.</div>`;
+  const s = u.stats || {};
+  const items = [
+    ["KILLS", s.kills], ["DEATHS", s.deaths], ["K/D", s.kd],
+    ["WINRATE", s.winrate, "%"], ["MATCHES", s.matches], ["PLAYTIME", s.playtimeHours, " h"]
+  ];
+  return `<div class="unified-box">
+    <div class="unified-title"><div><span class="eyebrow">UNIFIED HLL STATS</span><h3>Externe Gesamtstatistik</h3></div><span class="unified-updated">${u.updatedAt ? `Update ${dateLabel(u.updatedAt)}` : "—"}</span></div>
+    <div class="unified-grid">${items.map(([label,value,suffix=""]) => `<div class="unified-stat"><span>${label}</span><strong>${value == null ? "—" : esc(typeof value === "number" ? value.toLocaleString("de-DE", {maximumFractionDigits: 2}) : value)}${suffix}</strong></div>`).join("")}</div>
+    <div class="unified-foot">${u.coverage ? `Abdeckung: ${esc(u.coverage)}` : "Die Statistik wird aus den verfügbaren HLL-Datenquellen zusammengeführt."}</div>
+  </div>`;
+}
+
 function renderPlayers() {
   const el = $("#players");
   const ps = playersArray().sort((a,b) => {
@@ -337,6 +356,7 @@ function showPlayer(id) {
     ? history[key].filter(x => String(x.playerId || x.id || "") === String(id) || x.username === username)
     : [];
 
+  const unifiedPlayer = unifiedFor(id);
   $("#players").innerHTML = `
     <div class="section">
       <div class="section-head">
@@ -346,6 +366,7 @@ function showPlayer(id) {
         </div>
         <button class="refresh" id="player-back">← Zurück zur Suche</button>
       </div>
+      ${renderUnifiedSummary(unifiedPlayer)}
       <table>
         <thead><tr><th>Kategorie</th><th>Aktueller Wert</th><th>Rang</th><th>Historie</th></tr></thead>
         <tbody>
@@ -385,13 +406,14 @@ async function fetchJsonWithFallback(file, fallback = null) {
 
 async function loadData() {
   try {
-    const [s,h,ho,c] = await Promise.all([
+    const [s,h,ho,c,u] = await Promise.all([
       fetchJsonWithFallback("stats.json", {}),
       fetchJsonWithFallback("history.json", {}),
       fetchJsonWithFallback("hall-of-mages.json", []),
-      fetchJsonWithFallback("challenges.json", [])
+      fetchJsonWithFallback("challenges.json", []),
+      fetchJsonWithFallback("unified-stats.json", {updatedAt:null,players:{}})
     ]);
-    stats=s||{}; history=h||{}; hall=Array.isArray(ho)?ho:[]; challenges=Array.isArray(c)?c:[];
+    stats=s||{}; history=h||{}; hall=Array.isArray(ho)?ho:[]; challenges=Array.isArray(c)?c:[]; unified=u&&typeof u==="object"?u:{updatedAt:null,players:{}};
     $("#status").textContent="Verbunden";
     $("#last-update").textContent=new Date().toLocaleTimeString("de-DE");
     renderAll();
