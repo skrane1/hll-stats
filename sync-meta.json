@@ -1,6 +1,18 @@
 {
-  "sources": {},
+  "sources": {
+    "discord": {
+      "status": "ok",
+      "updatedAt": "2026-09-28T13:50:38.104Z",
+      "matches": 12
+    }
+  },
   "matches": 0,
   "duplicates": 0,
-  "logs": []
+  "logs": [
+    {
+      "time": "2026-09-28T13:50:38.104Z",
+      "level": "info",
+      "message": "GWSM initialer Stats-Sync: 12 Spieler."
+    }
+  ]
 }
