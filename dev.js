@@ -56,7 +56,14 @@ function renderSources() {
 
   $("#sources").innerHTML = sources.map(([name, key]) => {
     const source = syncMeta.sources?.[key] || {};
-    const status = source.status || (name === "Discord" ? "ok" : "Nicht synchronisiert");
+    let status = source.status;
+    if (!status) {
+      status =
+        key === "discord" ? "ok" :
+        key === "crcon" || key === "frostbite" ? "Nicht verbunden" :
+        key === "hllrecords" ? "API erforderlich" :
+        "SteamID erforderlich";
+    }
     const stateClass = status === "ok" ? "ok" : "pending";
 
     return `<div class="source-card">
