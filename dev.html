@@ -7,7 +7,21 @@
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<div class="shell">
+<div id="dev-lock" class="dev-lock">
+  <div class="dev-lock-card">
+    <div class="brand-mark">HLL</div>
+    <p class="eyebrow">GWSM DEVELOPMENT</p>
+    <h1>Dev-Bereich gesperrt</h1>
+    <p>Dieser Bereich ist nur mit Passwort zugänglich.</p>
+    <form id="dev-login-form">
+      <input id="dev-password" type="password" autocomplete="current-password" placeholder="Passwort" autofocus>
+      <button type="submit" class="refresh">Entsperren</button>
+      <div id="dev-login-error" class="dev-login-error"></div>
+    </form>
+    <a href="./index.html" class="muted">← Zur öffentlichen Seite</a>
+  </div>
+</div>
+<div class="shell" id="dev-shell" hidden>
   <aside class="sidebar">
     <div class="brand"><div class="brand-mark">HLL</div><div><b>GWSM DEV</b><small>Stats Control Center</small></div></div>
     <nav>
@@ -91,6 +105,34 @@
   </main>
 </div>
 <script src="./config.js?v=1"></script>
+<script>
+(async () => {
+  const PASSWORD_HASH = "e3d289a4aef7dc2d0bddde77039fe4101679286f5ee71debd099bbeef89628fa";
+  const lock = document.getElementById("dev-lock");
+  const shell = document.getElementById("dev-shell");
+  const form = document.getElementById("dev-login-form");
+  const input = document.getElementById("dev-password");
+  const error = document.getElementById("dev-login-error");
+  const hash = async value => {
+    const bytes = new TextEncoder().encode(value);
+    const digest = await crypto.subtle.digest("SHA-256", bytes);
+    return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, "0")).join("");
+  };
+  const unlock = () => { lock.hidden = true; shell.hidden = false; };
+  if (sessionStorage.getItem("gwsm_dev_unlocked") === "1") unlock();
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    if ((await hash(input.value)) === PASSWORD_HASH) {
+      sessionStorage.setItem("gwsm_dev_unlocked", "1");
+      unlock();
+      input.value = "";
+    } else {
+      error.textContent = "Falsches Passwort.";
+      input.select();
+    }
+  });
+})();
+</script>
 <script src="./dev.js?v=9"></script>
 </body>
 </html>
