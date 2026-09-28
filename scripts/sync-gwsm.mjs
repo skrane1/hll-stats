@@ -130,9 +130,9 @@ const fetchHllStatsDev = async steamId => {
   // HLLStats.dev renders the empty/default form with the same "Totals"
   // section as a real profile. Do not mistake that placeholder page for
   // player data.
-  if (/Steam profile must be set to public/i.test(text)) {
-    throw new Error("Steam-Profil nicht öffentlich");
-  }
+  // This sentence is part of the normal HLLStats.dev page and is also
+  // displayed for valid public profiles. It is therefore NOT a privacy/error
+  // signal. We determine availability from the actual tracked values below.
   // The input placeholder is present in the HTML even when a real SteamID
   // has been submitted, so it cannot be used to decide whether a player
   // exists. We determine that from the actual tracked values below.
