@@ -341,6 +341,7 @@ function renderDetailedUnified(u) {
   const maps = s.maps || {};
   const factions = s.factions || {};
   const ratings = s.ratings || {};
+  const hll = s.hllstats || {};
   const recent = s.recent || {};
   const trends = s.trends || {};
   const matchRows = Array.isArray(u.matches) ? u.matches : [];
@@ -360,6 +361,25 @@ function renderDetailedUnified(u) {
     ['Belgian Gates',support.belgianGates],['Barbed Wire',support.barbedWire],['Barricades',support.barricades],['Bunkers',support.bunkers],['Repair Stations',support.repairStations],
     ['Fuel Nodes',support.fuelNodes],['Manpower Nodes',support.manpowerNodes],['Munitions Nodes',support.munitionsNodes],['Flare Gun Scans',support.flareGunScans],['Half-track Spawns',support.halftrackSpawns],['Molotovs',support.molotovs],['Captured Sectors',support.capturedSectors ?? s.capturedSectors]
   ]);
+  const hllHtml = renderStatSection('HLLSTATS.DEV · CAREER STATS', [
+    ['Estimated Games', hll['Estimated Total Games']],
+    ['Wins', hll['Wins']],
+    ['Losses', hll['Estimated Loss']],
+    ['W/L Ratio', hll['Estimated WL Ratio']],
+    ['Kills', hll['Kills']],
+    ['Vehicle zerstört', hll['Vehicle Destroyed']],
+    ['Tanks zerstört', hll['Tanks Destroyed']],
+    ['Jeeps zerstört', hll['Jeeps Destroyed']],
+    ['Headshots', hll['Headshots']],
+    ['Artillerie', hll['Artillery']],
+    ['Knife', hll['Knife']],
+    ['Spade', hll['Spade']],
+    ['Half-track MG', hll['Half-track MG']],
+    ['Flamethrower', hll['Flamethrower']],
+    ['Molotovs', hll['Molotovs Thrown']],
+    ['Sektoren erobert', hll['Captured Sectors']]
+  ]);
+
   const ratingHtml = renderStatSection('RATINGS & PERFORMANCE', [
     ['Overall Rating',ratings.overall],['Team Rating',ratings.team],['Impact Rating',ratings.impact],['Comp Rating',ratings.comp],['Combat / min',ratings.combatPerMin],['Offense / min',ratings.offensePerMin],['Defense / min',ratings.defensePerMin],['Support / min',ratings.supportPerMin],['Score / min',s.scorePerMin]
   ]);
@@ -378,7 +398,7 @@ function renderDetailedUnified(u) {
 
   return `<div class="detail-tabs" data-detail-tabs>
     <div class="detail-tab-buttons"><button class="detail-tab active" data-tab="overview">Übersicht</button><button class="detail-tab" data-tab="combat">Combat</button><button class="detail-tab" data-tab="support">Support</button><button class="detail-tab" data-tab="roles">Rollen</button><button class="detail-tab" data-tab="maps">Maps</button><button class="detail-tab" data-tab="history">History</button></div>
-    <div class="detail-tab-content active" data-content="overview">${overview}${ratingHtml}${recentHtml}${factionHtml}</div>
+    <div class="detail-tab-content active" data-content="overview">${overview}${hllHtml}${ratingHtml}${recentHtml}${factionHtml}</div>
     <div class="detail-tab-content" data-content="combat">${combatHtml}</div>
     <div class="detail-tab-content" data-content="support">${supportHtml}</div>
     <div class="detail-tab-content" data-content="roles">${roleHtml || '<div class="empty">Noch keine Rollendaten synchronisiert.</div>'}</div>
