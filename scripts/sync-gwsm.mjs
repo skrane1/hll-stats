@@ -1,20 +1,10 @@
 import fs from "node:fs/promises";
 
 const readJson = async (path, fallback) => {
-  try { return JSON.parse(await fs.readFile(path, "utf8")); }
-  catch { return fallback; }
+  try { return JSON.parse(await fs.readFile(path, "utf8")); } catch { return fallback; }
 };
 
-const now = new Date().toISOString();\n\nconst extractStats = raw => {
-  const source = raw && typeof raw === "object" ? raw : {};
-  const values = {};
-  for (const [key, value] of Object.entries(source)) {
-    if (key === "username" || key === "discordId" || key === "steamId" || key === "epicId") continue;
-    if (typeof value === "number" && Number.isFinite(value)) values[key] = value;
-  }
-  return values;
-};
-
+const now = new Date().toISOString();
 const stats = await readJson("stats.json", {});
 const registry = await readJson("players.json", { version: 1, players: {} });
 const unified = await readJson("unified-stats.json", { updatedAt: null, players: {} });
@@ -42,14 +32,11 @@ unified.players ||= {};
 
 for (const [discordId, raw] of Object.entries(stats)) {
   const managed = registry.players[discordId];
-  const source = raw.categories || raw.stats || {};
   const values = {};
-
-  for (const [key, value] of Object.entries(source)) {
-    if (typeof value === "number") values[key] = value;
-    else if (value && typeof value.value === "number") values[key] = value.value;
+  for (const [key, value] of Object.entries(raw || {})) {
+    if (["username", "discordId", "steamId", "epicId"].includes(key)) continue;
+    if (typeof value === "number" && Number.isFinite(value)) values[key] = value;
   }
-
   const id = managed.steamId || managed.epicId || discordId;
   unified.players[id] = {
     id,
@@ -65,11 +52,7 @@ for (const [discordId, raw] of Object.entries(stats)) {
 
 meta.updatedAt = now;
 meta.sources ||= {};
-meta.sources.discord = {
-  status: "ok",
-  updatedAt: now,
-  matches: Object.keys(stats).length
-};
+meta.sources.discord = { status: "ok", updatedAt: now, matches: Object.keys(stats).length };
 meta.logs = [
   { time: now, level: "info", message: `Automatischer GWSM-Sync: ${Object.keys(unified.players).length} Spieler.` },
   ...(Array.isArray(meta.logs) ? meta.logs : [])
