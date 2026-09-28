@@ -182,9 +182,29 @@ const fetchBrowserText = async url => {
       body: JSON.stringify({ url })
     });
 
-    // HLLStats.dev fills the career values in the browser. Give the page
-    // enough time to finish its Steam lookup before reading the DOM.
-    await new Promise(resolve => setTimeout(resolve, 2500));
+    // HLLStats.dev uses the SteamID field + Submit flow to trigger the
+    // lookup. A plain navigation can leave the page on its empty template.
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    await request("/session/" + sessionId + "/execute/sync", {
+      method: "POST",
+      body: JSON.stringify({
+        script: `
+          const input = document.querySelector('input');
+          const submit = [...document.querySelectorAll('button, input[type="submit"]')]
+            .find(el => String(el.innerText || el.value || '').trim().toLowerCase() === 'submit');
+          if (!input || !submit) return false;
+          input.value = ${JSON.stringify(steamId)};
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+          submit.click();
+          return true;
+        `,
+        args: []
+      })
+    });
+
+    // Give the Steam lookup and page rendering time to complete.
+    await new Promise(resolve => setTimeout(resolve, 5000));
 
     const text = await request("/session/" + sessionId + "/execute/sync", {
       method: "POST",
