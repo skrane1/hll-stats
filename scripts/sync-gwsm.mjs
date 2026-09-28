@@ -443,7 +443,7 @@ const frostbiteSource = sourceStats("frostbite");
 
 const externalSources = {
   "hllstats.dev": {
-    status: hllStatsSource.matches ? "ok" : (steamPlayers.length ? "Noch keine Daten" : "SteamID erforderlich"),
+    status: hllStatsSource.matches ? "ok" : (steamPlayers.length ? "Steam-Profil öffentlich erforderlich" : "SteamID erforderlich"),
     updatedAt: hllStatsSource.updatedAt,
     matches: hllStatsSource.matches
   },
