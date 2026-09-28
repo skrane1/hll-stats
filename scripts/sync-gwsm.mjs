@@ -143,6 +143,19 @@ const fetchBrowserText = async url => {
 
   let sessionId = null;
   try {
+    let ready = false;
+    for (let attempt = 0; attempt < 20; attempt++) {
+      try {
+        const statusResponse = await fetch("http://127.0.0.1:9515/status");
+        if (statusResponse.ok) {
+          ready = true;
+          break;
+        }
+      } catch {}
+      await new Promise(resolve => setTimeout(resolve, 250));
+    }
+    if (!ready) throw new Error("ChromeDriver startet nicht auf Port 9515");
+
     const session = await request("/session", {
       method: "POST",
       body: JSON.stringify({
