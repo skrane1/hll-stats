@@ -4,6 +4,10 @@
  */
 const API_BASE = String(window.GWSM_STATS_API || "").replace(/\/$/, "");
 let ADMIN_KEY = sessionStorage.getItem("gwsm_admin_key") || "";
+let GITHUB_TOKEN = sessionStorage.getItem("gwsm_github_token") || "";
+const GH_OWNER = "skrane1";
+const GH_REPO = "hll-stats";
+const GH_BRANCH = "main";
 let unified = { updatedAt: null, players: {} };
 let syncMeta = { sources: {}, matches: 0, duplicates: 0, logs: [] };
 
@@ -42,6 +46,104 @@ async function apiJson(url, options = {}) {
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
   return data;
+}
+async function githubFile(path) {
+  if (!GITHUB_TOKEN) throw new Error("GitHub-Token fehlt");
+  const response = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}?ref=${GH_BRANCH}`, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      "X-GitHub-Api-Version": "2026-03-10"
+    },
+    cache: "no-store"
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.message || `GitHub HTTP ${response.status}`);
+  const bytes = Uint8Array.from(atob(data.content.replace(/\\n/g, "")), c => c.charCodeAt(0));
+  return { content: new TextDecoder().decode(bytes), sha: data.sha };
+}
+
+function base64Utf8(value) {
+  const bytes = new TextEncoder().encode(value);
+  let binary = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  }
+  return btoa(binary);
+}
+
+async function githubWriteFile(path, content, sha, message) {
+  if (!GITHUB_TOKEN) throw new Error("GitHub-Token fehlt");
+  const response = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      "X-GitHub-Api-Version": "2026-03-10",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message,
+      content: base64Utf8(content),
+      sha,
+      branch: GH_BRANCH
+    })
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.message || `GitHub HTTP ${response.status}`);
+  return data;
+}
+
+async function loadRepositoryPlayers() {
+  const file = await githubFile("players.json");
+  return { data: JSON.parse(file.content), sha: file.sha };
+}
+
+async function saveRepositoryPlayers(players, sha, message) {
+  const next = JSON.stringify(players, null, 2) + "\n";
+  return githubWriteFile("players.json", next, sha, message);
+}
+
+async function migrateLocalPlayers() {
+  if (!GITHUB_TOKEN) return;
+  const local = JSON.parse(localStorage.getItem("gwsm_managed_players") || "{}");
+  const localSteam = Object.values(local).filter(p => p && p.steamId);
+  if (!localSteam.length) return;
+
+  try {
+    const { data, sha } = await loadRepositoryPlayers();
+    data.version = 1;
+    data.players ||= {};
+    let changed = false;
+
+    for (const localPlayer of localSteam) {
+      const id = localPlayer.discordId || localPlayer.id;
+      if (!id) continue;
+      const existing = data.players[id] || {
+        id,
+        username: localPlayer.username || id,
+        steamId: "",
+        epicId: "",
+        discordId: localPlayer.discordId || id,
+        aliases: [],
+        createdAt: new Date().toISOString()
+      };
+      if (localPlayer.steamId && existing.steamId !== localPlayer.steamId) {
+        existing.steamId = localPlayer.steamId;
+        existing.updatedAt = new Date().toISOString();
+        data.players[id] = existing;
+        changed = true;
+      }
+    }
+
+    if (changed) {
+      await saveRepositoryPlayers(data, sha, "Sync player identifiers from Dev");
+      localStorage.removeItem("gwsm_managed_players");
+      setStatus("Lokale Spieler-IDs ins Repository übernommen");
+    }
+  } catch (error) {
+    setStatus(`Repository-Speicherung: ${error.message}`, false);
+  }
 }
 
 function renderSources() {
@@ -125,17 +227,14 @@ async function saveSteam(input) {
       return load();
     }
 
-    // Static GitHub Pages cannot write to GitHub. Keep this local only so the
-    // field remains usable while the backend is not configured.
-    const store = JSON.parse(localStorage.getItem("gwsm_managed_players") || "{}");
-    store[id] = {
-      ...(store[id] || {}),
-      id,
-      steamId,
-      updatedAt: new Date().toISOString()
-    };
-    localStorage.setItem("gwsm_managed_players", JSON.stringify(store));
-    setStatus("SteamID lokal gespeichert – Backend für Repository-Speicherung fehlt");
+    const { data, sha } = await loadRepositoryPlayers();
+    data.players ||= {};
+    const player = data.players[id];
+    if (!player) throw new Error("Spieler nicht im Repository gefunden");
+    player.steamId = steamId;
+    player.updatedAt = new Date().toISOString();
+    await saveRepositoryPlayers(data, sha, `Set SteamID for ${player.username || id}`);
+    setStatus("SteamID im Repository gespeichert");
     await load();
   } catch (error) {
     setStatus(`SteamID konnte nicht gespeichert werden: ${error.message}`, false);
@@ -267,21 +366,27 @@ async function saveManagedPlayer() {
     }
   }
 
-  const store = JSON.parse(localStorage.getItem("gwsm_managed_players") || "{}");
-  const id = editId || payload.discordId || payload.steamId || payload.epicId || `local-${Date.now()}`;
-
-  store[id] = {
-    id,
-    ...payload,
-    aliases: [],
-    createdAt: store[id]?.createdAt || new Date().toISOString(),
-    updatedAt: new Date().toISOString()
-  };
-
-  localStorage.setItem("gwsm_managed_players", JSON.stringify(store));
-  clearPlayerForm();
-  await loadManagedPlayers();
-  setStatus("Spieler lokal gespeichert – Backend für Repository-Speicherung fehlt");
+  try {
+    const { data, sha } = await loadRepositoryPlayers();
+    data.version = 1;
+    data.players ||= {};
+    const id = editId || payload.discordId || payload.steamId || payload.epicId || `player-${Date.now()}`;
+    const existing = data.players[id] || {};
+    data.players[id] = {
+      id,
+      ...existing,
+      ...payload,
+      aliases: Array.isArray(existing.aliases) ? existing.aliases : [],
+      createdAt: existing.createdAt || new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    await saveRepositoryPlayers(data, sha, `${editId ? "Update" : "Add"} GWSM player ${payload.username}`);
+    clearPlayerForm();
+    await load();
+    setStatus("Spieler im Repository gespeichert");
+  } catch (error) {
+    setStatus(`Repository-Fehler: ${error.message}`, false);
+  }
 }
 
 function editManagedPlayer(id, players) {
@@ -314,11 +419,16 @@ async function deleteManagedPlayer(id) {
     }
   }
 
-  const store = JSON.parse(localStorage.getItem("gwsm_managed_players") || "{}");
-  delete store[id];
-  localStorage.setItem("gwsm_managed_players", JSON.stringify(store));
-  await loadManagedPlayers();
-  setStatus("Spieler lokal entfernt – Repository-Daten bleiben unverändert");
+  try {
+    const { data, sha } = await loadRepositoryPlayers();
+    if (!data.players?.[id]) throw new Error("Spieler nicht im Repository gefunden");
+    delete data.players[id];
+    await saveRepositoryPlayers(data, sha, `Remove GWSM player ${id}`);
+    await load();
+    setStatus("Spieler aus dem Repository entfernt");
+  } catch (error) {
+    setStatus(`Repository-Fehler: ${error.message}`, false);
+  }
 }
 
 async function triggerSync() {
@@ -364,6 +474,28 @@ $("#player-username")?.addEventListener("keydown", event => {
 $("#dev-search")?.addEventListener("input", renderPlayers);
 
 $("#admin-key").value = ADMIN_KEY;
+if ($("#admin-key")) {
+  $("#admin-key").placeholder = "Admin-Key / GitHub-Token";
+  $("#admin-key").addEventListener("change", async () => {
+    const value = $("#admin-key").value.trim();
+    if (/^(ghp_|github_pat_)/.test(value)) {
+      GITHUB_TOKEN = value;
+      sessionStorage.setItem("gwsm_github_token", value);
+      setStatus("GitHub-Zugriff wird geprüft …");
+      try {
+        await githubFile("players.json");
+        setStatus("GitHub verbunden – Spielerverwaltung aktiv");
+        await migrateLocalPlayers();
+        await load();
+      } catch (error) {
+        setStatus(`GitHub-Token ungültig: ${error.message}`, false);
+      }
+    } else {
+      ADMIN_KEY = value;
+      sessionStorage.setItem("gwsm_admin_key", value);
+    }
+  });
+}
 setInterval(() => {
   if ($("#dev-clock")) $("#dev-clock").textContent = new Date().toLocaleTimeString("de-DE");
 }, 1000);
