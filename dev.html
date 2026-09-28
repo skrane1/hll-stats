@@ -24,6 +24,7 @@
         <h1>HLL Stats Control Center</h1>
       </div>
       <div class="header-actions">
+        <input id="admin-key" class="admin-key" type="password" placeholder="Admin-Key">
         <span id="dev-clock">—</span>
         <button id="sync-all" class="refresh sync-button">↻ Jetzt aktualisieren</button>
       </div>
@@ -54,6 +55,21 @@
 
     <section class="section dev-panel">
       <div class="section-head">
+        <div><h2>Spielerverwaltung</h2><div class="muted">GWSM-Spieler direkt über die Website verwalten – kein Server-Dateiedit nötig.</div></div>
+      </div>
+      <div class="player-admin-form">
+        <input id="player-username" class="search" type="text" placeholder="Spielername / GWSM-Name">
+        <input id="player-steam" class="search" type="text" inputmode="numeric" placeholder="SteamID64 (optional)">
+        <input id="player-epic" class="search" type="text" placeholder="EpicID (optional)">
+        <input id="player-discord" class="search" type="text" placeholder="Discord ID (optional)">
+        <button id="player-save" class="refresh">＋ Spieler hinzufügen</button>
+      </div>
+      <div class="muted admin-note">Mindestens SteamID64 oder EpicID angeben. Steam-basierte Datenquellen benötigen aktuell SteamID64.</div>
+      <div id="managed-players"></div>
+    </section>
+
+    <section class="section dev-panel">
+      <div class="section-head">
         <div><h2>Datenquellen</h2><div class="muted">Status des letzten Synchronisationslaufs</div></div>
         <button id="sync-selected" class="refresh">Spieler synchronisieren</button>
       </div>
@@ -74,6 +90,6 @@
     </section>
   </main>
 </div>
-<script src="./dev.js?v=1"></script>
+<script src="./dev.js?v=2"></script>
 </body>
 </html>

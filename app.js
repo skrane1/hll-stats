@@ -260,17 +260,98 @@ function unifiedFor(id) {
   return unified.players?.[String(id)] || null;
 }
 
+function fmtStat(v, suffix = '') {
+  if (v === null || v === undefined || v === '') return '—';
+  if (typeof v === 'number') return `${v.toLocaleString('de-DE', { maximumFractionDigits: 2 })}${suffix}`;
+  return `${esc(v)}${suffix}`;
+}
+function statValue(obj, key, fallback = null) {
+  return obj && obj[key] !== undefined && obj[key] !== null ? obj[key] : fallback;
+}
+function renderMetricCards(stats, keys) {
+  return keys.filter(k => stats?.[k.key] !== undefined && stats?.[k.key] !== null).map(k =>
+    `<div class="unified-stat"><span>${esc(k.label)}</span><strong>${fmtStat(stats[k.key], k.suffix || '')}</strong></div>`
+  ).join('');
+}
 function renderUnifiedSummary(u) {
   if (!u) return `<div class="empty compact-empty">Noch keine externen HLL-Stats synchronisiert.</div>`;
   const s = u.stats || {};
+  const ratings = s.ratings || {};
   const items = [
-    ["KILLS", s.kills], ["DEATHS", s.deaths], ["K/D", s.kd],
-    ["WINRATE", s.winrate, "%"], ["MATCHES", s.matches], ["PLAYTIME", s.playtimeHours, " h"]
+    {key:'kills',label:'KILLS'}, {key:'deaths',label:'DEATHS'}, {key:'kd',label:'K/D'},
+    {key:'winrate',label:'WINRATE',suffix:'%'}, {key:'matches',label:'MATCHES'}, {key:'playtimeHours',label:'PLAYTIME',suffix:' h'},
+    {key:'kpm',label:'KPM'}, {key:'scorePerMin',label:'SCORE/MIN'}, {key:'headshots',label:'HEADSHOTS'},
+    {key:'teamKills',label:'TEAMKILLS'}, {key:'longestKillstreak',label:'KILLSTREAK'}, {key:'capturedSectors',label:'SEKTOREN'}
+  ];
+  const ratingItems = [
+    {key:'overall',label:'OVERALL'}, {key:'team',label:'TEAM'}, {key:'impact',label:'IMPACT'}, {key:'comp',label:'COMP'}
   ];
   return `<div class="unified-box">
-    <div class="unified-title"><div><span class="eyebrow">UNIFIED HLL STATS</span><h3>Externe Gesamtstatistik</h3></div><span class="unified-updated">${u.updatedAt ? `Update ${dateLabel(u.updatedAt)}` : "—"}</span></div>
-    <div class="unified-grid">${items.map(([label,value,suffix=""]) => `<div class="unified-stat"><span>${label}</span><strong>${value == null ? "—" : esc(typeof value === "number" ? value.toLocaleString("de-DE", {maximumFractionDigits: 2}) : value)}${suffix}</strong></div>`).join("")}</div>
-    <div class="unified-foot">${u.coverage ? `Abdeckung: ${esc(u.coverage)}` : "Die Statistik wird aus den verfügbaren HLL-Datenquellen zusammengeführt."}</div>
+    <div class="unified-title"><div><span class="eyebrow">UNIFIED HLL STATS</span><h3>Externe Gesamtstatistik</h3></div><span class="unified-updated">${u.updatedAt ? `Update ${dateLabel(u.updatedAt)}` : '—'}</span></div>
+    <div class="unified-grid">${renderMetricCards(s, items)}</div>
+    ${Object.values(ratings).some(v => v != null) ? `<div class="subsection-title">HLL RATINGS</div><div class="unified-grid">${renderMetricCards(ratings, ratingItems)}</div>` : ''}
+    <div class="unified-foot">${u.coverage ? `Abdeckung: ${esc(u.coverage)}` : 'Die Statistik wird aus den verfügbaren HLL-Datenquellen zusammengeführt.'}</div>
+  </div>`;
+}
+
+function renderStatSection(title, rows, extraClass='') {
+  const visible = rows.filter(([label,value]) => value !== undefined && value !== null && value !== '');
+  if (!visible.length) return '';
+  return `<div class="stats-panel ${extraClass}"><div class="subsection-title">${esc(title)}</div><div class="stats-grid">${visible.map(([label,value,suffix='']) => `<div class="detail-stat"><span>${esc(label)}</span><strong>${fmtStat(value,suffix)}</strong></div>`).join('')}</div></div>`;
+}
+
+function renderDetailedUnified(u) {
+  if (!u) return '';
+  const s = u.stats || {};
+  const combat = s.combat || {};
+  const support = s.support || {};
+  const roles = s.roles || {};
+  const maps = s.maps || {};
+  const factions = s.factions || {};
+  const ratings = s.ratings || {};
+  const recent = s.recent || {};
+  const trends = s.trends || {};
+  const matchRows = Array.isArray(u.matches) ? u.matches : [];
+
+  const overview = renderStatSection('ÜBERSICHT', [
+    ['Kills',s.kills],['Deaths',s.deaths],['K/D',s.kd],['KPM',s.kpm],['DPM',s.dpm],['Score/Min',s.scorePerMin],
+    ['Wins',s.wins],['Losses',s.losses],['Winrate',s.winrate,'%'],['Matches',s.matches],['Spielzeit',s.playtimeHours,' h'],
+    ['Teamkills',s.teamKills],['Längste Killstreak',s.longestKillstreak],['Headshots',s.headshots],['Vehicle zerstört',s.vehicleDestroyed],['Tanks zerstört',s.tanksDestroyed],['Jeeps zerstört',s.jeepsDestroyed]
+  ]);
+  const combatHtml = renderStatSection('COMBAT', [
+    ['Kills',combat.kills ?? s.kills],['Deaths',combat.deaths ?? s.deaths],['K/D',combat.kd ?? s.kd],['KPM',combat.kpm ?? s.kpm],['DPM',combat.dpm ?? s.dpm],
+    ['Headshots',combat.headshots ?? s.headshots],['Artillerie',combat.artillery],['Knife',combat.knife],['Spade',combat.spade],['Flamethrower',combat.flamethrower],
+    ['Half-track MG',combat.halftrackMg],['Jeep Impact',combat.jeepImpact],['Vehicle zerstört',combat.vehicleDestroyed ?? s.vehicleDestroyed],['Tanks zerstört',combat.tanksDestroyed ?? s.tanksDestroyed],['Jeeps zerstört',combat.jeepsDestroyed ?? s.jeepsDestroyed],['Teamkills',combat.teamKills ?? s.teamKills]
+  ]);
+  const supportHtml = renderStatSection('SUPPORT & BUILD', [
+    ['Supplies gedroppt',support.suppliesDropped],['Supplies verwendet',support.suppliesUsed],['Truck Drops',support.truckDrops],['Ammo gedroppt',support.ammoDropped],['Jeep Drops',support.jeepDrops],
+    ['Belgian Gates',support.belgianGates],['Barbed Wire',support.barbedWire],['Barricades',support.barricades],['Bunkers',support.bunkers],['Repair Stations',support.repairStations],
+    ['Fuel Nodes',support.fuelNodes],['Manpower Nodes',support.manpowerNodes],['Munitions Nodes',support.munitionsNodes],['Flare Gun Scans',support.flareGunScans],['Half-track Spawns',support.halftrackSpawns],['Molotovs',support.molotovs],['Captured Sectors',support.capturedSectors ?? s.capturedSectors]
+  ]);
+  const ratingHtml = renderStatSection('RATINGS & PERFORMANCE', [
+    ['Overall Rating',ratings.overall],['Team Rating',ratings.team],['Impact Rating',ratings.impact],['Comp Rating',ratings.comp],['Combat / min',ratings.combatPerMin],['Offense / min',ratings.offensePerMin],['Defense / min',ratings.defensePerMin],['Support / min',ratings.supportPerMin],['Score / min',s.scorePerMin]
+  ]);
+  const recentHtml = renderStatSection('RECENT PERFORMANCE', [
+    ['Recent K/D',recent.kd],['Recent KPM',recent.kpm],['Recent Winrate',recent.winrate,'%'],['Recent Combat',recent.combatPerMin],['Recent Offense',recent.offensePerMin],['Recent Defense',recent.defensePerMin],['Recent Support',recent.supportPerMin],['Games im Trend',recent.games]
+  ]);
+  const factionRows = Object.entries(factions).filter(([,v]) => v !== null && v !== undefined).map(([k,v]) => [k,v]);
+  const factionHtml = renderStatSection('FAKTIONEN', factionRows);
+  const roleRows = Object.entries(roles).filter(([,v]) => v && typeof v === 'object').map(([name,v]) => [name, `${v.playtimeHours ?? 0} h · ${v.kills ?? 0} K · ${v.deaths ?? 0} D${v.kd != null ? ` · ${Number(v.kd).toFixed(2)} K/D` : ''}`]);
+  const roleHtml = roleRows.length ? `<div class="stats-panel"><div class="subsection-title">ROLLEN</div><div class="role-grid">${roleRows.map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${esc(value)}</span></div>`).join('')}</div></div>` : '';
+  const mapRows = Object.entries(maps).filter(([,v]) => v && typeof v === 'object').map(([name,v]) => [name, `${v.matches ?? 0} Games · ${v.wins ?? 0} W · ${v.losses ?? 0} L${v.kd != null ? ` · ${Number(v.kd).toFixed(2)} K/D` : ''}${v.winrate != null ? ` · ${Number(v.winrate).toFixed(1)}%` : ''}`]);
+  const mapHtml = mapRows.length ? `<div class="stats-panel"><div class="subsection-title">MAPS</div><div class="role-grid">${mapRows.map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${esc(value)}</span></div>`).join('')}</div></div>` : '';
+  const trendRows = Object.entries(trends).filter(([,v]) => v !== null && v !== undefined).map(([k,v]) => [k,v]);
+  const trendHtml = renderStatSection('TRENDS / HISTORY', trendRows);
+  const matchHtml = matchRows.length ? `<div class="stats-panel"><div class="subsection-title">MATCH HISTORY</div><div class="match-table-wrap"><table><thead><tr><th>DATUM</th><th>MAP</th><th>SERVER</th><th>MODUS</th><th>RESULTAT</th><th>K/D</th><th>KPM</th><th>SCORE</th></tr></thead><tbody>${matchRows.slice(0,50).map(m=>`<tr><td>${dateLabel(m.startAt || m.startedAt)}</td><td>${esc(m.map || '—')}</td><td>${esc(m.server || '—')}</td><td>${esc(m.mode || m.gamemode || '—')}</td><td>${esc(m.result || m.resultat || '—')}</td><td>${fmtStat(m.kd)}</td><td>${fmtStat(m.kpm)}</td><td>${fmtStat(m.score)}</td></tr>`).join('')}</tbody></table></div></div>` : '';
+
+  return `<div class="detail-tabs" data-detail-tabs>
+    <div class="detail-tab-buttons"><button class="detail-tab active" data-tab="overview">Übersicht</button><button class="detail-tab" data-tab="combat">Combat</button><button class="detail-tab" data-tab="support">Support</button><button class="detail-tab" data-tab="roles">Rollen</button><button class="detail-tab" data-tab="maps">Maps</button><button class="detail-tab" data-tab="history">History</button></div>
+    <div class="detail-tab-content active" data-content="overview">${overview}${ratingHtml}${recentHtml}${factionHtml}</div>
+    <div class="detail-tab-content" data-content="combat">${combatHtml}</div>
+    <div class="detail-tab-content" data-content="support">${supportHtml}</div>
+    <div class="detail-tab-content" data-content="roles">${roleHtml || '<div class="empty">Noch keine Rollendaten synchronisiert.</div>'}</div>
+    <div class="detail-tab-content" data-content="maps">${mapHtml || '<div class="empty">Noch keine Mapdaten synchronisiert.</div>'}</div>
+    <div class="detail-tab-content" data-content="history">${trendHtml}${matchHtml || '<div class="empty">Noch keine Match-Historie synchronisiert.</div>'}</div>
   </div>`;
 }
 
@@ -367,6 +448,7 @@ function showPlayer(id) {
         <button class="refresh" id="player-back">← Zurück zur Suche</button>
       </div>
       ${renderUnifiedSummary(unifiedPlayer)}
+      ${renderDetailedUnified(unifiedPlayer)}
       <table>
         <thead><tr><th>Kategorie</th><th>Aktueller Wert</th><th>Rang</th><th>Historie</th></tr></thead>
         <tbody>
@@ -385,6 +467,13 @@ function showPlayer(id) {
     </div>`;
 
   $("#player-back").addEventListener("click", renderPlayers);
+  document.querySelectorAll('[data-detail-tabs] .detail-tab').forEach(btn => btn.addEventListener('click', () => {
+    const root = btn.closest('[data-detail-tabs]');
+    root.querySelectorAll('.detail-tab').forEach(x => x.classList.remove('active'));
+    root.querySelectorAll('.detail-tab-content').forEach(x => x.classList.remove('active'));
+    btn.classList.add('active');
+    root.querySelector(`[data-content="${btn.dataset.tab}"]`)?.classList.add('active');
+  }));
 }
 
 const RAW_BASE = "https://raw.githubusercontent.com/skrane1/hll-stats/main/";

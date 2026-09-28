@@ -6,6 +6,7 @@
  * deployed. The UI intentionally never receives API keys or provider secrets.
  */
 const API_BASE = window.GWSM_STATS_API || "";
+let ADMIN_KEY = sessionStorage.getItem("gwsm_admin_key") || "";
 const SYNC_ENDPOINT = `${API_BASE}/api/admin/stats/sync`;
 const PLAYER_SYNC_ENDPOINT = `${API_BASE}/api/admin/stats/sync/player`;
 
@@ -94,6 +95,62 @@ async function load() {
   renderSources(); renderPlayers(); renderLogs();
 }
 
+function authHeaders(extra = {}) {
+  ADMIN_KEY = $("#admin-key")?.value || ADMIN_KEY;
+  if (ADMIN_KEY) sessionStorage.setItem("gwsm_admin_key", ADMIN_KEY);
+  return { "Content-Type": "application/json", "x-gwsm-admin-key": ADMIN_KEY, ...extra };
+}
+
+async function apiJson(url, options = {}) {
+  const r = await fetch(url, { ...options, headers: authHeaders(options.headers || {}) });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
+  return data;
+}
+
+async function loadManagedPlayers() {
+  if (!API_BASE) return;
+  try {
+    const data = await apiJson(`${API_BASE}/api/admin/players`);
+    const players = Object.entries(data.players || {}).map(([id,p]) => ({ id, ...p }));
+    $("#managed-players").innerHTML = players.length ? `<div class="admin-player-list">${players.map(p => `
+      <div class="admin-player-row">
+        <div><b>${esc(p.username || p.id)}</b><div class="muted">Steam: ${esc(p.steamId || "—")} · Epic: ${esc(p.epicId || "—")}</div></div>
+        <div class="admin-row-actions"><button class="refresh mini-sync-managed" data-steam="${esc(p.steamId || '')}" data-epic="${esc(p.epicId || '')}">↻ Sync</button><button class="refresh mini-edit" data-id="${esc(p.id)}">Bearbeiten</button><button class="danger mini-delete" data-id="${esc(p.id)}">Entfernen</button></div>
+      </div>`).join("")}</div>` : `<div class="empty">Noch keine Spieler verwaltet.</div>`;
+    document.querySelectorAll(".mini-edit").forEach(b => b.addEventListener("click", () => editManagedPlayer(b.dataset.id, players)));
+    document.querySelectorAll(".mini-delete").forEach(b => b.addEventListener("click", () => deleteManagedPlayer(b.dataset.id)));
+    document.querySelectorAll(".mini-sync-managed").forEach(b => b.addEventListener("click", () => trigger(PLAYER_SYNC_ENDPOINT, { steamId: b.dataset.steam || "", epicId: b.dataset.epic || "" })));
+  } catch (e) { $("#managed-players").innerHTML = `<div class="source-error">${esc(e.message)}</div>`; }
+}
+
+function clearPlayerForm() { ["player-username","player-steam","player-epic","player-discord"].forEach(id => $("#"+id).value = ""); $("#player-save").dataset.editId = ""; $("#player-save").textContent = "＋ Spieler hinzufügen"; }
+
+async function saveManagedPlayer() {
+  if (!API_BASE) return setStatus("Backend noch nicht konfiguriert", false);
+  const payload = { username: $("#player-username").value.trim(), steamId: $("#player-steam").value.trim(), epicId: $("#player-epic").value.trim(), discordId: $("#player-discord").value.trim() };
+  if (!payload.username || (!payload.steamId && !payload.epicId)) return setStatus("Name und SteamID64 oder EpicID erforderlich", false);
+  try {
+    const editId = $("#player-save").dataset.editId;
+    await apiJson(`${API_BASE}/api/admin/players${editId ? "/" + encodeURIComponent(editId) : ""}`, { method: editId ? "PUT" : "POST", body: JSON.stringify(payload) });
+    clearPlayerForm();
+    await loadManagedPlayers();
+    await load();
+    setStatus("Spieler gespeichert");
+  } catch (e) { setStatus(`Speichern fehlgeschlagen: ${e.message}`, false); }
+}
+
+function editManagedPlayer(id, players) {
+  const p = players.find(x => x.id === id); if (!p) return;
+  $("#player-username").value = p.username || ""; $("#player-steam").value = p.steamId || ""; $("#player-epic").value = p.epicId || ""; $("#player-discord").value = p.discordId || "";
+  $("#player-save").dataset.editId = id; $("#player-save").textContent = "Speichern"; window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+async function deleteManagedPlayer(id) {
+  if (!confirm("Diesen GWSM-Spieler wirklich entfernen?")) return;
+  try { await apiJson(`${API_BASE}/api/admin/players/${encodeURIComponent(id)}`, { method: "DELETE" }); await loadManagedPlayers(); await load(); setStatus("Spieler entfernt"); } catch (e) { setStatus(`Entfernen fehlgeschlagen: ${e.message}`, false); }
+}
+
 async function trigger(url, body = {}) {
   if (!API_BASE) {
     setStatus("Backend noch nicht konfiguriert", false);
@@ -103,11 +160,10 @@ async function trigger(url, body = {}) {
   try {
     setStatus("Synchronisierung läuft …");
     document.querySelectorAll(".sync-button,.mini-sync,#sync-selected").forEach(b => b.disabled = true);
-    const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-    const data = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`);
+    const data = await apiJson(url, { method: "POST", body: JSON.stringify(body) });
     setStatus("Synchronisierung erfolgreich");
     await load();
+loadManagedPlayers();
   } catch (e) {
     setStatus(`Sync-Fehler: ${e.message}`, false);
   } finally {
@@ -115,14 +171,17 @@ async function trigger(url, body = {}) {
   }
 }
 
-function syncPlayer(steamId) { return trigger(PLAYER_SYNC_ENDPOINT, { steamId }); }
+function syncPlayer(identifier) { return trigger(PLAYER_SYNC_ENDPOINT, identifier?.steamId || identifier?.epicId ? identifier : { steamId: identifier }); }
 
 $("#sync-all").addEventListener("click", () => trigger(SYNC_ENDPOINT, { reason: "manual-dev" }));
+$("#player-save").addEventListener("click", saveManagedPlayer);
+$("#admin-key").value = ADMIN_KEY;
 $("#sync-selected").addEventListener("click", () => {
-  const first = Object.keys(unified.players || {})[0];
+  const first = Object.entries(unified.players || {})[0]?.[1];
   if (!first) return trigger(SYNC_ENDPOINT, { reason: "manual-dev" });
-  syncPlayer(first);
+  syncPlayer({ steamId: first.steamId || "", epicId: first.epicId || "" });
 });
 $("#dev-search").addEventListener("input", renderPlayers);
 setInterval(() => { $("#dev-clock").textContent = new Date().toLocaleTimeString("de-DE"); }, 1000);
 load();
+loadManagedPlayers();
