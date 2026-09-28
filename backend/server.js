@@ -89,7 +89,11 @@ function buildUnified(stats, registry) {
   const players = {};
   for (const [discordId, raw] of Object.entries(stats || {})) {
     const managed = registry.players?.[discordId] || registry.players?.[raw.discordId] || {};
-    const values = {};\n    for (const [key, value] of Object.entries(raw || {})) {\n      if (["username","discordId","steamId","epicId"].includes(key)) continue;\n      if (typeof value === "number" && Number.isFinite(value)) values[key] = value;\n    }\n    const totalKills = Object.entries(values)
+    const values = {};
+    for (const [key, value] of Object.entries(raw || {})) {
+      if (["username","discordId","steamId","epicId"].includes(key)) continue;
+      if (typeof value === "number" && Number.isFinite(value)) values[key] = value;
+    }\n    const totalKills = Object.entries(values)
       .filter(([k]) => /kill|absch|t[oö]t|counter|thanatos|mage|op|garry|alchemist|kettenblitz|sniperwizard/i.test(k))
       .reduce((n, [, v]) => n + Number(v || 0), 0);
     players[managed.steamId || managed.epicId || discordId] = {
@@ -218,4 +222,6 @@ app.post("/api/admin/stats/sync/player", auth, async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`GWSM Stats Backend listening on :${PORT}`));
+if (process.env.VERCEL !== "1") app.listen(PORT, () => console.log(`GWSM Stats Backend listening on :${PORT}`));
+
+export default app;
