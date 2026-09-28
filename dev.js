@@ -98,8 +98,8 @@ function renderLogs() {
 }
 
 async function load() {
-  unified = await getJson("unified-stats.json", { updatedAt: null, players: {} });
-  syncMeta = await getJson("sync-meta.json", { sources: {}, matches: 0, duplicates: 0, logs: [] });
+  unified = JSON.parse(localStorage.getItem("gwsm_unified_stats") || "null") || await getJson("unified-stats.json", { updatedAt: null, players: {} });
+  syncMeta = JSON.parse(localStorage.getItem("gwsm_sync_meta") || "null") || await getJson("sync-meta.json", { sources: {}, matches: 0, duplicates: 0, logs: [] });
   $("#last-sync").textContent = unified.updatedAt ? dateLabel(unified.updatedAt) : "—";
   $("#player-count").textContent = Object.keys(unified.players || {}).length.toLocaleString("de-DE");
   $("#match-count").textContent = Number(syncMeta.matches || 0).toLocaleString("de-DE");
@@ -211,21 +211,83 @@ async function deleteManagedPlayer(id) {
 }
 
 async function triggerSync() {
-  if (API_BASE) {
-    try {
-      setStatus("Synchronisierung läuft …");
-      await apiJson(`${API_BASE}/api/admin/stats/sync`, { method: "POST", body: JSON.stringify({ reason: "manual-dev" }) });
+  setStatus("Synchronisierung läuft …");
+
+  try {
+    // If the real API is available, use it.
+    if (API_BASE) {
+      await apiJson(`${API_BASE}/api/admin/stats/sync`, {
+        method: "POST",
+        body: JSON.stringify({ reason: "manual-dev" })
+      });
       await load();
       await loadManagedPlayers();
       setStatus("Synchronisierung erfolgreich");
       return;
-    } catch (_) {}
-  }
-  await load();
-  await loadManagedPlayers();
-  setStatus("Daten aktualisiert – GitHub-Pages-Modus");
-}
+    }
 
+    // GitHub Pages fallback: rebuild the unified dataset directly from the
+    // repository's current stats.json and persist the result locally.
+    const stats = await getJson("stats.json", {});
+    const registry = await getJson("players.json", { version: 1, players: {} });
+    const now = new Date().toISOString();
+    const players = {};
+
+    for (const [discordId, raw] of Object.entries(stats || {})) {
+      const managed = registry.players?.[discordId] || {};
+      const values = {};
+      for (const [key, value] of Object.entries(raw || {})) {
+        if (["username", "discordId", "steamId", "epicId"].includes(key)) continue;
+        if (typeof value === "number" && Number.isFinite(value)) values[key] = value;
+      }
+
+      const id = managed.steamId || managed.epicId || discordId;
+      players[id] = {
+        id,
+        username: managed.username || raw.username || discordId,
+        steamId: managed.steamId || "",
+        epicId: managed.epicId || "",
+        discordId,
+        stats: values,
+        coverage: managed.steamId || managed.epicId ? "Discord + externe ID" : "Discord",
+        updatedAt: now
+      };
+    }
+
+    unified = { updatedAt: now, players };
+    syncMeta = {
+      ...syncMeta,
+      updatedAt: now,
+      sources: {
+        ...(syncMeta.sources || {}),
+        discord: {
+          status: "ok",
+          updatedAt: now,
+          matches: Object.keys(stats || {}).length
+        }
+      },
+      logs: [
+        { time: now, level: "info", message: `Manueller Browser-Sync: ${Object.keys(players).length} Spieler.` },
+        ...(Array.isArray(syncMeta.logs) ? syncMeta.logs : [])
+      ].slice(0, 50)
+    };
+
+    localStorage.setItem("gwsm_unified_stats", JSON.stringify(unified));
+    localStorage.setItem("gwsm_sync_meta", JSON.stringify(syncMeta));
+
+    renderSources();
+    renderPlayers();
+    renderLogs();
+    $("#last-sync").textContent = dateLabel(now);
+    $("#player-count").textContent = Object.keys(players).length.toLocaleString("de-DE");
+    $("#match-count").textContent = Object.keys(stats || {}).length.toLocaleString("de-DE");
+    $("#duplicate-count").textContent = "0";
+
+    setStatus(`Synchronisierung erfolgreich – ${Object.keys(players).length} Spieler`);
+  } catch (e) {
+    setStatus(`Sync-Fehler: ${e.message}`, false);
+  }
+}
 $("#sync-all").addEventListener("click", triggerSync);
 $("#player-save").addEventListener("click", saveManagedPlayer);
 $("#player-steam").addEventListener("keydown", e => { if (e.key === "Enter") saveManagedPlayer(); });
