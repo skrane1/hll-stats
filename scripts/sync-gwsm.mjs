@@ -122,11 +122,11 @@ const fetchHllStatsDev = async steamId => {
   // HLLStats.dev renders the empty/default form with the same "Totals"
   // section as a real profile. Do not mistake that placeholder page for
   // player data.
-  if (
-    /Steam profile must be set to public/i.test(text) ||
-    /SteamID64\s*\*?\s+Enter your steamID64/i.test(text)
-  ) {
-    throw new Error("Steam-Profil nicht öffentlich oder noch nicht von HLLStats.dev erfasst");
+  if (/Steam profile must be set to public/i.test(text)) {
+    throw new Error("Steam-Profil nicht öffentlich");
+  }
+  if (/SteamID64\s*\*?\s+Enter your steamID64/i.test(text)) {
+    throw new Error("Spieler noch nicht bei HLLStats.dev erfasst");
   }
 
   const labels = [
@@ -222,20 +222,25 @@ const fetchFrostbite = async steamId => {
   };
 };
 
+const SOURCE_REFRESH_MS = {
+  // HLL Ratings is currently protected by Cloudflare from GitHub Actions.
+  // Retry it independently so it never blocks the other providers.
+  "hll-ratings": 30 * 60 * 1000,
+  // If these sources do not know the player yet, retry them on every
+  // scheduled workflow run (currently every 5 minutes).
+  "hllstats.dev": 0,
+  frostbite: 0,
+  // HLL Records already works reliably; refresh it every 30 minutes.
+  hllrecords: 30 * 60 * 1000
+};
+
 const refreshExternal = async (player, previousExternal) => {
   const steamId = String(player.steamId || "").trim();
-  if (!steamIdValid(steamId)) return { external: previousExternal || {}, ok: false, skipped: true };
-
-  const previousRefresh = previousExternal?._lastRefresh;
-  const refreshAge = previousRefresh ? Date.now() - new Date(previousRefresh).getTime() : Infinity;
-  const requiredSources = ["hll-ratings", "hllstats.dev", "hllrecords", "frostbite"];
-  const missingSource = requiredSources.some(key => !previousExternal?.[key]?.fetchedAt);
-  if (refreshAge < 30 * 60 * 1000 && !missingSource) {
-    return { external: previousExternal, ok: true, skipped: true, success: 0 };
-  }
+  if (!steamIdValid(steamId)) return { external: previousExternal || {}, ok: false, skipped: true, success: 0 };
 
   const external = { ...(previousExternal || {}) };
   let success = 0;
+  let attempted = 0;
 
   for (const [key, loader] of [
     ["hll-ratings", fetchHllRatings],
@@ -243,13 +248,27 @@ const refreshExternal = async (player, previousExternal) => {
     ["hllrecords", fetchHllRecords],
     ["frostbite", fetchFrostbite]
   ]) {
+    const previous = external[key] || {};
+    const lastAttempt = previous.fetchedAt || previous.failedAt;
+    const age = lastAttempt ? Date.now() - new Date(lastAttempt).getTime() : Infinity;
+    const interval = SOURCE_REFRESH_MS[key] ?? 0;
+
+    // Missing/failed HLLStats.dev and Frostbite sources are retried on the
+    // next workflow run. Successful data is still protected from excessive
+    // requests by the normal 30-minute refresh interval.
+    if (age < interval) {
+      if (previous.fetchedAt) success++;
+      continue;
+    }
+
+    attempted++;
     try {
       external[key] = await loader(steamId);
       success++;
     } catch (error) {
-      // Do not keep an old successful snapshot marked as current after a
-      // failed refresh. Keep the error for diagnostics, but remove the
-      // fetchedAt marker so the Dev dashboard cannot report stale data as ok.
+      // A provider failure is isolated to that provider. It must never
+      // prevent another source from being queried or overwrite valid data
+      // from another provider.
       external[key] = {
         provider: key,
         error: error instanceof Error ? error.message : String(error),
@@ -259,7 +278,13 @@ const refreshExternal = async (player, previousExternal) => {
   }
 
   external._lastRefresh = now;
-  return { external, ok: success > 0, skipped: false, success };
+  return {
+    external,
+    ok: success > 0,
+    skipped: attempted === 0,
+    success,
+    attempted
+  };
 };
 
 registry.version = 1;
@@ -309,7 +334,11 @@ for (const [discordId, raw] of Object.entries(stats)) {
   externalResults.push({ player: managed, ...externalResult });
 
   const ext = externalResult.external || {};
-  const ratings = ext["hll-ratings"]?.fetchedAt ? ext["hll-ratings"] : null;
+  const ratings = ext["hll-ratings"]?.fetchedAt &&
+    [ext["hll-ratings"]?.overall, ext["hll-ratings"]?.team, ext["hll-ratings"]?.impact,
+      ext["hll-ratings"]?.kdr, ext["hll-ratings"]?.kpm, ext["hll-ratings"]?.scorePerMin]
+      .some(value => Number.isFinite(value))
+    ? ext["hll-ratings"] : null;
   const records = ext.hllrecords?.fetchedAt ? ext.hllrecords : null;
   const frostbite = ext.frostbite?.fetchedAt ? ext.frostbite : null;
   const hllStats = ext["hllstats.dev"]?.fetchedAt ? ext["hllstats.dev"] : null;
@@ -441,16 +470,25 @@ const ratingsSource = sourceStats("hll-ratings");
 const recordsSource = sourceStats("hllrecords");
 const frostbiteSource = sourceStats("frostbite");
 
+const providerError = key => {
+  const errors = Object.values(unified.players || {})
+    .map(player => player?.external?.[key]?.error)
+    .filter(Boolean);
+  return errors[0] || null;
+};
+
 const externalSources = {
   "hllstats.dev": {
-    status: hllStatsSource.matches ? "ok" : (steamPlayers.length ? "Steam-Profil öffentlich erforderlich" : "SteamID erforderlich"),
+    status: hllStatsSource.matches
+      ? "ok"
+      : (providerError("hllstats.dev") || (steamPlayers.length ? "Wird gesucht" : "SteamID erforderlich")),
     updatedAt: hllStatsSource.updatedAt,
     matches: hllStatsSource.matches
   },
   "hll-ratings": {
-    status: ratingsSource.matches && Object.values(unified.players || {}).some(p =>
-      Number.isFinite(p?.external?.["hll-ratings"]?.overall)
-    ) ? "ok" : "Zugriffsschutz",
+    status: ratingsSource.matches
+      ? "ok"
+      : (providerError("hll-ratings") || "Zugriffsschutz"),
     updatedAt: ratingsSource.updatedAt,
     matches: ratingsSource.matches
   },
@@ -465,7 +503,9 @@ const externalSources = {
     matches: recordsSource.matches
   },
   "frostbite": {
-    status: frostbiteSource.matches ? "ok" : "Spieler noch nicht erfasst",
+    status: frostbiteSource.matches
+      ? "ok"
+      : (providerError("frostbite") || "Spieler noch nicht erfasst"),
     updatedAt: frostbiteSource.updatedAt,
     matches: frostbiteSource.matches
   }
