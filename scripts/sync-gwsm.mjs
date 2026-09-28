@@ -237,6 +237,7 @@ unified.players = nextPlayers;
 
 /* Source status for the Dev dashboard. */
 const steamPlayers = Object.values(registry.players).filter(p => steamIdValid(p.steamId));
+console.log("SteamID64-Spieler:", steamPlayers.map(p => `${p.username}=${p.steamId}`).join(", ") || "keine");
 const successfulRatings = externalResults.filter(x => x.external?.["hll-ratings"]?.fetchedAt).length;
 const successfulHllStats = externalResults.filter(x => x.external?.["hllstats.dev"]?.fetchedAt).length;
 const previousMetaSources = meta.sources || {};
