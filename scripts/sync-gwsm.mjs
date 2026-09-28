@@ -254,7 +254,7 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
 
           arguments[arguments.length - 1](snapshots);
         `,
-        args: [${JSON.stringify(labels)}]
+        args: [labels]
       })
     });
 
@@ -400,7 +400,7 @@ const fetchHllStatsDev = async steamId => {
       for (const [label, value] of Object.entries(renderedValues)) {
         values[label] = value;
       }
-      hasRealData = tracked.some(label => Number(values[label]) > 0);      hasRealData = tracked.some(label => Number(values[label]) > 0);
+      hasRealData = tracked.some(label => Number(values[label]) > 0);
     } catch (error) {
       throw new Error("HLLStats.dev Browser-Abfrage fehlgeschlagen: " + (error instanceof Error ? error.message : String(error)));
     }
