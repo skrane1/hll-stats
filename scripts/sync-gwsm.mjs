@@ -91,7 +91,6 @@ const loosePercentAfterLabel = (text, label) => {
 
 const fetchHllRatings = async steamId => {
   const text = await fetchText("https://hellor.pro/player/" + steamId);
-  console.log("HELLOR DEBUG", text.length, text.slice(0, 1200));
   if (/Player Not Found|Unable to load player data/i.test(text)) {
     throw new Error("Spieler nicht gefunden");
   }
@@ -170,20 +169,21 @@ const fetchHllStatsDev = async steamId => {
 const fetchHllRecords = async steamId => {
   const url = "https://hllrecords.com/profiles/" + steamId;
   const text = await fetchText(url);
-  console.log("HLLRECORDS DEBUG", text.length, text.slice(0, 1200));
   if (/player not found|profile not found|page not found/i.test(text)) throw new Error("Spieler nicht in HLL Records gefunden");
 
-  const totalMatches = text.match(/Total on servers\s+([0-9]+)\+?\s+matches/i)?.[1];
-  const playedMatches = text.match(/Matches\s+played\s+([0-9]+)\+?\s+matches/i)?.[1];
-  const winRate = percentAfterLabel(text, "Win rate");
-  const kills = numberAfterLabel(text, "Total kills");
-  const deaths = numberAfterLabel(text, "Total deaths");
-  const kdr = numberAfterLabel(text, "Overall K/D ratio");
-  const kpm = text.match(/Total kills\s+[0-9,]+\s+\(([0-9.]+)\s*KPM\)/i)?.[1];
-  const dpm = text.match(/Total deaths\s+[0-9,]+\s+\(([0-9.]+)\s*DPM\)/i)?.[1];
-  const teamKills = numberAfterLabel(text, "Team kills");
-  const level = numberAfterLabel(text, "Level");
-  const hours = text.match(/Total on servers\s+[0-9+]+\s+matches\s*\/\s*([0-9]+(?:\.[0-9]+)?)\s*hours/i)?.[1] || null;
+  const totalMatchBlock = text.match(/(?:Total on servers|Matches seen)[\s\S]{0,80}?([0-9,]+)\+?\s+matches\s*\/\s*([0-9,]+)\+?\s*hours/i);
+  const playedMatchBlock = text.match(/Matches[\s\S]{0,100}?played[\s\S]{0,60}?([0-9,]+)\+?\s+matches/i);
+  const totalMatches = totalMatchBlock?.[1]?.replace(/,/g, "");
+  const hours = totalMatchBlock?.[2]?.replace(/,/g, "") || null;
+  const playedMatches = playedMatchBlock?.[1]?.replace(/,/g, "");
+  const winRate = loosePercentAfterLabel(text, "Win rate");
+  const kills = looseNumberAfterLabel(text, "Enemy kills") ?? looseNumberAfterLabel(text, "Total kills");
+  const deaths = looseNumberAfterLabel(text, "Total deaths");
+  const kdr = looseNumberAfterLabel(text, "Overall K/D ratio");
+  const kpm = text.match(/(?:Enemy|Total) kills[\s\S]{0,60}?\(([0-9.]+)\s*KPM\)/i)?.[1];
+  const dpm = text.match(/Total deaths[\s\S]{0,60}?\(([0-9.]+)\s*DPM\)/i)?.[1];
+  const teamKills = looseNumberAfterLabel(text, "Team kills");
+  const level = looseNumberAfterLabel(text, "Level");
 
   if (kills === null && deaths === null && !totalMatches) throw new Error("Keine HLL Records Spielerdaten");
 
