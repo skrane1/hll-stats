@@ -112,19 +112,11 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
   let driver = null;
   for (const executable of candidates) {
     try {
-      driver = spawn(executable, ["--port=9515"], {
-        stdio: ["ignore", "pipe", "pipe"]
-      });
+      driver = spawn(executable, ["--port=9515"], { stdio: ["ignore", "pipe", "pipe"] });
       await new Promise((resolve, reject) => {
-        const timer = setTimeout(() => resolve(), 5000);
-        driver.once("error", error => {
-          clearTimeout(timer);
-          reject(error);
-        });
-        driver.once("spawn", () => {
-          clearTimeout(timer);
-          resolve();
-        });
+        const timer = setTimeout(resolve, 5000);
+        driver.once("error", error => { clearTimeout(timer); reject(error); });
+        driver.once("spawn", () => { clearTimeout(timer); resolve(); });
       });
       if (driver.exitCode === null) break;
       driver = null;
@@ -138,34 +130,25 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
   const request = async (path, options = {}) => {
     const response = await fetch("http://127.0.0.1:9515" + path, {
       ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...(options.headers || {})
-      }
+      headers: { "Content-Type": "application/json", ...(options.headers || {}) }
     });
     const body = await response.text();
     if (!response.ok) throw new Error("ChromeDriver HTTP " + response.status + ": " + body.slice(0, 300));
     const json = JSON.parse(body);
-    if (json.value?.error) {
-      throw new Error("ChromeDriver " + json.value.error + ": " + (json.value.message || ""));
-    }
+    if (json.value?.error) throw new Error("ChromeDriver " + json.value.error + ": " + (json.value.message || ""));
     return json.value;
   };
 
   let sessionId = null;
   try {
-    let ready = false;
     for (let attempt = 0; attempt < 20; attempt++) {
       try {
         const statusResponse = await fetch("http://127.0.0.1:9515/status");
-        if (statusResponse.ok) {
-          ready = true;
-          break;
-        }
+        if (statusResponse.ok) break;
       } catch {}
       await new Promise(resolve => setTimeout(resolve, 250));
+      if (attempt === 19) throw new Error("ChromeDriver startet nicht auf Port 9515");
     }
-    if (!ready) throw new Error("ChromeDriver startet nicht auf Port 9515");
 
     const session = await request("/session", {
       method: "POST",
@@ -174,13 +157,7 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
           alwaysMatch: {
             browserName: "chrome",
             "goog:chromeOptions": {
-              args: [
-                "--headless=new",
-                "--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--disable-gpu",
-                "--window-size=1440,2000"
-              ]
+              args: ["--headless=new","--no-sandbox","--disable-dev-shm-usage","--disable-gpu","--window-size=1440,2400"]
             }
           }
         }
@@ -193,9 +170,8 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
       body: JSON.stringify({ url })
     });
 
-    // HLLStats.dev uses the SteamID field + Submit flow to trigger the
-    // lookup. A plain navigation can leave the page on its empty template.
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1200));
+
     await request("/session/" + sessionId + "/execute/sync", {
       method: "POST",
       body: JSON.stringify({
@@ -214,7 +190,6 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
       })
     });
 
-    // Give the Steam lookup and page rendering time to complete.
     await new Promise(resolve => setTimeout(resolve, 5000));
 
     const extracted = await request("/session/" + sessionId + "/execute/sync", {
@@ -223,60 +198,74 @@ const fetchBrowserText = async (url, steamId, labels = []) => {
         script: `
           const labels = arguments[0] || [];
           const clean = value => String(value ?? '').replace(/\\u00a0/g, ' ').replace(/\\s+/g, ' ').trim();
+          const visible = el => {
+            if (!el) return false;
+            const style = getComputedStyle(el);
+            if (style.display === 'none' || style.visibility === 'hidden') return false;
+            const r = el.getBoundingClientRect();
+            return r.width > 0 && r.height > 0;
+          };
           const numberText = value => {
             const s = clean(value).replace(/,/g, '');
             return /^\\d+(?:\\.\\d+)?$/.test(s) ? Number(s) : null;
           };
-          const out = {};
-          const all = [...document.querySelectorAll('*')];
 
-          for (const label of labels) {
-            const wanted = clean(label);
-            const matches = all.filter(el =>
-              el.children.length === 0 && clean(el.textContent) === wanted
-            );
-            const candidates = [];
+          const capture = () => {
+            const out = {};
+            for (const label of labels) {
+              const wanted = clean(label);
+              const matches = [...document.querySelectorAll('*')].filter(el =>
+                el.children.length === 0 && visible(el) && clean(el.textContent) === wanted
+              );
+              const candidates = [];
 
-            for (const match of matches) {
-              let node = match;
-              for (let depth = 0; depth < 6 && node; depth++, node = node.parentElement) {
-                const leaves = [...node.querySelectorAll('*')].filter(el => el.children.length === 0);
-                const idx = leaves.indexOf(match);
-                if (idx < 0) continue;
-                const nums = leaves.slice(idx + 1)
-                  .map(el => numberText(el.textContent))
-                  .filter(v => v !== null);
-                if (nums.length) {
-                  candidates.push(nums);
-                  break;
+              for (const match of matches) {
+                let node = match;
+                for (let depth = 0; depth < 8 && node; depth++, node = node.parentElement) {
+                  if (!visible(node)) continue;
+                  const leaves = [...node.querySelectorAll('*')].filter(el => el.children.length === 0 && visible(el));
+                  const idx = leaves.indexOf(match);
+                  if (idx < 0) continue;
+                  const nums = leaves.slice(idx + 1)
+                    .map(el => numberText(el.textContent))
+                    .filter(v => v !== null);
+                  if (nums.length) {
+                    candidates.push(nums);
+                    break;
+                  }
                 }
               }
+              out[label] = candidates;
             }
-            out[label] = candidates;
+            return { text: document.body ? document.body.innerText : '', dom: out };
+          };
+
+          const snapshots = [capture()];
+          const tabNames = ['Games','Career','Kills','Other'];
+
+          for (const tabName of tabNames) {
+            const tab = [...document.querySelectorAll('button,a,[role="tab"]')]
+              .find(el => clean(el.textContent) === tabName && visible(el));
+            if (!tab) continue;
+            tab.click();
+            await new Promise(resolve => setTimeout(resolve, 800));
+            snapshots.push(capture());
           }
 
-          return {
-            text: document.body ? document.body.innerText : '',
-            dom: out
-          };
+          return snapshots;
         `,
         args: [${JSON.stringify(labels)}]
       })
     });
 
-    return extracted || { text: "", dom: {} };
+    return Array.isArray(extracted) ? extracted : [];
   } finally {
     if (sessionId) {
-      try {
-        await request("/session/" + sessionId, { method: "DELETE" });
-      } catch {}
+      try { await request("/session/" + sessionId, { method: "DELETE" }); } catch {}
     }
-    try {
-      driver.kill("SIGTERM");
-    } catch {}
+    try { driver.kill("SIGTERM"); } catch {}
   }
 };
-
 const fetchHllRatings = async steamId => {
   const text = await fetchText("https://hellor.pro/player/" + steamId);
 
@@ -373,31 +362,45 @@ const fetchHllStatsDev = async steamId => {
   // Steam lookup can complete exactly like it does in a normal browser.
   if (!hasRealData) {
     try {
-      const rendered = await fetchBrowserText(url, steamId, labels);
-      const renderedText = String(rendered?.text || "");
+      const snapshots = await fetchBrowserText(url, steamId, labels);
       const renderedValues = {};
 
-      for (const label of labels) {
-        const groups = Array.isArray(rendered?.dom?.[label]) ? rendered.dom[label] : [];
-        const group = groups[0];
-        const value = Array.isArray(group) && group.length ? Number(group[0]) : null;
-        if (Number.isFinite(value)) renderedValues[label] = value;
-      }
+      // HLLStats.dev is a tabbed application. Read every tab and merge the
+      // values, rather than only scraping the default Games view.
+      for (const snapshot of snapshots) {
+        const dom = snapshot?.dom || {};
+        for (const label of labels) {
+          const groups = Array.isArray(dom[label]) ? dom[label] : [];
+          if (!groups.length) continue;
 
-      for (const label of labels) {
-        if (renderedValues[label] !== undefined) continue;
-        const value = numberAfterLabel(renderedText, label);
-        if (value !== null) renderedValues[label] = value;
+          // A statistic card has the label followed by its value. Use the
+          // first numeric value in that card, including an actual 0.
+          const candidate = groups[0]?.[0];
+          if (Number.isFinite(Number(candidate))) {
+            if (renderedValues[label] === undefined) {
+              renderedValues[label] = Number(candidate);
+            }
+          }
+        }
+
+        // Text fallback for labels whose DOM card structure is unusual.
+        const renderedText = String(snapshot?.text || "");
+        for (const label of labels) {
+          if (renderedValues[label] !== undefined) continue;
+          const value = numberAfterLabel(renderedText, label);
+          if (value !== null) renderedValues[label] = value;
+        }
       }
 
       if (renderedValues["Estimated W/L Ratio"] !== undefined && renderedValues["Estimated WL Ratio"] === undefined) {
         renderedValues["Estimated WL Ratio"] = renderedValues["Estimated W/L Ratio"];
       }
-      text = renderedText;
+
+      text = snapshots.map(s => s?.text || "").join("\\n");
       for (const [label, value] of Object.entries(renderedValues)) {
         values[label] = value;
       }
-      hasRealData = tracked.some(label => Number(values[label]) > 0);
+      hasRealData = tracked.some(label => Number(values[label]) > 0);      hasRealData = tracked.some(label => Number(values[label]) > 0);
     } catch (error) {
       throw new Error("HLLStats.dev Browser-Abfrage fehlgeschlagen: " + (error instanceof Error ? error.message : String(error)));
     }
