@@ -384,20 +384,23 @@ function renderDetailedUnified(u) {
     renderStatSection('HLLSTATS.DEV · OVERALL', [
       ['Estimated Total Games', hll['Estimated Total Games']],['Wins', hll.Wins],['Estimated Loss', hll['Estimated Loss']],
       ['Estimated W/L Ratio', hll['Estimated WL Ratio']],['Maps Played', hll['Amount Of Maps Played']]
-    ], '', true),
+    ]),
     renderStatSection('KILLS & COMBAT', [
       ['Kills', hll.Kills],['Vehicle zerstört',hll['Vehicle Destroyed']],['Tanks zerstört',hll['Tanks Destroyed']],
       ['Jeeps zerstört',hll['Jeeps Destroyed']],['Headshots',hll.Headshots],['Artillerie',hll.Artillery],
       ['Knife',hll.Knife],['Spade',hll.Spade],['Half-track MG',hll['Half-track MG']],['Flamethrower',hll.Flamethrower],['Jeep Impact',hll['Jeep Impact']]
-    ], '', true),
-    renderStatSection('FAKTIONEN', Object.entries(hll.factions || {}), '', true),
+    ]),
+    renderStatSection('CAREER', [
+      ['Career XP',hll['Career XP']],['Commander',hll.Commander],['Officer',hll.Officer],
+      ['Tank Commander',hll['Tank Commander']],['Spotter',hll.Spotter]
+    ]),    renderStatSection('FAKTIONEN', Object.entries(hll.factions || {})),
     renderStatSection('ROLLEN', Object.entries(hll.roles || {}), '', true),
     renderStatSection('GAME MODES', Object.entries(hll.gameModes || {}), '', true),
     renderStatSection('BUILT', Object.entries(hll.built || {}), '', true),
-    renderStatSection('COMMENDS', [['Received',hll.commends?.received],['Given',hll.commends?.given]], '', true),
-    renderStatSection('SUPPLIES', [['Total Dropped',hll.supplies?.totalDropped],['Total Used',hll.supplies?.totalUsed],['Truck Drops',hll.supplies?.truckDrops]], '', true),
-    renderStatSection('AMMO', [['Total Dropped',hll.ammo?.totalDropped],['Jeep Drops',hll['Jeep Drops']]], '', true),
-    renderStatSection('OTHER', [['Flare Gun Scans',hll['Flare Gun Scans']],['Half-track Spawns',hll['Half-track Spawns']],['Molotovs Thrown',hll['Molotovs Thrown']],['Captured Sectors',hll['Captured Sectors']]], '', true),
+    renderStatSection('COMMENDS', [['Received',hll.commends?.received],['Given',hll.commends?.given]]),
+    renderStatSection('SUPPLIES', [['Total Dropped',hll.supplies?.totalDropped],['Total Used',hll.supplies?.totalUsed],['Truck Drops',hll.supplies?.truckDrops]]),
+    renderStatSection('AMMO', [['Total Dropped',hll.ammo?.totalDropped],['Jeep Drops',hll['Jeep Drops']]]),
+    renderStatSection('OTHER', [['Flare Gun Scans',hll['Flare Gun Scans']],['Half-track Spawns',hll['Half-track Spawns']],['Molotovs Thrown',hll['Molotovs Thrown']],['Captured Sectors',hll['Captured Sectors']]]),
     `<div class="stats-panel"><div class="subsection-title">MAPS</div><div class="role-grid">${Object.entries(hll.maps || {}).filter(([,value])=>Number(value)!==0).map(([name,value])=>`<div class="role-card"><b>${esc(name)}</b><span>${fmtStat(value)}</span></div>`).join('')}</div></div>`
   ].join('');
   const ratingHtml = renderStatSection('RATINGS & PERFORMANCE', [
