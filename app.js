@@ -501,7 +501,7 @@ function renderDetailedUnified(u) {
     ? `<div class="stats-panel"><div class="subsection-title">MATCH HISTORY</div><div class="match-table-wrap"><table><thead><tr><th>DATUM</th><th>MAP</th><th>SERVER</th><th>MODUS</th><th>RESULTAT</th><th>K/D</th><th>KPM</th><th>SCORE</th></tr></thead><tbody>${matchRows.slice(0,50).map(m=>`<tr><td>${dateLabel(m.startAt || m.startedAt)}</td><td>${esc(m.map || '—')}</td><td>${esc(m.server || '—')}</td><td>${esc(m.mode || m.gamemode || '—')}</td><td>${esc(m.result || m.resultat || '—')}</td><td>${fmtStat(m.kd)}</td><td>${fmtStat(m.kpm)}</td><td>${fmtStat(m.score)}</td></tr>`).join('')}</tbody></table></div></div>`
     : '';
 
-  return \`<div class="player-dashboard" data-detail-tabs>
+  return `<div class="player-dashboard" data-detail-tabs>
     <aside class="player-nav">
       <div class="player-nav-title">FIELD MENU</div>
       <button class="detail-tab active" data-tab="overview"><i>⌂</i><span>ÜBERSICHT</span><small>01</small></button>
@@ -512,14 +512,14 @@ function renderDetailedUnified(u) {
       <button class="detail-tab" data-tab="history"><i>⌁</i><span>HISTORY</span><small>06</small></button>
     </aside>
     <div class="player-dashboard-content">
-      <div class="detail-tab-content active" data-content="overview">\${overview}\${factionOverview}\${ratingHtml}\${recentHtml}</div>
-      <div class="detail-tab-content" data-content="combat">\${combatHtml}</div>
-      <div class="detail-tab-content" data-content="support">\${supportHtml}\${builtExtra}</div>
-      <div class="detail-tab-content" data-content="roles">\${roleHtml || '<div class="empty">Noch keine Rollendaten synchronisiert.</div>'}</div>
-      <div class="detail-tab-content" data-content="maps">\${mapHtml || '<div class="empty">Noch keine Mapdaten synchronisiert.</div>'}</div>
-      <div class="detail-tab-content" data-content="history">\${modeHtml}\${trendHtml}\${matchHtml || '<div class="empty">Noch keine Match-Historie synchronisiert.</div>'}</div>
+      <div class="detail-tab-content active" data-content="overview">${overview}${factionOverview}${ratingHtml}${recentHtml}</div>
+      <div class="detail-tab-content" data-content="combat">${combatHtml}</div>
+      <div class="detail-tab-content" data-content="support">${supportHtml}${builtExtra}</div>
+      <div class="detail-tab-content" data-content="roles">${roleHtml || '<div class="empty">Noch keine Rollendaten synchronisiert.</div>'}</div>
+      <div class="detail-tab-content" data-content="maps">${mapHtml || '<div class="empty">Noch keine Mapdaten synchronisiert.</div>'}</div>
+      <div class="detail-tab-content" data-content="history">${modeHtml}${trendHtml}${matchHtml || '<div class="empty">Noch keine Match-Historie synchronisiert.</div>'}</div>
     </div>
-  </div>\`;
+  </div>`;
 }
 function renderPlayers() {
   selectedPlayerId = null;
