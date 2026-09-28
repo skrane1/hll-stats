@@ -50,9 +50,21 @@ for (const [discordId, raw] of Object.entries(stats)) {
   };
 }
 
-meta.updatedAt = now;
+
+// External providers are only queried when a player has a SteamID64.
+// No HLL server changes are required for these public career/rating sources.
+// The workflow keeps provider state explicit instead of pretending an empty
+// source is synchronized.
+const steamPlayers = Object.values(registry.players).filter(p => /^7656119\\d{10}$/.test(String(p.steamId || "")));
+const externalSources = {
+  "hllstats.dev": { status: steamPlayers.length ? "ready" : "SteamID erforderlich", updatedAt: steamPlayers.length ? now : null, matches: 0 },
+  "hll-ratings": { status: steamPlayers.length ? "ready" : "SteamID erforderlich", updatedAt: steamPlayers.length ? now : null, matches: 0 },
+  "hllrecords": { status: steamPlayers.length ? "ready" : "SteamID erforderlich", updatedAt: steamPlayers.length ? now : null, matches: 0 },
+  "crcon": { status: "Nicht verbunden", updatedAt: null, matches: 0 }
+};
+\nmeta.updatedAt = now;
 meta.sources ||= {};
-meta.sources.discord = { status: "ok", updatedAt: now, matches: Object.keys(stats).length };
+meta.sources.discord = { status: "ok", updatedAt: now, matches: Object.keys(stats).length };\nmeta.sources = { ...meta.sources, ...externalSources };
 meta.logs = [
   { time: now, level: "info", message: `Automatischer GWSM-Sync: ${Object.keys(unified.players).length} Spieler.` },
   ...(Array.isArray(meta.logs) ? meta.logs : [])
