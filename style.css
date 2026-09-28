@@ -488,7 +488,7 @@ table tr:first-child td{
   background:
     linear-gradient(90deg,rgba(5,8,8,.97) 0%,rgba(7,10,10,.86) 28%,rgba(7,10,10,.48) 70%,rgba(7,10,10,.78) 100%),
     linear-gradient(180deg,transparent 35%,rgba(5,7,7,.9)),
-    url("./images/commander-counter.png") center/cover;
+    linear-gradient(145deg,#202722,#0b0f0f);
   border-bottom:1px solid #383e39;
   padding:28px 28px 25px;
 }
@@ -543,19 +543,19 @@ table tr:first-child td{
   box-shadow:inset 0 0 55px rgba(0,0,0,.45),0 10px 25px rgba(0,0,0,.22);
 }
 .hero-stat:nth-child(1){
-  background-image:linear-gradient(90deg,rgba(9,12,11,.88),rgba(9,12,11,.52)),url("./images/commander-counter.png");
+  background-image:linear-gradient(145deg,#202722,#0b0f0f);
 }
 .hero-stat:nth-child(2){
-  background-image:linear-gradient(90deg,rgba(12,20,13,.9),rgba(12,20,13,.48)),url("./images/you-shall-not-pass.png");
+  background-image:linear-gradient(145deg,#1d2a20,#0b0f0c);
 }
 .hero-stat:nth-child(3){
-  background-image:linear-gradient(90deg,rgba(28,12,11,.9),rgba(28,12,11,.48)),url("./images/meele-mage.png");
+  background-image:linear-gradient(145deg,#302321,#0e0b0b);
 }
 .hero-stat:nth-child(4){
-  background-image:linear-gradient(90deg,rgba(30,24,10,.9),rgba(30,24,10,.48)),url("./images/garry-grounder.png");
+  background-image:linear-gradient(145deg,#332c1d,#0f0d09);
 }
 .hero-stat:nth-child(5){
-  background-image:linear-gradient(90deg,rgba(10,18,23,.9),rgba(10,18,23,.48)),url("./images/alchemist.png");
+  background-image:linear-gradient(145deg,#202c32,#0b0f11);
 }
 .hero-stat:before{
   height:100%;width:3px;bottom:0;top:auto;left:0;
@@ -595,7 +595,7 @@ table tr:first-child td{
 .career-module{
   background:
     linear-gradient(90deg,rgba(10,13,12,.95),rgba(10,13,12,.68)),
-    url("./images/sniperwizard.png") center/cover;
+    url("./images/ui/roles.svg") center/cover;
 }
 .faction-module{
   background:
