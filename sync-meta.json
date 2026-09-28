@@ -35,6 +35,11 @@
   "duplicates": 0,
   "logs": [
     {
+      "time": "2026-09-28T17:17:26.635Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 0 externe Spielerabfragen erfolgreich."
+    },
+    {
       "time": "2026-09-28T17:16:44.092Z",
       "level": "info",
       "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 0 externe Spielerabfragen erfolgreich."
