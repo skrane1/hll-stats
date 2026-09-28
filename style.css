@@ -229,3 +229,122 @@ tr:last-child td{border-bottom:0}tr:hover td{background:rgba(255,255,255,.025)}
   .dev-grid{grid-template-columns:1fr}.player-admin-form,.source-grid{grid-template-columns:1fr}.admin-key{width:100%}.log-row{grid-template-columns:1fr}.admin-player-row{align-items:flex-start;flex-direction:column}
   h1{font-size:28px}
 }
+
+
+/* HLL FIELD / WAR ROOM FINISH */
+h1,h2,.section-head h2,.player-name,.mage-body h2,.category-content h2{
+  font-family:"Arial Narrow","Roboto Condensed","Segoe UI",sans-serif;
+}
+h1{
+  font-stretch:condensed;
+  text-shadow:2px 2px 0 rgba(0,0,0,.45);
+}
+main{
+  background:
+    linear-gradient(90deg,transparent 0,transparent calc(100% - 1px),rgba(201,154,72,.08) calc(100% - 1px)),
+    repeating-linear-gradient(90deg,transparent 0,transparent 119px,rgba(255,255,255,.012) 120px);
+}
+main:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;height:4px;
+  background:repeating-linear-gradient(135deg,rgba(201,154,72,.28) 0 12px,transparent 12px 24px);
+  opacity:.32;
+  pointer-events:none;
+}
+.section-head:after{
+  content:"";
+  position:absolute;right:16px;top:0;width:70px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent));
+  opacity:.35;
+}
+.challenge-card,.mage-card,.category-detail,.player-profile{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 18px 50px rgba(0,0,0,.28);
+}
+.challenge-card:hover,.mage-card:hover,.category-detail:hover{
+  border-color:#4b4b3c;
+}
+.challenge-card .section-head h2:before,
+.category-detail .category-content h2:before{
+  content:"// ";
+  color:#63583f;
+  font-weight:400;
+}
+.badge:before{
+  content:"● ";
+  color:#91a878;
+}
+.player-profile-head{
+  min-height:112px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:22px 24px;
+  border-bottom:1px solid #2a312e;
+  background:
+    linear-gradient(90deg,rgba(201,154,72,.09),transparent 42%),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 10px);
+  position:relative;
+}
+.player-profile-head:before{
+  content:"FIELD RECORD // CLASSIFIED";
+  position:absolute;right:20px;top:8px;
+  color:#414844;font-size:6px;letter-spacing:2px;
+}
+.player-profile-identity{
+  display:flex;align-items:center;gap:15px;
+}
+.profile-avatar{
+  width:58px;height:58px;display:grid;place-items:center;
+  border:1px solid #655536;
+  background:linear-gradient(135deg,#292c27,#0b0e0d);
+  color:var(--accent2);font-size:22px;font-weight:900;
+  box-shadow:inset 0 0 0 3px rgba(201,154,72,.05);
+}
+.player-profile-head h2{
+  margin:2px 0 5px;font-size:24px;letter-spacing:1px;text-transform:uppercase;
+}
+.profile-meta{
+  display:flex;gap:8px;color:#68716c;font-size:7px;letter-spacing:1.5px;
+}
+.profile-separator{color:#4e554f}
+.player-profile-actions{
+  display:flex;align-items:center;gap:12px;
+}
+.profile-signal{
+  color:#7d9170;font-size:7px;letter-spacing:1.4px;
+  border:1px solid #394535;padding:8px 9px;background:rgba(104,119,92,.06);
+}
+.player-profile .unified-box{
+  margin-top:20px;
+}
+.unified-stat,.detail-stat,.role-card{
+  position:relative;
+  overflow:hidden;
+}
+.unified-stat:after,.detail-stat:after,.role-card:after{
+  content:"";
+  position:absolute;right:-14px;bottom:-18px;width:48px;height:48px;
+  border:1px solid rgba(201,154,72,.07);transform:rotate(45deg);
+}
+.stats-panel .subsection-title:before{
+  content:"/// ";
+  color:#5d644f;
+}
+.detail-tab-buttons:before{
+  content:"FIELD DATA";
+  align-self:center;
+  color:#414945;font-size:6px;letter-spacing:1.5px;
+  padding:0 9px 0 4px;
+}
+.detail-tab.active:before{
+  content:"";
+}
+table tr:first-child td{
+  border-top:1px solid rgba(255,255,255,.01);
+}
+@media(max-width:850px){
+  .player-profile-head{align-items:flex-start;flex-direction:column}
+  .player-profile-actions{width:100%;justify-content:space-between}
+}
