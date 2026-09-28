@@ -119,11 +119,9 @@
     return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, "0")).join("");
   };
   const unlock = () => { lock.hidden = true; shell.hidden = false; };
-  if (sessionStorage.getItem("gwsm_dev_unlocked") === "1") unlock();
   form.addEventListener("submit", async event => {
     event.preventDefault();
     if ((await hash(input.value)) === PASSWORD_HASH) {
-      sessionStorage.setItem("gwsm_dev_unlocked", "1");
       unlock();
       input.value = "";
     } else {
