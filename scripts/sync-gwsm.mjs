@@ -100,7 +100,7 @@ const loosePercentAfterLabel = (text, label) => {
   return Number.isFinite(n) ? n : null;
 };
 
-const fetchBrowserText = async (url, steamId) => {
+const fetchBrowserText = async (url, steamId, labels = []) => {
   const { spawn } = await import("node:child_process");
 
   const candidates = [
@@ -217,15 +217,54 @@ const fetchBrowserText = async (url, steamId) => {
     // Give the Steam lookup and page rendering time to complete.
     await new Promise(resolve => setTimeout(resolve, 5000));
 
-    const text = await request("/session/" + sessionId + "/execute/sync", {
+    const extracted = await request("/session/" + sessionId + "/execute/sync", {
       method: "POST",
       body: JSON.stringify({
-        script: "return document.body ? document.body.innerText : '';",
-        args: []
+        script: `
+          const labels = arguments[0] || [];
+          const clean = value => String(value ?? '').replace(/\\u00a0/g, ' ').replace(/\\s+/g, ' ').trim();
+          const numberText = value => {
+            const s = clean(value).replace(/,/g, '');
+            return /^\\d+(?:\\.\\d+)?$/.test(s) ? Number(s) : null;
+          };
+          const out = {};
+          const all = [...document.querySelectorAll('*')];
+
+          for (const label of labels) {
+            const wanted = clean(label);
+            const matches = all.filter(el =>
+              el.children.length === 0 && clean(el.textContent) === wanted
+            );
+            const candidates = [];
+
+            for (const match of matches) {
+              let node = match;
+              for (let depth = 0; depth < 6 && node; depth++, node = node.parentElement) {
+                const leaves = [...node.querySelectorAll('*')].filter(el => el.children.length === 0);
+                const idx = leaves.indexOf(match);
+                if (idx < 0) continue;
+                const nums = leaves.slice(idx + 1)
+                  .map(el => numberText(el.textContent))
+                  .filter(v => v !== null);
+                if (nums.length) {
+                  candidates.push(nums);
+                  break;
+                }
+              }
+            }
+            out[label] = candidates;
+          }
+
+          return {
+            text: document.body ? document.body.innerText : '',
+            dom: out
+          };
+        `,
+        args: [${JSON.stringify(labels)}]
       })
     });
 
-    return String(text || "");
+    return extracted || { text: "", dom: {} };
   } finally {
     if (sessionId) {
       try {
@@ -334,12 +373,23 @@ const fetchHllStatsDev = async steamId => {
   // Steam lookup can complete exactly like it does in a normal browser.
   if (!hasRealData) {
     try {
-      const renderedText = await fetchBrowserText(url, steamId);
+      const rendered = await fetchBrowserText(url, steamId, labels);
+      const renderedText = String(rendered?.text || "");
       const renderedValues = {};
+
       for (const label of labels) {
+        const groups = Array.isArray(rendered?.dom?.[label]) ? rendered.dom[label] : [];
+        const group = groups[0];
+        const value = Array.isArray(group) && group.length ? Number(group[0]) : null;
+        if (Number.isFinite(value)) renderedValues[label] = value;
+      }
+
+      for (const label of labels) {
+        if (renderedValues[label] !== undefined) continue;
         const value = numberAfterLabel(renderedText, label);
         if (value !== null) renderedValues[label] = value;
       }
+
       if (renderedValues["Estimated W/L Ratio"] !== undefined && renderedValues["Estimated WL Ratio"] === undefined) {
         renderedValues["Estimated WL Ratio"] = renderedValues["Estimated W/L Ratio"];
       }
