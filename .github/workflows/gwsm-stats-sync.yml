@@ -27,6 +27,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@v3
+        with:
+          chromeapp: google-chrome-stable
+
       - name: Sync GWSM stats
         run: node scripts/sync-gwsm.mjs
 
