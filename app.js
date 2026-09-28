@@ -257,7 +257,39 @@ function renderCategories() {
 }
 
 function unifiedFor(id) {
-  return unified.players?.[String(id)] || null;
+  const wanted = String(id);
+  const direct = unified.players?.[wanted];
+  if (direct) return direct;
+
+  const player = playersArray().find(p =>
+    String(p.id) === wanted ||
+    String(p.discordId || "") === wanted ||
+    String(p.steamId || "") === wanted ||
+    String(p.epicId || "") === wanted
+  );
+
+  if (!player) return null;
+
+  const candidates = [
+    player.steamId,
+    player.epicId,
+    player.discordId,
+    player.id
+  ].filter(Boolean).map(String);
+
+  for (const key of candidates) {
+    if (unified.players?.[key]) return unified.players[key];
+  }
+
+  const username = String(player.username || "").trim().toLowerCase();
+  if (username) {
+    const byName = Object.values(unified.players || {}).find(p =>
+      String(p?.username || "").trim().toLowerCase() === username
+    );
+    if (byName) return byName;
+  }
+
+  return null;
 }
 
 function fmtStat(v, suffix = '') {
@@ -479,14 +511,15 @@ function showPlayer(id) {
 const RAW_BASE = "https://raw.githubusercontent.com/skrane1/hll-stats/main/";
 
 async function fetchJsonWithFallback(file, fallback = null) {
-  const local = `./${file}?t=${Date.now()}`;
+  // GitHub Pages can serve the repository copy from its own cache.
+  // The raw repository is the authoritative live data source.
   try {
-    const r = await fetch(local, { cache: "no-store" });
+    const r = await fetch(`${RAW_BASE}${file}?t=${Date.now()}`, { cache: "no-store" });
     if (r.ok) return await r.json();
   } catch (_) {}
 
   try {
-    const r = await fetch(`${RAW_BASE}${file}?t=${Date.now()}`, { cache: "no-store" });
+    const r = await fetch(`./${file}?t=${Date.now()}`, { cache: "no-store" });
     if (r.ok) return await r.json();
   } catch (_) {}
 
