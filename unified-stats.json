@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T14:53:26.616Z",
+  "updatedAt": "2026-09-28T14:54:45.810Z",
   "players": {
     "386241651753877505": {
       "id": "386241651753877505",
@@ -316,7 +316,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561199100319875",
-          "fetchedAt": "2026-09-28T14:53:26.616Z",
+          "fetchedAt": "2026-09-28T14:54:45.810Z",
           "overall": null,
           "team": null,
           "impact": null,
@@ -332,13 +332,13 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Steam-Profil nicht öffentlich oder noch nicht von HLLStats.dev erfasst",
-          "failedAt": "2026-09-28T14:53:26.616Z"
+          "failedAt": "2026-09-28T14:54:45.810Z"
         },
-        "_lastRefresh": "2026-09-28T14:53:26.616Z",
+        "_lastRefresh": "2026-09-28T14:54:45.810Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
-          "fetchedAt": "2026-09-28T14:53:26.616Z",
+          "fetchedAt": "2026-09-28T14:54:45.810Z",
           "totalMatches": 1487,
           "playedMatches": null,
           "winRate": 78,
@@ -354,11 +354,11 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-09-28T14:53:26.616Z"
+          "failedAt": "2026-09-28T14:54:45.810Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-09-28T14:53:26.616Z"
+      "updatedAt": "2026-09-28T14:54:45.810Z"
     },
     "1235652648305299536": {
       "id": "1235652648305299536",
