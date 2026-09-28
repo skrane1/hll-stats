@@ -725,25 +725,17 @@ async function loadData(options = {}) {
 }
 
 function renderAll(options = {}) {
-  renderChallenges();
-  renderHall();
-  renderCategories();
-
-  if (activePage !== "players") {
-    renderPlayers();
-    return;
-  }
-
-  if (selectedPlayerId) {
-    if (options.manual) {
-      showPlayer(selectedPlayerId, { preserveTab: true });
+  // Only paint the visible page. Hidden-page DOM rebuilds are avoided during polling.
+  if (activePage === "challenges") renderChallenges();
+  else if (activePage === "hall") renderHall();
+  else if (activePage === "categories") renderCategories();
+  else if (activePage === "players") {
+    if (selectedPlayerId) {
+      if (options.manual) showPlayer(selectedPlayerId, { preserveTab: true });
+    } else {
+      renderPlayers();
     }
-    // Automatic polling updates the data in memory but deliberately leaves
-    // the current profile untouched, so no navigation/tab/search state is lost.
-    return;
   }
-
-  renderPlayers();
 }
 
 const titles = {
@@ -773,4 +765,4 @@ document.querySelectorAll(".nav").forEach(btn=>btn.addEventListener("click",()=>
 
 $("#refresh").addEventListener("click", () => loadData({ manual: true }));
 loadData({ manual: true });
-setInterval(() => loadData(), 30000);
+setInterval(() => loadData(), 60000);
