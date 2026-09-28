@@ -89,13 +89,7 @@ function buildUnified(stats, registry) {
   const players = {};
   for (const [discordId, raw] of Object.entries(stats || {})) {
     const managed = registry.players?.[discordId] || registry.players?.[raw.discordId] || {};
-    const categories = raw.categories || raw.stats || {};
-    const values = {};
-    for (const [key, value] of Object.entries(categories)) {
-      if (typeof value === "number") values[key] = value;
-      else if (value && typeof value.value === "number") values[key] = value.value;
-    }
-    const totalKills = Object.entries(values)
+    const values = {};\n    for (const [key, value] of Object.entries(raw || {})) {\n      if (["username","discordId","steamId","epicId"].includes(key)) continue;\n      if (typeof value === "number" && Number.isFinite(value)) values[key] = value;\n    }\n    const totalKills = Object.entries(values)
       .filter(([k]) => /kill|absch|t[oö]t|counter|thanatos|mage|op|garry|alchemist|kettenblitz|sniperwizard/i.test(k))
       .reduce((n, [, v]) => n + Number(v || 0), 0);
     players[managed.steamId || managed.epicId || discordId] = {
