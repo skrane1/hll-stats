@@ -344,7 +344,6 @@ function renderDetailedUnified(u) {
   const hll = s.hllstats || {};
   const recent = s.recent || {};
   const trends = s.trends || {};
-  const hll = s.hllstats || {};
   const matchRows = Array.isArray(u.matches) ? u.matches : [];
 
   const overview = renderStatSection('ÜBERSICHT', [
