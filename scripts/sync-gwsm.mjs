@@ -47,12 +47,30 @@ const percentAfterLabel = (text, label) => {
 };
 
 const fetchText = async url => {
-  const response = await fetch(url, {
-    headers: { "User-Agent": "GWSM-HLL-Stats/1.0 (+https://skrane1.github.io/)" },
+  const headers = {
+    "User-Agent": "Mozilla/5.0 (compatible; GWSM-HLL-Stats/2.0; +https://skrane1.github.io/)",
+    "Accept": "text/html,application/xhtml+xml"
+  };
+
+  try {
+    const response = await fetch(url, { headers, redirect: "follow" });
+    if (response.ok) return htmlToText(await response.text());
+    if (![403, 429, 451, 500, 502, 503, 504].includes(response.status)) {
+      throw new Error("HTTP " + response.status);
+    }
+  } catch (error) {
+    if (error?.message?.startsWith("HTTP ") && !/HTTP (403|429|451|500|502|503|504)$/.test(error.message)) {
+      throw error;
+    }
+  }
+
+  const proxyUrl = "https://r.jina.ai/http://" + url.replace(/^https?:\/\//, "");
+  const proxyResponse = await fetch(proxyUrl, {
+    headers: { "User-Agent": "GWSM-HLL-Stats/2.0" },
     redirect: "follow"
   });
-  if (!response.ok) throw new Error("HTTP " + response.status);
-  return htmlToText(await response.text());
+  if (!proxyResponse.ok) throw new Error("HTTP " + proxyResponse.status);
+  return htmlToText(await proxyResponse.text());
 };
 
 const fetchHllRatings = async steamId => {
@@ -131,6 +149,60 @@ const fetchHllStatsDev = async steamId => {
   };
 };
 
+const fetchHllRecords = async steamId => {
+  const url = "https://hllrecords.com/profiles/" + steamId;
+  const text = await fetchText(url);
+  if (/player not found|profile not found|page not found/i.test(text)) throw new Error("Spieler nicht in HLL Records gefunden");
+
+  const totalMatches = text.match(/Total on servers\s+([0-9]+)\+?\s+matches/i)?.[1];
+  const playedMatches = text.match(/Matches\s+played\s+([0-9]+)\+?\s+matches/i)?.[1];
+  const winRate = percentAfterLabel(text, "Win rate");
+  const kills = numberAfterLabel(text, "Total kills");
+  const deaths = numberAfterLabel(text, "Total deaths");
+  const kdr = numberAfterLabel(text, "Overall K/D ratio");
+  const kpm = text.match(/Total kills\s+[0-9,]+\s+\(([0-9.]+)\s*KPM\)/i)?.[1];
+  const dpm = text.match(/Total deaths\s+[0-9,]+\s+\(([0-9.]+)\s*DPM\)/i)?.[1];
+  const teamKills = numberAfterLabel(text, "Team kills");
+  const level = numberAfterLabel(text, "Level");
+  const hours = text.match(/Total on servers\s+[0-9+]+\s+matches\s*\/\s*([0-9]+(?:\.[0-9]+)?)\s*hours/i)?.[1] || null;
+
+  if (kills === null && deaths === null && !totalMatches) throw new Error("Keine HLL Records Spielerdaten");
+
+  return {
+    provider: "hllrecords", url, fetchedAt: now,
+    totalMatches: totalMatches ? Number(totalMatches) : null,
+    playedMatches: playedMatches ? Number(playedMatches) : null,
+    winRate, kills, deaths, kdr,
+    kpm: kpm ? Number(kpm) : null,
+    dpm: dpm ? Number(dpm) : null,
+    teamKills, level, hours: hours ? Number(hours) : null
+  };
+};
+
+const fetchFrostbite = async steamId => {
+  const url = "https://frostbite.bifrostgaming.com/hll/player/" + steamId;
+  const text = await fetchText(url);
+  const matches = numberAfterLabel(text, "Matches");
+  const hours = text.match(/([0-9]+(?:\.[0-9]+)?)\s*hours played/i)?.[1];
+  const winRate = percentAfterLabel(text, "Win Rate");
+  const wins = text.match(/([0-9,]+)\s+wins/i)?.[1];
+  const kdMatch = text.match(/K\/D Ratio\s+([0-9.]+)\s+([0-9,]+)\s*K\s*\/\s*([0-9,]+)\s*D/i);
+  const kills = kdMatch ? Number(kdMatch[2].replace(/,/g, "")) : numberAfterLabel(text, "Total Kills");
+  const deaths = kdMatch ? Number(kdMatch[3].replace(/,/g, "")) : null;
+  const kdr = kdMatch ? Number(kdMatch[1]) : numberAfterLabel(text, "K/D Ratio");
+  const level = numberAfterLabel(text, "Level");
+  const teamkills = numberAfterLabel(text, "Teamkills");
+
+  if (kills === null && matches === null) throw new Error("Keine Frostbite Spielerdaten");
+
+  return {
+    provider: "frostbite", url, fetchedAt: now,
+    level, matches, hours: hours ? Number(hours) : null,
+    winRate, wins: wins ? Number(wins.replace(/,/g, "")) : null,
+    kills, deaths, kdr, teamkills
+  };
+};
+
 const refreshExternal = async (player, previousExternal) => {
   const steamId = String(player.steamId || "").trim();
   if (!steamIdValid(steamId)) return { external: previousExternal || {}, ok: false, skipped: true };
@@ -146,7 +218,9 @@ const refreshExternal = async (player, previousExternal) => {
 
   for (const [key, loader] of [
     ["hll-ratings", fetchHllRatings],
-    ["hllstats.dev", fetchHllStatsDev]
+    ["hllstats.dev", fetchHllStatsDev],
+    ["hllrecords", fetchHllRecords],
+    ["frostbite", fetchFrostbite]
   ]) {
     try {
       external[key] = await loader(steamId);
@@ -281,32 +355,51 @@ const latestFetchedAt = list => {
   return times.length ? new Date(Math.max(...times)).toISOString() : null;
 };
 
+const sourceStats = key => {
+  const list = Object.values(unified.players || {}).filter(
+    player => player?.external?.[key]?.fetchedAt
+  );
+  const timestamps = list
+    .map(player => player.external[key].fetchedAt)
+    .map(value => new Date(value).getTime())
+    .filter(Number.isFinite);
+  return {
+    matches: list.length,
+    updatedAt: timestamps.length ? new Date(Math.max(...timestamps)).toISOString() : null
+  };
+};
+
+const hllStatsSource = sourceStats("hllstats.dev");
+const ratingsSource = sourceStats("hll-ratings");
+const recordsSource = sourceStats("hllrecords");
+const frostbiteSource = sourceStats("frostbite");
+
 const externalSources = {
   "hllstats.dev": {
-    status: steamPlayers.length
-      ? (storedHllStats.length ? "ok" : "Fehler / nicht erreichbar")
-      : "SteamID erforderlich",
-    updatedAt: latestFetchedAt(storedHllStats) || source("hllstats.dev", {}).updatedAt || null,
-    matches: storedHllStats.length
+    status: hllStatsSource.matches ? "ok" : (steamPlayers.length ? "Noch keine Daten" : "SteamID erforderlich"),
+    updatedAt: hllStatsSource.updatedAt,
+    matches: hllStatsSource.matches
   },
   "hll-ratings": {
-    status: steamPlayers.length
-      ? (storedRatings.length
-        ? "ok"
-        : (source("hll-ratings", {}).error
-          ? "Fehler: " + source("hll-ratings", {}).error
-          : "Nicht verfügbar"))
-      : "SteamID erforderlich",
-    updatedAt: latestFetchedAt(storedRatings) || source("hll-ratings", {}).updatedAt || null,
-    matches: storedRatings.length
+    status: ratingsSource.matches ? "ok" : (steamPlayers.length ? "Noch keine Daten" : "SteamID erforderlich"),
+    updatedAt: ratingsSource.updatedAt,
+    matches: ratingsSource.matches
   },
   "hllrecords": {
-    status: steamPlayers.length ? "API-Key erforderlich" : "SteamID erforderlich",
-    updatedAt: source("hllrecords", {}).updatedAt || null,
-    matches: Number(source("hllrecords", {}).matches || 0)
+    status: recordsSource.matches ? "ok" : (steamPlayers.length ? "Noch keine Daten" : "SteamID erforderlich"),
+    updatedAt: recordsSource.updatedAt,
+    matches: recordsSource.matches
   },
-  "crcon": { status: "Nicht konfiguriert", updatedAt: null, matches: 0 },
-  "frostbite": { status: "Nicht konfiguriert", updatedAt: null, matches: 0 }
+  "crcon": {
+    status: recordsSource.matches ? "indirekt über HLL Records" : "Öffentlicher Serverzugang erforderlich",
+    updatedAt: recordsSource.updatedAt,
+    matches: recordsSource.matches
+  },
+  "frostbite": {
+    status: frostbiteSource.matches ? "ok" : (steamPlayers.length ? "Noch keine Daten" : "SteamID erforderlich"),
+    updatedAt: frostbiteSource.updatedAt,
+    matches: frostbiteSource.matches
+  }
 };
 
 const previousDiscord = previousMetaSources.discord || {};
