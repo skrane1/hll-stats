@@ -83,8 +83,15 @@ const fetchHllRatings = async steamId => {
 
 const fetchHllStatsDev = async steamId => {
   const text = await fetchText("https://www.hllstats.dev/?steam64id=" + steamId);
-  if (/SteamID64|Enter your steamID64/i.test(text) && !/Totals/i.test(text)) {
-    throw new Error("Keine öffentlichen HLLStats.dev-Daten");
+
+  // HLLStats.dev renders the empty/default form with the same "Totals"
+  // section as a real profile. Do not mistake that placeholder page for
+  // player data.
+  if (
+    /Steam profile must be set to public/i.test(text) ||
+    /SteamID64\s*\*?\s+Enter your steamID64/i.test(text)
+  ) {
+    throw new Error("Steam-Profil nicht öffentlich oder noch nicht von HLLStats.dev erfasst");
   }
 
   const labels = [
@@ -102,6 +109,18 @@ const fetchHllStatsDev = async steamId => {
   for (const label of labels) {
     const value = numberAfterLabel(text, label);
     if (value !== null) values[label] = value;
+  }
+
+  // A real profile must contain at least one tracked career value above the
+  // placeholder values used by the public page.
+  const tracked = [
+    "Kills", "Vehicle Destroyed", "Tanks Destroyed", "Jeeps Destroyed",
+    "Headshots", "Career XP", "Estimated Total Games", "Wins",
+    "Amount Of Maps Played", "Captured Sectors"
+  ];
+  const hasRealData = tracked.some(label => Number(values[label]) > 0);
+  if (!hasRealData) {
+    throw new Error("Keine erfassten HLLStats.dev-Spielerdaten");
   }
 
   return {
