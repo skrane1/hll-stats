@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T14:52:21.484Z",
+  "updatedAt": "2026-09-28T14:53:26.616Z",
   "players": {
     "386241651753877505": {
       "id": "386241651753877505",
@@ -289,9 +289,15 @@
       "stats": {
         "you-shall-not-pass": 15,
         "WO OP?": 6,
+        "kills": 13260,
         "deaths": 15124,
         "kd": 0.88,
+        "kpm": 0.3,
         "dpm": 0.35,
+        "wins": 1160,
+        "matches": 1487,
+        "playtimeHours": 798,
+        "winrate": 78,
         "teamKills": 531,
         "ratings": {
           "overall": null,
@@ -310,7 +316,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561199100319875",
-          "fetchedAt": "2026-09-28T14:52:21.484Z",
+          "fetchedAt": "2026-09-28T14:53:26.616Z",
           "overall": null,
           "team": null,
           "impact": null,
@@ -326,33 +332,33 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Steam-Profil nicht öffentlich oder noch nicht von HLLStats.dev erfasst",
-          "failedAt": "2026-09-28T14:52:21.484Z"
+          "failedAt": "2026-09-28T14:53:26.616Z"
         },
-        "_lastRefresh": "2026-09-28T14:52:21.484Z",
+        "_lastRefresh": "2026-09-28T14:53:26.616Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
-          "fetchedAt": "2026-09-28T14:52:21.484Z",
-          "totalMatches": null,
+          "fetchedAt": "2026-09-28T14:53:26.616Z",
+          "totalMatches": 1487,
           "playedMatches": null,
-          "winRate": null,
-          "kills": null,
+          "winRate": 78,
+          "kills": 13260,
           "deaths": 15124,
           "kdr": 0.88,
-          "kpm": null,
+          "kpm": 0.3,
           "dpm": 0.35,
           "teamKills": 531,
           "level": null,
-          "hours": null
+          "hours": 798
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-09-28T14:52:21.484Z"
+          "failedAt": "2026-09-28T14:53:26.616Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-09-28T14:52:21.484Z"
+      "updatedAt": "2026-09-28T14:53:26.616Z"
     },
     "1235652648305299536": {
       "id": "1235652648305299536",
