@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-28T17:17:26.635Z",
+  "updatedAt": "2026-09-28T17:18:10.332Z",
   "players": {
     "386241651753877505": {
       "id": "386241651753877505",
@@ -320,10 +320,10 @@
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
-          "error": "HLLStats.dev Browser-Abfrage fehlgeschlagen: fetch failed",
-          "failedAt": "2026-09-28T17:17:26.635Z"
+          "error": "Keine erfassten HLLStats.dev-Spielerdaten",
+          "failedAt": "2026-09-28T17:18:10.332Z"
         },
-        "_lastRefresh": "2026-09-28T17:17:26.635Z",
+        "_lastRefresh": "2026-09-28T17:18:10.332Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
@@ -343,11 +343,11 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-09-28T17:17:26.635Z"
+          "failedAt": "2026-09-28T17:18:10.332Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-09-28T17:17:26.635Z"
+      "updatedAt": "2026-09-28T17:18:10.332Z"
     },
     "1235652648305299536": {
       "id": "1235652648305299536",
