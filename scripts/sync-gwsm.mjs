@@ -595,12 +595,21 @@ for (const [discordId, raw] of Object.entries(stats)) {
     kpm: ratings?.kpm ?? records?.kpm,
     dpm: records?.dpm,
     scorePerMin: ratings?.scorePerMin,
-    wins: records?.winRate != null && records?.totalMatches != null
-      ? Math.round(records.totalMatches * records.winRate / 100)
-      : null,
-    matches: records?.totalMatches ?? frostbite?.matches ?? hllStats?.stats?.["Estimated Total Games"],
+    wins: hllStats?.stats?.Wins ?? (
+      records?.winRate != null && records?.totalMatches != null
+        ? Math.round(records.totalMatches * records.winRate / 100)
+        : null
+    ),
+    losses: hllStats?.stats?.["Estimated Loss"] ?? (
+      records?.winRate != null && records?.totalMatches != null
+        ? records.totalMatches - Math.round(records.totalMatches * records.winRate / 100)
+        : null
+    ),
+    matches: hllStats?.stats?.["Estimated Total Games"] ?? records?.totalMatches ?? frostbite?.matches,
     playtimeHours: records?.hours ?? frostbite?.hours,
-    winrate: ratings?.winRate ?? records?.winRate ?? frostbite?.winRate,
+    winrate: hllStats?.stats?.["Estimated Total Games"] > 0
+      ? (hllStats.stats.Wins / hllStats.stats["Estimated Total Games"]) * 100
+      : (ratings?.winRate ?? records?.winRate ?? frostbite?.winRate),
     teamKills: records?.teamKills ?? frostbite?.teamkills,
     headshots: hllStats?.stats?.Headshots,
     vehicleDestroyed: hllStats?.stats?.["Vehicle Destroyed"],
