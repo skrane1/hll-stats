@@ -255,7 +255,7 @@ const externalSources = {
     matches: successfulRatings
   },
   "hllrecords": {
-    status: steamPlayers.length ? "SteamID vorhanden – Quelle separat" : "SteamID erforderlich",
+    status: steamPlayers.length ? "Noch nicht angebunden" : "SteamID erforderlich",
     updatedAt: source("hllrecords", {}).updatedAt || null,
     matches: Number(source("hllrecords", {}).matches || 0)
   },
