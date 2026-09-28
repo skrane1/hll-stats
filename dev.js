@@ -5,7 +5,7 @@
  * server-side. Configure the backend endpoint below when the worker/API is
  * deployed. The UI intentionally never receives API keys or provider secrets.
  */
-const API_BASE = window.GWSM_STATS_API || "";
+const API_BASE = window.GWSM_STATS_API || (location.hostname.endsWith(".vercel.app") ? "" : "");
 let ADMIN_KEY = sessionStorage.getItem("gwsm_admin_key") || "";
 const SYNC_ENDPOINT = `${API_BASE}/api/admin/stats/sync`;
 const PLAYER_SYNC_ENDPOINT = `${API_BASE}/api/admin/stats/sync/player`;
@@ -112,8 +112,7 @@ async function load() {
 
 function ensureApi() {
   if (!API_BASE) {
-    setStatus("Backend-URL fehlt", false);
-    alert("Das Dev-Backend ist noch nicht verbunden. In config.js muss GWSM_STATS_API auf die laufende Backend-URL zeigen.");
+    setStatus("Backend nicht verbunden", false);
     return false;
   }
   return true;
@@ -177,8 +176,7 @@ async function deleteManagedPlayer(id) {
 
 async function trigger(url, body = {}) {
   if (!API_BASE) {
-    setStatus("Backend noch nicht konfiguriert", false);
-    alert("Der manuelle Sync ist bereits vorbereitet, aber das Backend ist noch nicht verbunden. Setze GWSM_STATS_API auf die URL deines Stats-Backends.");
+    setStatus("Backend nicht verbunden", false);
     return;
   }
   try {
