@@ -39,13 +39,30 @@ jobs:
         run: |
           git config user.name "GWSM Stats Bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- players.json unified-stats.json sync-meta.json; then
+            echo "No changes."
+            exit 0
+          fi
+
+          # Keep the freshly generated sync result while rebasing onto the
+          # newest main. This avoids JSON merge conflicts when another run
+          # finished while this run was scraping external providers.
+          mkdir -p /tmp/gwsm-sync
+          cp players.json unified-stats.json sync-meta.json /tmp/gwsm-sync/
+
+          git fetch origin main
+          git reset --hard origin/main
+
+          cp /tmp/gwsm-sync/players.json players.json
+          cp /tmp/gwsm-sync/unified-stats.json unified-stats.json
+          cp /tmp/gwsm-sync/sync-meta.json sync-meta.json
+
           git add players.json unified-stats.json sync-meta.json
           if git diff --cached --quiet; then
-            echo "No changes."
+            echo "No changes after rebase."
           else
             git commit -m "Auto-sync GWSM HLL stats"
-            git pull --rebase origin main
-            git push
+            git push origin HEAD:main
           fi
 
 # HLLStats DOM parser refresh v2
