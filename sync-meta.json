@@ -7,7 +7,7 @@
     },
     "hllstats.dev": {
       "status": "ok",
-      "updatedAt": "2026-09-29T15:34:16.188Z",
+      "updatedAt": "2026-09-29T16:01:33.241Z",
       "matches": 6
     },
     "hll-ratings": {
@@ -17,12 +17,12 @@
     },
     "hllrecords": {
       "status": "ok",
-      "updatedAt": "2026-09-29T15:34:16.188Z",
+      "updatedAt": "2026-09-29T16:01:33.241Z",
       "matches": 13
     },
     "crcon": {
       "status": "indirekt über HLL Records",
-      "updatedAt": "2026-09-29T15:34:16.188Z",
+      "updatedAt": "2026-09-29T16:01:33.241Z",
       "matches": 13
     },
     "frostbite": {
@@ -34,6 +34,11 @@
   "matches": 0,
   "duplicates": 0,
   "logs": [
+    {
+      "time": "2026-09-29T16:01:33.241Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 15 Spieler, 13 mit SteamID64, 13 externe Spielerabfragen erfolgreich."
+    },
     {
       "time": "2026-09-29T15:34:16.188Z",
       "level": "info",
