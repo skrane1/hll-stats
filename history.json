@@ -879,6 +879,20 @@
       "username": "GWSM | Mark",
       "value": 2,
       "source": "ocr"
+    },
+    {
+      "date": "2026-09-30T11:32:10.959Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 11,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-09-30T12:18:42.155Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 12,
+      "source": "ocr"
     }
   ],
   "alchemist": [
