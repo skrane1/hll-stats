@@ -956,6 +956,13 @@
       "username": "GWSM | LEER",
       "value": 13,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-01T16:28:50.891Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 12,
+      "source": "ocr"
     }
   ],
   "alchemist": [
@@ -1055,6 +1062,13 @@
       "playerId": "638727568681336852",
       "username": "GWSM | Dennis_Zachi",
       "value": 22,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-01T16:28:49.170Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 25,
       "source": "ocr"
     }
   ]
