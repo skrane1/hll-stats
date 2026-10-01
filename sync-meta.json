@@ -7,22 +7,22 @@
     },
     "hllstats.dev": {
       "status": "ok",
-      "updatedAt": "2026-10-01T20:14:51.384Z",
+      "updatedAt": "2026-10-01T21:30:03.537Z",
       "matches": 6
     },
     "hll-ratings": {
       "status": "ok",
-      "updatedAt": "2026-10-01T20:14:51.384Z",
+      "updatedAt": "2026-10-01T21:30:03.537Z",
       "matches": 8
     },
     "hllrecords": {
       "status": "ok",
-      "updatedAt": "2026-10-01T20:14:51.384Z",
+      "updatedAt": "2026-10-01T21:30:03.537Z",
       "matches": 13
     },
     "crcon": {
       "status": "indirekt über HLL Records",
-      "updatedAt": "2026-10-01T20:14:51.384Z",
+      "updatedAt": "2026-10-01T21:30:03.537Z",
       "matches": 13
     },
     "frostbite": {
@@ -34,6 +34,11 @@
   "matches": 0,
   "duplicates": 0,
   "logs": [
+    {
+      "time": "2026-10-01T21:30:03.537Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 15 Spieler, 13 mit SteamID64, 14 externe Spielerabfragen erfolgreich."
+    },
     {
       "time": "2026-10-01T20:14:51.384Z",
       "level": "info",
@@ -276,11 +281,6 @@
     },
     {
       "time": "2026-09-28T14:54:45.810Z",
-      "level": "info",
-      "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 1 externe Spielerabfragen erfolgreich."
-    },
-    {
-      "time": "2026-09-28T14:53:26.616Z",
       "level": "info",
       "message": "Automatischer GWSM-Sync: 12 Spieler, 1 mit SteamID64, 1 externe Spielerabfragen erfolgreich."
     }
