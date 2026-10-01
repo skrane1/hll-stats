@@ -977,6 +977,13 @@
       "username": "GWSN | Drexusnite",
       "value": 24,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-01T18:22:45.076Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 14,
+      "source": "ocr"
     }
   ],
   "alchemist": [
@@ -1083,6 +1090,13 @@
       "playerId": "638727568681336852",
       "username": "GWSM | Dennis_Zachi",
       "value": 25,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-01T18:21:26.277Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 28,
       "source": "ocr"
     }
   ]
