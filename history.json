@@ -1040,6 +1040,13 @@
       "username": "GWSM | Mark",
       "value": 9,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-02T19:17:52.378Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 10,
+      "source": "ocr"
     }
   ],
   "alchemist": [
