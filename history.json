@@ -1217,6 +1217,13 @@
       "username": "GWSM | LEER",
       "value": 5,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-04T18:18:30.364Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 32,
+      "source": "ocr"
     }
   ]
 }
