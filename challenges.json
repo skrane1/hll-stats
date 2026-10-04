@@ -5,68 +5,7 @@
     "description": "SNIPERWIZARD - Längster Kopfschuss",
     "category": "sniperwizard",
     "categoryLabel": "SNIPERWIZARD - Längster Kopfschuss",
-    "leaderboard": [
-      {
-        "playerId": "1027959050761162863",
-        "username": "GWSN | Drexusnite",
-        "value": 444
-      },
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 435
-      },
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 406
-      },
-      {
-        "playerId": "1070974910308028507",
-        "username": "GWSM | ViPeR_Niklas / Tiger",
-        "value": 298
-      },
-      {
-        "playerId": "715968363351769208",
-        "username": "GWSM | LEER",
-        "value": 287
-      },
-      {
-        "playerId": "386241651753877505",
-        "username": "GWSM | Ziegel.",
-        "value": 0
-      },
-      {
-        "playerId": "487369746040356873",
-        "username": "GWSM | Offi",
-        "value": 0
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 0
-      },
-      {
-        "playerId": "260097039654846464",
-        "username": "GWSM | Grim",
-        "value": 0
-      },
-      {
-        "playerId": "649311308080087051",
-        "username": "GWSM | TomatoJoe",
-        "value": 0
-      },
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 0
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 0
-      }
-    ],
+    "leaderboard": [],
     "createdAt": "2026-10-04T19:43:42.635Z"
   },
   {
@@ -75,68 +14,7 @@
     "description": "OPPENHEIMER - Sprengstofftötungen",
     "category": "Oppenheimer",
     "categoryLabel": "OPPENHEIMER - Sprengstofftötungen",
-    "leaderboard": [
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 108
-      },
-      {
-        "playerId": "1027959050761162863",
-        "username": "GWSN | Drexusnite",
-        "value": 55
-      },
-      {
-        "playerId": "386241651753877505",
-        "username": "GWSM | Ziegel.",
-        "value": 0
-      },
-      {
-        "playerId": "487369746040356873",
-        "username": "GWSM | Offi",
-        "value": 0
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 0
-      },
-      {
-        "playerId": "260097039654846464",
-        "username": "GWSM | Grim",
-        "value": 0
-      },
-      {
-        "playerId": "715968363351769208",
-        "username": "GWSM | LEER",
-        "value": 0
-      },
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 0
-      },
-      {
-        "playerId": "1070974910308028507",
-        "username": "GWSM | ViPeR_Niklas / Tiger",
-        "value": 0
-      },
-      {
-        "playerId": "649311308080087051",
-        "username": "GWSM | TomatoJoe",
-        "value": 0
-      },
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 0
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 0
-      }
-    ],
+    "leaderboard": [],
     "createdAt": "2026-10-04T19:43:53.779Z"
   }
 ]
