@@ -1232,5 +1232,14 @@
       "value": 29,
       "source": "ocr"
     }
+  ],
+  "Oppenheimer": [
+    {
+      "date": "2026-10-04T20:16:53.231Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 1,
+      "source": "setstat"
+    }
   ]
 }
