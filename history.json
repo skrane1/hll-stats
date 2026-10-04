@@ -1210,6 +1210,13 @@
       "username": "GWSM | LEER",
       "value": 3,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-04T10:57:21.459Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 5,
+      "source": "ocr"
     }
   ]
 }
