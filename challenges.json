@@ -5,13 +5,7 @@
     "description": "SNIPERWIZARD - Längster Kopfschuss",
     "category": "sniperwizard",
     "categoryLabel": "SNIPERWIZARD - Längster Kopfschuss",
-    "leaderboard": [
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 0
-      }
-    ],
+    "leaderboard": [],
     "createdAt": "2026-10-04T19:43:42.635Z"
   },
   {
@@ -20,13 +14,7 @@
     "description": "OPPENHEIMER - Sprengstofftötungen",
     "category": "Oppenheimer",
     "categoryLabel": "OPPENHEIMER - Sprengstofftötungen",
-    "leaderboard": [
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 1
-      }
-    ],
+    "leaderboard": [],
     "createdAt": "2026-10-04T19:43:53.779Z"
   }
 ]
