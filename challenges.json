@@ -5,33 +5,7 @@
     "description": "SNIPERWIZARD - Längster Kopfschuss",
     "category": "sniperwizard",
     "categoryLabel": "SNIPERWIZARD - Längster Kopfschuss",
-    "leaderboard": [
-      {
-        "playerId": "386241651753877505",
-        "username": "GWSM | Ziegel.",
-        "value": 460
-      },
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 435
-      },
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 0
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 0
-      },
-      {
-        "playerId": "392243796076658689",
-        "username": "GWSM | jæger.X [℧]",
-        "value": 0
-      }
-    ],
+    "leaderboard": [],
     "createdAt": "2026-10-04T19:43:42.635Z"
   },
   {
@@ -40,33 +14,7 @@
     "description": "OPPENHEIMER - Sprengstofftötungen",
     "category": "Oppenheimer",
     "categoryLabel": "OPPENHEIMER - Sprengstofftötungen",
-    "leaderboard": [
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 96
-      },
-      {
-        "playerId": "386241651753877505",
-        "username": "GWSM | Ziegel.",
-        "value": 0
-      },
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 0
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 0
-      },
-      {
-        "playerId": "392243796076658689",
-        "username": "GWSM | jæger.X [℧]",
-        "value": 0
-      }
-    ],
+    "leaderboard": [],
     "createdAt": "2026-10-04T19:43:53.779Z"
   }
 ]
