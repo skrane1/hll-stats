@@ -7,7 +7,6 @@ const CATEGORY_META = [
   ["kettenblitz","KETTENBLITZ","Tötungen aus Fahrzeug"],
   ["sniperwizard","SNIPERWIZARD","Längster Kopfschuss"],
   ["Oppenheimer","OPPENHEIMER","Sprengstofftötungen"],
-  ["necromancer","NECROMANCER","Wiederbelebungen"],
   ["thanatos","THANATOS","Infanterieabschüsse"],
   ["WO OP?","WO OP?","Zerstörte Außenposten"]
 ];
@@ -23,7 +22,6 @@ const HALL_IMAGES = {
   "kettenblitz": "hall-kettenblitz.png",
   "sniperwizard": "hall-sniperwizard.png",
   "Oppenheimer": "hall-Oppenheimer.png",
-  "necromancer": "hall-necromancer.png",
   "thanatos": "hall-thanatos.png",
   "WO OP?": "hall-wo-op.png"
 };
@@ -37,7 +35,6 @@ const CATEGORY_IMAGES = {
   "kettenblitz": "kettenblitz.png",
   "sniperwizard": "sniperwizard.png",
   "Oppenheimer": "Oppenheimer.png",
-  "necromancer": "necromancer.png",
   "thanatos": "thanatos.png",
   "WO OP?": "wo-op.png"
 };
