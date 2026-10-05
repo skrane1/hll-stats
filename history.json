@@ -1240,6 +1240,13 @@
       "username": "GWSM | skrane1",
       "value": 1,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-05T16:54:21.193Z",
+      "playerId": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "value": 96,
+      "source": "setstat"
     }
   ]
 }
