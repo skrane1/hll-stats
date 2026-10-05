@@ -139,6 +139,55 @@
       "username": "GWSM | Weinÿ",
       "value": 27,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-05T17:05:37.701Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 20,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:38.701Z",
+      "playerId": "386241651753877505",
+      "username": "GWSM | Ziegel.",
+      "value": 21,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:57.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 20,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:03.701Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 24,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:05.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 21,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:06.701Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 66,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:13.701Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 65,
+      "source": "manual-import"
     }
   ],
   "kettenblitz": [
@@ -183,6 +232,13 @@
       "username": "GWSM | jæger.X [℧]",
       "value": 20,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-05T17:05:51.701Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 97,
+      "source": "manual-import"
     }
   ],
   "WO OP?": [
@@ -402,6 +458,13 @@
       "username": "GWSM | Mark",
       "value": 32,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-05T17:05:54.701Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 58,
+      "source": "manual-import"
     }
   ],
   "thanatos": [
@@ -439,6 +502,41 @@
       "username": "GWSN | Drexusnite",
       "value": 53,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-05T17:05:39.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 80,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:43.701Z",
+      "playerId": "392243796076658689",
+      "username": "GWSM | jæger.X [℧]",
+      "value": 83,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:00.701Z",
+      "playerId": "392243796076658689",
+      "username": "GWSM | jæger.X [℧]",
+      "value": 130,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:08.701Z",
+      "playerId": "392243796076658689",
+      "username": "GWSM | jæger.X [℧]",
+      "value": 106,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:14.701Z",
+      "playerId": "1070974910308028507",
+      "username": "GWSM | ViPeR_Niklas / Tiger",
+      "value": 85,
+      "source": "manual-import"
     }
   ],
   "commander-counter": [
@@ -1110,6 +1208,34 @@
       "username": "GWSM | LEER",
       "value": 16,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-05T17:05:45.701Z",
+      "playerId": "392243796076658689",
+      "username": "GWSM | jæger.X [℧]",
+      "value": 32,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:46.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 26,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:55.701Z",
+      "playerId": "392243796076658689",
+      "username": "GWSM | jæger.X [℧]",
+      "value": 33,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:56.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 21,
+      "source": "manual-import"
     }
   ],
   "alchemist": [
@@ -1266,6 +1392,13 @@
       "username": "GWSN | Drexusnite",
       "value": 29,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-05T17:05:44.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 26,
+      "source": "manual-import"
     }
   ],
   "Oppenheimer": [
@@ -1282,6 +1415,41 @@
       "username": "GWSM | Knoblauch / Holger",
       "value": 96,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-05T17:05:34.701Z",
+      "playerId": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "value": 103,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:35.701Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 50,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:36.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 35,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:41.701Z",
+      "playerId": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "value": 51,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:49.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 22,
+      "source": "manual-import"
     }
   ],
   "sniperwizard": [
@@ -1298,6 +1466,43 @@
       "username": "GWSM | Weinÿ",
       "value": 435,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-05T17:05:47.701Z",
+      "playerId": "386241651753877505",
+      "username": "GWSM | Ziegel.",
+      "value": 494,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:05:48.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 404,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:10.701Z",
+      "playerId": "392243796076658689",
+      "username": "GWSM | jæger.X [℧]",
+      "value": 453,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:06:12.701Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 407,
+      "source": "manual-import"
+    }
+  ],
+  "necromancer": [
+    {
+      "date": "2026-10-05T17:05:40.701Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 31,
+      "source": "manual-import"
     }
   ]
 }
