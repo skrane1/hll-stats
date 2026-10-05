@@ -1,6 +1,30 @@
 {
-  "updatedAt": "2026-10-05T17:02:47.984Z",
+  "updatedAt": "2026-10-05T17:17:18.916Z",
   "players": {
+    "404": {
+      "id": "404",
+      "username": "404 | Kröte",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "404",
+      "stats": {
+        "ratings": {
+          "overall": null,
+          "team": null,
+          "impact": null,
+          "comp": null
+        },
+        "sources": {
+          "hll-ratings": false,
+          "hllrecords": false,
+          "frostbite": false,
+          "hllstats.dev": false
+        }
+      },
+      "external": {},
+      "coverage": "Discord",
+      "updatedAt": "2026-10-05T17:17:18.916Z"
+    },
     "76561198025077857": {
       "id": "76561198025077857",
       "username": "GWSM | Ziegel.",
@@ -8,8 +32,6 @@
       "epicId": "",
       "discordId": "386241651753877505",
       "stats": {
-        "kettenblitz": 45,
-        "sniperwizard": 460,
         "kills": 17608,
         "deaths": 13230,
         "kd": 1.33,
@@ -183,7 +205,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198025077857",
-          "fetchedAt": "2026-10-05T17:02:47.984Z",
+          "fetchedAt": "2026-10-05T17:17:18.916Z",
           "stats": {
             "Kills": 1409,
             "Vehicle Destroyed": 1013,
@@ -339,12 +361,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561198140989441": {
       "id": "76561198140989441",
@@ -526,7 +548,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198140989441",
-          "fetchedAt": "2026-10-05T17:02:47.984Z",
+          "fetchedAt": "2026-10-05T17:17:18.916Z",
           "stats": {
             "Kills": 3245,
             "Vehicle Destroyed": 1914,
@@ -682,12 +704,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561198143837048": {
       "id": "76561198143837048",
@@ -729,7 +751,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
@@ -750,12 +772,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "260097039654846464": {
       "id": "260097039654846464",
@@ -788,9 +810,6 @@
       "epicId": "",
       "discordId": "731267516881567745",
       "stats": {
-        "kettenblitz": 35,
-        "you-shall-not-pass": 27,
-        "sniperwizard": 435,
         "kills": 20078,
         "deaths": 14937,
         "kd": 1.34,
@@ -964,7 +983,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199102486666",
-          "fetchedAt": "2026-10-05T17:02:47.984Z",
+          "fetchedAt": "2026-10-05T17:17:18.916Z",
           "stats": {
             "Kills": 1187,
             "Vehicle Destroyed": 905,
@@ -1120,12 +1139,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561198834967317": {
       "id": "76561198834967317",
@@ -1167,7 +1186,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
@@ -1188,12 +1207,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561198053767250": {
       "id": "76561198053767250",
@@ -1202,7 +1221,6 @@
       "epicId": "",
       "discordId": "157888469522186240",
       "stats": {
-        "Oppenheimer": 96,
         "kills": 14061,
         "deaths": 9661,
         "kd": 1.46,
@@ -1236,7 +1254,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
@@ -1257,12 +1275,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "d6ce2568401dd7526d8f9c3f20972c1c": {
       "id": "d6ce2568401dd7526d8f9c3f20972c1c",
@@ -1468,7 +1486,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199121789698",
-          "fetchedAt": "2026-10-05T17:02:47.984Z",
+          "fetchedAt": "2026-10-05T17:17:18.916Z",
           "stats": {
             "Kills": 282,
             "Vehicle Destroyed": 85,
@@ -1624,12 +1642,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561198057529227": {
       "id": "76561198057529227",
@@ -1671,7 +1689,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
@@ -1692,12 +1710,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561199100319875": {
       "id": "76561199100319875",
@@ -1879,7 +1897,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199100319875",
-          "fetchedAt": "2026-10-05T17:02:47.984Z",
+          "fetchedAt": "2026-10-05T17:17:18.916Z",
           "stats": {
             "Kills": 999,
             "Vehicle Destroyed": 693,
@@ -2016,7 +2034,7 @@
             }
           }
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z",
+        "_lastRefresh": "2026-10-05T17:17:18.916Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
@@ -2036,11 +2054,11 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561199550212124": {
       "id": "76561199550212124",
@@ -2049,7 +2067,6 @@
       "epicId": "",
       "discordId": "1235652648305299536",
       "stats": {
-        "kettenblitz": 20,
         "kills": 27156,
         "deaths": 21639,
         "kd": 1.25,
@@ -2083,7 +2100,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
@@ -2104,12 +2121,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561199825097485": {
       "id": "76561199825097485",
@@ -2151,7 +2168,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
@@ -2172,12 +2189,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561198077776075": {
       "id": "76561198077776075",
@@ -2219,7 +2236,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
@@ -2240,12 +2257,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "76561198144102997": {
       "id": "76561198144102997",
@@ -2427,7 +2444,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198144102997",
-          "fetchedAt": "2026-10-05T17:02:47.984Z",
+          "fetchedAt": "2026-10-05T17:17:18.916Z",
           "stats": {
             "Kills": 4985,
             "Vehicle Destroyed": 4362,
@@ -2583,12 +2600,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-05T17:02:47.984Z"
+          "failedAt": "2026-10-05T17:17:18.916Z"
         },
-        "_lastRefresh": "2026-10-05T17:02:47.984Z"
+        "_lastRefresh": "2026-10-05T17:17:18.916Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     },
     "392243796076658689": {
       "id": "392243796076658689",
@@ -2597,7 +2614,6 @@
       "epicId": "",
       "discordId": "392243796076658689",
       "stats": {
-        "kettenblitz": 20,
         "ratings": {
           "overall": null,
           "team": null,
@@ -2613,7 +2629,7 @@
       },
       "external": {},
       "coverage": "Discord",
-      "updatedAt": "2026-10-05T17:02:47.984Z"
+      "updatedAt": "2026-10-05T17:17:18.916Z"
     }
   }
 }
