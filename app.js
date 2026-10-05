@@ -705,7 +705,7 @@ async function loadData(options = {}) {
   try {
     const [s,h,ho,c,u] = await Promise.all([
       fetchJsonWithFallback("stats.json", {}),
-      fetchJsonWithFallback("history.json", {}),
+      fetchJsonWithFallback("history-live-2026-10-05.json", {}),
       fetchJsonWithFallback("hall-of-mages.json", []),
       fetchJsonWithFallback("challenges.json", []),
       fetchJsonWithFallback("unified-stats.json", {updatedAt:null,players:{}})
