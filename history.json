@@ -188,6 +188,27 @@
       "username": "GWSM | LEER",
       "value": 65,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:47.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 36,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:49.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 28,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:52.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 32,
+      "source": "manual-import"
     }
   ],
   "kettenblitz": [
@@ -238,6 +259,13 @@
       "playerId": "649311308080087051",
       "username": "GWSM | TomatoJoe",
       "value": 97,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:46.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 101,
       "source": "manual-import"
     }
   ],
@@ -537,6 +565,41 @@
       "username": "GWSM | ViPeR_Niklas / Tiger",
       "value": 85,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:45.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 107,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:53.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 120,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:55.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 84,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:56.171Z",
+      "playerId": "404",
+      "username": "404 | Kröte",
+      "value": 118,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:57.171Z",
+      "playerId": "404",
+      "username": "404 | Kröte",
+      "value": 101,
+      "source": "manual-import"
     }
   ],
   "commander-counter": [
@@ -742,6 +805,13 @@
       "username": "GWSM | Mark",
       "value": 22,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-05T17:07:48.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 16,
+      "source": "manual-import"
     }
   ],
   "meele-mage": [
@@ -1236,6 +1306,13 @@
       "username": "GWSM | Weinÿ",
       "value": 21,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:50.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 37,
+      "source": "manual-import"
     }
   ],
   "alchemist": [
@@ -1399,6 +1476,13 @@
       "username": "GWSM | Weinÿ",
       "value": 26,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:51.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 21,
+      "source": "manual-import"
     }
   ],
   "Oppenheimer": [
@@ -1493,6 +1577,20 @@
       "playerId": "638727568681336852",
       "username": "GWSM | Dennis_Zachi",
       "value": 407,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:44.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 429,
+      "source": "manual-import"
+    },
+    {
+      "date": "2026-10-05T17:07:54.171Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 458,
       "source": "manual-import"
     }
   ],
