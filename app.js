@@ -683,12 +683,13 @@ function showPlayer(id, options = {}) {
 }
 
 const RAW_BASE = "https://raw.githubusercontent.com/skrane1/hll-stats/main/";
+const DATA_VERSION = "2026-10-05-chronik-2";
 
 async function fetchJsonWithFallback(file, fallback = null) {
   // GitHub Pages can serve the repository copy from its own cache.
   // The raw repository is the authoritative live data source.
   try {
-    const r = await fetch(`${RAW_BASE}${file}?t=${Date.now()}`, { cache: "no-store" });
+    const r = await fetch(`${RAW_BASE}${file}?v=${encodeURIComponent(DATA_VERSION)}&t=${Date.now()}`, { cache: "no-store" });
     if (r.ok) return await r.json();
   } catch (_) {}
 
