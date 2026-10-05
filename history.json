@@ -1283,5 +1283,14 @@
       "value": 96,
       "source": "setstat"
     }
+  ],
+  "sniperwizard": [
+    {
+      "date": "2026-10-05T16:58:31.496Z",
+      "playerId": "386241651753877505",
+      "username": "GWSM | Ziegel.",
+      "value": 460,
+      "source": "setstat"
+    }
   ]
 }
