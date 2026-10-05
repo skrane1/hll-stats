@@ -132,6 +132,13 @@
       "username": "GWSN | Drexusnite",
       "value": 43,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-05T16:57:03.134Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 27,
+      "source": "setstat"
     }
   ],
   "kettenblitz": [
