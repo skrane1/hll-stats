@@ -1,6 +1,16 @@
 {
   "version": 1,
   "players": {
+    "404": {
+      "id": "404",
+      "username": "404 | Kröte",
+      "steamId": "",
+      "epicId": "",
+      "discordId": "",
+      "aliases": [],
+      "createdAt": "2026-10-05T17:10:00.000Z",
+      "updatedAt": "2026-10-05T17:10:00.000Z"
+    },
     "386241651753877505": {
       "id": "386241651753877505",
       "username": "GWSM | Ziegel.",
