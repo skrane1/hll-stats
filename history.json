@@ -1291,6 +1291,13 @@
       "username": "GWSM | Ziegel.",
       "value": 460,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-05T16:59:09.883Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 435,
+      "source": "setstat"
     }
   ]
 }
