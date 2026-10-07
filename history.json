@@ -1683,6 +1683,13 @@
       "username": "GWSM | Knoblauch / Holger",
       "value": 450,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-07T14:55:00.179Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 41,
+      "source": "ocr"
     }
   ],
   "necromancer": [
