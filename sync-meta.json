@@ -2,12 +2,12 @@
   "sources": {
     "discord": {
       "status": "ok",
-      "updatedAt": "2026-10-05T17:30:39.567Z",
-      "matches": 13
+      "updatedAt": "2026-10-07T14:55:15.435Z",
+      "matches": 1
     },
     "hllstats.dev": {
       "status": "ok",
-      "updatedAt": "2026-10-07T14:45:49.283Z",
+      "updatedAt": "2026-10-07T14:55:15.435Z",
       "matches": 6
     },
     "hll-ratings": {
@@ -34,6 +34,11 @@
   "matches": 0,
   "duplicates": 0,
   "logs": [
+    {
+      "time": "2026-10-07T14:55:15.435Z",
+      "level": "info",
+      "message": "Automatischer GWSM-Sync: 17 Spieler, 13 mit SteamID64, 14 externe Spielerabfragen erfolgreich."
+    },
     {
       "time": "2026-10-07T14:45:49.283Z",
       "level": "info",
@@ -276,11 +281,6 @@
     },
     {
       "time": "2026-10-01T18:26:01.162Z",
-      "level": "info",
-      "message": "Automatischer GWSM-Sync: 15 Spieler, 13 mit SteamID64, 13 externe Spielerabfragen erfolgreich."
-    },
-    {
-      "time": "2026-10-01T16:30:07.901Z",
       "level": "info",
       "message": "Automatischer GWSM-Sync: 15 Spieler, 13 mit SteamID64, 13 externe Spielerabfragen erfolgreich."
     }
