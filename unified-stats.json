@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11T23:57:03.644Z",
+  "updatedAt": "2026-10-12T04:10:30.866Z",
   "players": {
     "404": {
       "id": "404",
@@ -200,12 +200,12 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198025077857",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "stats": {
             "Kills": 1410,
             "Vehicle Destroyed": 1015,
@@ -345,28 +345,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198025077857",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 1977,
-          "playedMatches": 1516,
-          "winRate": 60.66,
+          "playedMatches": null,
+          "winRate": 67,
           "kills": 17615,
           "deaths": 13255,
           "kdr": 1.33,
           "kpm": 0.34,
           "dpm": 0.25,
           "teamKills": 750,
-          "level": 1977,
+          "level": null,
           "hours": 937
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561198140989441": {
       "id": "76561198140989441",
@@ -543,12 +543,12 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198140989441",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "stats": {
             "Kills": 3251,
             "Vehicle Destroyed": 1914,
@@ -688,28 +688,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198140989441",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 3851,
-          "playedMatches": null,
-          "winRate": 65,
+          "playedMatches": 2755,
+          "winRate": 61.54,
           "kills": 68101,
           "deaths": 40258,
           "kdr": 1.69,
           "kpm": 0.59,
           "dpm": 0.35,
           "teamKills": 1354,
-          "level": null,
+          "level": 3851,
           "hours": 2243
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561198143837048": {
       "id": "76561198143837048",
@@ -724,12 +724,12 @@
         "kpm": 0.25,
         "dpm": 0.27,
         "scorePerMin": 25.9,
-        "wins": 427,
-        "losses": 81,
-        "matches": 508,
+        "wins": 216,
+        "losses": 293,
+        "matches": 509,
         "playtimeHours": 280,
         "winrate": 53.2,
-        "teamKills": 54,
+        "teamKills": 55,
         "ratings": {
           "overall": 2715,
           "team": 2269,
@@ -747,7 +747,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561198143837048",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "overall": 2715,
           "team": 2269,
           "impact": 3162,
@@ -763,33 +763,33 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198143837048",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
-          "totalMatches": 508,
-          "playedMatches": null,
-          "winRate": 84,
-          "kills": 4324,
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
+          "totalMatches": 509,
+          "playedMatches": 346,
+          "winRate": 42.47,
+          "kills": 4325,
           "deaths": 4365,
           "kdr": 0.99,
           "kpm": 0.26,
           "dpm": 0.27,
-          "teamKills": 54,
-          "level": null,
+          "teamKills": 55,
+          "level": 509,
           "hours": 280
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "260097039654846464": {
       "id": "260097039654846464",
@@ -991,7 +991,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561199102486666",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "overall": 3720,
           "team": 3359,
           "impact": 4081,
@@ -1007,7 +1007,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199102486666",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "stats": {
             "Kills": 1188,
             "Vehicle Destroyed": 910,
@@ -1147,28 +1147,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199102486666",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 1806,
-          "playedMatches": null,
-          "winRate": 64,
+          "playedMatches": 1169,
+          "winRate": 57.14,
           "kills": 20186,
           "deaths": 14993,
           "kdr": 1.35,
           "kpm": 0.44,
           "dpm": 0.33,
           "teamKills": 563,
-          "level": null,
+          "level": 1806,
           "hours": 881
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561198834967317": {
       "id": "76561198834967317",
@@ -1182,11 +1182,11 @@
         "kd": 1,
         "kpm": 0.25,
         "dpm": 0.25,
-        "wins": 1186,
-        "losses": 315,
+        "wins": 680,
+        "losses": 821,
         "matches": 1501,
         "playtimeHours": 854,
-        "winrate": 79,
+        "winrate": 45.33,
         "teamKills": 462,
         "ratings": {
           "overall": null,
@@ -1205,38 +1205,38 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198834967317",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 1501,
-          "playedMatches": null,
-          "winRate": 79,
+          "playedMatches": 1189,
+          "winRate": 45.33,
           "kills": 12445,
           "deaths": 12443,
           "kdr": 1,
           "kpm": 0.25,
           "dpm": 0.25,
           "teamKills": 462,
-          "level": null,
+          "level": 1501,
           "hours": 854
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561198053767250": {
       "id": "76561198053767250",
@@ -1261,7 +1261,7 @@
           "overall": 3772,
           "team": 3798,
           "impact": 3746,
-          "comp": 2390
+          "comp": 2389
         },
         "sources": {
           "hll-ratings": true,
@@ -1274,11 +1274,11 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561198053767250",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "overall": 3772,
           "team": 3798,
           "impact": 3746,
-          "comp": 2390,
+          "comp": 2389,
           "winRate": 59.3,
           "kdr": 1.59,
           "kpm": 0.46,
@@ -1290,12 +1290,12 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198053767250",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 1197,
           "playedMatches": 773,
           "winRate": 62.12,
@@ -1311,12 +1311,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "d6ce2568401dd7526d8f9c3f20972c1c": {
       "id": "d6ce2568401dd7526d8f9c3f20972c1c",
@@ -1519,7 +1519,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561199121789698",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "overall": 3481,
           "team": 3191,
           "impact": 3770,
@@ -1535,7 +1535,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199121789698",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "stats": {
             "Kills": 283,
             "Vehicle Destroyed": 85,
@@ -1675,7 +1675,7 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199121789698",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 385,
           "playedMatches": 308,
           "winRate": 63.93,
@@ -1691,12 +1691,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561198057529227": {
       "id": "76561198057529227",
@@ -1710,11 +1710,11 @@
         "kd": 1.42,
         "kpm": 0.47,
         "dpm": 0.33,
-        "wins": 1583,
-        "losses": 473,
+        "wins": 1071,
+        "losses": 985,
         "matches": 2056,
         "playtimeHours": 1052,
-        "winrate": 77,
+        "winrate": 52.11,
         "teamKills": 750,
         "ratings": {
           "overall": null,
@@ -1733,38 +1733,38 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198057529227",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 2056,
-          "playedMatches": null,
-          "winRate": 77,
+          "playedMatches": 1380,
+          "winRate": 52.11,
           "kills": 28590,
           "deaths": 20185,
           "kdr": 1.42,
           "kpm": 0.47,
           "dpm": 0.33,
           "teamKills": 750,
-          "level": null,
+          "level": 2056,
           "hours": 1052
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561199100319875": {
       "id": "76561199100319875",
@@ -1942,7 +1942,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561199100319875",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "overall": 3525,
           "team": 1,
           "impact": 3493,
@@ -1958,7 +1958,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199100319875",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "stats": {
             "Kills": 1006,
             "Vehicle Destroyed": 712,
@@ -2095,31 +2095,31 @@
             }
           }
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z",
+        "_lastRefresh": "2026-10-12T04:10:30.866Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 1610,
-          "playedMatches": null,
-          "winRate": 76,
+          "playedMatches": 1041,
+          "winRate": 50,
           "kills": 14320,
           "deaths": 16277,
           "kdr": 0.88,
           "kpm": 0.3,
           "dpm": 0.34,
           "teamKills": 575,
-          "level": null,
+          "level": 1610,
           "hours": 866
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561199550212124": {
       "id": "76561199550212124",
@@ -2134,8 +2134,8 @@
         "kpm": 0.57,
         "dpm": 0.44,
         "scorePerMin": 34,
-        "wins": 1232,
-        "losses": 433,
+        "wins": 1055,
+        "losses": 610,
         "matches": 1665,
         "playtimeHours": 889,
         "winrate": 59.9,
@@ -2157,7 +2157,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561199550212124",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "overall": 4074,
           "team": 404,
           "impact": 4263,
@@ -2173,33 +2173,33 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199550212124",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 1665,
-          "playedMatches": null,
-          "winRate": 74,
+          "playedMatches": 1226,
+          "winRate": 63.38,
           "kills": 27378,
           "deaths": 21830,
           "kdr": 1.25,
           "kpm": 0.55,
           "dpm": 0.44,
           "teamKills": 429,
-          "level": null,
+          "level": 1665,
           "hours": 889
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561199825097485": {
       "id": "76561199825097485",
@@ -2213,11 +2213,11 @@
         "kd": 0.91,
         "kpm": 0.37,
         "dpm": 0.4,
-        "wins": 354,
-        "losses": 174,
+        "wins": 335,
+        "losses": 193,
         "matches": 528,
         "playtimeHours": 249,
-        "winrate": 67,
+        "winrate": 63.49,
         "teamKills": 135,
         "ratings": {
           "overall": null,
@@ -2236,38 +2236,38 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199825097485",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 528,
-          "playedMatches": null,
-          "winRate": 67,
+          "playedMatches": 348,
+          "winRate": 63.49,
           "kills": 5223,
           "deaths": 5729,
           "kdr": 0.91,
           "kpm": 0.37,
           "dpm": 0.4,
           "teamKills": 135,
-          "level": null,
+          "level": 528,
           "hours": 249
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561198077776075": {
       "id": "76561198077776075",
@@ -2282,8 +2282,8 @@
         "kpm": 0.15,
         "dpm": 0.23,
         "scorePerMin": 36,
-        "wins": 463,
-        "losses": 520,
+        "wins": 895,
+        "losses": 88,
         "matches": 983,
         "playtimeHours": 664,
         "winrate": 42.6,
@@ -2305,7 +2305,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561198077776075",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "overall": 2005,
           "team": 1414,
           "impact": 2595,
@@ -2321,15 +2321,15 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198077776075",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 983,
-          "playedMatches": 359,
-          "winRate": 47.13,
+          "playedMatches": null,
+          "winRate": 91,
           "kills": 3816,
           "deaths": 6551,
           "kdr": 0.58,
@@ -2342,12 +2342,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "76561198144102997": {
       "id": "76561198144102997",
@@ -2525,7 +2525,7 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "url": "https://hellor.pro/player/76561198144102997",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "overall": 4432,
           "team": 0,
           "impact": 4428,
@@ -2541,7 +2541,7 @@
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198144102997",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "stats": {
             "Kills": 4986,
             "Vehicle Destroyed": 4362,
@@ -2681,28 +2681,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198144102997",
-          "fetchedAt": "2026-10-11T23:57:03.644Z",
+          "fetchedAt": "2026-10-12T04:10:30.866Z",
           "totalMatches": 5681,
-          "playedMatches": 4833,
-          "winRate": 60,
+          "playedMatches": null,
+          "winRate": 81,
           "kills": 89513,
           "deaths": 74737,
           "kdr": 1.2,
           "kpm": 0.41,
           "dpm": 0.35,
           "teamKills": 3106,
-          "level": 5681,
+          "level": null,
           "hours": 3942
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-10-11T23:57:03.644Z"
+          "failedAt": "2026-10-12T04:10:30.866Z"
         },
-        "_lastRefresh": "2026-10-11T23:57:03.644Z"
+        "_lastRefresh": "2026-10-12T04:10:30.866Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-10-11T23:57:03.644Z"
+      "updatedAt": "2026-10-12T04:10:30.866Z"
     },
     "392243796076658689": {
       "id": "392243796076658689",
