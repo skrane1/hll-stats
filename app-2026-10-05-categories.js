@@ -200,15 +200,13 @@ function renderCategories() {
 
   el.innerHTML = `<div class="category-grid">${
     CATEGORY_META.map(([key, name, desc]) => {
-      const currentRows = currentPlayers(key);
       const allTimeRows = allTimePlayers(key);
 
-      const currentTop = currentRows[0];
-      const historyTop = historyPlayers(key)
-        .sort((a, b) => valueFor(b, key) - valueFor(a, key))[0];
-
-      const top = currentTop || historyTop;
-      const topIsHistoryFallback = !currentTop && !!historyTop;
+      // The category's current best must agree with the highest individual
+      // record in the history-based All-Time table. Latest OCR snapshots can
+      // be lower than an earlier valid value (especially for 3-digit values).
+      const top = allTimeRows[0];
+      const topIsHistoryFallback = false;
 
       return `<article class="section category-detail">
         <div class="category-image">
