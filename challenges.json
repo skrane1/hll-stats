@@ -1,32 +1,72 @@
 [
   {
-    "id": "1556391385408471041",
-    "name": "RAUM",
-    "description": "SNIPERWIZARD - Längster Kopfschuss",
-    "category": "sniperwizard",
-    "categoryLabel": "SNIPERWIZARD - Längster Kopfschuss",
+    "id": "1558937026101772339",
+    "name": "OTTO",
+    "description": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
+    "category": "you-shall-not-pass",
+    "categoryLabel": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
     "leaderboard": [
       {
-        "playerId": "1027959050761162863",
-        "username": "GWSN | Drexusnite",
-        "value": 41
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 60
+      },
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 40
+      },
+      {
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 36
+      },
+      {
+        "playerId": "1137789792474648646",
+        "username": "GWSM | 187Straßenbande",
+        "value": 13
+      },
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 2
       }
     ],
-    "createdAt": "2026-10-04T19:43:42.635Z"
+    "createdAt": "2026-10-11T20:19:10.672Z"
   },
   {
-    "id": "1556391432149803048",
-    "name": "RAUM",
-    "description": "OPPENHEIMER - Sprengstofftötungen",
-    "category": "Oppenheimer",
-    "categoryLabel": "OPPENHEIMER - Sprengstofftötungen",
+    "id": "1558936984876228659",
+    "name": "OTTO",
+    "description": "KETTENBLITZ - Tötungen aus Fahrzeug",
+    "category": "kettenblitz",
+    "categoryLabel": "KETTENBLITZ - Tötungen aus Fahrzeug",
     "leaderboard": [
       {
-        "playerId": "1027959050761162863",
-        "username": "GWSN | Drexusnite",
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 87
+      },
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 0
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 0
+      },
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 0
+      },
+      {
+        "playerId": "1137789792474648646",
+        "username": "GWSM | 187Straßenbande",
         "value": 0
       }
     ],
-    "createdAt": "2026-10-04T19:43:53.779Z"
+    "createdAt": "2026-10-11T20:19:00.843Z"
   }
 ]
