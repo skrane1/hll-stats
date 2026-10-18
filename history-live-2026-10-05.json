@@ -216,6 +216,272 @@
       "username": "GWSM | LEER",
       "value": 98,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-12T16:46:01.363Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 5,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-12T16:56:05.755Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 5,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-12T16:56:14.872Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 5,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-12T21:20:34.492Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 5,
+      "source": "setstat"
+    },
+    {
+      "date": "2026-10-13T15:52:11.459Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 4,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T15:52:42.965Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 4,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T17:23:13.356Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 15,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T17:26:05.057Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 15,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T17:26:10.671Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 4,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T17:26:32.677Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 15,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T18:41:19.262Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T18:43:55.065Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T18:47:41.160Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-13T18:47:54.353Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-14T18:58:06.462Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-14T18:59:44.375Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 4,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-14T19:27:21.356Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 46,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-15T13:53:38.013Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 30,
+      "source": "setstat"
+    },
+    {
+      "date": "2026-10-15T14:34:56.270Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 3,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-15T15:56:04.754Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T13:01:57.259Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T13:03:00.362Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 3,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T13:19:15.771Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T13:20:45.961Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T13:41:04.671Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T13:42:54.554Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T14:22:25.267Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 4,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T14:49:23.364Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T14:50:52.866Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T15:27:01.475Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T15:27:06.153Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 9,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-16T16:14:55.072Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 3,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-17T17:19:45.864Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 13,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-17T17:21:39.969Z",
+      "playerId": "1137789792474648646",
+      "username": "GWSM | 187Straßenbande",
+      "value": 13,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-17T17:24:46.055Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 11,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-17T17:26:34.885Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-17T18:40:31.357Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-17T18:41:00.982Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "kettenblitz": [
@@ -274,6 +540,27 @@
       "username": "GWSM | Offi",
       "value": 101,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-13T18:48:49.663Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 67,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-14T18:58:12.670Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 0,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-17T17:25:20.863Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 87,
+      "source": "ocr"
     }
   ],
   "WO OP?": [
@@ -1604,6 +1891,48 @@
       "username": "GWSM | Weinÿ",
       "value": 52,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-07T18:52:28.771Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexusnite",
+      "value": 3,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-08T19:00:59.252Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexusnite",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-09T16:02:22.079Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexusnite",
+      "value": 8,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-10T14:16:28.162Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexusnite",
+      "value": 8,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-11T19:28:37.956Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexusnite",
+      "value": 8,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-11T19:29:20.362Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexusnite",
+      "value": 4,
+      "source": "ocr"
     }
   ],
   "sniperwizard": [
@@ -1683,15 +2012,13 @@
       "username": "GWSM | Knoblauch / Holger",
       "value": 450,
       "source": "manual-import"
-    }
-  ],
-  "necromancer": [
+    },
     {
-      "date": "2026-10-05T17:05:40.701Z",
-      "playerId": "731267516881567745",
-      "username": "GWSM | Weinÿ",
-      "value": 31,
-      "source": "manual-import"
+      "date": "2026-10-07T14:55:00.179Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSN | Drexusnite",
+      "value": 41,
+      "source": "ocr"
     }
   ]
 }
