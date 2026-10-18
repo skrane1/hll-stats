@@ -108,32 +108,9 @@ function latestHistoryPlayers(key) {
 }
 
 function currentPlayers(key) {
-  const merged = new Map();
-
-  // Prefer the live/current stats snapshot when it contains a value.
-  for (const p of playersArray()) {
-    const value = valueFor(p, key);
-    merged.set(String(p.id), {
-      ...p,
-      [key]: value
-    });
-  }
-
-  // If stats.json is empty or a player/category is missing there, use the
-  // newest recorded history value as the current value instead of showing 0.
-  for (const p of latestHistoryPlayers(key)) {
-    const id = String(p.id);
-    const existing = merged.get(id);
-    if (!existing || valueFor(existing, key) === 0) {
-      merged.set(id, {
-        ...(existing || {}),
-        ...p,
-        [key]: valueFor(p, key)
-      });
-    }
-  }
-
-  return Array.from(merged.values())
+  // Current best values come exclusively from history: use each player's
+  // newest recorded value for this category, never the stats.json snapshot.
+  return latestHistoryPlayers(key)
     .filter(p => valueFor(p, key) > 0)
     .sort((a,b) => valueFor(b,key) - valueFor(a,key));
 }
@@ -211,31 +188,10 @@ function historyPlayers(key) {
 }
 
 function allTimePlayers(key) {
-  const merged = new Map();
-
-  // Current stats remain the primary source for currently active players.
-  for (const p of playersArray()) {
-    merged.set(String(p.id), {
-      ...p,
-      [key]: valueFor(p, key)
-    });
-  }
-
-  // History is append-only, so it also contains players whose current stats
-  // have already been reset. Their highest recorded value is their All-Time Best.
-  for (const p of historyPlayers(key)) {
-    const existing = merged.get(String(p.id));
-    if (!existing || valueFor(p, key) > valueFor(existing, key)) {
-      merged.set(String(p.id), {
-        ...(existing || {}),
-        ...p,
-        [key]: valueFor(p, key)
-      });
-    }
-  }
-
-  return Array.from(merged.values())
-    .filter(p => valueFor(p, key) > 0 || (Array.isArray(history[key]) && history[key].some(h => String(h.playerId || h.id || h.username || "") === String(p.id))))
+  // All-Time Best Of is also history-only: each player contributes their
+  // highest recorded value for this category, independent of stats.json.
+  return historyPlayers(key)
+    .filter(p => valueFor(p, key) > 0)
     .sort((a,b) => valueFor(b,key) - valueFor(a,key));
 }
 
