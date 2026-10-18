@@ -175,7 +175,7 @@ function historyPlayers(key) {
     if (!id) continue;
     const value = Number(h.value || 0);
     const current = best.get(id);
-    if (!current || value > current.value) {
+    if (!current || value > valueFor(current, key)) {
       best.set(id, {
         id,
         username: h.username || h.player || id,
