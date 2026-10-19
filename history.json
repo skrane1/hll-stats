@@ -885,6 +885,13 @@
       "username": "GWSM | skrane1",
       "value": 17,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-19T19:45:15.657Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 3,
+      "source": "ocr"
     }
   ],
   "thanatos": [
