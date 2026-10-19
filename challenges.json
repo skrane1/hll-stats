@@ -7,6 +7,11 @@
     "categoryLabel": "THANATOS - Infanterieabschüsse",
     "leaderboard": [
       {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 32
+      },
+      {
         "playerId": "504270081946157057",
         "username": "GWSM | skrane1",
         "value": 0
@@ -14,11 +19,6 @@
       {
         "playerId": "731267516881567745",
         "username": "GWSM | Weinÿ",
-        "value": 0
-      },
-      {
-        "playerId": "715968363351769208",
-        "username": "GWSM | LEER",
         "value": 0
       }
     ],
@@ -32,14 +32,14 @@
     "categoryLabel": "WO OP? - Zerstörte Außenposten",
     "leaderboard": [
       {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 10
+      },
+      {
         "playerId": "504270081946157057",
         "username": "GWSM | skrane1",
         "value": 5
-      },
-      {
-        "playerId": "715968363351769208",
-        "username": "GWSM | LEER",
-        "value": 4
       },
       {
         "playerId": "731267516881567745",
