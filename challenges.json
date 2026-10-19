@@ -5,7 +5,13 @@
     "description": "THANATOS - Infanterieabschüsse",
     "category": "thanatos",
     "categoryLabel": "THANATOS - Infanterieabschüsse",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 0
+      }
+    ],
     "createdAt": "2026-10-19T10:16:53.336Z"
   },
   {
@@ -14,7 +20,13 @@
     "description": "WO OP? - Zerstörte Außenposten",
     "category": "WO OP?",
     "categoryLabel": "WO OP? - Zerstörte Außenposten",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 5
+      }
+    ],
     "createdAt": "2026-10-19T10:17:11.494Z"
   }
 ]
