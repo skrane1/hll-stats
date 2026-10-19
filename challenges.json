@@ -1,80 +1,5 @@
 [
   {
-    "id": "1558937026101772339",
-    "name": "OTTO",
-    "description": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
-    "category": "you-shall-not-pass",
-    "categoryLabel": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
-    "leaderboard": [
-      {
-        "playerId": "715968363351769208",
-        "username": "GWSM | LEER",
-        "value": 106
-      },
-      {
-        "playerId": "1027959050761162863",
-        "username": "GWSN | Drexusnite",
-        "value": 43
-      },
-      {
-        "playerId": "487369746040356873",
-        "username": "GWSM | Offi",
-        "value": 32
-      },
-      {
-        "playerId": "649311308080087051",
-        "username": "GWSM | TomatoJoe",
-        "value": 24
-      },
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 22
-      },
-      {
-        "playerId": "386241651753877505",
-        "username": "GWSM | Ziegel.",
-        "value": 21
-      },
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 21
-      },
-      {
-        "playerId": "404",
-        "username": "404 | Kröte",
-        "value": 0
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 0
-      },
-      {
-        "playerId": "392243796076658689",
-        "username": "GWSM | jæger.X [℧]",
-        "value": 0
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 0
-      },
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 0
-      },
-      {
-        "playerId": "1070974910308028507",
-        "username": "GWSM | ViPeR_Niklas / Tiger",
-        "value": 0
-      }
-    ],
-    "createdAt": "2026-10-11T20:19:10.672Z"
-  },
-  {
     "id": "1561684558053900298",
     "name": "LOCK",
     "description": "THANATOS - Infanterieabschüsse",
@@ -177,6 +102,11 @@
         "value": 7
       },
       {
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 7
+      },
+      {
         "playerId": "504270081946157057",
         "username": "GWSM | skrane1",
         "value": 6
@@ -184,11 +114,6 @@
       {
         "playerId": "731267516881567745",
         "username": "GWSM | Weinÿ",
-        "value": 6
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
         "value": 6
       },
       {
