@@ -815,6 +815,13 @@
       "username": "GWSM | TomatoJoe",
       "value": 58,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-19T15:02:51.374Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 2,
+      "source": "ocr"
     }
   ],
   "thanatos": [
@@ -936,6 +943,13 @@
       "username": "GWSM | Weinÿ",
       "value": 88,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-19T15:02:48.474Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 37,
+      "source": "ocr"
     }
   ],
   "commander-counter": [
