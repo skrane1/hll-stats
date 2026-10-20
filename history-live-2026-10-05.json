@@ -899,6 +899,13 @@
       "username": "GWSM | Drexusnite",
       "value": 6,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-20T18:14:07.949Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 19,
+      "source": "setstat"
     }
   ],
   "thanatos": [
