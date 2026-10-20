@@ -1027,6 +1027,13 @@
       "username": "GWSM | LEER",
       "value": 32,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-20T17:20:59.420Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 41,
+      "source": "setstat"
     }
   ],
   "commander-counter": [
