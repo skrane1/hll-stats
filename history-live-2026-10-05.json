@@ -927,6 +927,20 @@
       "username": "GWSM | skrane1",
       "value": 28,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-21T18:35:41.160Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 4,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-21T18:35:43.875Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "thanatos": [
