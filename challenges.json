@@ -62,6 +62,11 @@
         "value": 6
       },
       {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 5
+      },
+      {
         "playerId": "731267516881567745",
         "username": "GWSM | Weinÿ",
         "value": 3
@@ -70,11 +75,6 @@
         "playerId": "638727568681336852",
         "username": "GWSM | Dennis_Zachi",
         "value": 3
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 0
       }
     ],
     "createdAt": "2026-10-19T10:17:11.494Z"
