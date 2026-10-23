@@ -7,6 +7,11 @@
     "categoryLabel": "THANATOS - Infanterieabschüsse",
     "leaderboard": [
       {
+        "playerId": "392243796076658689",
+        "username": "GWSM | jæger.X",
+        "value": 80
+      },
+      {
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
         "value": 64
@@ -75,6 +80,11 @@
         "playerId": "731267516881567745",
         "username": "GWSM | Weinÿ",
         "value": 3
+      },
+      {
+        "playerId": "392243796076658689",
+        "username": "GWSM | jæger.X",
+        "value": 0
       }
     ],
     "createdAt": "2026-10-19T10:17:11.494Z"
