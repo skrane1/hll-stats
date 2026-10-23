@@ -1230,6 +1230,13 @@
       "username": "GWSM | Mark",
       "value": 51,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-23T18:19:40.177Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 41,
+      "source": "setstat"
     }
   ],
   "commander-counter": [
