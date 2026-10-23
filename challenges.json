@@ -7,11 +7,6 @@
     "categoryLabel": "THANATOS - Infanterieabschüsse",
     "leaderboard": [
       {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 81
-      },
-      {
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
         "value": 64
@@ -20,6 +15,11 @@
         "playerId": "1027959050761162863",
         "username": "GWSM | Drexusnite",
         "value": 50
+      },
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 41
       },
       {
         "playerId": "715968363351769208",
