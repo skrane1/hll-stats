@@ -1200,6 +1200,20 @@
       "username": "GWSM | Ziegel.",
       "value": 2,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-24T20:56:21.675Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-24T20:56:24.276Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "thanatos": [
