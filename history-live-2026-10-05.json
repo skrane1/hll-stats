@@ -1277,6 +1277,13 @@
       "username": "GWSM | skrane1",
       "value": 0,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-25T18:31:20.659Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "thanatos": [
