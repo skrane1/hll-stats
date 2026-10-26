@@ -5,7 +5,13 @@
     "description": "OFFICER-DOWN - Offizierabschüsse",
     "category": "officer-down",
     "categoryLabel": "OFFICER-DOWN - Offizierabschüsse",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 0
+      }
+    ],
     "createdAt": "2026-10-25T21:17:29.467Z"
   },
   {
@@ -14,7 +20,13 @@
     "description": "HEADHUNTER - Kopfschüsse",
     "category": "headhunter",
     "categoryLabel": "HEADHUNTER - Kopfschüsse",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "504270081946157057",
+        "username": "GWSM | skrane1",
+        "value": 4
+      }
+    ],
     "createdAt": "2026-10-25T21:17:44.842Z"
   }
 ]
