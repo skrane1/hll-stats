@@ -2676,6 +2676,13 @@
       "username": "GWSM | Drexusnite",
       "value": 29,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-26T13:20:44.105Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 16,
+      "source": "setstat"
     }
   ]
 }
