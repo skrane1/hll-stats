@@ -2661,5 +2661,14 @@
       "value": 29,
       "source": "setstat"
     }
+  ],
+  "officer-down": [
+    {
+      "date": "2026-10-26T13:19:30.849Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 27,
+      "source": "setstat"
+    }
   ]
 }
