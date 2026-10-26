@@ -38,7 +38,9 @@ const CATEGORY_IMAGES = {
   "sniperwizard": "sniperwizard.png",
   "Oppenheimer": "Oppenheimer.png",
   "thanatos": "thanatos.png",
-  "WO OP?": "wo-op.png"
+  "WO OP?": "wo-op.png",
+  "officer-down": "officer-down.png",
+  "headhunter": "headhunter.png"
 };
 
 
