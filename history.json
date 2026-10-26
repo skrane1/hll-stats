@@ -2660,6 +2660,13 @@
       "username": "GWSM | Offi",
       "value": 29,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-26T15:37:01.071Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexusnite",
+      "value": 2,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -2683,6 +2690,13 @@
       "username": "GWSM | Offi",
       "value": 16,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-26T15:37:02.658Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexusnite",
+      "value": 12,
+      "source": "ocr"
     }
   ]
 }
