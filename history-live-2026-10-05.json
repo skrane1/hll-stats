@@ -2623,6 +2623,13 @@
       "username": "GWSM | skrane1",
       "value": 4,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-26T13:16:24.420Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 0,
+      "source": "setstat"
     }
   ]
 }
