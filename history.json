@@ -2681,6 +2681,20 @@
       "username": "GWSM | Weinÿ",
       "value": 18,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-26T19:23:16.464Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 8,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-26T19:25:00.062Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 4,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -2745,6 +2759,13 @@
       "playerId": "1235652648305299536",
       "username": "GWSM | Mark",
       "value": 9,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-26T19:24:59.655Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 7,
       "source": "ocr"
     }
   ]
