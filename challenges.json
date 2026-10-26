@@ -10,6 +10,11 @@
         "playerId": "504270081946157057",
         "username": "GWSM | skrane1",
         "value": 0
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
       }
     ],
     "createdAt": "2026-10-25T21:17:29.467Z"
@@ -21,6 +26,11 @@
     "category": "headhunter",
     "categoryLabel": "HEADHUNTER - Kopfschüsse",
     "leaderboard": [
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 40
+      },
       {
         "playerId": "504270081946157057",
         "username": "GWSM | skrane1",
