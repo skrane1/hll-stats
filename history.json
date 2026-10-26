@@ -2624,5 +2624,14 @@
       "value": 31,
       "source": "manual-import"
     }
+  ],
+  "headhunter": [
+    {
+      "date": "2026-10-26T13:00:49.757Z",
+      "playerId": "504270081946157057",
+      "username": "GWSM | skrane1",
+      "value": 4,
+      "source": "ocr"
+    }
   ]
 }
