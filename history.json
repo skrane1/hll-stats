@@ -2732,6 +2732,20 @@
       "username": "GWSM | Weinÿ",
       "value": 11,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-26T18:24:17.281Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 1,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-26T19:23:12.370Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 9,
+      "source": "ocr"
     }
   ]
 }
