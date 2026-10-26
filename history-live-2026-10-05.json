@@ -2630,6 +2630,13 @@
       "username": "GWSM | skrane1",
       "value": 0,
       "source": "setstat"
+    },
+    {
+      "date": "2026-10-26T13:16:40.915Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 40,
+      "source": "setstat"
     }
   ]
 }
