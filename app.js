@@ -8,7 +8,9 @@ const CATEGORY_META = [
   ["sniperwizard","SNIPERWIZARD","Längster Kopfschuss"],
   ["Oppenheimer","OPPENHEIMER","Sprengstofftötungen"],
   ["thanatos","THANATOS","Infanterieabschüsse"],
-  ["WO OP?","WO OP?","Zerstörte Außenposten"]
+  ["WO OP?","WO OP?","Zerstörte Außenposten"],
+  ["officer-down","OFFICER-DOWN","Offizierabschüsse"],
+  ["headhunter","HEADHUNTER","Kopfschüsse"]
 ];
 
 
