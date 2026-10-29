@@ -1722,6 +1722,13 @@
       "username": "GWSM | Mark",
       "value": 22,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-10-29T18:16:23.123Z",
+      "playerId": "503630162827673601",
+      "username": "GWSN I Dirty Sanchez",
+      "value": 10,
+      "source": "setstat"
     }
   ],
   "meele-mage": [
