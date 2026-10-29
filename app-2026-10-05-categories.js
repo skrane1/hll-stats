@@ -374,7 +374,7 @@ function renderUnifiedSummary(u) {
       </div>
 
       <div class="profile-module faction-module">
-        <div class="module-head"><span>FACTIONS</span><small>ESTIMATED</small></div>
+        <div class="module-head"><span>KILLS PER FACTION</span><small>HLLSTATS.DEV</small></div>
         <div class="faction-strip">
           ${Object.entries(hll.factions || {}).map(([name,value],i) =>
             `<div class="faction faction-${i % 4}"><span>${esc(name)}</span><b>${fmtStat(value)}</b></div>`).join('') || '<div class="module-empty">NO FACTION DATA</div>'}
