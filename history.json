@@ -3010,6 +3010,13 @@
       "username": "opabeskar",
       "value": 4,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-29T20:44:58.565Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 4,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -3389,6 +3396,13 @@
       "playerId": "487369746040356873",
       "username": "opabeskar",
       "value": 12,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-29T20:44:58.270Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 7,
       "source": "ocr"
     }
   ]
