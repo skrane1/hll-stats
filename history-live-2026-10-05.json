@@ -3036,6 +3036,13 @@
       "username": "GWSM | Offi",
       "value": 5,
       "source": "ocr"
+    },
+    {
+      "date": "2026-10-30T22:44:37.863Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 6,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -3450,6 +3457,13 @@
       "playerId": "487369746040356873",
       "username": "GWSM | Offi",
       "value": 10,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-10-30T22:44:36.361Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 17,
       "source": "ocr"
     }
   ]
