@@ -3085,6 +3085,13 @@
       "username": "GWSM | Weinÿ",
       "value": 185,
       "source": "setstat"
+    },
+    {
+      "date": "2026-11-01T20:10:20.696Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 82,
+      "source": "setstat"
     }
   ],
   "officer-down": [
