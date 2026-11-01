@@ -3537,6 +3537,13 @@
       "username": "GWSM | Weinÿ",
       "value": 17,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-01T19:31:15.044Z",
+      "playerId": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "value": 19,
+      "source": "setstat"
     }
   ]
 }
