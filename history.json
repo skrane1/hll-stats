@@ -3572,6 +3572,13 @@
       "username": "GWSM | Mark",
       "value": 135,
       "source": "setstat"
+    },
+    {
+      "date": "2026-11-01T20:09:56.542Z",
+      "playerId": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "value": 19,
+      "source": "setstat"
     }
   ]
 }
