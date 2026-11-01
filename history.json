@@ -3558,6 +3558,13 @@
       "username": "GWSM | Weinÿ",
       "value": 154,
       "source": "setstat"
+    },
+    {
+      "date": "2026-11-01T20:09:27.197Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 121,
+      "source": "setstat"
     }
   ]
 }
