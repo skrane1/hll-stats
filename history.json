@@ -3115,6 +3115,13 @@
       "username": "GWSM | Mark",
       "value": 98,
       "source": "setstat"
+    },
+    {
+      "date": "2026-11-01T20:10:59.097Z",
+      "playerId": "157888469522186240",
+      "username": "GWSM | Knoblauch / Holger",
+      "value": 12,
+      "source": "setstat"
     }
   ],
   "officer-down": [
