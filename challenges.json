@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "1566545563745263657",
+    "name": "NAMU",
+    "description": "COMMANDER CREMATOR - Kommandantenabschüsse",
+    "category": "commander-counter",
+    "categoryLabel": "COMMANDER CREMATOR - Kommandantenabschüsse",
+    "leaderboard": [],
+    "createdAt": "2026-11-01T20:12:47.406Z"
+  },
+  {
+    "id": "1566545518899896350",
+    "name": "NAMU",
+    "description": "MEELE-MAGE - Nahkampftötungen",
+    "category": "meele-mage",
+    "categoryLabel": "MEELE-MAGE - Nahkampftötungen",
+    "leaderboard": [],
+    "createdAt": "2026-11-01T20:12:36.714Z"
+  }
+]
