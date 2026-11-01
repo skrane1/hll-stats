@@ -3099,6 +3099,13 @@
       "username": "GWSM | DrexnSexn",
       "value": 158,
       "source": "setstat"
+    },
+    {
+      "date": "2026-11-01T20:10:48.080Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 98,
+      "source": "setstat"
     }
   ],
   "officer-down": [
