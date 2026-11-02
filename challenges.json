@@ -5,7 +5,13 @@
     "description": "COMMANDER CREMATOR - Kommandantenabschüsse",
     "category": "commander-counter",
     "categoryLabel": "COMMANDER CREMATOR - Kommandantenabschüsse",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      }
+    ],
     "createdAt": "2026-11-01T20:12:47.406Z"
   },
   {
@@ -14,7 +20,13 @@
     "description": "MEELE-MAGE - Nahkampftötungen",
     "category": "meele-mage",
     "categoryLabel": "MEELE-MAGE - Nahkampftötungen",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 2
+      }
+    ],
     "createdAt": "2026-11-01T20:12:36.714Z"
   }
 ]
