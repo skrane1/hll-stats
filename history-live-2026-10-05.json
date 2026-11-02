@@ -1920,6 +1920,13 @@
       "username": "GWSM | Knoblauch / Holger",
       "value": 15,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-11-02T10:52:55.354Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 2,
+      "source": "ocr"
     }
   ],
   "garry-grounder": [
