@@ -10,6 +10,11 @@
         "playerId": "731267516881567745",
         "username": "GWSM | Weinÿ",
         "value": 0
+      },
+      {
+        "playerId": "1027959050761162863",
+        "username": "GWSM | Drexus",
+        "value": 0
       }
     ],
     "createdAt": "2026-11-01T20:12:47.406Z"
@@ -25,6 +30,11 @@
         "playerId": "731267516881567745",
         "username": "GWSM | Weinÿ",
         "value": 16
+      },
+      {
+        "playerId": "1027959050761162863",
+        "username": "GWSM | Drexus",
+        "value": 1
       }
     ],
     "createdAt": "2026-11-01T20:12:36.714Z"
