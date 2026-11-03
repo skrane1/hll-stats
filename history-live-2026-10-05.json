@@ -1729,6 +1729,13 @@
       "username": "GWSN I Dirty Sanchez",
       "value": 10,
       "source": "setstat"
+    },
+    {
+      "date": "2026-11-03T17:06:02.162Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "meele-mage": [
