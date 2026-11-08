@@ -1764,6 +1764,13 @@
       "username": "GWSM | Weinÿ",
       "value": 2,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-08T14:59:57.154Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexus",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "meele-mage": [
@@ -2003,6 +2010,13 @@
       "playerId": "487369746040356873",
       "username": "GWSM | Offi",
       "value": 0,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-08T14:59:56.769Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexus",
+      "value": 1,
       "source": "ocr"
     }
   ],
