@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T19:43:15.596Z",
+  "updatedAt": "2026-11-08T23:09:27.696Z",
   "players": {
     "404": {
       "id": "404",
@@ -200,12 +200,12 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198025077857",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "stats": {
             "Kills": 1415,
             "Vehicle Destroyed": 1026,
@@ -345,7 +345,7 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198025077857",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "totalMatches": 1987,
           "playedMatches": 1524,
           "winRate": 59.65,
@@ -361,12 +361,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561198140989441": {
       "id": "76561198140989441",
@@ -375,22 +375,22 @@
       "epicId": "",
       "discordId": "487369746040356873",
       "stats": {
-        "kills": 70255,
-        "deaths": 41440,
+        "kills": 70315,
+        "deaths": 41479,
         "kd": 1.7,
         "kpm": 0.59,
         "dpm": 0.35,
         "wins": 2015,
-        "losses": 1306,
-        "matches": 3321,
-        "playtimeHours": 2297,
-        "winrate": 60.674495633845225,
-        "teamKills": 1406,
-        "headshots": 14429,
-        "vehicleDestroyed": 2000,
-        "tanksDestroyed": 766,
+        "losses": 1308,
+        "matches": 3323,
+        "playtimeHours": 2298,
+        "winrate": 60.637977730966,
+        "teamKills": 1408,
+        "headshots": 14432,
+        "vehicleDestroyed": 2003,
+        "tanksDestroyed": 767,
         "jeepsDestroyed": 16,
-        "capturedSectors": 3234,
+        "capturedSectors": 3235,
         "ratings": {
           "overall": null,
           "team": null,
@@ -398,17 +398,17 @@
           "comp": null
         },
         "hllstats": {
-          "Kills": 3321,
-          "Vehicle Destroyed": 2000,
-          "Tanks Destroyed": 766,
+          "Kills": 3323,
+          "Vehicle Destroyed": 2003,
+          "Tanks Destroyed": 767,
           "Jeeps Destroyed": 16,
-          "German": 38034,
-          "USA": 39390,
+          "German": 38063,
+          "USA": 39401,
           "Russia": 6723,
-          "Headshots": 14429,
+          "Headshots": 14432,
           "Artillery": 34,
           "Knife": 108,
-          "Spade": 133,
+          "Spade": 134,
           "Half-track MG": 3,
           "Flamethrower": 2,
           "Career XP": 378,
@@ -426,16 +426,16 @@
           "Engineer": 12,
           "Sniper": 10,
           "Crewman": 7,
-          "Estimated Total Games": 3321,
+          "Estimated Total Games": 3323,
           "Wins": 2015,
-          "Estimated Loss": 1306,
-          "Estimated WL Ratio": 1.543,
+          "Estimated Loss": 1308,
+          "Estimated WL Ratio": 1.541,
           "SMDM": 510,
           "Foy": 198,
           "Hurtgen": 165,
           "SME": 488,
-          "Utah": 331,
-          "Omaha": 328,
+          "Utah": 332,
+          "Omaha": 329,
           "PHL": 80,
           "Hill 400": 95,
           "Carentan": 492,
@@ -457,13 +457,13 @@
           "Manpower Nodes": 199,
           "Munitions Nodes": 193,
           "Received": 1639,
-          "Given": 2757,
-          "Total Dropped": 226600,
+          "Given": 2759,
+          "Total Dropped": 226900,
           "Total Used": 547920,
-          "Truck Drops": 865,
+          "Truck Drops": 867,
           "Jeep Drops": 81,
           "Molotovs Thrown": 11,
-          "Captured Sectors": 3234,
+          "Captured Sectors": 3235,
           "Amount Of Maps Played": 510,
           "Estimated British": 4596,
           "Jeep Impact": 2,
@@ -474,8 +474,8 @@
             "Foy": 198,
             "Hurtgen": 165,
             "SME": 488,
-            "Utah": 331,
-            "Omaha": 328,
+            "Utah": 332,
+            "Omaha": 329,
             "PHL": 80,
             "Hill 400": 95,
             "Carentan": 492,
@@ -488,8 +488,8 @@
             "Night Maps": 364
           },
           "factions": {
-            "German": 38034,
-            "USA": 39390,
+            "German": 38063,
+            "USA": 39401,
             "Russia": 6723,
             "Estimated British": 4596
           },
@@ -521,12 +521,12 @@
           },
           "commends": {
             "received": 1639,
-            "given": 2757
+            "given": 2759
           },
           "supplies": {
-            "totalDropped": 226600,
+            "totalDropped": 226900,
             "totalUsed": 547920,
-            "truckDrops": 865
+            "truckDrops": 867
           },
           "ammo": {
             "totalDropped": 2327
@@ -543,24 +543,24 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198140989441",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "stats": {
-            "Kills": 3321,
-            "Vehicle Destroyed": 2000,
-            "Tanks Destroyed": 766,
+            "Kills": 3323,
+            "Vehicle Destroyed": 2003,
+            "Tanks Destroyed": 767,
             "Jeeps Destroyed": 16,
-            "German": 38034,
-            "USA": 39390,
+            "German": 38063,
+            "USA": 39401,
             "Russia": 6723,
-            "Headshots": 14429,
+            "Headshots": 14432,
             "Artillery": 34,
             "Knife": 108,
-            "Spade": 133,
+            "Spade": 134,
             "Half-track MG": 3,
             "Flamethrower": 2,
             "Career XP": 378,
@@ -578,16 +578,16 @@
             "Engineer": 12,
             "Sniper": 10,
             "Crewman": 7,
-            "Estimated Total Games": 3321,
+            "Estimated Total Games": 3323,
             "Wins": 2015,
-            "Estimated Loss": 1306,
-            "Estimated WL Ratio": 1.543,
+            "Estimated Loss": 1308,
+            "Estimated WL Ratio": 1.541,
             "SMDM": 510,
             "Foy": 198,
             "Hurtgen": 165,
             "SME": 488,
-            "Utah": 331,
-            "Omaha": 328,
+            "Utah": 332,
+            "Omaha": 329,
             "PHL": 80,
             "Hill 400": 95,
             "Carentan": 492,
@@ -609,13 +609,13 @@
             "Manpower Nodes": 199,
             "Munitions Nodes": 193,
             "Received": 1639,
-            "Given": 2757,
-            "Total Dropped": 226600,
+            "Given": 2759,
+            "Total Dropped": 226900,
             "Total Used": 547920,
-            "Truck Drops": 865,
+            "Truck Drops": 867,
             "Jeep Drops": 81,
             "Molotovs Thrown": 11,
-            "Captured Sectors": 3234,
+            "Captured Sectors": 3235,
             "Amount Of Maps Played": 510,
             "Estimated British": 4596,
             "Jeep Impact": 2,
@@ -626,8 +626,8 @@
               "Foy": 198,
               "Hurtgen": 165,
               "SME": 488,
-              "Utah": 331,
-              "Omaha": 328,
+              "Utah": 332,
+              "Omaha": 329,
               "PHL": 80,
               "Hill 400": 95,
               "Carentan": 492,
@@ -640,8 +640,8 @@
               "Night Maps": 364
             },
             "factions": {
-              "German": 38034,
-              "USA": 39390,
+              "German": 38063,
+              "USA": 39401,
               "Russia": 6723,
               "Estimated British": 4596
             },
@@ -673,12 +673,12 @@
             },
             "commends": {
               "received": 1639,
-              "given": 2757
+              "given": 2759
             },
             "supplies": {
-              "totalDropped": 226600,
+              "totalDropped": 226900,
               "totalUsed": 547920,
-              "truckDrops": 865
+              "truckDrops": 867
             },
             "ammo": {
               "totalDropped": 2327
@@ -688,28 +688,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198140989441",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
-          "totalMatches": 3953,
-          "playedMatches": null,
-          "winRate": 68,
-          "kills": 70255,
-          "deaths": 41440,
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
+          "totalMatches": 3956,
+          "playedMatches": 2834,
+          "winRate": 60,
+          "kills": 70315,
+          "deaths": 41479,
           "kdr": 1.7,
           "kpm": 0.59,
           "dpm": 0.35,
-          "teamKills": 1406,
-          "level": null,
-          "hours": 2297
+          "teamKills": 1408,
+          "level": 3956,
+          "hours": 2298
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561198143837048": {
       "id": "76561198143837048",
@@ -746,17 +746,17 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198143837048",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "totalMatches": 558,
           "playedMatches": 382,
           "winRate": 45.21,
@@ -772,12 +772,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "260097039654846464": {
       "id": "260097039654846464",
@@ -810,17 +810,17 @@
       "epicId": "",
       "discordId": "731267516881567745",
       "stats": {
-        "kills": 21153,
-        "deaths": 15440,
+        "kills": 21198,
+        "deaths": 15462,
         "kd": 1.37,
         "kpm": 0.45,
         "dpm": 0.33,
         "wins": 773,
         "losses": 447,
         "matches": 1220,
-        "playtimeHours": 904,
+        "playtimeHours": 905,
         "winrate": 63.36065573770492,
-        "teamKills": 579,
+        "teamKills": 582,
         "headshots": 4454,
         "vehicleDestroyed": 922,
         "tanksDestroyed": 385,
@@ -837,7 +837,7 @@
           "Vehicle Destroyed": 922,
           "Tanks Destroyed": 385,
           "Jeeps Destroyed": 6,
-          "German": 11088,
+          "German": 11094,
           "USA": 11721,
           "Russia": 2260,
           "Headshots": 4454,
@@ -923,7 +923,7 @@
             "Night Maps": 155
           },
           "factions": {
-            "German": 11088,
+            "German": 11094,
             "USA": 11721,
             "Russia": 2260,
             "Estimated British": 1766
@@ -978,18 +978,18 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199102486666",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "stats": {
             "Kills": 1220,
             "Vehicle Destroyed": 922,
             "Tanks Destroyed": 385,
             "Jeeps Destroyed": 6,
-            "German": 11088,
+            "German": 11094,
             "USA": 11721,
             "Russia": 2260,
             "Headshots": 4454,
@@ -1075,7 +1075,7 @@
               "Night Maps": 155
             },
             "factions": {
-              "German": 11088,
+              "German": 11094,
               "USA": 11721,
               "Russia": 2260,
               "Estimated British": 1766
@@ -1123,28 +1123,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199102486666",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
-          "totalMatches": 1863,
-          "playedMatches": 1207,
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
+          "totalMatches": 1864,
+          "playedMatches": 1208,
           "winRate": 60,
-          "kills": 21153,
-          "deaths": 15440,
+          "kills": 21198,
+          "deaths": 15462,
           "kdr": 1.37,
           "kpm": 0.45,
           "dpm": 0.33,
-          "teamKills": 579,
-          "level": 1863,
-          "hours": 904
+          "teamKills": 582,
+          "level": 1864,
+          "hours": 905
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561198834967317": {
       "id": "76561198834967317",
@@ -1153,20 +1153,20 @@
       "epicId": "",
       "discordId": "715968363351769208",
       "stats": {
-        "kills": 13113,
-        "deaths": 13146,
+        "kills": 13146,
+        "deaths": 13190,
         "kd": 1,
         "kpm": 0.25,
         "dpm": 0.25,
-        "wins": 615,
-        "losses": 492,
-        "matches": 1107,
-        "playtimeHours": 903,
-        "winrate": 55.55555555555556,
-        "teamKills": 487,
-        "headshots": 2011,
-        "vehicleDestroyed": 2549,
-        "tanksDestroyed": 1394,
+        "wins": 616,
+        "losses": 493,
+        "matches": 1109,
+        "playtimeHours": 904,
+        "winrate": 55.54553651938684,
+        "teamKills": 488,
+        "headshots": 2017,
+        "vehicleDestroyed": 2552,
+        "tanksDestroyed": 1396,
         "jeepsDestroyed": 13,
         "capturedSectors": 898,
         "ratings": {
@@ -1176,14 +1176,14 @@
           "comp": null
         },
         "hllstats": {
-          "Kills": 1107,
-          "Vehicle Destroyed": 2549,
-          "Tanks Destroyed": 1394,
+          "Kills": 1109,
+          "Vehicle Destroyed": 2552,
+          "Tanks Destroyed": 1396,
           "Jeeps Destroyed": 13,
-          "German": 9117,
-          "USA": 8178,
+          "German": 9132,
+          "USA": 8196,
           "Russia": 1267,
-          "Headshots": 2011,
+          "Headshots": 2017,
           "Artillery": 161,
           "Knife": 13,
           "Spade": 5,
@@ -1204,15 +1204,15 @@
           "Engineer": 8,
           "Sniper": 4,
           "Crewman": 17,
-          "Estimated Total Games": 1107,
-          "Wins": 615,
-          "Estimated Loss": 492,
-          "Estimated WL Ratio": 1.25,
+          "Estimated Total Games": 1109,
+          "Wins": 616,
+          "Estimated Loss": 493,
+          "Estimated WL Ratio": 1.249,
           "SMDM": 143,
           "Foy": 88,
-          "Hurtgen": 67,
+          "Hurtgen": 68,
           "SME": 143,
-          "Utah": 109,
+          "Utah": 110,
           "Omaha": 112,
           "PHL": 27,
           "Hill 400": 29,
@@ -1224,7 +1224,7 @@
           "Driel": 39,
           "El Alamein": 44,
           "Night Maps": 119,
-          "Warfare": 584,
+          "Warfare": 585,
           "Offensive": 31,
           "Belgian Gate": 4,
           "Barbed Wire": 8,
@@ -1234,8 +1234,8 @@
           "Fuel Nodes": 107,
           "Manpower Nodes": 86,
           "Munitions Nodes": 91,
-          "Received": 802,
-          "Given": 626,
+          "Received": 805,
+          "Given": 628,
           "Total Dropped": 56500,
           "Total Used": 242175,
           "Truck Drops": 236,
@@ -1250,9 +1250,9 @@
           "maps": {
             "SMDM": 143,
             "Foy": 88,
-            "Hurtgen": 67,
+            "Hurtgen": 68,
             "SME": 143,
-            "Utah": 109,
+            "Utah": 110,
             "Omaha": 112,
             "PHL": 27,
             "Hill 400": 29,
@@ -1266,8 +1266,8 @@
             "Night Maps": 119
           },
           "factions": {
-            "German": 9117,
-            "USA": 8178,
+            "German": 9132,
+            "USA": 8196,
             "Russia": 1267,
             "Estimated British": 1645
           },
@@ -1284,7 +1284,7 @@
             "Crewman": 17
           },
           "gameModes": {
-            "Warfare": 584,
+            "Warfare": 585,
             "Offensive": 31
           },
           "built": {
@@ -1298,8 +1298,8 @@
             "Munitions Nodes": 91
           },
           "commends": {
-            "received": 802,
-            "given": 626
+            "received": 805,
+            "given": 628
           },
           "supplies": {
             "totalDropped": 56500,
@@ -1321,21 +1321,21 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198834967317",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "stats": {
-            "Kills": 1107,
-            "Vehicle Destroyed": 2549,
-            "Tanks Destroyed": 1394,
+            "Kills": 1109,
+            "Vehicle Destroyed": 2552,
+            "Tanks Destroyed": 1396,
             "Jeeps Destroyed": 13,
-            "German": 9117,
-            "USA": 8178,
+            "German": 9132,
+            "USA": 8196,
             "Russia": 1267,
-            "Headshots": 2011,
+            "Headshots": 2017,
             "Artillery": 161,
             "Knife": 13,
             "Spade": 5,
@@ -1356,15 +1356,15 @@
             "Engineer": 8,
             "Sniper": 4,
             "Crewman": 17,
-            "Estimated Total Games": 1107,
-            "Wins": 615,
-            "Estimated Loss": 492,
-            "Estimated WL Ratio": 1.25,
+            "Estimated Total Games": 1109,
+            "Wins": 616,
+            "Estimated Loss": 493,
+            "Estimated WL Ratio": 1.249,
             "SMDM": 143,
             "Foy": 88,
-            "Hurtgen": 67,
+            "Hurtgen": 68,
             "SME": 143,
-            "Utah": 109,
+            "Utah": 110,
             "Omaha": 112,
             "PHL": 27,
             "Hill 400": 29,
@@ -1376,7 +1376,7 @@
             "Driel": 39,
             "El Alamein": 44,
             "Night Maps": 119,
-            "Warfare": 584,
+            "Warfare": 585,
             "Offensive": 31,
             "Belgian Gate": 4,
             "Barbed Wire": 8,
@@ -1386,8 +1386,8 @@
             "Fuel Nodes": 107,
             "Manpower Nodes": 86,
             "Munitions Nodes": 91,
-            "Received": 802,
-            "Given": 626,
+            "Received": 805,
+            "Given": 628,
             "Total Dropped": 56500,
             "Total Used": 242175,
             "Truck Drops": 236,
@@ -1402,9 +1402,9 @@
             "maps": {
               "SMDM": 143,
               "Foy": 88,
-              "Hurtgen": 67,
+              "Hurtgen": 68,
               "SME": 143,
-              "Utah": 109,
+              "Utah": 110,
               "Omaha": 112,
               "PHL": 27,
               "Hill 400": 29,
@@ -1418,8 +1418,8 @@
               "Night Maps": 119
             },
             "factions": {
-              "German": 9117,
-              "USA": 8178,
+              "German": 9132,
+              "USA": 8196,
               "Russia": 1267,
               "Estimated British": 1645
             },
@@ -1436,7 +1436,7 @@
               "Crewman": 17
             },
             "gameModes": {
-              "Warfare": 584,
+              "Warfare": 585,
               "Offensive": 31
             },
             "built": {
@@ -1450,8 +1450,8 @@
               "Munitions Nodes": 91
             },
             "commends": {
-              "received": 802,
-              "given": 626
+              "received": 805,
+              "given": 628
             },
             "supplies": {
               "totalDropped": 56500,
@@ -1466,28 +1466,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198834967317",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
-          "totalMatches": 1596,
-          "playedMatches": 1264,
-          "winRate": 41.18,
-          "kills": 13113,
-          "deaths": 13146,
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
+          "totalMatches": 1600,
+          "playedMatches": 1267,
+          "winRate": 37.88,
+          "kills": 13146,
+          "deaths": 13190,
           "kdr": 1,
           "kpm": 0.25,
           "dpm": 0.25,
-          "teamKills": 487,
-          "level": 1596,
-          "hours": 903
+          "teamKills": 488,
+          "level": 1600,
+          "hours": 904
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561198053767250": {
       "id": "76561198053767250",
@@ -1524,17 +1524,17 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198053767250",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "totalMatches": 1239,
           "playedMatches": 794,
           "winRate": 63.89,
@@ -1550,12 +1550,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "d6ce2568401dd7526d8f9c3f20972c1c": {
       "id": "d6ce2568401dd7526d8f9c3f20972c1c",
@@ -1589,18 +1589,18 @@
       "epicId": "",
       "discordId": "1070974910308028507",
       "stats": {
-        "kills": 5246,
-        "deaths": 4316,
+        "kills": 5264,
+        "deaths": 4324,
         "kd": 1.22,
         "kpm": 0.46,
         "dpm": 0.38,
-        "wins": 197,
+        "wins": 198,
         "losses": 114,
-        "matches": 311,
-        "playtimeHours": 195,
-        "winrate": 63.344051446945336,
+        "matches": 312,
+        "playtimeHours": 196,
+        "winrate": 63.46153846153846,
         "teamKills": 44,
-        "headshots": 1108,
+        "headshots": 1113,
         "vehicleDestroyed": 99,
         "tanksDestroyed": 38,
         "jeepsDestroyed": 1,
@@ -1612,14 +1612,14 @@
           "comp": null
         },
         "hllstats": {
-          "Kills": 311,
+          "Kills": 312,
           "Vehicle Destroyed": 99,
           "Tanks Destroyed": 38,
           "Jeeps Destroyed": 1,
           "German": 2857,
-          "USA": 2381,
+          "USA": 2399,
           "Russia": 406,
-          "Headshots": 1108,
+          "Headshots": 1113,
           "Artillery": 1,
           "Knife": 0,
           "Spade": 3,
@@ -1640,13 +1640,13 @@
           "Engineer": 6,
           "Sniper": 3,
           "Crewman": 4,
-          "Estimated Total Games": 311,
-          "Wins": 197,
+          "Estimated Total Games": 312,
+          "Wins": 198,
           "Estimated Loss": 114,
-          "Estimated WL Ratio": 1.728,
+          "Estimated WL Ratio": 1.737,
           "SMDM": 48,
           "Foy": 19,
-          "Hurtgen": 17,
+          "Hurtgen": 18,
           "SME": 51,
           "Utah": 35,
           "Omaha": 29,
@@ -1660,7 +1660,7 @@
           "Driel": 9,
           "El Alamein": 3,
           "Night Maps": 32,
-          "Warfare": 180,
+          "Warfare": 181,
           "Offensive": 17,
           "Belgian Gate": 1,
           "Barbed Wire": 1,
@@ -1670,7 +1670,7 @@
           "Fuel Nodes": 13,
           "Manpower Nodes": 14,
           "Munitions Nodes": 14,
-          "Received": 291,
+          "Received": 294,
           "Given": 269,
           "Total Dropped": 12300,
           "Total Used": 191590,
@@ -1686,7 +1686,7 @@
           "maps": {
             "SMDM": 48,
             "Foy": 19,
-            "Hurtgen": 17,
+            "Hurtgen": 18,
             "SME": 51,
             "Utah": 35,
             "Omaha": 29,
@@ -1703,7 +1703,7 @@
           },
           "factions": {
             "German": 2857,
-            "USA": 2381,
+            "USA": 2399,
             "Russia": 406,
             "Estimated British": 246
           },
@@ -1720,7 +1720,7 @@
             "Crewman": 4
           },
           "gameModes": {
-            "Warfare": 180,
+            "Warfare": 181,
             "Offensive": 17
           },
           "built": {
@@ -1734,7 +1734,7 @@
             "Munitions Nodes": 14
           },
           "commends": {
-            "received": 291,
+            "received": 294,
             "given": 269
           },
           "supplies": {
@@ -1757,21 +1757,21 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199121789698",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "stats": {
-            "Kills": 311,
+            "Kills": 312,
             "Vehicle Destroyed": 99,
             "Tanks Destroyed": 38,
             "Jeeps Destroyed": 1,
             "German": 2857,
-            "USA": 2381,
+            "USA": 2399,
             "Russia": 406,
-            "Headshots": 1108,
+            "Headshots": 1113,
             "Artillery": 1,
             "Knife": 0,
             "Spade": 3,
@@ -1792,13 +1792,13 @@
             "Engineer": 6,
             "Sniper": 3,
             "Crewman": 4,
-            "Estimated Total Games": 311,
-            "Wins": 197,
+            "Estimated Total Games": 312,
+            "Wins": 198,
             "Estimated Loss": 114,
-            "Estimated WL Ratio": 1.728,
+            "Estimated WL Ratio": 1.737,
             "SMDM": 48,
             "Foy": 19,
-            "Hurtgen": 17,
+            "Hurtgen": 18,
             "SME": 51,
             "Utah": 35,
             "Omaha": 29,
@@ -1812,7 +1812,7 @@
             "Driel": 9,
             "El Alamein": 3,
             "Night Maps": 32,
-            "Warfare": 180,
+            "Warfare": 181,
             "Offensive": 17,
             "Belgian Gate": 1,
             "Barbed Wire": 1,
@@ -1822,7 +1822,7 @@
             "Fuel Nodes": 13,
             "Manpower Nodes": 14,
             "Munitions Nodes": 14,
-            "Received": 291,
+            "Received": 294,
             "Given": 269,
             "Total Dropped": 12300,
             "Total Used": 191590,
@@ -1838,7 +1838,7 @@
             "maps": {
               "SMDM": 48,
               "Foy": 19,
-              "Hurtgen": 17,
+              "Hurtgen": 18,
               "SME": 51,
               "Utah": 35,
               "Omaha": 29,
@@ -1855,7 +1855,7 @@
             },
             "factions": {
               "German": 2857,
-              "USA": 2381,
+              "USA": 2399,
               "Russia": 406,
               "Estimated British": 246
             },
@@ -1872,7 +1872,7 @@
               "Crewman": 4
             },
             "gameModes": {
-              "Warfare": 180,
+              "Warfare": 181,
               "Offensive": 17
             },
             "built": {
@@ -1886,7 +1886,7 @@
               "Munitions Nodes": 14
             },
             "commends": {
-              "received": 291,
+              "received": 294,
               "given": 269
             },
             "supplies": {
@@ -1902,28 +1902,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199121789698",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
-          "totalMatches": 425,
-          "playedMatches": null,
-          "winRate": 68,
-          "kills": 5246,
-          "deaths": 4316,
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
+          "totalMatches": 427,
+          "playedMatches": 339,
+          "winRate": 58.18,
+          "kills": 5264,
+          "deaths": 4324,
           "kdr": 1.22,
           "kpm": 0.46,
           "dpm": 0.38,
           "teamKills": 44,
-          "level": null,
-          "hours": 195
+          "level": 427,
+          "hours": 196
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561198057529227": {
       "id": "76561198057529227",
@@ -1932,17 +1932,17 @@
       "epicId": "",
       "discordId": "649311308080087051",
       "stats": {
-        "kills": 30041,
-        "deaths": 21147,
+        "kills": 30236,
+        "deaths": 21251,
         "kd": 1.42,
         "kpm": 0.47,
         "dpm": 0.33,
-        "wins": 1216,
-        "losses": 928,
-        "matches": 2144,
-        "playtimeHours": 1102,
-        "winrate": 56.72,
-        "teamKills": 772,
+        "wins": 1279,
+        "losses": 873,
+        "matches": 2152,
+        "playtimeHours": 1107,
+        "winrate": 59.42,
+        "teamKills": 773,
         "ratings": {
           "overall": null,
           "team": null,
@@ -1960,38 +1960,38 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198057529227",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
-          "totalMatches": 2144,
-          "playedMatches": 1436,
-          "winRate": 56.72,
-          "kills": 30041,
-          "deaths": 21147,
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
+          "totalMatches": 2152,
+          "playedMatches": 1442,
+          "winRate": 59.42,
+          "kills": 30236,
+          "deaths": 21251,
           "kdr": 1.42,
           "kpm": 0.47,
           "dpm": 0.33,
-          "teamKills": 772,
-          "level": 2144,
-          "hours": 1102
+          "teamKills": 773,
+          "level": 2152,
+          "hours": 1107
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561199100319875": {
       "id": "76561199100319875",
@@ -2000,22 +2000,22 @@
       "epicId": "",
       "discordId": "504270081946157057",
       "stats": {
-        "kills": 15584,
-        "deaths": 17593,
+        "kills": 15633,
+        "deaths": 17661,
         "kd": 0.89,
         "kpm": 0.3,
         "dpm": 0.35,
-        "wins": 664,
-        "losses": 429,
-        "matches": 1093,
-        "playtimeHours": 933,
-        "winrate": 60.75022872827082,
-        "teamKills": 622,
-        "headshots": 2226,
-        "vehicleDestroyed": 858,
+        "wins": 665,
+        "losses": 430,
+        "matches": 1095,
+        "playtimeHours": 935,
+        "winrate": 60.73059360730594,
+        "teamKills": 628,
+        "headshots": 2233,
+        "vehicleDestroyed": 861,
         "tanksDestroyed": 428,
         "jeepsDestroyed": 4,
-        "capturedSectors": 843,
+        "capturedSectors": 845,
         "ratings": {
           "overall": null,
           "team": null,
@@ -2023,14 +2023,14 @@
           "comp": null
         },
         "hllstats": {
-          "Kills": 1093,
-          "Vehicle Destroyed": 858,
+          "Kills": 1095,
+          "Vehicle Destroyed": 861,
           "Tanks Destroyed": 428,
           "Jeeps Destroyed": 4,
-          "German": 8752,
+          "German": 8786,
           "USA": 7043,
           "Russia": 1396,
-          "Headshots": 2226,
+          "Headshots": 2233,
           "Artillery": 290,
           "Knife": 25,
           "Spade": 18,
@@ -2051,13 +2051,13 @@
           "Engineer": 14,
           "Sniper": 4,
           "Crewman": 10,
-          "Estimated Total Games": 1093,
-          "Wins": 664,
-          "Estimated Loss": 429,
-          "Estimated WL Ratio": 1.548,
+          "Estimated Total Games": 1095,
+          "Wins": 665,
+          "Estimated Loss": 430,
+          "Estimated WL Ratio": 1.547,
           "SMDM": 180,
           "Foy": 61,
-          "Hurtgen": 40,
+          "Hurtgen": 41,
           "SME": 180,
           "Utah": 93,
           "Omaha": 107,
@@ -2066,12 +2066,12 @@
           "Carentan": 196,
           "Kursk": 32,
           "Stalingrad": 34,
-          "Remagen": 31,
+          "Remagen": 32,
           "Kharkov": 40,
           "Driel": 31,
           "El Alamein": 23,
           "Night Maps": 133,
-          "Warfare": 626,
+          "Warfare": 627,
           "Offensive": 38,
           "Belgian Gate": 3,
           "Barbed Wire": 28,
@@ -2081,14 +2081,14 @@
           "Fuel Nodes": 103,
           "Manpower Nodes": 95,
           "Munitions Nodes": 88,
-          "Received": 577,
+          "Received": 579,
           "Given": 569,
           "Total Dropped": 152150,
           "Total Used": 471345,
           "Truck Drops": 489,
           "Jeep Drops": 1,
           "Molotovs Thrown": 17,
-          "Captured Sectors": 843,
+          "Captured Sectors": 845,
           "Amount Of Maps Played": 180,
           "Estimated British": 636,
           "Jeep Impact": 1,
@@ -2097,7 +2097,7 @@
           "maps": {
             "SMDM": 180,
             "Foy": 61,
-            "Hurtgen": 40,
+            "Hurtgen": 41,
             "SME": 180,
             "Utah": 93,
             "Omaha": 107,
@@ -2106,14 +2106,14 @@
             "Carentan": 196,
             "Kursk": 32,
             "Stalingrad": 34,
-            "Remagen": 31,
+            "Remagen": 32,
             "Kharkov": 40,
             "Driel": 31,
             "El Alamein": 23,
             "Night Maps": 133
           },
           "factions": {
-            "German": 8752,
+            "German": 8786,
             "USA": 7043,
             "Russia": 1396,
             "Estimated British": 636
@@ -2131,7 +2131,7 @@
             "Crewman": 10
           },
           "gameModes": {
-            "Warfare": 626,
+            "Warfare": 627,
             "Offensive": 38
           },
           "built": {
@@ -2145,7 +2145,7 @@
             "Munitions Nodes": 88
           },
           "commends": {
-            "received": 577,
+            "received": 579,
             "given": 569
           },
           "supplies": {
@@ -2168,21 +2168,21 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561199100319875",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "stats": {
-            "Kills": 1093,
-            "Vehicle Destroyed": 858,
+            "Kills": 1095,
+            "Vehicle Destroyed": 861,
             "Tanks Destroyed": 428,
             "Jeeps Destroyed": 4,
-            "German": 8752,
+            "German": 8786,
             "USA": 7043,
             "Russia": 1396,
-            "Headshots": 2226,
+            "Headshots": 2233,
             "Artillery": 290,
             "Knife": 25,
             "Spade": 18,
@@ -2203,13 +2203,13 @@
             "Engineer": 14,
             "Sniper": 4,
             "Crewman": 10,
-            "Estimated Total Games": 1093,
-            "Wins": 664,
-            "Estimated Loss": 429,
-            "Estimated WL Ratio": 1.548,
+            "Estimated Total Games": 1095,
+            "Wins": 665,
+            "Estimated Loss": 430,
+            "Estimated WL Ratio": 1.547,
             "SMDM": 180,
             "Foy": 61,
-            "Hurtgen": 40,
+            "Hurtgen": 41,
             "SME": 180,
             "Utah": 93,
             "Omaha": 107,
@@ -2218,12 +2218,12 @@
             "Carentan": 196,
             "Kursk": 32,
             "Stalingrad": 34,
-            "Remagen": 31,
+            "Remagen": 32,
             "Kharkov": 40,
             "Driel": 31,
             "El Alamein": 23,
             "Night Maps": 133,
-            "Warfare": 626,
+            "Warfare": 627,
             "Offensive": 38,
             "Belgian Gate": 3,
             "Barbed Wire": 28,
@@ -2233,14 +2233,14 @@
             "Fuel Nodes": 103,
             "Manpower Nodes": 95,
             "Munitions Nodes": 88,
-            "Received": 577,
+            "Received": 579,
             "Given": 569,
             "Total Dropped": 152150,
             "Total Used": 471345,
             "Truck Drops": 489,
             "Jeep Drops": 1,
             "Molotovs Thrown": 17,
-            "Captured Sectors": 843,
+            "Captured Sectors": 845,
             "Amount Of Maps Played": 180,
             "Estimated British": 636,
             "Jeep Impact": 1,
@@ -2249,7 +2249,7 @@
             "maps": {
               "SMDM": 180,
               "Foy": 61,
-              "Hurtgen": 40,
+              "Hurtgen": 41,
               "SME": 180,
               "Utah": 93,
               "Omaha": 107,
@@ -2258,14 +2258,14 @@
               "Carentan": 196,
               "Kursk": 32,
               "Stalingrad": 34,
-              "Remagen": 31,
+              "Remagen": 32,
               "Kharkov": 40,
               "Driel": 31,
               "El Alamein": 23,
               "Night Maps": 133
             },
             "factions": {
-              "German": 8752,
+              "German": 8786,
               "USA": 7043,
               "Russia": 1396,
               "Estimated British": 636
@@ -2283,7 +2283,7 @@
               "Crewman": 10
             },
             "gameModes": {
-              "Warfare": 626,
+              "Warfare": 627,
               "Offensive": 38
             },
             "built": {
@@ -2297,7 +2297,7 @@
               "Munitions Nodes": 88
             },
             "commends": {
-              "received": 577,
+              "received": 579,
               "given": 569
             },
             "supplies": {
@@ -2310,31 +2310,31 @@
             }
           }
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z",
+        "_lastRefresh": "2026-11-08T23:09:27.696Z",
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199100319875",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
-          "totalMatches": 1733,
-          "playedMatches": 1125,
-          "winRate": 51.47,
-          "kills": 15584,
-          "deaths": 17593,
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
+          "totalMatches": 1736,
+          "playedMatches": 1127,
+          "winRate": 50.75,
+          "kills": 15633,
+          "deaths": 17661,
           "kdr": 0.89,
           "kpm": 0.3,
           "dpm": 0.35,
-          "teamKills": 622,
-          "level": 1733,
-          "hours": 933
+          "teamKills": 628,
+          "level": 1736,
+          "hours": 935
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         }
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561199550212124": {
       "id": "76561199550212124",
@@ -2343,15 +2343,15 @@
       "epicId": "",
       "discordId": "1235652648305299536",
       "stats": {
-        "kills": 29031,
-        "deaths": 22887,
+        "kills": 29052,
+        "deaths": 22917,
         "kd": 1.27,
         "kpm": 0.56,
         "dpm": 0.44,
-        "wins": 1037,
+        "wins": 1038,
         "losses": 699,
-        "matches": 1736,
-        "playtimeHours": 930,
+        "matches": 1737,
+        "playtimeHours": 931,
         "winrate": 59.74,
         "teamKills": 449,
         "ratings": {
@@ -2371,38 +2371,38 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199550212124",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
-          "totalMatches": 1736,
-          "playedMatches": 1280,
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
+          "totalMatches": 1737,
+          "playedMatches": 1281,
           "winRate": 59.74,
-          "kills": 29031,
-          "deaths": 22887,
+          "kills": 29052,
+          "deaths": 22917,
           "kdr": 1.27,
           "kpm": 0.56,
           "dpm": 0.44,
           "teamKills": 449,
-          "level": 1736,
-          "hours": 930
+          "level": 1737,
+          "hours": 931
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561199825097485": {
       "id": "76561199825097485",
@@ -2416,11 +2416,11 @@
         "kd": 0.91,
         "kpm": 0.37,
         "dpm": 0.4,
-        "wins": 348,
-        "losses": 188,
+        "wins": 349,
+        "losses": 187,
         "matches": 536,
         "playtimeHours": 253,
-        "winrate": 65,
+        "winrate": 65.08,
         "teamKills": 140,
         "ratings": {
           "overall": null,
@@ -2439,38 +2439,38 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561199825097485",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "totalMatches": 536,
-          "playedMatches": null,
-          "winRate": 65,
+          "playedMatches": 354,
+          "winRate": 65.08,
           "kills": 5310,
           "deaths": 5818,
           "kdr": 0.91,
           "kpm": 0.37,
           "dpm": 0.4,
           "teamKills": 140,
-          "level": null,
+          "level": 536,
           "hours": 253
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561198077776075": {
       "id": "76561198077776075",
@@ -2484,11 +2484,11 @@
         "kd": 0.58,
         "kpm": 0.13,
         "dpm": 0.23,
-        "wins": 468,
-        "losses": 524,
+        "wins": 893,
+        "losses": 99,
         "matches": 992,
         "playtimeHours": 667,
-        "winrate": 47.13,
+        "winrate": 90,
         "teamKills": 224,
         "ratings": {
           "overall": null,
@@ -2507,20 +2507,20 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "error": "Keine erfassten HLLStats.dev-Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198077776075",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "totalMatches": 992,
-          "playedMatches": 360,
-          "winRate": 47.13,
+          "playedMatches": null,
+          "winRate": 90,
           "kills": 3830,
           "deaths": 6572,
           "kdr": 0.58,
@@ -2533,12 +2533,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "76561198144102997": {
       "id": "76561198144102997",
@@ -2715,12 +2715,12 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561198144102997",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "stats": {
             "Kills": 4987,
             "Vehicle Destroyed": 4363,
@@ -2860,7 +2860,7 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561198144102997",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "totalMatches": 5684,
           "playedMatches": 4835,
           "winRate": 58.67,
@@ -2876,12 +2876,12 @@
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     },
     "392243796076658689": {
       "id": "392243796076658689",
@@ -2914,19 +2914,19 @@
       "epicId": "",
       "discordId": "503630162827673601",
       "stats": {
-        "kills": 21576,
-        "deaths": 20730,
+        "kills": 21623,
+        "deaths": 20764,
         "kd": 1.04,
         "kpm": 0.38,
         "dpm": 0.37,
         "wins": 976,
-        "losses": 832,
-        "matches": 1808,
-        "playtimeHours": 1001,
-        "winrate": 53.98230088495575,
-        "teamKills": 244,
-        "headshots": 4310,
-        "vehicleDestroyed": 264,
+        "losses": 833,
+        "matches": 1809,
+        "playtimeHours": 1003,
+        "winrate": 53.95245992260917,
+        "teamKills": 245,
+        "headshots": 4318,
+        "vehicleDestroyed": 265,
         "tanksDestroyed": 109,
         "jeepsDestroyed": 3,
         "capturedSectors": 1760,
@@ -2937,14 +2937,14 @@
           "comp": null
         },
         "hllstats": {
-          "Kills": 1808,
-          "Vehicle Destroyed": 264,
+          "Kills": 1809,
+          "Vehicle Destroyed": 265,
           "Tanks Destroyed": 109,
           "Jeeps Destroyed": 3,
-          "German": 12195,
-          "USA": 10664,
+          "German": 12219,
+          "USA": 10672,
           "Russia": 1584,
-          "Headshots": 4310,
+          "Headshots": 4318,
           "Artillery": 402,
           "Knife": 24,
           "Spade": 20,
@@ -2965,10 +2965,10 @@
           "Engineer": 11,
           "Sniper": 3,
           "Crewman": 2,
-          "Estimated Total Games": 1808,
+          "Estimated Total Games": 1809,
           "Wins": 976,
-          "Estimated Loss": 832,
-          "Estimated WL Ratio": 1.173,
+          "Estimated Loss": 833,
+          "Estimated WL Ratio": 1.172,
           "SMDM": 253,
           "Foy": 132,
           "Hurtgen": 114,
@@ -2980,7 +2980,7 @@
           "Carentan": 264,
           "Kursk": 72,
           "Stalingrad": 79,
-          "Remagen": 47,
+          "Remagen": 48,
           "Kharkov": 67,
           "Driel": 27,
           "El Alamein": 29,
@@ -2996,8 +2996,8 @@
           "Manpower Nodes": 225,
           "Munitions Nodes": 221,
           "Received": 586,
-          "Given": 1457,
-          "Total Dropped": 73450,
+          "Given": 1458,
+          "Total Dropped": 73550,
           "Total Used": 88225,
           "Truck Drops": 294,
           "Jeep Drops": 0,
@@ -3020,15 +3020,15 @@
             "Carentan": 264,
             "Kursk": 72,
             "Stalingrad": 79,
-            "Remagen": 47,
+            "Remagen": 48,
             "Kharkov": 67,
             "Driel": 27,
             "El Alamein": 29,
             "Night Maps": 174
           },
           "factions": {
-            "German": 12195,
-            "USA": 10664,
+            "German": 12219,
+            "USA": 10672,
             "Russia": 1584,
             "Estimated British": 1218
           },
@@ -3060,10 +3060,10 @@
           },
           "commends": {
             "received": 586,
-            "given": 1457
+            "given": 1458
           },
           "supplies": {
-            "totalDropped": 73450,
+            "totalDropped": 73550,
             "totalUsed": 88225,
             "truckDrops": 294
           },
@@ -3082,21 +3082,21 @@
         "hll-ratings": {
           "provider": "hll-ratings",
           "error": "Zugriffsschutz",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
         "hllstats.dev": {
           "provider": "hllstats.dev",
           "url": "https://www.hllstats.dev/?steam64id=76561197988287619",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
           "stats": {
-            "Kills": 1808,
-            "Vehicle Destroyed": 264,
+            "Kills": 1809,
+            "Vehicle Destroyed": 265,
             "Tanks Destroyed": 109,
             "Jeeps Destroyed": 3,
-            "German": 12195,
-            "USA": 10664,
+            "German": 12219,
+            "USA": 10672,
             "Russia": 1584,
-            "Headshots": 4310,
+            "Headshots": 4318,
             "Artillery": 402,
             "Knife": 24,
             "Spade": 20,
@@ -3117,10 +3117,10 @@
             "Engineer": 11,
             "Sniper": 3,
             "Crewman": 2,
-            "Estimated Total Games": 1808,
+            "Estimated Total Games": 1809,
             "Wins": 976,
-            "Estimated Loss": 832,
-            "Estimated WL Ratio": 1.173,
+            "Estimated Loss": 833,
+            "Estimated WL Ratio": 1.172,
             "SMDM": 253,
             "Foy": 132,
             "Hurtgen": 114,
@@ -3132,7 +3132,7 @@
             "Carentan": 264,
             "Kursk": 72,
             "Stalingrad": 79,
-            "Remagen": 47,
+            "Remagen": 48,
             "Kharkov": 67,
             "Driel": 27,
             "El Alamein": 29,
@@ -3148,8 +3148,8 @@
             "Manpower Nodes": 225,
             "Munitions Nodes": 221,
             "Received": 586,
-            "Given": 1457,
-            "Total Dropped": 73450,
+            "Given": 1458,
+            "Total Dropped": 73550,
             "Total Used": 88225,
             "Truck Drops": 294,
             "Jeep Drops": 0,
@@ -3172,15 +3172,15 @@
               "Carentan": 264,
               "Kursk": 72,
               "Stalingrad": 79,
-              "Remagen": 47,
+              "Remagen": 48,
               "Kharkov": 67,
               "Driel": 27,
               "El Alamein": 29,
               "Night Maps": 174
             },
             "factions": {
-              "German": 12195,
-              "USA": 10664,
+              "German": 12219,
+              "USA": 10672,
               "Russia": 1584,
               "Estimated British": 1218
             },
@@ -3212,10 +3212,10 @@
             },
             "commends": {
               "received": 586,
-              "given": 1457
+              "given": 1458
             },
             "supplies": {
-              "totalDropped": 73450,
+              "totalDropped": 73550,
               "totalUsed": 88225,
               "truckDrops": 294
             },
@@ -3227,28 +3227,28 @@
         "hllrecords": {
           "provider": "hllrecords",
           "url": "https://hllrecords.com/profiles/76561197988287619",
-          "fetchedAt": "2026-11-08T19:43:15.596Z",
-          "totalMatches": 2232,
-          "playedMatches": 1302,
-          "winRate": 58.57,
-          "kills": 21576,
-          "deaths": 20730,
+          "fetchedAt": "2026-11-08T23:09:27.696Z",
+          "totalMatches": 2234,
+          "playedMatches": 1304,
+          "winRate": 57.14,
+          "kills": 21623,
+          "deaths": 20764,
           "kdr": 1.04,
           "kpm": 0.38,
           "dpm": 0.37,
-          "teamKills": 244,
-          "level": 2232,
-          "hours": 1001
+          "teamKills": 245,
+          "level": 2234,
+          "hours": 1003
         },
         "frostbite": {
           "provider": "frostbite",
           "error": "Keine Frostbite Spielerdaten",
-          "failedAt": "2026-11-08T19:43:15.596Z"
+          "failedAt": "2026-11-08T23:09:27.696Z"
         },
-        "_lastRefresh": "2026-11-08T19:43:15.596Z"
+        "_lastRefresh": "2026-11-08T23:09:27.696Z"
       },
       "coverage": "Discord + Steam + externe Stats",
-      "updatedAt": "2026-11-08T19:43:15.596Z"
+      "updatedAt": "2026-11-08T23:09:27.696Z"
     }
   }
 }
