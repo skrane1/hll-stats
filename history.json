@@ -2384,6 +2384,13 @@
       "username": "GWSN | Drexusnite",
       "value": 25,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-11-09T11:04:30.774Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexus",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "alchemist": [
