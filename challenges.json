@@ -1,25 +1,25 @@
 [
   {
-    "id": "1566545563745263657",
-    "name": "NAMU",
-    "description": "COMMANDER CREMATOR - Kommandantenabschüsse",
-    "category": "commander-counter",
-    "categoryLabel": "COMMANDER CREMATOR - Kommandantenabschüsse",
+    "id": "1569295354443202601",
+    "name": "PARK",
+    "description": "GARRY GROUNDER - Zerstörte Garnisonen",
+    "category": "garry-grounder",
+    "categoryLabel": "GARRY GROUNDER - Zerstörte Garnisonen",
     "leaderboard": [
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 7
-      },
       {
         "playerId": "1027959050761162863",
         "username": "GWSM | Drexus",
-        "value": 4
+        "value": 1
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
       },
       {
         "playerId": "638727568681336852",
         "username": "GWSM | Dennis_Zachi",
-        "value": 2
+        "value": 0
       },
       {
         "playerId": "487369746040356873",
@@ -27,24 +27,24 @@
         "value": 0
       }
     ],
-    "createdAt": "2026-11-01T20:12:47.406Z"
+    "createdAt": "2026-11-09T10:19:28.597Z"
   },
   {
-    "id": "1566545518899896350",
-    "name": "NAMU",
-    "description": "MEELE-MAGE - Nahkampftötungen",
-    "category": "meele-mage",
-    "categoryLabel": "MEELE-MAGE - Nahkampftötungen",
+    "id": "1569295303704842312",
+    "name": "PARK",
+    "description": "ALCHEMIST - Gebaute Knotenpunkte",
+    "category": "alchemist",
+    "categoryLabel": "ALCHEMIST - Gebaute Knotenpunkte",
     "leaderboard": [
       {
         "playerId": "731267516881567745",
         "username": "GWSM | Weinÿ",
-        "value": 19
+        "value": 0
       },
       {
         "playerId": "1027959050761162863",
         "username": "GWSM | Drexus",
-        "value": 2
+        "value": 0
       },
       {
         "playerId": "638727568681336852",
@@ -57,6 +57,6 @@
         "value": 0
       }
     ],
-    "createdAt": "2026-11-01T20:12:36.714Z"
+    "createdAt": "2026-11-09T10:19:16.500Z"
   }
 ]
