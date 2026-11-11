@@ -2454,6 +2454,13 @@
       "username": "GWSM | Drexus",
       "value": 1,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-11T15:41:50.570Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexus",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "alchemist": [
@@ -2631,6 +2638,13 @@
       "username": "GWSN | Drexusnite",
       "value": 29,
       "source": "manual-import"
+    },
+    {
+      "date": "2026-11-11T15:41:52.475Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexus",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "Oppenheimer": [
