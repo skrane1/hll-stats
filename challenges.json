@@ -9,7 +9,7 @@
       {
         "playerId": "1027959050761162863",
         "username": "GWSM | Drexus",
-        "value": 11
+        "value": 12
       },
       {
         "playerId": "487369746040356873",
@@ -42,13 +42,13 @@
     "categoryLabel": "ALCHEMIST - Gebaute Knotenpunkte",
     "leaderboard": [
       {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 0
-      },
-      {
         "playerId": "1027959050761162863",
         "username": "GWSM | Drexus",
+        "value": 1
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
         "value": 0
       },
       {
