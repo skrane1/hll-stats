@@ -2461,6 +2461,13 @@
       "username": "GWSM | Drexus",
       "value": 1,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-12T17:40:58.654Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 2,
+      "source": "ocr"
     }
   ],
   "alchemist": [
