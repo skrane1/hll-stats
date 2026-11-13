@@ -2489,6 +2489,20 @@
       "username": "GWSM | Knoblauch / Holger",
       "value": 1,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-13T18:04:04.763Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexus",
+      "value": 3,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-13T18:04:07.369Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "alchemist": [
