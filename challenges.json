@@ -1,60 +1,60 @@
 [
   {
-    "id": "1569295354443202601",
-    "name": "PARK",
-    "description": "GARRY GROUNDER - Zerstörte Garnisonen",
-    "category": "garry-grounder",
-    "categoryLabel": "GARRY GROUNDER - Zerstörte Garnisonen",
+    "id": "1571837453659013120",
+    "name": "LECK",
+    "description": "SNIPERWIZARD - Längster Kopfschuss",
+    "category": "sniperwizard",
+    "categoryLabel": "SNIPERWIZARD - Längster Kopfschuss",
     "leaderboard": [
-      {
-        "playerId": "1027959050761162863",
-        "username": "GWSM | Drexus",
-        "value": 16
-      },
-      {
-        "playerId": "487369746040356873",
-        "username": "GWSM | Offi",
-        "value": 8
-      },
-      {
-        "playerId": "386241651753877505",
-        "username": "GWSM | Ziegel.",
-        "value": 4
-      },
       {
         "playerId": "731267516881567745",
         "username": "GWSM | Weinÿ",
-        "value": 3
+        "value": 0
       },
       {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 2
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 1
+        "playerId": "1027959050761162863",
+        "username": "GWSM | Drexus",
+        "value": 0
       },
       {
         "playerId": "638727568681336852",
         "username": "GWSM | Dennis_Zachi",
         "value": 0
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 0
+      },
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 0
+      },
+      {
+        "playerId": "157888469522186240",
+        "username": "GWSM | Knoblauch / Holger",
+        "value": 0
+      },
+      {
+        "playerId": "386241651753877505",
+        "username": "GWSM | Ziegel.",
+        "value": 0
       }
     ],
-    "createdAt": "2026-11-09T10:19:28.597Z"
+    "createdAt": "2026-11-16T10:40:52.280Z"
   },
   {
-    "id": "1569295303704842312",
-    "name": "PARK",
-    "description": "ALCHEMIST - Gebaute Knotenpunkte",
-    "category": "alchemist",
-    "categoryLabel": "ALCHEMIST - Gebaute Knotenpunkte",
+    "id": "1571837501264371842",
+    "name": "LECK",
+    "description": "OPPENHEIMER - Sprengstofftötungen",
+    "category": "Oppenheimer",
+    "categoryLabel": "OPPENHEIMER - Sprengstofftötungen",
     "leaderboard": [
       {
         "playerId": "1027959050761162863",
         "username": "GWSM | Drexus",
-        "value": 1
+        "value": 5
       },
       {
         "playerId": "731267516881567745",
@@ -87,6 +87,6 @@
         "value": 0
       }
     ],
-    "createdAt": "2026-11-09T10:19:16.500Z"
+    "createdAt": "2026-11-16T10:41:03.630Z"
   }
 ]
