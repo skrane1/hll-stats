@@ -538,6 +538,13 @@
       "username": "GWSM | LEER",
       "value": 1,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:57:22.761Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 3,
+      "source": "ocr"
     }
   ],
   "kettenblitz": [
@@ -3512,6 +3519,27 @@
       "username": "GWSM | Mark",
       "value": 9,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:56:48.351Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 3,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:57:00.651Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 7,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:57:00.969Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 5,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -4030,6 +4058,13 @@
       "date": "2026-11-22T18:56:18.050Z",
       "playerId": "1235652648305299536",
       "username": "GWSM | Mark",
+      "value": 9,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:57:04.158Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
       "value": 9,
       "source": "ocr"
     }
