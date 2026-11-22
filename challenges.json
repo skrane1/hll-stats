@@ -7,14 +7,14 @@
     "categoryLabel": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
     "leaderboard": [
       {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 6
+      },
+      {
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
         "value": 5
-      },
-      {
-        "playerId": "487369746040356873",
-        "username": "GWSM | Offi",
-        "value": 3
       },
       {
         "playerId": "715968363351769208",
@@ -157,6 +157,11 @@
         "value": 11
       },
       {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
+        "value": 6
+      },
+      {
         "playerId": "487369746040356873",
         "username": "GWSM | Offi",
         "value": 5
@@ -164,12 +169,7 @@
       {
         "playerId": "715968363351769208",
         "username": "GWSM | LEER",
-        "value": 2
-      },
-      {
-        "playerId": "649311308080087051",
-        "username": "GWSM | TomatoJoe",
-        "value": 0
+        "value": 4
       }
     ],
     "createdAt": "2026-11-22T17:51:51.094Z"
