@@ -55,6 +55,11 @@
         "playerId": "715968363351769208",
         "username": "GWSM | LEER",
         "value": 0
+      },
+      {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
+        "value": 0
       }
     ],
     "createdAt": "2026-11-22T17:51:30.389Z"
@@ -84,6 +89,11 @@
       {
         "playerId": "715968363351769208",
         "username": "GWSM | LEER",
+        "value": 0
+      },
+      {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
         "value": 0
       }
     ],
@@ -115,6 +125,11 @@
         "playerId": "715968363351769208",
         "username": "GWSM | LEER",
         "value": 0
+      },
+      {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
+        "value": 0
       }
     ],
     "createdAt": "2026-11-16T10:41:03.630Z"
@@ -144,6 +159,11 @@
       {
         "playerId": "487369746040356873",
         "username": "GWSM | Offi",
+        "value": 0
+      },
+      {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
         "value": 0
       }
     ],
@@ -175,6 +195,11 @@
         "playerId": "487369746040356873",
         "username": "GWSM | Offi",
         "value": 1
+      },
+      {
+        "playerId": "649311308080087051",
+        "username": "GWSM | TomatoJoe",
+        "value": 0
       }
     ],
     "createdAt": "2026-11-22T17:52:02.109Z"
