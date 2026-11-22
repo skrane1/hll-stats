@@ -3449,6 +3449,20 @@
       "username": "GWSM | Knoblauch / Holger",
       "value": 12,
       "source": "setstat"
+    },
+    {
+      "date": "2026-11-22T18:17:17.367Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 8,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:20:11.554Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 5,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -3946,6 +3960,13 @@
       "date": "2026-11-22T18:16:57.862Z",
       "playerId": "1235652648305299536",
       "username": "GWSM | Mark",
+      "value": 2,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:20:08.763Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
       "value": 2,
       "source": "ocr"
     }
