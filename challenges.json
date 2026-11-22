@@ -7,8 +7,23 @@
     "categoryLabel": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
     "leaderboard": [
       {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 2
+      },
+      {
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
+        "value": 0
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
         "value": 0
       }
     ],
@@ -25,6 +40,21 @@
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
         "value": 0
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 0
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 0
       }
     ],
     "createdAt": "2026-11-22T17:51:30.389Z"
@@ -39,6 +69,21 @@
       {
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
+        "value": 0
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 0
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
         "value": 0
       }
     ],
@@ -55,6 +100,21 @@
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
         "value": 0
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 0
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 0
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 0
       }
     ],
     "createdAt": "2026-11-16T10:41:03.630Z"
@@ -70,6 +130,21 @@
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
         "value": 2
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 2
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 2
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 0
       }
     ],
     "createdAt": "2026-11-22T17:51:51.094Z"
@@ -85,6 +160,21 @@
         "playerId": "1235652648305299536",
         "username": "GWSM | Mark",
         "value": 8
+      },
+      {
+        "playerId": "731267516881567745",
+        "username": "GWSM | Weinÿ",
+        "value": 5
+      },
+      {
+        "playerId": "715968363351769208",
+        "username": "GWSM | LEER",
+        "value": 2
+      },
+      {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 1
       }
     ],
     "createdAt": "2026-11-22T17:52:02.109Z"
