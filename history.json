@@ -3563,6 +3563,20 @@
       "username": "GWSM | Weinÿ",
       "value": 5,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T19:59:18.664Z",
+      "playerId": "1235652648305299536",
+      "username": "GWSM | Mark",
+      "value": 8,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T19:59:40.752Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 9,
+      "source": "ocr"
     }
   ],
   "officer-down": [
