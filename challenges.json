@@ -1,52 +1,29 @@
 [
   {
+    "id": "1574120202084552724",
+    "name": "MATO",
+    "description": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
+    "category": "you-shall-not-pass",
+    "categoryLabel": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
+    "leaderboard": [],
+    "createdAt": "2026-11-22T17:51:41.916Z"
+  },
+  {
+    "id": "1574120153736810577",
+    "name": "MATO",
+    "description": "KETTENBLITZ - Tötungen aus Fahrzeug",
+    "category": "kettenblitz",
+    "categoryLabel": "KETTENBLITZ - Tötungen aus Fahrzeug",
+    "leaderboard": [],
+    "createdAt": "2026-11-22T17:51:30.389Z"
+  },
+  {
     "id": "1571837453659013120",
     "name": "LECK",
     "description": "SNIPERWIZARD - Längster Kopfschuss",
     "category": "sniperwizard",
     "categoryLabel": "SNIPERWIZARD - Längster Kopfschuss",
-    "leaderboard": [
-      {
-        "playerId": "1027959050761162863",
-        "username": "GWSM | Drexus",
-        "value": 376
-      },
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 0
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 0
-      },
-      {
-        "playerId": "487369746040356873",
-        "username": "GWSM | Offi",
-        "value": 0
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 0
-      },
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 0
-      },
-      {
-        "playerId": "386241651753877505",
-        "username": "GWSM | Ziegel.",
-        "value": 0
-      },
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 0
-      }
-    ],
+    "leaderboard": [],
     "createdAt": "2026-11-16T10:40:52.280Z"
   },
   {
@@ -55,48 +32,25 @@
     "description": "OPPENHEIMER - Sprengstofftötungen",
     "category": "Oppenheimer",
     "categoryLabel": "OPPENHEIMER - Sprengstofftötungen",
-    "leaderboard": [
-      {
-        "playerId": "1027959050761162863",
-        "username": "GWSM | Drexus",
-        "value": 10
-      },
-      {
-        "playerId": "504270081946157057",
-        "username": "GWSM | skrane1",
-        "value": 8
-      },
-      {
-        "playerId": "731267516881567745",
-        "username": "GWSM | Weinÿ",
-        "value": 0
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 0
-      },
-      {
-        "playerId": "487369746040356873",
-        "username": "GWSM | Offi",
-        "value": 0
-      },
-      {
-        "playerId": "1235652648305299536",
-        "username": "GWSM | Mark",
-        "value": 0
-      },
-      {
-        "playerId": "157888469522186240",
-        "username": "GWSM | Knoblauch / Holger",
-        "value": 0
-      },
-      {
-        "playerId": "386241651753877505",
-        "username": "GWSM | Ziegel.",
-        "value": 0
-      }
-    ],
+    "leaderboard": [],
     "createdAt": "2026-11-16T10:41:03.630Z"
+  },
+  {
+    "id": "1574120240579870720",
+    "name": "MATO",
+    "description": "OFFICER-DOWN - Offizierabschüsse",
+    "category": "officer-down",
+    "categoryLabel": "OFFICER-DOWN - Offizierabschüsse",
+    "leaderboard": [],
+    "createdAt": "2026-11-22T17:51:51.094Z"
+  },
+  {
+    "id": "1574120286779875358",
+    "name": "MATO",
+    "description": "HEADHUNTER - Kopfschüsse",
+    "category": "headhunter",
+    "categoryLabel": "HEADHUNTER - Kopfschüsse",
+    "leaderboard": [],
+    "createdAt": "2026-11-22T17:52:02.109Z"
   }
 ]
