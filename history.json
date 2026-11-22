@@ -545,6 +545,13 @@
       "username": "GWSM | Offi",
       "value": 3,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:59:09.269Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 3,
+      "source": "ocr"
     }
   ],
   "kettenblitz": [
@@ -4082,6 +4089,20 @@
       "playerId": "487369746040356873",
       "username": "GWSM | Offi",
       "value": 5,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:59:06.857Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 6,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-22T18:59:08.663Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 2,
       "source": "ocr"
     }
   ]
