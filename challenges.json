@@ -5,7 +5,13 @@
     "description": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
     "category": "you-shall-not-pass",
     "categoryLabel": "YOU SHALL NOT PASS - Zerstörte Fahrzeuge",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 0
+      }
+    ],
     "createdAt": "2026-11-22T17:51:41.916Z"
   },
   {
@@ -14,7 +20,13 @@
     "description": "KETTENBLITZ - Tötungen aus Fahrzeug",
     "category": "kettenblitz",
     "categoryLabel": "KETTENBLITZ - Tötungen aus Fahrzeug",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 0
+      }
+    ],
     "createdAt": "2026-11-22T17:51:30.389Z"
   },
   {
@@ -23,7 +35,13 @@
     "description": "SNIPERWIZARD - Längster Kopfschuss",
     "category": "sniperwizard",
     "categoryLabel": "SNIPERWIZARD - Längster Kopfschuss",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 0
+      }
+    ],
     "createdAt": "2026-11-16T10:40:52.280Z"
   },
   {
@@ -32,7 +50,13 @@
     "description": "OPPENHEIMER - Sprengstofftötungen",
     "category": "Oppenheimer",
     "categoryLabel": "OPPENHEIMER - Sprengstofftötungen",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 0
+      }
+    ],
     "createdAt": "2026-11-16T10:41:03.630Z"
   },
   {
@@ -41,7 +65,13 @@
     "description": "OFFICER-DOWN - Offizierabschüsse",
     "category": "officer-down",
     "categoryLabel": "OFFICER-DOWN - Offizierabschüsse",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 2
+      }
+    ],
     "createdAt": "2026-11-22T17:51:51.094Z"
   },
   {
@@ -50,7 +80,13 @@
     "description": "HEADHUNTER - Kopfschüsse",
     "category": "headhunter",
     "categoryLabel": "HEADHUNTER - Kopfschüsse",
-    "leaderboard": [],
+    "leaderboard": [
+      {
+        "playerId": "1235652648305299536",
+        "username": "GWSM | Mark",
+        "value": 8
+      }
+    ],
     "createdAt": "2026-11-22T17:52:02.109Z"
   }
 ]
