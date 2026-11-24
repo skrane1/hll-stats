@@ -3743,6 +3743,13 @@
       "username": "GWSM | Offi",
       "value": 2,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-24T15:19:57.076Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexus",
+      "value": 1,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -4465,6 +4472,13 @@
       "playerId": "1027959050761162863",
       "username": "GWSM | Drexus",
       "value": 7,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-24T15:19:57.168Z",
+      "playerId": "1027959050761162863",
+      "username": "GWSM | Drexus",
+      "value": 1,
       "source": "ocr"
     }
   ]
