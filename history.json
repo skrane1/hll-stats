@@ -3745,6 +3745,13 @@
       "username": "GWSM | Drexus",
       "value": 1,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-24T09:05:01.872Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 2,
+      "source": "ocr"
     }
   ],
   "officer-down": [
