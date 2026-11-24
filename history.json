@@ -3780,6 +3780,13 @@
       "username": "GWSM | Dennis_Zachi",
       "value": 3,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-24T18:29:20.589Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 10,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -4523,6 +4530,13 @@
       "playerId": "638727568681336852",
       "username": "GWSM | Dennis_Zachi",
       "value": 4,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-24T18:29:17.955Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 9,
       "source": "ocr"
     }
   ]
