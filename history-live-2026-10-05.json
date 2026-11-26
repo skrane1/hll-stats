@@ -3939,6 +3939,20 @@
       "username": "GWSM | TomatoJoe",
       "value": 7,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-26T19:44:53.056Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 23,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-26T19:44:57.069Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 14,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -4850,6 +4864,13 @@
       "playerId": "487369746040356873",
       "username": "GWSM | Offi",
       "value": 28,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-26T19:44:59.399Z",
+      "playerId": "638727568681336852",
+      "username": "GWSM | Dennis_Zachi",
+      "value": 7,
       "source": "ocr"
     }
   ]
