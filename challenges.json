@@ -212,14 +212,14 @@
         "value": 46
       },
       {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 20
-      },
-      {
         "playerId": "487369746040356873",
         "username": "GWSM | Offi",
-        "value": 12
+        "value": 40
+      },
+      {
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 27
       }
     ],
     "createdAt": "2026-11-22T17:51:51.094Z"
@@ -247,24 +247,24 @@
         "value": 56
       },
       {
+        "playerId": "487369746040356873",
+        "username": "GWSM | Offi",
+        "value": 36
+      },
+      {
         "playerId": "715968363351769208",
         "username": "GWSM | LEER",
         "value": 29
       },
       {
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 26
+      },
+      {
         "playerId": "649311308080087051",
         "username": "GWSM | TomatoJoe",
         "value": 20
-      },
-      {
-        "playerId": "487369746040356873",
-        "username": "GWSM | Offi",
-        "value": 13
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 12
       }
     ],
     "createdAt": "2026-11-22T17:52:02.109Z"
