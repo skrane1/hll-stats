@@ -608,6 +608,13 @@
       "username": "GWSM | LEER",
       "value": 6,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-26T20:37:20.170Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 7,
+      "source": "ocr"
     }
   ],
   "kettenblitz": [
@@ -3976,6 +3983,13 @@
       "username": "GWSM | LEER",
       "value": 1,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-26T20:37:20.990Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 4,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -4894,6 +4908,20 @@
       "playerId": "638727568681336852",
       "username": "GWSM | Dennis_Zachi",
       "value": 7,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-26T20:36:38.956Z",
+      "playerId": "731267516881567745",
+      "username": "GWSM | Weinÿ",
+      "value": 13,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-26T20:36:45.566Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 12,
       "source": "ocr"
     }
   ]
