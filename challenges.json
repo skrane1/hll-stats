@@ -212,14 +212,14 @@
         "value": 31
       },
       {
+        "playerId": "638727568681336852",
+        "username": "GWSM | Dennis_Zachi",
+        "value": 13
+      },
+      {
         "playerId": "487369746040356873",
         "username": "GWSM | Offi",
         "value": 12
-      },
-      {
-        "playerId": "638727568681336852",
-        "username": "GWSM | Dennis_Zachi",
-        "value": 4
       }
     ],
     "createdAt": "2026-11-22T17:51:51.094Z"
@@ -264,7 +264,7 @@
       {
         "playerId": "638727568681336852",
         "username": "GWSM | Dennis_Zachi",
-        "value": 3
+        "value": 7
       }
     ],
     "createdAt": "2026-11-22T17:52:02.109Z"
