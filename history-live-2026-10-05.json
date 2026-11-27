@@ -4058,6 +4058,20 @@
       "username": "GWSM | Mark",
       "value": 2,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-27T22:30:27.773Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 7,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-27T22:30:30.575Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 4,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -5039,6 +5053,20 @@
       "playerId": "1235652648305299536",
       "username": "GWSM | Mark",
       "value": 18,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-27T22:30:17.667Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 14,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-27T22:30:28.373Z",
+      "playerId": "487369746040356873",
+      "username": "GWSM | Offi",
+      "value": 21,
       "source": "ocr"
     }
   ]
