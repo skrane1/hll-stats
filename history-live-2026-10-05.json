@@ -643,6 +643,13 @@
       "username": "GWSM | LEER",
       "value": 8,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-28T12:23:21.463Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 2,
+      "source": "ocr"
     }
   ],
   "kettenblitz": [
@@ -5081,6 +5088,13 @@
       "playerId": "1235652648305299536",
       "username": "GWSM | Mark",
       "value": 9,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-28T12:23:24.153Z",
+      "playerId": "715968363351769208",
+      "username": "GWSM | LEER",
+      "value": 1,
       "source": "ocr"
     }
   ]
