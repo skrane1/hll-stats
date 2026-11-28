@@ -4102,6 +4102,13 @@
       "username": "GWSM | TomatoJoe",
       "value": 6,
       "source": "ocr"
+    },
+    {
+      "date": "2026-11-28T17:48:41.651Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 5,
+      "source": "ocr"
     }
   ],
   "officer-down": [
@@ -5118,6 +5125,13 @@
       "playerId": "649311308080087051",
       "username": "GWSM | TomatoJoe",
       "value": 14,
+      "source": "ocr"
+    },
+    {
+      "date": "2026-11-28T17:48:41.986Z",
+      "playerId": "649311308080087051",
+      "username": "GWSM | TomatoJoe",
+      "value": 8,
       "source": "ocr"
     }
   ]
